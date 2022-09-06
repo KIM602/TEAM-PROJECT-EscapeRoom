@@ -265,7 +265,7 @@ table#price {
 		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 			<div id="about" class="container mb-4">
 				<br/><br/><br/><br/><div class="loader6"></div>
-				<h1><b><span style="text-shadow: 1px 1px 7px lightyellow; color:#292826;">ABOUT </span> GIT WORLD</b></h1>
+				<h1><b><span style="text-shadow: 1px 1px 7px lightyellow; color:#292826;">ABOUT </span> GIT2 WORLD</b></h1>
 				<br/>
 				<h3><b>경험해보고 싶었던 “<span class="text-info">새로운 세상</span>”</b></h3>
 				<div style="font-size: 1.2rem;">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</div>
