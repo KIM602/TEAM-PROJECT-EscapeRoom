@@ -303,7 +303,7 @@ body {
 	<div style="width: 70%; margin:auto; float:left">
 		<div style="width: 40%; margin:auto;">
 	
-			<h3 class="reserve-title">화곡 RESERVATION1</h3>
+			<h3 class="reserve-title">화곡 RESERVATION111</h3>
 				<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
 				<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
