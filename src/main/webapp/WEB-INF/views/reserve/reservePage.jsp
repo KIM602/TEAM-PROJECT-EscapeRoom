@@ -308,7 +308,7 @@ body {
 				<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
 	</div>
-	<div style="float:right;width:30%; margin:auto">asdasdsads</div>	
+	<div style="float:right;width:30%; margin:auto">asdasdsadsasd</div>	
 	
 		<div id="reserveRegion" style="width: 70%; margin:auto">			
 			<div class="box-step">
