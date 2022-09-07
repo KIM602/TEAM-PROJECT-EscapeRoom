@@ -22,7 +22,7 @@
     <div class="nav-wrap">
         <nav class="nav-box">
             <ul class="">
-                <li><a href="about">소개111123123</a></li>
+                <li><a href="about">소개</a></li>
            	 	<li><a href="themePage">테마소개</a></li>
             	<li><a href="reservePage">예약확인/취소</a></li>
           		<li><a href="board">공지사항</a></li>
