@@ -25,7 +25,7 @@ public class BoardController {
 	
 	@RequestMapping("/index")
 	public String index() {
-		return "board/index";
+		return "main/Main";
 	}
 	
 	
