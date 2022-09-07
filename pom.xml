@@ -130,7 +130,7 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.9.6</version>
+			<version>1.9.4</version>
 		</dependency>
 		
 		<!-- 검증용 패키지 (0718_ch15Ex02 추가) -->
