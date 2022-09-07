@@ -123,7 +123,6 @@ public class ReserveController {
 		@RequestMapping("/reserveCheckCanclePage")
 		public String reserveCheckCanclePage(HttpServletRequest request, Model model) {
 			System.out.println("reserveCheckCanclePage");
-
 			return "reserve/reserveCheckCanclePage";
 		}
 
