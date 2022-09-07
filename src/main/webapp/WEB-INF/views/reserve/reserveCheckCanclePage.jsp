@@ -30,8 +30,30 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style type="text/css">
+.box-step2{
+overflow: hidden;
+width:100%;
+}
+
+</style>
 </head>
 <body>
-	<div style="height: 100vh">헤헤헿ㅁ123</div>
+	<form action="reserveCheck">
+		<div class="box-step2">
+			<h2 style="text-align: center;">예약확인/취소</h2>
+			<table style="text-align: center;">
+				<tbody>
+					<tr>
+						<th>이름</th>
+						<td><input type="text" placeholder="이름을 입력하세요"></td>
+						<th>전화번호</th>
+						<td><input type="text" placeholder="핸드폰번호를 입력하세요"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
 </body>
 </html>
