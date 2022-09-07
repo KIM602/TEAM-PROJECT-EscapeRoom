@@ -105,7 +105,7 @@
 
 <br/><br/><br/><br/>
 <div id="board_title" class="text-center mb-3">
-	<a id="osm" href="index">OSM ESCAPE</a>
+	<a id="osm" href="main">OSM ESCAPE</a>
 </div><br/>
 <div style="float: right; margin-right: 100px;">
 	<sec:authorize access="isAuthenticated()">
