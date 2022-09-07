@@ -34,6 +34,10 @@ local.properties
 # CDT- autotools
 .autotools
 
+# manifest
+*.MANIFEST
+
+
 # Java annotation processor (APT)
 .factorypath
 
