@@ -41,98 +41,15 @@
 <link rel="stylesheet" href="style/theme.css" />
 
 </head>
-<style>
-/* modal button */
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-    
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-    
-    body {
- 	width: 100%;
-    height: 100%;
-	background: #F9D142;
-	margin: 0;
-	padding: 0;
-	font-family: "GmarketSansBold";
-   	}
-
-.w-btn-outline {
-    position: relative;
-    padding: 6px 13px;
-    border-radius: 15px;
-    font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-
-.w-btn-yellow-outline {
-    border: 3px solid #fce205;
-    color: #6e6e6e;
-}
-
-.w-btn-yellow-outline:hover {
-    background-color: #fce205;
-    color: #6e6e6e;
-}
-
-.w-btn-outline:hover {
-    letter-spacing: 2px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.w-btn-outline:active {
-    transform: scale(1.5);
-}
-
-.btn_reservation {
-	font-size: small;
-}
-
-.btn_close {
-	font-size: small;
-}
-
-/* 모달창 */
-.timage {
-	width: 100%;
-	height: 400px;
-}
-
-.modal-80size {
-	width: 80%;
-	height: 80%;
-	margin: 10% auto;
-	padding: 0;
-}
-</style>
 <body>
 
 <!-- 메뉴 -->
-	<%@include file ="../main/menubar.jsp" %>
+<%@include file ="../main/menubar.jsp" %>
+
 <!-- Swiper -->
 	<div class="swiper mySwiper">
 	
-	    <h1 class="title text-center">테마소개</h1>
+	    <h1 class="title text-center mt-5">테마소개</h1>
 	    <div class="swiper-wrapper">
 	    
 	       	<c:forEach items="${themeList}" var="dto">
@@ -146,7 +63,7 @@
 	    </div>
 	    <div class="swiper-scrollbar"></div>
 	</div>
-<%@include file ="../main/menubar.jsp" %>
+
 	
 <!-- modal -->
 <c:forEach items="${themeList}" var="dto">
