@@ -111,7 +111,7 @@
 
 .theme-choice>.theme {
     overflow-y: scroll;
-    height: 23vw;
+    
     padding-right: 0.521vw;
 }
 .date-choice>.includeCallendar {
@@ -180,7 +180,6 @@
 .time-choice>.time {
     overflow-y: scroll;
     padding-right: 0.521vw;
-    
 }
 .time-choice label {
     float: left;
@@ -236,13 +235,6 @@
     cursor: pointer;
 }
 
-
-.poster-choice>#themeImage {
-    overflow-y: scroll;
-    padding-right: 0.521vw;
-    height: 23vw;
-    
-}
 .reserve-title{
 font-size: 4rem;}
 .reserve-title1{
@@ -280,19 +272,6 @@ background-color:white;border-radius:.521vw}
 }
 
 
-.step-btn2 {
-    width: 80%;
-    height: 8vh;
-    font-size: 2.0rem;
-    line-height: 5vw;
-    font-weight: 700;
-    border: 1px solid;
-    border-color: #F9D142;
-    background: #F9D142;
-    color: #292826;
-    text-align: center;
-}
-
 
 .step2-table th:first-child {
     background-color: #000;
@@ -321,21 +300,22 @@ body {
 <%@include file ="../main/menubar.jsp" %>
     
 <div style="width: 100%;">
-	<div style="width: 70%; margin:auto; ">
-		<div style="float:left; width:70%; margin:auto; ">
+	<div style="width: 70%; margin:auto; float:left">
+		<div style="width: 40%; margin:auto;">
 	
-			<h3 class="reserve-title">화곡 RESERVATION</h3>
-			<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
-			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
+			<h3 class="reserve-title">화곡 RESERVATION111</h3>
+				<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
+				<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
+
 		<div style="float:right;width:30%; margin-top:10% ;margin-bottom:2%;text-align: center;">
-			<a class="step-btn2 hover1" type="button" id="" style="text-align: center; line-height: 4vw;">
+			<a class="step-btn2 hover1" type="button" id="reserveCheckCancle" style="text-align: center; line-height: 4vw;">
 				예약확인/취소
 			</a>
 		</div>	
 		
 	</div>
-	
+	<div style="float:right;width:30%; margin:auto">asdasdsads</div>	
 	
 		<div id="reserveRegion" style="width: 70%; margin:auto">			
 			<div class="box-step">
@@ -385,6 +365,28 @@ body {
 		
 	</div>
 	<%@include file ="../main/footer.jsp" %>
+	
+	
+	<script type="text/javascript">
+	$(document).ready(function name() {
+		$("#reserveCheckCancle").click(function name() {
+			$.ajax({
+				url : "reserveCheckCanclePage",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					$("#reserveRegion").html(d);
+					$("#reserveCheckCancle").text("예약하러 가기");
+					$("#reserveCheckCancle").attr("href","reservePage");
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		})
+	})
+	
+	</script>
 	
 </body>
 
