@@ -34,7 +34,7 @@
 <body>
 <h3 class="container mt-5" id="result"></h3><br/>
 <div class="container mt-5">
-	<h3 class="text-center text-danger">테마입력</h3>
+	<h3 class="text-center text-danger">테마입력14535634</h3>
 	<form action="inserttheme?${_csrf.parameterName}=${_csrf.token}" method="post" id="frm1" name="frm1" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="uphoto">테마포스터</label>
