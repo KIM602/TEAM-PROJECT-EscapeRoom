@@ -32,17 +32,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-	
-	<dd>
-		<img alt="" src="upimage/${theme.tphoto}" style="width: 100% ; height:40vh ;">
-	</dd>
-	
-<script type="text/javascript">
-
-
-	
-
-</script>
-
+	<div style="height: 100vh">헤헤헿</div>
 </body>
 </html>
