@@ -111,7 +111,7 @@
 
 .theme-choice>.theme {
     overflow-y: scroll;
-    
+    height: 23vw;
     padding-right: 0.521vw;
 }
 .date-choice>.includeCallendar {
@@ -162,6 +162,8 @@
     margin-bottom: 0.521vw;
     cursor: pointer;
 }
+
+
 
 .hover2 {
     transition: transform 0.3s ease;
@@ -233,6 +235,13 @@
     margin-right: 1.5%;
     text-align: center;
     cursor: pointer;
+}
+
+.poster-choice>#themeImage {
+    overflow-y: scroll;
+    padding-right: 0.521vw;
+    height: 23vw;
+    
 }
 
 .reserve-title{
@@ -318,8 +327,8 @@ body {
 			<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
 			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
-		<div style="float:right;width:30%; margin-top:10% ;margin-bottom:2%;text-align: center;">
-			<a class="step-btn2 hover1" type="button" id="reserveCheckCanclePage" style="text-align: center; line-height: 4vw;">
+		<div style="float:right;width:30%; margin-top:13% ;margin-bottom:2%;text-align: center;">
+			<a class="step-btn2 hover1" type="button" id="reserveCheckCancle" style="text-align: center; line-height: 4vw;">
 				예약확인/취소
 			</a>
 		</div>	
