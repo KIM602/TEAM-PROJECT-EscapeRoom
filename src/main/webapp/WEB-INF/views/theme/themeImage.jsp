@@ -35,9 +35,6 @@
 	
 	<dd>
 		<img alt="" src="upimage/${theme.tphoto}" style="width: 100% ; height:40vh ;">
-		<br/>
-		<br/>
-		${theme.tprofile}
 	</dd>
 	
 <script type="text/javascript">
