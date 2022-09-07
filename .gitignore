@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 =======
 /target/
+target/
 >>>>>>> branch 'master' of https://github.com/sumin5/EscapeRoom.git
 */target/*
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse
@@ -36,7 +37,8 @@ local.properties
 
 # manifest
 *.MANIFEST
-
+*.manifest
+MANIFEST
 
 # Java annotation processor (APT)
 .factorypath
