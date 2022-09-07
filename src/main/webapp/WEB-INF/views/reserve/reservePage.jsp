@@ -329,7 +329,7 @@ body {
 			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
 		<div style="float:right;width:30%; margin-top:10% ;margin-bottom:2%;text-align: center;">
-			<a class="step-btn2 hover1" type="button" id="" style="text-align: center; line-height: 4vw;">
+			<a class="step-btn2 hover1" type="button" id="reserveCheckCancle" style="text-align: center; line-height: 4vw;">
 				예약확인/취소
 			</a>
 		</div>	
@@ -385,6 +385,28 @@ body {
 		
 	</div>
 	<%@include file ="../main/footer.jsp" %>
+	
+	
+	<script type="text/javascript">
+	$(document).ready(function name() {
+		$("#reserveCheckCancle").click(function name() {
+			$.ajax({
+				url : "reserveCheckCanclePage",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					$("#reserveRegion").html(d);
+					$("#reserveCheckCancle").text("예약하러 가기");
+					$("#reserveCheckCancle").attr("href","reservePage");
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		})
+	})
+	
+	</script>
 	
 </body>
 

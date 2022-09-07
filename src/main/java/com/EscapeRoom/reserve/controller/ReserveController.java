@@ -118,6 +118,14 @@ public class ReserveController {
 		return "reserve/reserveTime";
 	}
 	
+	// 예약체크/확인 이동
+		@RequestMapping("/reserveCheckCanclePage")
+		public String reserveCheckCanclePage(HttpServletRequest request, Model model) {
+			System.out.println("reserveCheckCanclePage");
+
+			return "reserve/reserveCheckCanclePage";
+		}
+	
 
 
 }
