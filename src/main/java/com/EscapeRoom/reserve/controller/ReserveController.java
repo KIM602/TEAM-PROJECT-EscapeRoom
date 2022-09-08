@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
+import com.EscapeRoom.reserve.command.reserveFind;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 
@@ -126,5 +127,40 @@ public class ReserveController {
 			return "reserve/reserveCheckCanclePage";
 		}
 
+	// 예약확인 
+		@RequestMapping(value="/reserveFind",produces = "application/text; charset=UTF8")
+		@ResponseBody
+		public String reserveFind(HttpServletRequest request,Model model) {
+			System.out.println("reserveFind");
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
+			rcom = new reserveFind();
+			rcom.execute(request, model);
+			
+			String result = (String)request.getAttribute("result");
+			System.out.println("최종 result값"+result);
+			
+			if(result.equals("success")) {
+				System.out.println("리턴을 find-success");
+				return "find-success";
+			}
+			else{
+				System.out.println("리턴을 find-failed");
+				return "find-failed";
+			}
+			
+		}
+		// 예약확인 
+		@RequestMapping(value="/reserveFind1")
+		public String reserveFind1(HttpServletRequest request,Model model) {
+			System.out.println("reserveFind");
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
+			rcom = new reserveFind();
+			rcom.execute(request, model);
+			
+			return "reserve/hihi"; 
+			
+		}
 
 }

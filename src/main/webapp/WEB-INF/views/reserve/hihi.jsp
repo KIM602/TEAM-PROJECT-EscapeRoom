@@ -30,59 +30,8 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
 </head>
-	<body>
-			<c:forEach items="${themeNameList}" var="dto">
-				<label class="hover2">
-					<input type="radio" name="themePK" value="${dto.tid}" >
-					<span>${dto.tname}</span>
-				</label>
-			</c:forEach>
-
-<script type="text/javascript">
-
-$(document).ready(function name() {
-	$('input[name=themePK]').click(function name(e) {
-		var ymd = "${ymd}";		
-		var value1 = $(this).val();
-		$.ajax({
-			url : "imageView",
-			type : "post",
-			data : {themevalue:value1,
-				ymd : ymd,
-				${_csrf.parameterName}: "${_csrf.token}"
-				},
-			success : function name(d) {
-					$("#themeImage").html(d);
-					$.ajax({
-						url : "themeReserveTimeCheck",
-						type : "post",
-						data : {themevalue:value1,
-							ymd : ymd,
-							${_csrf.parameterName}: "${_csrf.token}"
-							},
-						success: function name(d1) {
-							$("#themeTimeWrap").html(d1);
-						},	
-						error: function name() {
-							alert("테마시간리스트 체크 하기전에 실패")
-						}	
-					})
-					
-					
-			},
-			error : function name() {
-				alert("테마가기도 전에 실패")
-			}
-		
-		})
-	})
-})
-	
-</script>		
-			
+<body>
+	<h2>${reserveCheckData.rName}</h2>
 </body>
-
 </html>

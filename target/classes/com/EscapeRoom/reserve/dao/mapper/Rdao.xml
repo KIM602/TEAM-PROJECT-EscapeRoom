@@ -13,4 +13,11 @@
 			select rcheck from reserve where rdate = #{rDate} and tid=#{tId} and rtime = #{rTime}
 		</select>
 		
+		<select id="reserveFindCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="int">
+			select tid from reserve where rname = #{rName} and rphone = #{rPhone}
+		</select>
+		<select id="reserveFindCheck1" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve where rname = #{rName} and rphone = #{rPhone}
+		</select>
+		
 	</mapper>
