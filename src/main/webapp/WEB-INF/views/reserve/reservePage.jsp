@@ -222,8 +222,10 @@
    
 }
 .time-choice label span img{
-    width: 2vw;
+    width: 0.9vw;
     height: 2vh;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .time-choice label {
@@ -271,7 +273,7 @@ background-color:white;border-radius:.521vw}
     width: 10%;
     height: 7vh;
     font-size: 1.5rem;
-    line-height: 4vw;
+    line-height: 3.7vw;
     font-weight: 700;
     border: 1px solid;
     border-color: #F9D142;
@@ -321,7 +323,7 @@ body {
 <%@include file ="../main/menubar.jsp" %>
     
 <div style="width: 100%;">
-	<div style="width: 70%; margin:auto; ">
+	<div style="width: 70%; margin:auto; display: flex ">
 		<div style="float:left; width:70%; margin:auto; ">
 	
 			<h3 class="reserve-title">화곡 RESERVATION</h3>
