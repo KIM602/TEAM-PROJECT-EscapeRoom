@@ -111,6 +111,7 @@ width: 200px;
 		</div>
 	</form>
 	<div id="hoho">dididi</div>
+	<div id="ff">ee</div>
 <script type="text/javascript">
 $(document).ready(function name() {
 	$(reserveFind).click(function name() {
@@ -134,16 +135,19 @@ $(document).ready(function name() {
 		};
 		
 		$.ajax({
-			url : "reserveFind",
+			url : "reserveFind1",
 			type: "post",
 			data : json,
 			success : function(data){
-				if(data.search("find-success") > -1) {
-					$("#hoho").text("있네요");
+				
+				if (true) {
+					$("#hoho").html(data);
 				}
-				else {
-					$("#hoho").text("없네요");		
+				else{
+					$("#hoho").text("값이없네용?");
 				}
+					
+			
 			},
 			error : function name() {
 				alert("서버접속 실패");

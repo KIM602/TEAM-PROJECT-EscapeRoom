@@ -43,13 +43,13 @@ public class ReserveDao implements RdaoInterface {
 			e.getMessage();
 			result="failed";
 		}
-		
-		
-			
-		
-		
-		
 		return result;
+	}
+
+	@Override
+	public ReserveDto reserveFindCheck1(ReserveDto dto) {
+		ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck1",dto);
+		return Rdto;
 		
 	}
 	

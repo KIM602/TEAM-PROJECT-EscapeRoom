@@ -21,9 +21,13 @@ public class reserveFind implements ReserveCommand {
 		System.out.println("reservefindø°º≠ phone¿∫" + phone);
 		ReserveDto rdto = new ReserveDto(phone, name);
 		
-		String result = rdao.reserveFindCheck(rdto);
-		System.out.println( "result : " + result);
-		request.setAttribute("result", result);
+		ReserveDto result = rdao.reserveFindCheck1(rdto);
+		model.addAttribute("reserveCheckData",result);
+//		String result = rdao.reserveFindCheck(rdto);
+//		System.out.println( "result : " + result);
+//		request.setAttribute("result", result);
+		
+		
 
 	}
 

@@ -150,5 +150,17 @@ public class ReserveController {
 			}
 			
 		}
+		// 예약확인 
+		@RequestMapping(value="/reserveFind1")
+		public String reserveFind1(HttpServletRequest request,Model model) {
+			System.out.println("reserveFind");
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
+			rcom = new reserveFind();
+			rcom.execute(request, model);
+			
+			return "reserve/hihi"; 
+			
+		}
 
 }
