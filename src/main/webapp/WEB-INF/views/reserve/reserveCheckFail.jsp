@@ -16,7 +16,7 @@
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<title>JSP</title>
+<title>실패 페이지</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!--jquery -->
@@ -32,6 +32,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-	<h2>${reserveCheckData.rName}</h2>
+Id가 없어요;
 </body>
 </html>

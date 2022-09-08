@@ -135,19 +135,11 @@ $(document).ready(function name() {
 		};
 		
 		$.ajax({
-			url : "reserveFind1",
+			url : "reserveFind",
 			type: "post",
 			data : json,
 			success : function(data){
-				
-				if (true) {
-					$("#hoho").html(data);
-				}
-				else{
-					$("#hoho").text("값이없네용?");
-				}
-					
-			
+					$("#reserveRegion").html(data);
 			},
 			error : function name() {
 				alert("서버접속 실패");

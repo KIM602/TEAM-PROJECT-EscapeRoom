@@ -16,6 +16,7 @@ import com.EscapeRoom.reserve.dao.ReserveDao;
 
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeImageCommand;
+import com.EscapeRoom.theme.command.ThemeNameCommand;
 import com.EscapeRoom.theme.command.ThemeNameListCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
 import com.EscapeRoom.util.Constant;
@@ -100,7 +101,7 @@ public class ReserveController {
 		rcom = new InsertReserve();
 		rcom.execute(request, model);
 		
-		return "main/Main";
+		return "reserve/reservePage";
 		
 	}
 
@@ -127,39 +128,31 @@ public class ReserveController {
 			return "reserve/reserveCheckCanclePage";
 		}
 
-	// 예약확인 
-		@RequestMapping(value="/reserveFind",produces = "application/text; charset=UTF8")
-		@ResponseBody
+		// 예약자가 있는지 체크 유무와 예약자 정보 
+		@RequestMapping(value="/reserveFind")
 		public String reserveFind(HttpServletRequest request,Model model) {
 			System.out.println("reserveFind");
 			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
 			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
-			rcom = new reserveFind();
-			rcom.execute(request, model);
+			// 스트링 타입으로 가져오려고 인터페이스말고 클래스에서 가져옴
+			reserveFind rF = new reserveFind();
+			String result =(String)rF.StrExecute(request, model);
 			
-			String result = (String)request.getAttribute("result");
-			System.out.println("최종 result값"+result);
+			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
 			
-			if(result.equals("success")) {
-				System.out.println("리턴을 find-success");
-				return "find-success";
+			tcom = new ThemeNameCommand();
+			tcom.execute(request, model);
+			
+			
+			
+			if(result == "success") {
+				return "reserve/reserverInformation";
 			}
-			else{
-				System.out.println("리턴을 find-failed");
-				return "find-failed";
+			else {
+				return "reserve/reserveCheckFail";
 			}
-			
-		}
-		// 예약확인 
-		@RequestMapping(value="/reserveFind1")
-		public String reserveFind1(HttpServletRequest request,Model model) {
-			System.out.println("reserveFind");
-			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
-			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
-			rcom = new reserveFind();
-			rcom.execute(request, model);
-			
-			return "reserve/hihi"; 
+
+			 
 			
 		}
 
