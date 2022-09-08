@@ -159,6 +159,10 @@
 }
 
 /* 모달창 */
+.modal-open .modal {
+    overflow-y: hidden;
+}
+
 .timage {
 	width: 100%;
 	height: 400px;
