@@ -23,5 +23,34 @@ public class ReserveDao implements RdaoInterface {
 		return Rdto;
 		
 	}
+
+	// 예약자가 진짜 있는지 유무 체크
+	@Override
+	public String reserveFindCheck(ReserveDto dto) {
+		String result = null;
+		
+		try {
+			int res = sqlSession.selectOne("reserveFindCheck",dto);
+			System.out.println("res"+res);
+			if (res>0) {
+				result="success";
+			}
+			else {
+				result="failed";
+			}
+		}
+		catch (Exception e) {
+			e.getMessage();
+			result="failed";
+		}
+		
+		
+			
+		
+		
+		
+		return result;
+		
+	}
 	
 }

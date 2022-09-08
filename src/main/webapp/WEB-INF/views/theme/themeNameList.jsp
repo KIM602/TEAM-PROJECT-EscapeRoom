@@ -5,7 +5,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -49,17 +49,19 @@ $(document).ready(function name() {
 		var value1 = $(this).val();
 		$.ajax({
 			url : "imageView",
-			type : "get",
-			data : {"themevalue":value1,
-				"ymd" : ymd
+			type : "post",
+			data : {themevalue:value1,
+				ymd : ymd,
+				${_csrf.parameterName}: "${_csrf.token}"
 				},
 			success : function name(d) {
 					$("#themeImage").html(d);
 					$.ajax({
 						url : "themeReserveTimeCheck",
-						type : "get",
-						data : {"themevalue":value1,
-							"ymd" : ymd
+						type : "post",
+						data : {themevalue:value1,
+							ymd : ymd,
+							${_csrf.parameterName}: "${_csrf.token}"
 							},
 						success: function name(d1) {
 							$("#themeTimeWrap").html(d1);

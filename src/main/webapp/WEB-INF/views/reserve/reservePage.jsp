@@ -321,7 +321,7 @@ body {
 <%@include file ="../main/menubar.jsp" %>
     
 <div style="width: 100%;">
-	<div style="width: 70%; margin:auto; ">
+	<div style="width: 70%; margin:auto; display: flex ">
 		<div style="float:left; width:70%; margin:auto; ">
 	
 			<h3 class="reserve-title">화곡 RESERVATION</h3>
