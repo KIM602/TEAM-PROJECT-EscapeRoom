@@ -28,16 +28,9 @@ public class ReserveDao implements RdaoInterface {
 	// 예약자 네임과 폰번호로 데이터 가져오기
 	@Override
 	public ReserveDto reserveFindCheck(ReserveDto dto) {
-		ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck",dto);
-
-		if (Rdto == null ) {
-			return null;
-		}
-		else {
-			System.out.println("dad에서 Rdto값은요?" + Rdto);
+			ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck",dto); // SelectOne메서드를 사용하여 가져온 2개의 정보로 쿼리 값을 가져옴
+			System.out.println("Rdto값은 ? " + Rdto);
 			return Rdto;
-		}
-		
 		
 	}
 	

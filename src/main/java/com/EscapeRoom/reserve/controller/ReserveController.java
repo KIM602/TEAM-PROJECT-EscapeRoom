@@ -132,28 +132,22 @@ public class ReserveController {
 		@RequestMapping(value="/reserveFind")
 		public String reserveFind(HttpServletRequest request,Model model) {
 			System.out.println("reserveFind");
-			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));  
 			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
 			// 스트링 타입으로 가져오려고 인터페이스말고 클래스에서 가져옴
-			reserveFind rF = new reserveFind();
-			String result =(String)rF.StrExecute(request, model);
-			
+			reserveFind rF = new reserveFind(); // 객체생성
+			String result =(String)rF.StrExecute(request, model);  // 동작 부분 
+	
 			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
-			
-			tcom = new ThemeNameCommand();
-			tcom.execute(request, model);
-			
-			
-			
+				
 			if(result == "success") {
-				return "reserve/reserverInformation";
+				tcom = new ThemeNameCommand();  // 가져온 테마 Id값을 활용하여 테마이름을 가져오기 위해 새로 생성 
+				tcom.execute(request, model);// 정상적으로 값 가져오기 성공시 정보 페이지로 이동
+				return "reserve/reserverInformation";   
 			}
-			else {
+			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
 				return "reserve/reserveCheckFail";
 			}
-
-			 
-			
 		}
 
 }

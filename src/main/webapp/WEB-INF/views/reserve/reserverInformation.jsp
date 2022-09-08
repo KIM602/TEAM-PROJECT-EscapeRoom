@@ -161,5 +161,16 @@
 				예약취소
 			</button>
 		</form>
+		
+		
+<script type="text/javascript">
+		var time = 600; // 기준시간
+		var min = "";
+		var sec = "";
+
+		var x = setInterval(function name() {
+			
+		}
+</script>
 </body>
 </html>
