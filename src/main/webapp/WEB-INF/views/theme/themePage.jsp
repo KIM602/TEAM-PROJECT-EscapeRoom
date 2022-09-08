@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -48,10 +46,12 @@
 
 <!-- Swiper -->
 	<div class="swiper mySwiper">
-	
-	    <h1 class="title text-center mt-5">테마소개</h1>
-	    <div class="swiper-wrapper">
+		<div class="container">
+	    	<h1 class="title text-center mt-5">테마소개</h1>
+	    	<button id="btn1" type="button" class="w-btn-outline w-btn-yellow-outline btn_reservation" onclick="location.href='reservePage'">예약하기</button>
+	    </div>
 	    
+	    <div class="swiper-wrapper">  
 	       	<c:forEach items="${themeList}" var="dto">
 	       		<div class="swiper-slide">
 					<button id="tDetailView" data-toggle="modal" data-target="#myModal${dto.tid}" value="${dto.tid}">
@@ -59,11 +59,10 @@
 	        		</button>
 				</div>
 			</c:forEach>
-	    
 	    </div>
+	    
 	    <div class="swiper-scrollbar"></div>
 	</div>
-
 	
 <!-- modal -->
 <c:forEach items="${themeList}" var="dto">
@@ -72,21 +71,21 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">${dto.tname}</h4>
-					<button type="button" data-dismiss="modal" aria-hidden="true">&times;</button>	
+					<a type="button" data-dismiss="modal" aria-hidden="true"><i class="fa-solid fa-x"></i></a>	
 				</div>
 				<div class="modal-body">
-						<div class="container row">
-							<div class="col-sm-6">
-								<img src="upimage/${dto.tphoto}" alt="사진" class="timage mx-auto img-responsive"/>
-							</div>
-							<div class="col-sm-6">
-								<h3 class="text-center">${dto.tname}</h3>
-								<h5 class="text-center">${dto.tgenre}</h5>
-								<h5 class="text-center">${dto.tdifficulty}</h5>
-								<h5 class="text-center">${dto.ttime}</h5>
-								<h5 class="text-center">${dto.tprofile}</h5>
-								<br />
-							</div>
+						<div>
+							<img src="upimage/${dto.tphoto}" alt="사진" class="timage mx-auto img-responsive"/>
+						</div>
+						<div>
+							<ul style="list-style: none;">
+								<li>제목 : ${dto.tname}<li>
+								<li>장르 : ${dto.tgenre}</li>
+								<li>난이도 : ${dto.tdifficulty}</li>
+								<li>소요시간 : ${dto.ttime}</li>
+								<li>테마소개 : <br />
+										${dto.tprofile}</li>
+							</ul>
 						</div>
 				</div>
 				<div class="modal-footer">
@@ -118,7 +117,6 @@ var swiper = new Swiper(".mySwiper", {
     }
 });
 </script>
-
 
 </body>
 </html>
