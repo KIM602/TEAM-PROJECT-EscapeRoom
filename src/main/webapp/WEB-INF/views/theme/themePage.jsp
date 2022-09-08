@@ -77,7 +77,7 @@
 						<div>
 							<img src="upimage/${dto.tphoto}" alt="사진" class="timage mx-auto img-responsive"/>
 						</div>
-						<div>
+						<div class="content">
 							<ul style="list-style: none;">
 								<li>제목 : ${dto.tname}<li>
 								<li>장르 : ${dto.tgenre}</li>

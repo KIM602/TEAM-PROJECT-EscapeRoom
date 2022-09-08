@@ -176,12 +176,17 @@
 }
 
 .modal-body {
+	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
 .modal-content {
 	width: 120%;
+}
+
+.content {
+	width: 50%;
 }
 
 .modal-title {
