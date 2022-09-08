@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
+import com.EscapeRoom.reserve.command.reserveFind;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
-import com.EscapeRoom.reserve.dto.ReserveDto;
+
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeImageCommand;
+import com.EscapeRoom.theme.command.ThemeNameCommand;
 import com.EscapeRoom.theme.command.ThemeNameListCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
 import com.EscapeRoom.util.Constant;
@@ -99,7 +101,7 @@ public class ReserveController {
 		rcom = new InsertReserve();
 		rcom.execute(request, model);
 		
-		return "main/Main";
+		return "reserve/reservePage";
 		
 	}
 
@@ -118,6 +120,40 @@ public class ReserveController {
 		return "reserve/reserveTime";
 	}
 	
+	
+	// 예약확인/관리 페이지 이동
+		@RequestMapping("/reserveCheckCanclePage")
+		public String reserveCheckCanclePage(HttpServletRequest request, Model model) {
+			System.out.println("reserveCheckCanclePage");
+			return "reserve/reserveCheckCanclePage";
+		}
 
+		// 예약자가 있는지 체크 유무와 예약자 정보 
+		@RequestMapping(value="/reserveFind")
+		public String reserveFind(HttpServletRequest request,Model model) {
+			System.out.println("reserveFind");
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
+			// 스트링 타입으로 가져오려고 인터페이스말고 클래스에서 가져옴
+			reserveFind rF = new reserveFind();
+			String result =(String)rF.StrExecute(request, model);
+			
+			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
+			
+			tcom = new ThemeNameCommand();
+			tcom.execute(request, model);
+			
+			
+			
+			if(result == "success") {
+				return "reserve/reserverInformation";
+			}
+			else {
+				return "reserve/reserveCheckFail";
+			}
+
+			 
+			
+		}
 
 }

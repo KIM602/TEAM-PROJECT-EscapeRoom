@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -16,8 +16,7 @@
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<meta id="_csfr" name="_csrf" content="${_csrf.token}"/> 
-<title>JSP</title>
+<title>예약자 정보 페이지</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!--jquery -->
@@ -47,7 +46,7 @@
 
 #step2-table {
 	width:100%;
-    
+    margin-top: 3%;
 
 }
 
@@ -81,118 +80,32 @@
     margin-bottom:0;
 }
 
-#count-select{
-  margin-bottom:0;
-}
-#count-select select {
-    width: 100%;
-    height: 1.646vw;
-    border: 0.052vw solid #000;
-    padding: 0 0.5vw;
-    box-sizing: border-box;
-    font-size: 1.2rem;
-    box-sizing: border-box;
-    font-family: 'GmarketSansBold'
-}
-
-
-#reserveOk{
-text-align: center;
-
-}
-
-
-#checkboxform{
-margin-bottom: 3%;
-margin-top: 3%;
-}
-
-#checkboxform > #rTerms{
-	width: 0.8rem;
-    height: 0.8rem;
-    cursor: pointer;
+.step-btn3{
+	text-align: center;
+    line-height: 3vw;
+    width: 11%;
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size:1.5rem;
+    border: 1px solid;
+    border-color: #F9D142;
+    background: #F9D142;
+    color: #292826;
+    font-family: 'GmarketSansBold';
 }
 </style>
+
 </head>
-<script type="text/javascript">
-
-function reserveCheck() {
-	const form = document.reserveForm;
-	//name check
-	var namePattern = /^[가-힣]{2,6}$/;
-	var name = form.rName.value;
-	// 약관 동의
-	var agree= form.rTerms.value;
-	
-	if(!check2(agree,"약관에 동의 해주세요")) {
-		return false;
-	}
-	
-	if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){
-		return false;
-	}
-	alert("예약완료")
-	form.submit();
-	
-	
-	
-}
-
-// 체크 메서드
-function check(pattern, taget, message) {
-	if(pattern.test(taget)) {
-    	return true;
-    }
-    alert(message);
-}
-// 약관 동의 체크메서드
-function check2(taget,message) {
-	if(taget != 'noncheck'){
-		return true;
-	}
-	alert(message);
-}
-
-
-// 가격 인원수 맞게 변환
-$(document).ready(function name() {	
-	$('#rCount').on('change',function(){
-		var price1 = $(this).val()*22000;
-		if($(this).val() >= 3) {
-			price1 = 12000 + $(this).val() * 16000; 
-		}		
-		document.getElementById("price").innerHTML= price1 + "원";
-		document.getElementById("price").setAttribute('value',price1);
-		document.getElementById("inputprice").setAttribute('value',price1);
-	})
-})
-
-// 약관 동의 체크박스 ajax
-
-$(document).ready(function() {
-$("#rTerms").on('click', function() {
-      if ( $(this).prop('checked') ) {
-        document.getElementById("rTerms").setAttribute("value", 'check');
-      } else {
-    	document.getElementById("rTerms").setAttribute("value", 'noncheck');
-      }
-    });
-});
-
-
-</script>
-
-
-
 <body>
- 		<form name="reserveForm" class="reserveForm"action="reserve" method="post">
+	<form name="reserveDelete" class="reserveDelete"action="reserve" method="post">
  		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> <!-- 안넣으려면 security-context.xml의 <csrf disabled="false"/> true로 변경  -->
 			<table id="step2-table">
 				<tbody>
 					<tr>
 						<th><a>예약일</a></th>
 						<td>
-							<a>${ymd}</a>
+							<a>${reserveCheckData.rDate}</a>
 						<input type="hidden" name="rDate" value="${ymd}">
 						</td>
 					</tr>
@@ -207,7 +120,7 @@ $("#rTerms").on('click', function() {
 					<tr>
 						<th><a>시간</a></th>
 						<td>
-							<a>${themeTime}</a>
+							<a>${reserveCheckData.rTime}</a>
 							<input type="hidden" name="rTime" value="${themeTime}">
 						</td>
 						
@@ -215,35 +128,20 @@ $("#rTerms").on('click', function() {
 					<tr>
 						<th><a>성함</a></th>
 						<td>
-							<input type="text" name="rName" placeholder="이름을 입력해주세요." style="font-family: 'GmarketSansBold';font-size: 1.2rem">
+							<a>${reserveCheckData.rName}</a>
 							
 						</td>
-					</tr>
-					<tr>
-						<th><a>연락처</a></th>
-						<td>
-							<input type="text" name="rPhone" placeholder="숫자만 입력해주세요" style="font-family: 'GmarketSansBold';font-size: 1.2rem">
-							
-						</td>
-					</tr>
+					</tr>	
 					<tr>
 						<th><a>인원</a></th>
 						<td> 
-							<label id="count-select">		
-							<select name="rCount" id="rCount"> 
-								<option value="2"selected>2명</option>
-								<option value="3">3명</option>
-								<option value="4">4명</option>
-								<option value="5">5명</option>
-								<option value="6">6명</option>
-							</select>
-							</label>
+							<a>${reserveCheckData.rCount}</a>
 						</td>
 						
 					</tr>
 					<tr>
 						<th><a>비용</a></th>
-						<td><input type="hidden" id="inputprice" name="rPrice" value="44000"> <a id="price">44000원</a></td>
+						<td><a>${reserveCheckData.rPrice}</a></td>
 					</tr>
 					<tr>
 						<th><a>주의사항</a></th>
@@ -259,15 +157,9 @@ $("#rTerms").on('click', function() {
 				
 			</table>
 			<br/><br/>
-			<div id="reserveOk">
-				<div id="checkboxform" >
-					<input type="checkbox" id="rTerms" name="rTerms" value="noncheck"><a style="font-size:1.0rem;"> 개인정보 처리방침 및 주의사항에 동의합니다.</a>
-				</div>
-				<input type="button" onclick="reserveCheck()" value="예약하기"  class="step-btn1 rounded-pill hover1" style="font-family: 'GmarketSansBold';"></input>
-			</div>
+			<button class="step-btn3 rounded-pill hover1" type="submit" id="reserveDelete">
+				예약취소
+			</button>
 		</form>
 </body>
-
-
-
 </html>

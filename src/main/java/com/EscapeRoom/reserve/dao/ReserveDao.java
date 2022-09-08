@@ -23,5 +23,22 @@ public class ReserveDao implements RdaoInterface {
 		return Rdto;
 		
 	}
+
+	// 예약자가 진짜 있는지 유무 체크 및
+	// 예약자 네임과 폰번호로 데이터 가져오기
+	@Override
+	public ReserveDto reserveFindCheck(ReserveDto dto) {
+		ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck",dto);
+
+		if (Rdto == null ) {
+			return null;
+		}
+		else {
+			System.out.println("dad에서 Rdto값은요?" + Rdto);
+			return Rdto;
+		}
+		
+		
+	}
 	
 }
