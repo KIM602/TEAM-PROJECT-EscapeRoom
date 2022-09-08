@@ -108,8 +108,8 @@ margin-top: 3%;
 }
 
 #checkboxform > #rTerms{
-	width: 1.2rem;
-    height: 1.2rem;
+	width: 0.8rem;
+    height: 0.8rem;
     cursor: pointer;
 }
 </style>
@@ -261,7 +261,7 @@ $("#rTerms").on('click', function() {
 			<br/><br/>
 			<div id="reserveOk">
 				<div id="checkboxform" >
-					<input type="checkbox" id="rTerms" name="rTerms" value="noncheck"><a style="font-size:2.5rem;"> 개인정보 처리방침 및 주의사항에 동의합니다.</a>
+					<input type="checkbox" id="rTerms" name="rTerms" value="noncheck"><a style="font-size:1.0rem;"> 개인정보 처리방침 및 주의사항에 동의합니다.</a>
 				</div>
 				<input type="button" onclick="reserveCheck()" value="예약하기"  class="step-btn1 rounded-pill hover1" style="font-family: 'GmarketSansBold';"></input>
 			</div>

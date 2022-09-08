@@ -268,16 +268,17 @@ background-color:#F9D142;border-radius:.521vw}
 background-color:white;border-radius:.521vw}
 
 .step-btn1 {
-    width: 16%;
-    height: 10vh;
-    font-size: 2.5rem;
-    line-height: 5vw;
+    width: 10%;
+    height: 7vh;
+    font-size: 1.5rem;
+    line-height: 4vw;
     font-weight: 700;
     border: 1px solid;
     border-color: #F9D142;
     background: #F9D142;
     color: #292826;
     text-align: center;
+    margin-bottom: 5%;
 }
 
 .step-btn2 {
