@@ -163,6 +163,8 @@
     cursor: pointer;
 }
 
+
+
 .hover2 {
     transition: transform 0.3s ease;
 }
@@ -180,7 +182,6 @@
 .time-choice>.time {
     overflow-y: scroll;
     padding-right: 0.521vw;
-    
 }
 .time-choice label {
     float: left;
@@ -221,8 +222,10 @@
    
 }
 .time-choice label span img{
-    width: 2vw;
+    width: 0.9vw;
     height: 2vh;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .time-choice label {
@@ -236,13 +239,13 @@
     cursor: pointer;
 }
 
-
 .poster-choice>#themeImage {
     overflow-y: scroll;
     padding-right: 0.521vw;
     height: 23vw;
     
 }
+
 .reserve-title{
 font-size: 4rem;}
 .reserve-title1{
@@ -267,18 +270,18 @@ background-color:#F9D142;border-radius:.521vw}
 background-color:white;border-radius:.521vw}
 
 .step-btn1 {
-    width: 16%;
-    height: 10vh;
-    font-size: 2.5rem;
-    line-height: 5vw;
+    width: 10%;
+    height: 7vh;
+    font-size: 1.5rem;
+    line-height: 3.7vw;
     font-weight: 700;
     border: 1px solid;
     border-color: #F9D142;
     background: #F9D142;
     color: #292826;
     text-align: center;
+    margin-bottom: 5%;
 }
-
 
 .step-btn2 {
     width: 80%;
@@ -292,7 +295,6 @@ background-color:white;border-radius:.521vw}
     color: #292826;
     text-align: center;
 }
-
 
 .step2-table th:first-child {
     background-color: #000;
@@ -321,21 +323,20 @@ body {
 <%@include file ="../main/menubar.jsp" %>
     
 <div style="width: 100%;">
-	<div style="width: 70%; margin:auto; ">
+	<div style="width: 70%; margin:auto; display: flex ">
 		<div style="float:left; width:70%; margin:auto; ">
 	
 			<h3 class="reserve-title">화곡 RESERVATION</h3>
 			<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
 			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>
-		<div style="float:right;width:30%; margin-top:10% ;margin-bottom:2%;text-align: center;">
-			<a class="step-btn2 hover1" type="button" id="" style="text-align: center; line-height: 4vw;">
+		<div style="float:right;width:30%; margin-top:13% ;margin-bottom:2%;text-align: center;">
+			<a class="step-btn2 hover1" type="button" id="reserveCheckCancle" style="text-align: center; line-height: 4vw;">
 				예약확인/취소
 			</a>
 		</div>	
 		
 	</div>
-	
 	
 		<div id="reserveRegion" style="width: 70%; margin:auto">			
 			<div class="box-step">
@@ -385,6 +386,28 @@ body {
 		
 	</div>
 	<%@include file ="../main/footer.jsp" %>
+	
+	
+	<script type="text/javascript">
+	$(document).ready(function name() {
+		$("#reserveCheckCancle").click(function name() {
+			$.ajax({
+				url : "reserveCheckCanclePage",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					$("#reserveRegion").html(d);
+					$("#reserveCheckCancle").text("예약하러 가기");
+					$("#reserveCheckCancle").attr("href","reservePage");
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		})
+	})
+	
+	</script>
 	
 </body>
 

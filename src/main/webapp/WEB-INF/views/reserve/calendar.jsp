@@ -1,5 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<title>JSP bean »ç¿ë</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/> 
+<title>JSP bean ì‚¬ìš©</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!--jquery -->
@@ -64,7 +71,7 @@ function buildCalendar() {
 	var cnt = 0;
 	var calendarTable = document.getElementById("calendar");
 	var calendarTableTitle = document.getElementById("calendarTitle");
-	calendarTableTitle.innerHTML = today.getFullYear()+"³â"+(today.getMonth()+1)+"¿ù";
+	calendarTableTitle.innerHTML = today.getFullYear()+"ë…„"+(today.getMonth()+1)+"ì›”";
 	var firstDate = new Date(today.getFullYear(), today.getMonth(),1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
 
@@ -76,25 +83,25 @@ function buildCalendar() {
 		calendarTable.deleteRow(calendarTable.rows.length-1);
 	}
 	
-	row = calendarTable.insertRow(); // ¿­ Ãß°¡
-	// ´ŞÀÇ Ã¹´Ş ºóÄ­ »ı¼º
-	for(i=0; i<firstDate.getDay(); i++) { // getDay() ÁÖ7ÀÏÀ» ¼ıÀÚ·Î ¸®ÅÏ (ÀÏ:0,¿ù:1 ...)
-		cell = row.insertCell(); // ¼¿ Ãß°¡ 
+	row = calendarTable.insertRow(); // ì—´ ì¶”ê°€
+	// ë‹¬ì˜ ì²«ë‹¬ ë¹ˆì¹¸ ìƒì„±
+	for(i=0; i<firstDate.getDay(); i++) { // getDay() ì£¼7ì¼ì„ ìˆ«ìë¡œ ë¦¬í„´ (ì¼:0,ì›”:1 ...)
+		cell = row.insertCell(); // ì…€ ì¶”ê°€ 
 		cnt += 1;
 	}
 	
-	// ´Ş·Â¿¡ ¿äÀÏ Ã¤¿ì±â
-	for(i=1; i<= lastDate.getDate();i++){ // getDate() ·ÎÄÃÅ¸ÀÓÀÇ ÀÏ ¼ö¸¦ ¼ıÀÚ·Î ¸®ÅÏ 31ÀÏÀÌ¸é 31¸®ÅÏ
-		cell = row.insertCell(); // ¼¿ Ãß°¡ 
+	// ë‹¬ë ¥ì— ìš”ì¼ ì±„ìš°ê¸°
+	for(i=1; i<= lastDate.getDate();i++){ // getDate() ë¡œì»¬íƒ€ì„ì˜ ì¼ ìˆ˜ë¥¼ ìˆ«ìë¡œ ë¦¬í„´ 31ì¼ì´ë©´ 31ë¦¬í„´
+		cell = row.insertCell(); // ì…€ ì¶”ê°€ 
 		cnt += 1; 
 		
-		// ÇàÀÌ ´Ã¾î³² id 1¾¿.. id2 =2 id3=3 ¾¿´Ã¾î³²
-		cell.setAttribute("id",i);   // ¼Ó¼º Ãß°¡ id¿Í i°ª
-		cell.innerHTML = i; // id°ªÀÇ i¸¦ ºÎ¿©
-		cell.align = "center";  // Áß¾ÓÁ¤·Ä
+		// í–‰ì´ ëŠ˜ì–´ë‚¨ id 1ì”©.. id2 =2 id3=3 ì”©ëŠ˜ì–´ë‚¨
+		cell.setAttribute("id",i);   // ì†ì„± ì¶”ê°€ idì™€ iê°’
+		cell.innerHTML = i; // idê°’ì˜ ië¥¼ ë¶€ì—¬
+		cell.align = "center";  // ì¤‘ì•™ì •ë ¬
 	
 		
-		// Æ¯¼öÈ¿°ú ´©¸£¸é °ª Ãâ·Â
+		// íŠ¹ìˆ˜íš¨ê³¼ ëˆ„ë¥´ë©´ ê°’ ì¶œë ¥
 		cell.onclick = function() {
 			
 	//		alert(this.getAttribute("id"));
@@ -116,8 +123,8 @@ function buildCalendar() {
 			this.setAttribute('name', 'choice')
 			
 			
-			clickedYear = today.getFullYear(); // ¿À´Ã³âµµ
-			clickedMonth = today.getMonth()+1; // ¿À´Ã¿ù
+			clickedYear = today.getFullYear(); // ì˜¤ëŠ˜ë…„ë„
+			clickedMonth = today.getMonth()+1; // ì˜¤ëŠ˜ì›”
 			clickedDate = this.getAttribute("id");
 			console.log("clickedYear",clickedYear);
 			console.log("clickedMonth",clickedMonth);
@@ -139,30 +146,30 @@ function buildCalendar() {
 			$.ajax({
 				url : "themeNameList",
 				type : "get",
-				data : {"ymd":ymd},
+				data : {ymd:ymd},
 				contentType : "application/json; charset=utf-8;",
 				success: function(data){
 					$("#indexListAjax").html(data);
 					
 				},
 				error:function(data){
-					alert("¾î¸²¾øÁö");
+					alert("ì–´ë¦¼ì—†ì§€");
 				}
 				
 			})
 			
 		}
 		
-		// cnt°¡ 7ÀÌ µÇ¸é Áï = ¸¶Áö¸·¿äÀÏÀÌµÇ¸é
+		// cntê°€ 7ì´ ë˜ë©´ ì¦‰ = ë§ˆì§€ë§‰ìš”ì¼ì´ë˜ë©´
 		if(cnt % 7 == 0 ){ 
-			row = calendar.insertRow(); // ¿­À» Ãß°¡ÇÏ¿© ´ÙÀ½ ¿­·Î ÁøÀÔ 
+			row = calendar.insertRow(); // ì—´ì„ ì¶”ê°€í•˜ì—¬ ë‹¤ìŒ ì—´ë¡œ ì§„ì… 
 		}
 		
-		// ÀÏ¿äÀÏ »¡°­
+		// ì¼ìš”ì¼ ë¹¨ê°•
 		if (cnt % 7 == 1) {
 			cell.innerHTML = "<font color=#F79DC2>" + i + "</font>";
 		}  
-	 	// Åä¿äÀÏ ÆÄ¶û È¿°ú
+	 	// í† ìš”ì¼ íŒŒë‘ íš¨ê³¼
 		if (cnt % 7 == 0){
 			cell.innerHTML = "<font color=skyblue>" + i + "</font>";
 			row = calendar.insertRow();
@@ -170,10 +177,10 @@ function buildCalendar() {
 		
 	}
 	
-	// ´Ş·ÂÀÇ ¸¶Áö¸·³¯ ºóÄ­ ÇàÀ¸·Î Ã¤¿ì±â
-	if(cnt % 7 != 0) { //cnt°¡ 7ÀÌ ¾Æ´Ñ°æ¿ì
+	// ë‹¬ë ¥ì˜ ë§ˆì§€ë§‰ë‚  ë¹ˆì¹¸ í–‰ìœ¼ë¡œ ì±„ìš°ê¸°
+	if(cnt % 7 != 0) { //cntê°€ 7ì´ ì•„ë‹Œê²½ìš°
 		for(i = 0; i<7- (cnt%7); i++) { 
-			cell = row.insertCell(); // ¿­À» Ãß°¡ÇÏ¿© ´ÙÀ½¿­·Î ÁøÀÔ
+			cell = row.insertCell(); // ì—´ì„ ì¶”ê°€í•˜ì—¬ ë‹¤ìŒì—´ë¡œ ì§„ì…
 		}
 	}	
 	
@@ -201,18 +208,18 @@ function prevCalendar() {
 <body onload="buildCalendar()">
 <table id="calendar">
 	<tr>
-		<td><label onclick="prevCalendar()"> ¢¸ </label></td>
-		<td colspan="5" id="calendarTitle" style="text-align:center">yyyy³â m¿ù</td>
-		<td><label onclick="nextCalendar()"> ¢º </label></td>
+		<td><label onclick="prevCalendar()"> â—€ </label></td>
+		<td colspan="5" id="calendarTitle" style="text-align:center">yyyyë…„ mì›”</td>
+		<td><label onclick="nextCalendar()"> â–¶ </label></td>
 	</tr>
 	<tr>
-		<td><font color ="#F79DC2">ÀÏ</font></td>
-		<td>¿ù</td>
-		<td>È­</td>
-		<td>¼ö</td>
-		<td>¸ñ</td>
-		<td>±İ</td>
-		<td><font color ="skyblue">Åä</font></td>
+		<td><font color ="#F79DC2">ì¼</font></td>
+		<td>ì›”</td>
+		<td>í™”</td>
+		<td>ìˆ˜</td>
+		<td>ëª©</td>
+		<td>ê¸ˆ</td>
+		<td><font color ="skyblue">í† </font></td>
 	</tr>
 		
 		
