@@ -115,9 +115,6 @@ section {
 section:nth-child(odd){
     background-color: darkcyan;
 }
-section:nth-child(even){
-    background: sandybrown;
-}
 
 /* footer */
 footer {
