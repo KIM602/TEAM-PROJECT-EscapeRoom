@@ -110,8 +110,7 @@ width: 200px;
 			</a>
 		</div>
 	</form>
-	<div id="hoho">dididi</div>
-	<div id="ff">ee</div>
+
 <script type="text/javascript">
 $(document).ready(function name() {
 	$(reserveFind).click(function name() {            // ReserveFind 버튼 클릭시 작동 함수

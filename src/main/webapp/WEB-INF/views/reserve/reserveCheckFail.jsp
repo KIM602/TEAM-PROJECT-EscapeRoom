@@ -16,7 +16,7 @@
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<title>실패 페이지</title>
+<title>JSP</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!--jquery -->
@@ -28,10 +28,53 @@
 <!--fontawesome icon-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/31d5c7a19f.js" crossorigin="anonymous"></script>
+	
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<link rel="stylesheet" href="css/reserve/reserveCheckFail.css">
+
+<
 </head>
 <body>
-Id가 없어요;
+	<form action="reserveFind">
+		<div class="box-step2">
+			
+			<div class="box-step2-div1">
+				<h3 class="box-step2-h3"><i class="fa-solid fa-pen-nib"></i>&nbsp;조회결과</h3>
+				<div class="box-step2-div1-div">
+					<p class="message"><i class="fa-solid fa-user-large-slash"></i><br/>예약된 내역이 존재하지 않습니다.</p>
+									
+				</div>
+			</div>
+			<a class="step-btn3 rounded-pill hover1" type="button" id="reserveCheckCancleBack">
+				뒤로가기
+			</a>
+		</div>
+	</form>
+
 </body>
+<script type="text/javascript">
+	$(document).ready(function name() {
+		$("#reserveCheckCancleBack").click(function name() {
+			$.ajax({
+				url : "reserveCheckCanclePage",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					$("#reserveRegion").html(d);
+					$("#reserveCheckCancle").text("예약하러 가기");
+					$("#reserveCheckCancle").attr("href","reservePage");
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		})
+	})
+</script>
+
+
 </html>
