@@ -36,7 +36,7 @@
 
 <link rel="stylesheet" href="css/reserve/reserveCheckFail.css">
 
-<
+
 </head>
 <body>
 	<form action="reserveFind">
