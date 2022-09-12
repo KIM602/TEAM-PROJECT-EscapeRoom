@@ -8,7 +8,7 @@ import com.EscapeRoom.reserve.dao.ReserveDao;
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.util.Constant;
 
-public class reserveFind implements ReserveCommand {
+public class ReserveFind implements ReserveCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, Model model) {

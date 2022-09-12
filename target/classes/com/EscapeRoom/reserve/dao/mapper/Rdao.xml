@@ -17,4 +17,8 @@
 			select * from reserve where rname = #{rName} and rphone = #{rPhone}
 		</select>
 		
+		<delete id="deleteReserve" parameterType="String">
+			delete from reserve where rid = #{rId}
+		</delete>
+		
 	</mapper>

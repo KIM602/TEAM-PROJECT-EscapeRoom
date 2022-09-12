@@ -33,5 +33,14 @@ public class ReserveDao implements RdaoInterface {
 			return Rdto;
 		
 	}
+
+	@Override
+	public void deleteReserve(String rId) {
+		sqlSession.delete("deleteReserve",rId);
+		
+	}
+	
+	// 예약삭제
+	
 	
 }

@@ -98,22 +98,18 @@
 
 </head>
 <body>
-	<form name="reserveDelete" class="reserveDelete"action="reserve" method="post">
- 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> <!-- 안넣으려면 security-context.xml의 <csrf disabled="false"/> true로 변경  -->
 			<table id="step2-table">
 				<tbody>
 					<tr>
 						<th><a>예약일</a></th>
 						<td>
 							<a>${reserveCheckData.rDate}</a>
-						<input type="hidden" name="rDate" value="${ymd}">
 						</td>
 					</tr>
 					<tr>
 						<th><a>테마명</a></th>
 						<td>
 							<a>${theme.tname}</a>
-							<input type="hidden" name="tId" value="${theme.tid}">
 						</td>
 						
 					</tr>
@@ -121,7 +117,6 @@
 						<th><a>시간</a></th>
 						<td>
 							<a>${reserveCheckData.rTime}</a>
-							<input type="hidden" name="rTime" value="${themeTime}">
 						</td>
 						
 					</tr>
@@ -157,20 +152,33 @@
 				
 			</table>
 			<br/><br/>
-			<button class="step-btn3 rounded-pill hover1" type="submit" id="reserveDelete">
+			<button class="step-btn3 rounded-pill hover1" id="reserveDeleteBtn"type="button">
 				예약취소
 			</button>
-		</form>
 		
 		
 <script type="text/javascript">
-		var time = 600; // 기준시간
-		var min = "";
-		var sec = "";
-
-		var x = setInterval(function name() {
-			
-		}
+$(document).ready(function name() {
+	var themeid = '${reserveCheckData.rId}'
+	console.log(themeid);
+	$("#reserveDeleteBtn").click(function name(e) {
+		$.ajax({
+			url : "reserveDelete",
+			type : "post",
+			data : {reserveid : '${reserveCheckData.rId}',
+				${_csrf.parameterName}: "${_csrf.token}"
+				},
+			success : function name(d) {
+				$("#reserveRegion").html(d);
+			},
+			error : function name() {
+				alert("실해");
+			}
+		})
+		
+	})
+})
+		
 </script>
 </body>
 </html>

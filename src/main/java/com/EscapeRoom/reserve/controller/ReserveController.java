@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
-import com.EscapeRoom.reserve.command.reserveFind;
+import com.EscapeRoom.reserve.command.ReserveDelete;
+import com.EscapeRoom.reserve.command.ReserveFind;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 
@@ -94,6 +95,12 @@ public class ReserveController {
 		return "reserve/reserveForm";
 	}
 	
+	@RequestMapping("/reserveOK")
+	public String reserveOK(HttpServletRequest request,Model model) {
+		System.out.println("reserveOK");
+		return "reserve/reserveMessagePage";
+	}
+	
 	// 예약하는 행위
 	@RequestMapping("/reserve")
 	public String reserve(HttpServletRequest request,Model model) {
@@ -135,7 +142,7 @@ public class ReserveController {
 			System.out.println("nameKey값은?"+request.getParameter("nameKey"));  
 			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
 			// 스트링 타입으로 가져오려고 인터페이스말고 클래스에서 가져옴
-			reserveFind rF = new reserveFind(); // 객체생성
+			ReserveFind rF = new ReserveFind(); // 객체생성
 			String result =(String)rF.StrExecute(request, model);  // 동작 부분 
 	
 			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
@@ -146,8 +153,19 @@ public class ReserveController {
 				return "reserve/reserverInformation";   
 			}
 			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
-				return "reserve/reserveCheckFail";
+				return "reserve/reserveCheckFailPage";
 			}
+		}
+		
+		
+		// 예약자 삭제
+		@RequestMapping("/reserveDelete")
+		public String reserveDelete(HttpServletRequest request,Model model) {
+			System.out.println("reserveDelete");
+			System.out.println("삭제 테마 id는 ? " + request.getParameter("reserveid"));
+			rcom = new ReserveDelete();
+			rcom.execute(request, model);
+			return "reserve/reserveDeleteMessagePage";
 		}
 
 }

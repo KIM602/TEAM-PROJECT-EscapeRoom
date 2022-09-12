@@ -7,5 +7,6 @@ public interface RdaoInterface {
 	public void insertReserve(ReserveDto dto);
 	public ReserveDto themeReserveTimeCheck(ReserveDto dto);
 	public ReserveDto reserveFindCheck(ReserveDto dto);
+	public void deleteReserve(String rId);
 	
 }
