@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.EscapeRoom.reserve.dao.ReserveDao">
+		<insert id="insertReserve" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
+			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice)
+			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice})
+		</insert>	
+		
+		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select rcheck from reserve where rdate = #{rDate} and tid=#{tId} and rtime = #{rTime}
+		</select>
+		
+		<select id="reserveFindCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve where rname = #{rName} and rphone = #{rPhone}
+		</select>
+		
+		<delete id="deleteReserve" parameterType="String">
+			delete from reserve where rid = #{rId}
+		</delete>
+		
+	</mapper>
