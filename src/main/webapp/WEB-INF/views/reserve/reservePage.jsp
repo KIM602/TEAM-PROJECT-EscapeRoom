@@ -222,8 +222,10 @@
    
 }
 .time-choice label span img{
-    width: 2vw;
+    width: 0.9vw;
     height: 2vh;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .time-choice label {
@@ -271,7 +273,7 @@ background-color:white;border-radius:.521vw}
     width: 10%;
     height: 7vh;
     font-size: 1.5rem;
-    line-height: 4vw;
+    line-height: 3.7vw;
     font-weight: 700;
     border: 1px solid;
     border-color: #F9D142;
@@ -321,10 +323,11 @@ body {
 <%@include file ="../main/menubar.jsp" %>
     
 <div style="width: 100%;">
-	<div style="width: 70%; margin:auto; ">
+	<div style="width: 70%; margin:auto; display: flex ">
 		<div style="float:left; width:70%; margin:auto; ">
 	
 			<h3 class="reserve-title">화곡 RESERVATION</h3>
+			<a href="test">123</a>
 			<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
 			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
 		</div>

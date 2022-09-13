@@ -21,6 +21,23 @@ public class ReserveDto {
 	
 	
 
+	public ReserveDto(String rId) {
+		super();
+		this.rId = rId;
+	}
+
+
+
+
+	public ReserveDto(String rPhone, String rName) {
+		super();
+		this.rPhone = rPhone;
+		this.rName = rName;
+	}
+
+
+
+
 	public ReserveDto(String rDate, String tId,String rTime) {
 		super();
 		this.rDate = rDate;
