@@ -112,11 +112,13 @@
                 <h3>DashBoard 메인페이지 ${user_id}</h3>
             </article>
         </section>
+        
+        
+	<sec:authorize access="isAuthenticated()">
+		<a href="AdminLogoutView">로그아웃</a>
+	</sec:authorize>
     </div>
 
-<sec:authorize access="isAuthenticated()">
-	<a href="AdminLogoutView">로그아웃</a>
-</sec:authorize>
 <script src="js/DashBoardMain.js"></script>
 </body>
 </html>

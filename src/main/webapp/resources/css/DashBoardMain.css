@@ -47,7 +47,6 @@ nav > .nav-box {
 }
 
 .nav-sublist, .nav-lastlist {
-    display: none;
     line-height: 48px;
 }
 
@@ -59,6 +58,7 @@ nav > .nav-box {
     background-color: #eee;
 }
 .nav-lastlist {
+	display: none;
     padding-left: 6%;
 }
 .nav-lastlist a {
