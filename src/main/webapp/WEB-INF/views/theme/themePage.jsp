@@ -46,16 +46,10 @@
 
 <!-- Swiper -->
 	<div class="swiper mySwiper">
-<<<<<<< HEAD
 		<div class="container">
 	    	<h1 class="title text-center mt-5">테마소개</h1>
 	    	<button id="btn1" type="button" class="w-btn-outline w-btn-yellow-outline btn_reservation" onclick="location.href='reservePage'">예약하기</button>
 	    </div>
-=======
-	
-	    <h1 class="title text-center mt-5">테마소개</h1>
-	    <div class="swiper-wrapper">
->>>>>>> refs/remotes/origin/EJ
 	    
 	    <div class="swiper-wrapper">  
 	       	<c:forEach items="${themeList}" var="dto">
@@ -69,10 +63,6 @@
 	    
 	    <div class="swiper-scrollbar"></div>
 	</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/EJ
 	
 <!-- modal -->
 <c:forEach items="${themeList}" var="dto">
