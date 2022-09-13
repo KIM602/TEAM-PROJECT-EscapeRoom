@@ -115,8 +115,8 @@
             </nav>
         </div>
 
-        <section class="main-page">
-            <article>
+        <section>
+            <article class="main-page">
                 <h3>DashBoard 메인페이지 ${user_id}</h3>
             </article>
         </section>
@@ -137,7 +137,7 @@ $(document).ready(function() {
 			type: "get",
 			data: "",
 			success: function(d) {
-				$(".main-page").html(d);
+				$(".main-page").html(d);	
 			},
 			error: function() {
 				alert("에러");
