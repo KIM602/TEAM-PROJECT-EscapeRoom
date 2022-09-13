@@ -1,9 +1,12 @@
 package com.EscapeRoom.reserve.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.reserve.dto.ReserveDto2;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -33,14 +36,19 @@ public class ReserveDao implements RdaoInterface {
 			return Rdto;
 		
 	}
-
+	//예약삭제
 	@Override
 	public void deleteReserve(String rId) {
 		sqlSession.delete("deleteReserve",rId);
 		
 	}
-	
-	// 예약삭제
-	
+
+	@Override
+	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2) {
+		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("reserveTop31");
+		return result;
+	}
+
+
 	
 }

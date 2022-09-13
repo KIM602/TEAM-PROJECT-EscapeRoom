@@ -32,6 +32,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
+asdsa
+	<c:forEach items="${dlist}" var="dto">
+				<label class="hover2">
+					<span>tid 값은 ${dto.tId}</span><br/>
+					<span>cnt 값은${dto.cnt}</span>
+				</label>
+			</c:forEach>
+
 
 </body>
 </html>
