@@ -24,6 +24,8 @@ body {
     position: fixed;
     width: 20%;
     color: #fff;
+    left:0;
+    top:0;
 }
 nav > .nav-box {
     height: 100vh;
