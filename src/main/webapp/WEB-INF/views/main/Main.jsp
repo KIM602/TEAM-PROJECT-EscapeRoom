@@ -52,7 +52,7 @@
             </div>
         </section>
     </div>
-    <a href="DashBoardMain" class="btn-resrvation">
+    <a href="AdminLoginView" class="btn-resrvation">
         <i class="fa-solid fa-key"></i>
     </a>
 
