@@ -1,4 +1,4 @@
-@import url(reset.css);
+@import url(../css/reset.css);
 
 /* font */
 @font-face {
@@ -94,7 +94,7 @@ a.btn-resrvation i:hover {
     }
     /* main text */
     section .text-box {
-        bottom: 32%;
+        bottom: 26%;
         left: 10%;
     }
     section .text-box .text {
@@ -140,8 +140,8 @@ a.btn-resrvation i:hover {
 
     /* text-box */
     section .text-box {
-        bottom: 14%;
-        left: 20%;
+        bottom: 12%;
+        left: 18.5%;
     }
     section .text-box .text {
         font-size: 4.5em;
