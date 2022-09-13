@@ -21,8 +21,4 @@
 			delete from reserve where rid = #{rId}
 		</delete>
 		
-		<select id="reserveTop31" resultType="com.EscapeRoom.reserve.dto.ReserveDto2">
-			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
-		</select>
-		
 	</mapper>

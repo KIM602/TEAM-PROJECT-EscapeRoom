@@ -97,7 +97,7 @@ a {
     height: 0;
     background-color: aliceblue;
     overflow-y: hidden;
-    font-size: 6.1em;
+    font-size: 8em;
     z-index: 997;
 }
 .nav-box {
@@ -120,7 +120,7 @@ a {
 
     /* nav list */
     .nav-wrap {
-        font-size: 3em;
+        font-size: 4.6em;
     }
     .nav-box {
         width: 100%;
