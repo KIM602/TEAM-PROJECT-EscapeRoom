@@ -12,6 +12,7 @@ import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.command.ReserveDelete;
 import com.EscapeRoom.reserve.command.ReserveFind;
+import com.EscapeRoom.reserve.command.Test123132;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 
@@ -168,4 +169,13 @@ public class ReserveController {
 			return "reserve/reserveDeleteMessagePage";
 		}
 
+		@RequestMapping("/test")
+		public String test(HttpServletRequest request,Model model) {
+			System.out.println("test");
+			tcom = new Test123132();
+			tcom.execute(request, model);
+			
+			return "reserve/test";
+		}
+		
 }
