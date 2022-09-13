@@ -46,11 +46,14 @@
 			select * from theme where tid = #{tid}
 		</select>
 		
-		<select id="reserveTop3" >
-			select r.tid,t.tname,count(t.tid) as 횟수
-			from theme t join reserve r on(t.tid=r.tid) group by r.tid, t.tname
-			order by 횟수 desc;
+		<select id="reserveTop3" resultType="int">
+			select count(*) as cnt from reserve group by tid order by count(*) desc;
 		</select>
+		<select id="reserveTop3133" resultType="com.EscapeRoom.theme.dto.ThemeDto">
+			select tid from reserve group by tid order by count(*) desc;
+		</select>
+
+
 		<!-- reserve용도용1-->
 		
 		
