@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
-import com.EscapeRoom.reserve.command.reserveFind;
+import com.EscapeRoom.reserve.command.ReserveDelete;
+import com.EscapeRoom.reserve.command.ReserveFind;
+import com.EscapeRoom.reserve.command.Test123132;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeImageCommand;
+import com.EscapeRoom.theme.command.ThemeNameCommand;
 import com.EscapeRoom.theme.command.ThemeNameListCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
 import com.EscapeRoom.util.Constant;
@@ -93,6 +96,12 @@ public class ReserveController {
 		return "reserve/reserveForm";
 	}
 	
+	@RequestMapping("/reserveOK")
+	public String reserveOK(HttpServletRequest request,Model model) {
+		System.out.println("reserveOK");
+		return "reserve/reserveMessagePage";
+	}
+	
 	// 예약하는 행위
 	@RequestMapping("/reserve")
 	public String reserve(HttpServletRequest request,Model model) {
@@ -100,7 +109,7 @@ public class ReserveController {
 		rcom = new InsertReserve();
 		rcom.execute(request, model);
 		
-		return "main/Main";
+		return "reserve/reservePage";
 		
 	}
 
@@ -127,40 +136,46 @@ public class ReserveController {
 			return "reserve/reserveCheckCanclePage";
 		}
 
-	// 예약확인 
-		@RequestMapping(value="/reserveFind",produces = "application/text; charset=UTF8")
-		@ResponseBody
+		// 예약자가 있는지 체크 유무와 예약자 정보 
+		@RequestMapping(value="/reserveFind")
 		public String reserveFind(HttpServletRequest request,Model model) {
 			System.out.println("reserveFind");
-			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
+			System.out.println("nameKey값은?"+request.getParameter("nameKey"));  
 			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
-			rcom = new reserveFind();
-			rcom.execute(request, model);
-			
-			String result = (String)request.getAttribute("result");
-			System.out.println("최종 result값"+result);
-			
-			if(result.equals("success")) {
-				System.out.println("리턴을 find-success");
-				return "find-success";
+			// 스트링 타입으로 가져오려고 인터페이스말고 클래스에서 가져옴
+			ReserveFind rF = new ReserveFind(); // 객체생성
+			String result =(String)rF.StrExecute(request, model);  // 동작 부분 
+	
+			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
+				
+			if(result == "success") {
+				tcom = new ThemeNameCommand();  // 가져온 테마 Id값을 활용하여 테마이름을 가져오기 위해 새로 생성 
+				tcom.execute(request, model);// 정상적으로 값 가져오기 성공시 정보 페이지로 이동
+				return "reserve/reserverInformation";   
 			}
-			else{
-				System.out.println("리턴을 find-failed");
-				return "find-failed";
+			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
+				return "reserve/reserveCheckFailPage";
 			}
-			
 		}
-		// 예약확인 
-		@RequestMapping(value="/reserveFind1")
-		public String reserveFind1(HttpServletRequest request,Model model) {
-			System.out.println("reserveFind");
-			System.out.println("nameKey값은?"+request.getParameter("nameKey"));
-			System.out.println("phoneKey값은?"+request.getParameter("phoneKey"));
-			rcom = new reserveFind();
+		
+		
+		// 예약자 삭제
+		@RequestMapping("/reserveDelete")
+		public String reserveDelete(HttpServletRequest request,Model model) {
+			System.out.println("reserveDelete");
+			System.out.println("삭제 테마 id는 ? " + request.getParameter("reserveid"));
+			rcom = new ReserveDelete();
 			rcom.execute(request, model);
-			
-			return "reserve/hihi"; 
-			
+			return "reserve/reserveDeleteMessagePage";
 		}
 
+		@RequestMapping("/test")
+		public String test(HttpServletRequest request,Model model) {
+			System.out.println("test");
+			tcom = new Test123132();
+			tcom.execute(request, model);
+			
+			return "reserve/test";
+		}
+		
 }

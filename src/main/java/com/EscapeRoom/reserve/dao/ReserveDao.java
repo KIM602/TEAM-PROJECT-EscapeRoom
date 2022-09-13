@@ -1,9 +1,12 @@
 package com.EscapeRoom.reserve.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.reserve.dto.ReserveDto2;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -24,33 +27,28 @@ public class ReserveDao implements RdaoInterface {
 		
 	}
 
-	// 예약자가 진짜 있는지 유무 체크
+	// 예약자가 진짜 있는지 유무 체크 및
+	// 예약자 네임과 폰번호로 데이터 가져오기
 	@Override
-	public String reserveFindCheck(ReserveDto dto) {
-		String result = null;
+	public ReserveDto reserveFindCheck(ReserveDto dto) {
+			ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck",dto); // SelectOne메서드를 사용하여 가져온 2개의 정보로 쿼리 값을 가져옴
+			System.out.println("Rdto값은 ? " + Rdto);
+			return Rdto;
 		
-		try {
-			int res = sqlSession.selectOne("reserveFindCheck",dto);
-			System.out.println("res"+res);
-			if (res>0) {
-				result="success";
-			}
-			else {
-				result="failed";
-			}
-		}
-		catch (Exception e) {
-			e.getMessage();
-			result="failed";
-		}
-		return result;
+	}
+	//예약삭제
+	@Override
+	public void deleteReserve(String rId) {
+		sqlSession.delete("deleteReserve",rId);
+		
 	}
 
 	@Override
-	public ReserveDto reserveFindCheck1(ReserveDto dto) {
-		ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck1",dto);
-		return Rdto;
-		
+	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2) {
+		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("reserveTop31");
+		return result;
 	}
+
+
 	
 }

@@ -132,7 +132,23 @@ function reserveCheck() {
 		return false;
 	}
 	alert("예약완료")
-	form.submit();
+	
+	form.submit(function name(e) {
+		e.preventDefault();
+		alert("gogo");
+		$.ajax({
+			url : "reserveOK",
+			type : "get",
+			data : "",
+			success : function name(d) {
+				$("#reserveRegion").html(d);
+			},
+			error : function name() {
+				alert("예약체크/확인실패");
+			}
+		})
+	});
+	
 	
 	
 	

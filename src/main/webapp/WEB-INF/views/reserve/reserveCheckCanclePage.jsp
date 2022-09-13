@@ -110,52 +110,36 @@ width: 200px;
 			</a>
 		</div>
 	</form>
-	<div id="hoho">dididi</div>
-	<div id="ff">ee</div>
+
 <script type="text/javascript">
 $(document).ready(function name() {
-	$(reserveFind).click(function name() {
-		let name = $("#rName");
-		sessionStorage.setItem("이름값",name[0].value);
+	$(reserveFind).click(function name() {            // ReserveFind 버튼 클릭시 작동 함수
+		let name = $("#rName");          
+		sessionStorage.setItem("이름값",name[0].value);   // 세션스토리지에 키값,Value 저장
 		let phone = $("#rPhone");
 		sessionStorage.setItem("폰값",phone[0].value);
-		//let name1 = document.getElementById("rName");
-		//alert(name[0].value);
-		//sessionStorage.setItem(name1,name1.value);
 		
-		let namekey = "이름값" ;
-		let phonekey = "폰값" ;
+		let namekey = "이름값" ;                          // 고정 키값명 설정
+		let phonekey = "폰값" ;                                
 		
-		jsonName1 = sessionStorage.getItem(namekey);
+		jsonName1 = sessionStorage.getItem(namekey);     // 변수에 세션의 저장된 값을 가짐
 		jsonPhone1 = sessionStorage.getItem(phonekey);
-		let json = {
+		let json = {                                     // 객체형식 값을 받음
 			nameKey : jsonName1,
 			phoneKey : jsonPhone1,
-			${_csrf.parameterName}: "${_csrf.token}"
+			${_csrf.parameterName}: "${_csrf.token}"	// 시크릿활용을 위한 토큰값 기재(없을시,Post로 보낼수없음)
 		};
-		
 		$.ajax({
-			url : "reserveFind1",
+			url : "reserveFind", 	                    // ajax를 이용하여 reserveFind 호출
 			type: "post",
 			data : json,
-			success : function(data){
-				
-				if (true) {
-					$("#hoho").html(data);
-				}
-				else{
-					$("#hoho").text("값이없네용?");
-				}
-					
-			
+			success : function(data){					// 성공시 페이지를 변환시켜줌
+					$("#reserveRegion").html(data);
 			},
 			error : function name() {
 				alert("서버접속 실패");
 			}
-			
 		});
-		
-		
 	});
 })	
 </script>

@@ -80,6 +80,7 @@ public class ThemeDao implements TdaoInterface {
 	// 테마 이미지용도 reserve용도
 	@Override
 	public ThemeDto themeImage(String tId) {
+		System.out.println("테마tId값은?"+tId);
 		ThemeDto dto = sqlSession.selectOne("themeImage",tId);
 		return dto;
 	}
