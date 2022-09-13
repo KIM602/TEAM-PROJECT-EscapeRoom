@@ -91,6 +91,14 @@
                                 </ul>
                             </li>
                             <li class="nav-sublist">
+                                &#8250; 공지사항/이벤트 수정
+                                <ul class="nav-line-style">
+                                    <li class="nav-lastlist">
+                                        <a id="nav-board" href="board">공지사항/이벤트 수정</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-sublist">
                                 &#8250; 정보 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
@@ -107,8 +115,8 @@
             </nav>
         </div>
 
-        <section class="main-page">
-            <article>
+        <section>
+            <article class="main-page">
                 <h3>DashBoard 메인페이지 ${user_id}</h3>
             </article>
         </section>
@@ -120,5 +128,26 @@
     </div>
 
 <script src="js/DashBoardMain.js"></script>
+<script>
+$(document).ready(function() {
+	$("#nav-board").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: $("#nav-board").attr('href'),
+			type: "get",
+			data: "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+		
+	
+});
+</script>
+
 </body>
 </html>
