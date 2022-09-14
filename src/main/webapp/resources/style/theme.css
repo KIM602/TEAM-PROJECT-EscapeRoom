@@ -80,7 +80,7 @@
  .imgbox {
 	height: 500px;
 	border: 1px solid #000;
-	box-shadow: 9px 10px #292826;
+	box-shadow: 8px 8px #292826;
 }
   
  .imgbox img {
@@ -159,6 +159,10 @@
 }
 
 /* 모달창 */
+.modal-open .modal {
+    overflow-y: hidden;
+}
+
 .timage {
 	width: 100%;
 	height: 400px;
@@ -196,4 +200,7 @@
 .fa-x {
 	color: white;
 }
-	
+
+#btx {
+	margin-top: 9px;
+}

@@ -83,10 +83,10 @@
                                 &#8250; 테마 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">이미지 수정</a>
+                                         <a id="nav-themeInsert" href="themeInsert">테마 등록</a>
                                     </li>
                                     <li class="nav-lastlist">
-                                        <a href="#">테마 설명 수정</a>
+                                        <a id="nav-themeEdit" href="themeListPage">테마 목록 및 수정</a>
                                     </li>
                                 </ul>
                             </li>
@@ -145,7 +145,38 @@ $(document).ready(function() {
 			}
 		});
 	});
-		
+	
+	//테마 등록
+	$("#nav-themeInsert").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: $("#nav-themeInsert").attr('href'),
+			type: "get",
+			data: "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+	//테마 수정
+	$("#nav-themeEdit").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: $("#nav-themeEdit").attr('href'),
+			type: "get",
+			data: "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
 	
 });
 </script>
