@@ -5,8 +5,8 @@
 	
 	<mapper namespace="com.EscapeRoom.reserve.dao.ReserveDao">
 		<insert id="insertReserve" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
-			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice)
-			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice})
+			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice,rthemename)
+			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice},#{rThemeName})
 		</insert>	
 		
 		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
@@ -23,6 +23,10 @@
 		
 		<select id="reserveTop31" resultType="com.EscapeRoom.reserve.dto.ReserveDto2">
 			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
+		</select>
+		
+		<select id="ReserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve
 		</select>
 		
 	</mapper>

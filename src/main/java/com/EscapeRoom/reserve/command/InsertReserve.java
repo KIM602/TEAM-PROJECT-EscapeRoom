@@ -23,7 +23,7 @@ public class InsertReserve implements ReserveCommand {
 		String tId = request.getParameter("tId"); //
 		String rName = request.getParameter("rName"); //
 		int rPrice = Integer.parseInt(request.getParameter("rPrice")); //
-		
+		String rThemeName = request.getParameter("rThemeName");
 
 		System.out.println("rPrice는 " + rPrice);
 		System.out.println("rPhone는 " + rPhone);
@@ -34,7 +34,7 @@ public class InsertReserve implements ReserveCommand {
 		System.out.println("rName는 " + rName);
 		System.out.println("rPrice는 " + rPrice);
 		
-		ReserveDto dto = new ReserveDto(rid, rPhone, rCount, rTerms, rDate, rTime, rCheck, tId, rName, rPrice);
+		ReserveDto dto = new ReserveDto(rid, rPhone, rCount, rTerms, rDate, rTime, rCheck, tId, rName, rPrice,rThemeName);
 				
 		ReserveDao rdao = Constant.rdao;
 		rdao.insertReserve(dto);

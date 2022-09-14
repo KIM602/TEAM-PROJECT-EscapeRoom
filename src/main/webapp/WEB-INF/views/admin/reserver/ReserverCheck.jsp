@@ -38,6 +38,18 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 *{ font-family: 'GmarketSansBold';
 }
@@ -49,7 +61,6 @@
     border: 0.5px solid #d6d6d6;
     border-top: none;
     font-size: 15px;
-    background: white;
     display : flex;
 }
 .box-step dl {
@@ -72,7 +83,6 @@
 }
 .box-step>dl>dt {
     padding: 18px 30px 18px;
-    background: #fff;
     color: #000;
     text-align:center;
     font-size: 1.5rem;
@@ -99,6 +109,16 @@ body {
     height: 100vh;
     /* background-color: rgb(255, 144, 144); */
     
+}
+
+
+tbody>tr>td{
+	font-family: 'GmarketSansMedium';
+	font-size : 0.5rem;
+}
+thead>tr>th{
+	font-family: 'GmarketSansBold';
+	font-size : 0.5rem;
 }
 </style>
 </head>
@@ -136,181 +156,18 @@ body {
 										<th>연락처</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>오수민</td>
-										<td>공포</td>
-										<td>2019_09_02</td>
-										<td>19:20</td>
-										<td>4</td>
-										<td>010-1234</td>
-									</tr>
 								
-								<c:forEach items="${listContent}" var="dto">
+								<c:forEach items="${rlist}" var="dto">
 									<tr>
-										<td class="bid">${dto.bId}1</td>
-										<td>${dto.bName}오수민</td>
+										<td class="bid">${dto.rId}</td>
+										<td>${dto.rName}</td>
 										<td>
-											<a class="contentView" href="contentView?bId=${dto.bId}">${dto.bTitle}공포</a>
+											<a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">${dto.rThemeName}공포</a>
 										</td>
-										<td>${dto.bDate}2019_09_02</td>
-										<td>${dto.bDate}19:20</td>
-										<td>${dto.bHit}4</td>
-										<td>${dto.bHit}010-1234</td>
+										<td>${dto.rDate}</td>
+										<td>${dto.rTime}</td>
+										<td>${dto.rCount}명</td>
+										<td>${dto.rPhone}</td>
 									</tr>
 								</c:forEach>
 								</tbody>
