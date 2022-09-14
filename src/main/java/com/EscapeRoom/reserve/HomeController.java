@@ -36,6 +36,12 @@ public class HomeController {
 		return "main/Main";
 	}
 	
+	@RequestMapping(value="/Homemain")
+	public String main() {
+		System.out.println("메인 이동");
+		return "main/Main";
+	}
+	
 	// 맵이동
 	@RequestMapping("/map")
 	public String map() {

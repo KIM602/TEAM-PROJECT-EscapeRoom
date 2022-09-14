@@ -1,15 +1,15 @@
 @import url(../css/reset.css);
 
 @font-face {
-    font-family: 'GongGothicMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-body {
-    font-family: 'GongGothicMedium';
-    font-weight: 300;
+body, * {
+    font-family: 'NanumSquareRound';
+    overflow: hidden;
 }
 
 .board-wrap {
@@ -20,12 +20,14 @@ body {
 }
 
 /* nav */
-.nav-wrap { 
+.header-wrap { 
     position: fixed;
     width: 20%;
     color: #fff;
+    left:0;
+    top:0;
 }
-nav > .nav-box {
+header > .header-box {
     height: 100vh;
     background-color: #333;
     padding: 35% 3% 0;

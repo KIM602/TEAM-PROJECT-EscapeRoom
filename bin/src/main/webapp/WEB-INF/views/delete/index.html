@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<!-- RWD -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- MS -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
+<title></title>
+<!--bootstrap-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<!--jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--propper jquery -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!--latest javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!--fontawesome icon-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+   integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<!--google icon -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/Draggable.min.js"></script>
+<script src="https://cdn.skypack.dev/lodash.throttle@4.1.1"></script>
+<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/Draggable.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://assets.codepen.io/16327/InertiaPlugin.min.js"></script>
+<title>Insert title here</title>
+
+<style>
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overscroll-behavior: contain;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  --activeColor: rgb(240 240 240);
+  --navTextColor: #000000;
+  --mainBg: rgb(20 20 23);
+  font-family: "GmarketSansBold";
+  min-height: 100vh;
+  margin: 0;
+  color: #141417;
+  background: var(--mainBg);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+section {
+  --h: calc(var(--i) * 17);
+  min-height: 100vh;
+  padding: 11rem 0 max(5vh, 2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--h, 0), 75%, 60%);
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 max(5vw, 1rem);
+  transform-style: perspective-3d;
+  perspective: 900px;
+}
+
+@media (min-width: 32em) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4rem;
+    justify-items: center;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--navBgColor);
+  color: var(--navTextColor);
+  z-index: 2;
+  height: 6rem;
+}
+nav::after {
+  content: "";
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: currentColor;
+  pointer-events: none;
+}
+
+.marker {
+  position: fixed;
+  top: 1.75rem;
+  left: 4rem;
+  width: 4rem;
+  height: 4rem;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 100%;
+  z-index: 2000;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 0.2rem);
+  right: 100%;
+  width: 4rem;
+  height: 0.4rem;
+
+}
+
+.nav__track {
+  position: relative;
+  min-width: max(200rem, 200%);
+  padding: 1.5rem max(100rem, 100%) 0 0;
+  height: 6rem;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  position: relative;
+  display: block;
+  min-width: 8rem;
+  padding: 2.25rem 0rem 0.5rem;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  z-index: 1;
+  transition: color 150ms;
+}
+.nav__link:hover, .nav__link:focus {
+  color: var(--activeColor);
+  text-decoration: underline;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0.65rem;
+  height: 0.65rem;
+  background-color: currentColor;
+  border-radius: 50%;
+  transform: translate3d(-50%, 0, 0);
+  transform-origin: center center;
+}
+.nav__link span {
+  display: block;
+  transition: transform 200ms;
+}
+.nav__link.is-active span {
+  transform: scale(1.4);
+  color: var(--activeColor);
+}
+.nav__link.is-active::after {
+  display: none;
+}
+
+.section__heading {
+  font-size: clamp(2rem, 12vmin, 7rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  margin: 0 0 1rem;
+  grid-row: 1;
+  grid-column: 1/span 7;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+}
+.section__heading span {
+  display: block;
+}
+.section__heading span:first-child {
+  font-size: clamp(1rem, 10vmin, 5rem);
+  color:white;
+}
+.section__heading span:nth-child(2) {
+  word-break: break-word;
+}
+
+.section__image {
+  grid-row: 1;
+  grid-column: 5/span 3;
+  position: relative;
+  box-shadow: 0.45rem 0.45rem 8rem rgba(0, 0, 0, 0.3);
+  align-self: center;
+  border: 5px ridge #6b4000;
+}
+.section__image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  mix-blend-mode: screen;
+}
+
+</style>
+</head>
+<body>
+<nav>
+	<!--Shows our position on the timeline-->
+	<div class="marker" >
+		<img class="mk" src="image/pngwing.com (2).png " >
+	</div>
+	
+	<!--Draggable element-->
+	<div class="nav__track" data-draggable>
+		<ul class="nav__list">
+			<li>
+				<a href="#section_1" class="nav__link" data-link><span>헐!</span></a>
+			</li>
+			<li>
+				<a href="#section_2" class="nav__link" data-link><span>포레스트</span></a>
+			</li>
+			<li>
+				<a href="#section_3" class="nav__link" data-link><span>DONE</span></a>
+			</li>
+			<li>
+				<a href="#section_4" class="nav__link" data-link><span>제로호텔L</span></a>
+			</li>
+			<li>
+				<a href="#section_5" class="nav__link" data-link><span>아이엠</span></a>
+			</li>
+			<li>
+				<a href="#section_6" class="nav__link" data-link><span>어느겨울밤2</span></a>
+			</li>
+			<li>
+				<a href="#section_7" class="nav__link" data-link><span>콜러</span></a>
+			</li>
+			<li>
+				<a href="#section_8" class="nav__link" data-link><span>나비효과</span></a>
+			</li>
+			<li>
+				<a href="#section_9" class="nav__link" data-link><span>링</span></a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<!-- 메인 -->
+<main>
+	<section id="section_1" style="--i: 0">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">헐!</span>
+			</h2>
+			<button class="section__image" >
+				<img src="https://www.zerogangnam.com/storage/vvKmmbiIvO6wfAOF7NgkSLbf8Rmzn9LqYgiHkqMH.jpg" width="500" height="500" />
+			</button>
+			
+		</div>
+	</section>
+	<section id="section_2" style="--i: 1">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">포레스트</span>
+			</h2>
+			<div id="si2" class="section__image">
+				<img src="https://www.zerogangnam.com/storage/AVISPw8N2JfMThKvnk3VJzeY9qywIaYd8pTy46Xx.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_3" style="--i: 2">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">DONE</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/h77RkOOKRX3XTVttuI7KPApcV2sSlFORaTTFlm60.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_4" style="--i: 3">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">제로호텔L</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/X51oi3HLesowsNm1mxmFk6nQeIwZXa4e5QC23Fe1.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_5" style="--i: 4">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">아이엠</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/XrztwnZ9ApcLWcAHwcSoHbFqa4cl6EJH1Bl2jreF.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_6" style="--i: 5">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">어느겨울밤2</span>
+			</h2>
+			<div class="section__image" style="--i: 6">
+				<img src="https://www.zerogangnam.com/storage/zrRSFfvNxvemwSoeAVnIGe9UCUQ5sZwYLcI9Dbki.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_7" style="--i: 13">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">콜러</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/jsU0eVFchFzKRGTR7k63ia6eVUFviJ2mdFmEt932.jpg" width="362" height="500" />
+			</div>
+		</div>
+	</section>
+	<section id="section_8" style="--i: 12">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">나비효과</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/53YBaDeUELhwD5rla4FGnJxlARAXRbS3WllubGm3.jpg" width="362" height="500"  />
+			</div>
+		</div>
+	</section>
+	<section id="section_9" style="--i: 15">
+		<div class="container">
+			<h2 class="section__heading">
+				<span style="text-shadow:1px 1px 1px #000;">링</span>
+			</h2>
+			<div class="section__image">
+				<img src="https://www.zerogangnam.com/storage/aM6F3lOsKUwHA5NCkusfmH2ilNupcgskh34SiNuf.jpg" width="1200" height="1200" />
+			</div>
+		</div>
+	</section>
+</main>
+<script>
+
+const scrollContainer = document.querySelector('[data-scroller]')
+const sections = gsap.utils.toArray('section')
+const track = document.querySelector('[data-draggable]')
+const navLinks = gsap.utils.toArray('[data-link]')
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+const lastItemWidth = () => navLinks[navLinks.length - 1].offsetWidth
+
+const getUseableHeight = () => document.documentElement.offsetHeight - window.innerHeight
+
+const getDraggableWidth = () => {
+	return ((track.offsetWidth * 0.5) - lastItemWidth())
+}
+
+const updatePosition = () => {
+	const left = track.getBoundingClientRect().left * -1
+	const width = getDraggableWidth()
+	const useableHeight = getUseableHeight()
+	const y = gsap.utils.mapRange(0, width, 0, useableHeight, left)
+
+	st.scroll(y)
+}
+
+const tl = gsap.timeline()
+	.to(track, {
+		x: () => getDraggableWidth() * -1,
+		ease: 'none'
+	})
+
+const st = ScrollTrigger.create({
+	animation: tl,
+	scrub: 0,
+})
+
+const draggableInstance = Draggable.create(track, {
+	type: 'x',
+	inertia: true,
+	bounds: {
+		minX: 0,
+		maxX: getDraggableWidth() * -1
+	},
+	edgeResistance: 1,
+	onDragStart: () => st.disable(),
+	onDragEnd: () => st.enable(),
+	onDrag: updatePosition,
+	onThrowUpdate: updatePosition
+})
+
+const initSectionAnimation = () => {
+	/* Do nothing if user prefers reduced motion */
+	if (prefersReducedMotion.matches) return
+	
+	sections.forEach((section, index) => {
+		const heading = section.querySelector('h2')
+		const image = section.querySelector('.section__image')
+		
+		/* Set animation start state */
+		gsap.set(heading, {
+			opacity: 0,
+			y: 50
+		})
+		gsap.set(image, {
+			opacity: 0,
+			rotateY: 15
+		})
+
+		/* Create the timeline */
+		const sectionTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: () => 'top center',
+				end: () => `+=${window.innerHeight}`,
+				toggleActions: 'play reverse play reverse',
+				// toggleClass: 'is-active',
+				// markers: true,
+			}
+		})
+		
+		/* Add tweens to the timeline */
+		sectionTl.to(image, {
+			opacity: 1,
+			rotateY: -5,
+			duration: 6,
+			ease: 'elastic'
+		})
+		.to(heading, {
+			opacity: 1,
+			y: 0,
+			duration: 2
+		}, 0.5)
+		
+		/* Create a new timeline to add an active class to the nav link for the current section */
+		const sectionTl2 = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: 'top 20px',
+				end: () => `bottom top`,
+				toggleActions: 'play none play reverse',
+				onToggle: ({ isActive }) => {
+					const sectionLink = navLinks[index]
+					
+					if (isActive) {
+						sectionLink.classList.add('is-active')
+					} else {
+						sectionLink.classList.remove('is-active')
+					}
+				}
+			}
+		})
+	})
+}
+
+initSectionAnimation()
+
+/* Allow navigation via keyboard */
+track.addEventListener('keyup', (e) => {
+	const id = e.target.getAttribute('href')
+	if (!id || e.key !== 'Tab') return
+	
+	const section = document.querySelector(id)
+	const y = section.getBoundingClientRect().top + window.scrollY
+	
+	st.scroll(y)
+})
+
+</script>
+
+
+</body>
+</html>

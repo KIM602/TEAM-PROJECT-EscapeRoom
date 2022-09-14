@@ -1,0 +1,23 @@
+create table event_board (
+    bNum number(4) primary key,
+    bTitle varchar2(100),
+    bContent varchar2(500),
+    bWriter varchar2(20),
+    bDate date default sysdate,
+    bHit number(4) default 0,
+    bGroup number(4),
+    bStep number(4),
+    bIndent number(4)
+);
+
+
+create sequence event_board_seq nocache;
+
+
+insert into event_board(bNum,bTitle,bContent,bWriter,bHit,bGroup,bStep,bIndent) 
+values(event_board_seq.nextval,'event title test1','test1 content','°ü¸®ÀÚ',0,event_board_seq.currval,0,0);
+
+
+commit;
+
+
