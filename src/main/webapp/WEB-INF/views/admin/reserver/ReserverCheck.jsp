@@ -162,7 +162,7 @@ thead>tr>th{
 										<td class="bid">${dto.rId}</td>
 										<td>${dto.rName}</td>
 										<td>
-											<a class="contentView" href="contentView?bId=${dto}">${dto}공포</a>
+											<a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">${dto.rThemeName}공포</a>
 										</td>
 										<td>${dto.rDate}</td>
 										<td>${dto.rTime}</td>

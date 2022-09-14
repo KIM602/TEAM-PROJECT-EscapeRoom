@@ -160,7 +160,7 @@ public class ReserveController {
 		}
 		
 		
-		// 예약자 삭제
+		// 예약자가 예약 삭제
 		@RequestMapping("/reserveDelete")
 		public String reserveDelete(HttpServletRequest request,Model model) {
 			System.out.println("reserveDelete");
@@ -187,6 +187,15 @@ public class ReserveController {
 		public String ReserveCheck(HttpServletRequest request,Model model) {
 			System.out.println("ReserverCheck");
 			rcom = new ReserverList();
+			rcom.execute(request, model);
+			
+			return "admin/reserver/ReserverCheck";
+		}
+		// 관리자 페이지에서 테마 삭제
+		@RequestMapping("AdminReserveDelete")
+		public String AdminReserveDelete(HttpServletRequest request,Model model) {
+			System.out.println("adminReserveDelete");
+			rcom = new ReserveDelete();
 			rcom.execute(request, model);
 			
 			return "admin/reserver/ReserverCheck";

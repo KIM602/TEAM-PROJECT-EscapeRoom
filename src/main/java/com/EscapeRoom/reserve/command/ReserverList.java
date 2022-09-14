@@ -18,10 +18,6 @@ public class ReserverList implements ReserveCommand {
 		ReserveDao rdao = Constant.rdao;
 		ArrayList<ReserveDto> rlist = rdao.ReserverList();
 		model.addAttribute("rlist",rlist);
-		System.out.println("리스트목록" + rlist.get(0));
-		
-		System.out.println(rlist.get(1).getrId());
-		
 		
 	}
 
