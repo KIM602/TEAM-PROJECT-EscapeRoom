@@ -38,9 +38,6 @@ public class ReserveDto {
 		this.rThemeName = rThemeName;
 	}
 
-
-
-
 	public ReserveDto(String rId) {
 		super();
 		this.rId = rId;

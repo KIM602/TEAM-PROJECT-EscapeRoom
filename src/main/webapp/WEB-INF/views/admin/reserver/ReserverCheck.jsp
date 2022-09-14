@@ -130,20 +130,19 @@ thead>tr>th{
 			<div class="box-step">
 				<dl class="date-choice">
 					<dt>
-						<a class="round">STEP 1 </a>
-						날짜
+						선택 날짜
 					</dt>
 					<ddd id="includeCallendar">
 						<jsp:include page="calendar.jsp"></jsp:include>
 					</ddd>
+					<p style="text-align: center">화살표를 눌러 날짜를 클릭</p>
 				</dl>
 				<dl class="theme-choice" style="width:75%">
-					<dt>
-						<a class="round">STEP 2</a>
-						예약자내역
+					<dt id="ajaxlist">
+						총 예약자 내역
 					</dt>
-					<dd class="theme" id="indexListAjax">
-						<div id="submain">
+					<dd class="theme">
+						<div id="indexListAjax">
 							<table id="searchTable" class="table table-bordered table-hover">
 								<thead>
 									<tr>
@@ -156,39 +155,31 @@ thead>tr>th{
 										<th>연락처</th>
 									</tr>
 								</thead>
-								
-								<c:forEach items="${rlist}" var="dto">
+								<tbody >
+									<c:forEach items="${rlist}" var="dto">
 									<tr>
 										<td class="bid">${dto.rId}</td>
 										<td>${dto.rName}</td>
-										<td>
-											<a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">${dto.rThemeName}공포</a>
-										</td>
+										<td>${dto.rThemeName}</td>
 										<td>${dto.rDate}</td>
 										<td>${dto.rTime}</td>
 										<td>${dto.rCount}명</td>
 										<td>${dto.rPhone}</td>
+										<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
 									</tr>
-								</c:forEach>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-					
-					
 					</dd>
 				</dl>
-				
 			</div>
-			
 			</div>	
-		
 	</div>
 	
 	
 	<script type="text/javascript">
-	$(document).ready(function name() {
-		
-	})
+	
 	</script>
 
 </body>
