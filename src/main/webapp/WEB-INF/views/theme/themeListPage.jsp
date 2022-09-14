@@ -106,29 +106,6 @@ body {
 		</div>
 </div>
 
-<!-- modal -->
-<div class="container mt-3">
-	<button id="modal" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal">
-		Open modal
-	</button>
-</div>
-
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header bg-info">
-				<h4 class="modal-title multiEffect"><i class="fa fa-info-circle" aria-hidden="true">Info</i></h4>
-				<button type="button" class="close mclose" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<h4 id="mbody" class="text-center multiEffect">가입을 축하합니다</h4>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary mclose" data-dismiss="modal">Close</button>
-			</div>
-		</div>		
-	</div>
-</div>
 <script>
 $(document).ready(function(){
 	//상세정보 보기
@@ -143,8 +120,7 @@ $(document).ready(function(){
 				$("#mainRegion").html(data);
 			},
 			error : function() {
-				$("#mbody").text("서버접속 실패..");
-				$("#modal").trigger("click");
+				alert("땡!");
 			}
 		});
 	});
