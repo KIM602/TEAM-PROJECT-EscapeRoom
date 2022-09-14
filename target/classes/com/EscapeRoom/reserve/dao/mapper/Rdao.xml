@@ -29,4 +29,8 @@
 			select * from reserve
 		</select>
 		
+		<select id="CalendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve where rdate = #{rDate}
+		</select>
+		
 	</mapper>

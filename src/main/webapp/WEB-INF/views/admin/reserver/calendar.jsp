@@ -63,9 +63,9 @@
 
 
 <script type="text/javascript">
-var absolutetoday = new Date();
+
 var today = new Date();
-var ymd = null
+
 function buildCalendar() {
 	var row = null
 	var cnt = 0;
@@ -143,12 +143,13 @@ function buildCalendar() {
 			ymd = clickedYMD;
 			
 			$.ajax({
-				url : "themeNameList",
+				url : "CalendarChoiceReserverList",
 				type : "get",
 				data : {ymd:ymd},
 				contentType : "application/json; charset=utf-8;",
 				success: function(data){
 					$("#indexListAjax").html(data);
+					$("#ajaxlist").text(ymd+" 별 내역");
 					
 				},
 				error:function(data){
@@ -202,9 +203,14 @@ function prevCalendar() {
 
 
 </script>
+<script type="text/javascript">
+	document.onload=buildCalendar();
+</script>
 </head>
 
-<body onload="buildCalendar()">
+
+
+<body>
 <table id="calendar">
 	<tr>
 		<td><label onclick="prevCalendar()"> ◀ </label></td>
@@ -220,11 +226,8 @@ function prevCalendar() {
 		<td>금</td>
 		<td><font color ="skyblue">토</font></td>
 	</tr>
-		
-		
+			
 </table>
-
-
 
 </body>
 </html>
