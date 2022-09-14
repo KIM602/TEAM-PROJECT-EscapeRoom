@@ -97,7 +97,7 @@ a {
     height: 0;
     background-color: aliceblue;
     overflow-y: hidden;
-    font-size: 8em;
+    font-size: 6rem;
     z-index: 997;
 }
 .nav-box {

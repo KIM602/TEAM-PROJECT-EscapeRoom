@@ -45,9 +45,9 @@
 </sec:authorize>
 
     <div class="board-wrap">
-        <div class="nav-wrap">
-            <nav>
-                <ul class="nav-box">
+        <div class="header-wrap">
+            <header>
+                <ul class="header-box">
                     <li class="nav-list">
                         <a href="#">예약자 확인</a>
                     </li>
@@ -112,7 +112,7 @@
                         </ul>
                     </li>
                 </ul>
-            </nav>
+            </header>
         </div>
 
         <section>
@@ -122,9 +122,10 @@
         </section>
         
         
-	<sec:authorize access="isAuthenticated()">
-		<a href="AdminLogoutView">로그아웃</a>
-	</sec:authorize>
+<!-- <sec:authorize access="isAuthenticated()">
+			<a href="AdminLogoutView">로그아웃</a>
+		</sec:authorize>
+	-->
     </div>
 
 <script src="js/DashBoardMain.js"></script>

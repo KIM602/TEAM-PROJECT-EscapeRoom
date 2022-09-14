@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd"
+>
+	
+	<!-- 맨 처음 설정시 테스트 -->
+	<!-- 
+	<http pattern="/" security="none"></http>
+	<http pattern="/**" security="none"></http>
+	<http auto-config="true" use-expressions="true"></http>
+	 -->
+
+
+ 
+    
+	<http auto-config="true" use-expressions="true">
+		<!--auto-config="true"는 form기반으로 로그인하고 use-expressions = "true"는 spring의 EL언어 사용  -->
+		<access-denied-handler error-page="/error"/> <!-- 로그인 이후 금지된 요청 처리(다시 로그인페이지나 회원가입으로 이동 등 -->
+		
+		<!-- security에서는 기본적으로  iframe사용을 제한하는데, 이를 풀기 위함 -->
+		<headers>
+			<frame-options disabled="true"></frame-options>
+		</headers>
+		
+		<!-- 각 요청별 권한 지정은  intercept-url태그 사용 지정 -->	
+		<!--pattern은 요청경로 속성, access는 접근 대상 지정  -->
+		<intercept-url pattern="/" access="permitAll"/> <!-- 맨처음 접근하는 첫페이지는 로그인 여부 관계 없이 모두 접근 가능 -->
+		
+		<intercept-url pattern="/index" access="permitAll" />
+		<intercept-url pattern="/about" access="permitAll" />
+		<intercept-url pattern="/board" access="permitAll" />
+		<intercept-url pattern="/noticeBoard" access="permitAll" />
+		<intercept-url pattern="/eventBoard" access="permitAll" />
+		
+		<intercept-url pattern="/reservePage" access="permitAll" /> <!-- 가입창 이동 요청 -->
+	
+		<intercept-url pattern="/AdminLoginView" access="isAnonymous()" />
+		<intercept-url pattern="/AdminJoinView" access="isAnonymous()" /> <!-- 회원가입창이동 요청 -->
+		<intercept-url pattern="/join" access="isAnonymous()" />
+		<intercept-url pattern="/login" access="isAnonymous()"/>
+		<intercept-url pattern="/main" access="isAuthenticated()"/>
+		
+		
+		
+		
+		
+		<!-- 로그인창 이동 요청 -->
+		
+		<!-- hasAnyRole()은 무슨 권한이든 로그인한 사람은 /** 모든 페이지에 접근이 가능. -->
+		<!-- auth 등급이 하나, 즉 하나의 권한만 허용할때는 hasRole('ROLE_ADMIN') 등 -->
+		<!-- 모든 요청이 로그인 성공 후 접근 가능 -->
+		<!-- intercept-url우선 순위는 위에 있을수록 높음 -->
+		<!--  isAnonymous()나 hasRole()은 spring EL제공 메서드 -->
+		<!-- Role등급은 ROLE_USER,ROLE_ADMIN,ROLE_MANAGER 등이 있음 -->
+		<!-- requires-channel="https"는 https로 접근하도록 함 -->
+		
+		<!-- form-login은 로그인 관련사항 설정 -->
+		<!-- 비로그인자가 로그인 이후 접속 가능한 페이지 접속시도시는 /loginView로 요청 -->
+		<form-login
+			login-processing-url = "/login" 
+			login-page="/loginView" 
+			username-parameter="pid"
+			password-parameter="ppw" 
+			default-target-url="/main"
+			authentication-failure-url="/processLogin?error=1"
+			always-use-default-target='true'
+		/>
+		<!-- 
+			form-login 태그는  로그인 관련 사항 설정하며 속성으로 처리
+			html form에서 action속성 값으로 기본값은 login이며 이때는 action="login"
+			login-processing-url 속성은 login요청 경로 이며 login시는 생략
+			login-page속성은 로그인 창의 요청 경로
+			username-parameter는 form에서 id를 나타내는 name속성 값 input type="text" name="pid"
+			default-target-url속성은 로그인 성공시 이동할 요청경로
+			authentication-failure-url속성은 로그인인증 실패시 요청 경로
+			always-use-default-target속성은 성공시 가는 default-target-url="/main"를 확실히 보장 해주기 위해 설정
+		 -->
+		 
+		 <!-- logout태그는 로그아웃처리(스프링에서는 로그아웃도 form을 이용해 해야함 -->
+		 <logout invalidate-session="true" logout-url="/logout"
+		 	logout-success-url="/processLogin?logout=1" delete-cookies="JSESSIONID,remember-me"/>
+		 <!--invalidate-session="true"는 세션 초기화 logout-url="/logout"은 로그아웃처리경로 logout-success-url은 로그아웃 이후 요청경로-->
+		 <!--delete-cookies는 쿠키 삭제 기본인 JSESSIONID와  remember-me시 사용하는 remember-me 쿠키 삭제  -->
+		 
+		 <!-- 명시적으로 로그아웃하지 않았을때 다시 사이트 입장하면 로그인 상태 유지됨  -->	
+		 <remember-me remember-me-parameter="remember-me" remember-me-cookie="remember-me" 
+		 	key="kookskey" token-validity-seconds="3600"/>
+		
+		<!--사이트 간 요청 위조 CSRF(Cross-site Request Forgery)는 다른 사이트에서 페이지를 위조하여
+		     접근하는 해킹을 말하며 spring security는 이를 예방 할수 있다  -->	
+		 <csrf disabled="false"/>  <!-- 기본값으로 csrf예방 기능 동작 ////--> 
+		 <!-- default는 false이며 true로 해야 ajax와 파일업로드 됨-->
+		 <!-- 그러나 input로  hidden으로 csrf보내면 false일때도 됨-->
+		 <!-- 단 file업로드시는 input로 처리하지 않고 action뒤에 csrf를 주면되고 form이 아닌 링크 a는 get방식으로 ajax로 보냄 --> 
+		
+	</http>
+	
+	 <!-- DB이용 인증처리(authentication)  --> 
+	<authentication-manager>
+		<authentication-provider user-service-ref="customUserDetailsService">
+			<password-encoder ref="passwordEncoder" />
+		</authentication-provider>
+	</authentication-manager>
+	
+	
+	<!--user-service-ref="customUserDetailsService"객체를 나타내는 bean  -->
+	<!-- 인증처리 클래스로 UserDetailsService인터페이스를 구현한 클래스로 개발자가 만듦 -->
+	<beans:bean id="customUserDetailsService" class="com.EscapeRoom.admin.security.CustomUserDetailsService" /> 
+	<!--  암호화 된 패스워드 처리 빈  -->
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+
+</beans:beans>
