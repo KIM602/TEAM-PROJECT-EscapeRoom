@@ -48,6 +48,11 @@ public class ReserveDao implements RdaoInterface {
 		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("reserveTop31");
 		return result;
 	}
+	@Override
+	public ArrayList<ReserveDto> ReserverList() {
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("ReserveList");
+		return result;
+	}
 
 
 	

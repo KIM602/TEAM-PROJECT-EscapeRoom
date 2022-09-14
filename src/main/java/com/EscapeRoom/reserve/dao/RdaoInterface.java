@@ -13,5 +13,6 @@ public interface RdaoInterface {
 	public ReserveDto reserveFindCheck(ReserveDto dto);
 	public void deleteReserve(String rId);
 	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2);
+	public ArrayList<ReserveDto> ReserverList();
 	
 }

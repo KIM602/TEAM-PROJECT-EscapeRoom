@@ -25,4 +25,8 @@
 			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
 		</select>
 		
+		<select id="ReserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve
+		</select>
+		
 	</mapper>
