@@ -9,7 +9,6 @@
 
 body, * {
     font-family: 'NanumSquareRound';
-    overflow: hidden;
 }
 
 .board-wrap {

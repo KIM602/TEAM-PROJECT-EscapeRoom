@@ -71,7 +71,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">${dto.tname}</h4>
-					<a type="button" data-dismiss="modal" aria-hidden="true"><i class="fa-solid fa-x"></i></a>	
+					<a id="btx" type="button" data-dismiss="modal" aria-hidden="true"><i class="fa-solid fa-x"></i></a>	
 				</div>
 				<div class="modal-body">
 						<div>

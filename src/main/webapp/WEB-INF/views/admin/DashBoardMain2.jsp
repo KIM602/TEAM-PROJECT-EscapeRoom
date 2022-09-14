@@ -49,7 +49,7 @@
             <header>
                 <ul class="header-box">
                     <li class="nav-list">
-                        <a href="#">예약자 확인</a>
+                        <a id="ReserverCheck" href="ReserverCheck">예약자 확인</a>
                     </li>
                     <li class="nav-list">
                         홈페이지 관리
@@ -83,10 +83,10 @@
                                 &#8250; 테마 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                         <a id="nav-themeInsert" href="themeInsert">테마 등록</a>
+                                        <a href="#">이미지 수정</a>
                                     </li>
                                     <li class="nav-lastlist">
-                                        <a id="nav-themeEdit" href="themeListPage">테마 목록 및 수정</a>
+                                        <a href="#">테마 설명 수정</a>
                                     </li>
                                 </ul>
                             </li>
@@ -145,39 +145,21 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
-	//테마 등록
-	$("#nav-themeInsert").click(function(e) {
+		
+	$("#ReserverCheck").click(function name(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeInsert").attr('href'),
+			url : "ReserverCheck",
 			type: "get",
-			data: "",
+			data : "",
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
 				alert("에러");
 			}
-		});
-	});
-	
-	//테마 수정
-	$("#nav-themeEdit").click(function(e) {
-		e.preventDefault();
-		$.ajax({
-			url: $("#nav-themeEdit").attr('href'),
-			type: "get",
-			data: "",
-			success: function(d) {
-				$(".main-page").html(d);	
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	});
-	
+		})
+	})
 });
 </script>
 

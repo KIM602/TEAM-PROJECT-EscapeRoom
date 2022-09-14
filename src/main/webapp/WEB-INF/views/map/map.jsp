@@ -28,7 +28,6 @@
 </head>
 <body>
 <%@include file="../main/menubar.jsp" %>
-
     <section id="sec1">
     <article class="wrap" id="wrap">
 		<h1 class="title2" style="text-shadow:1px 1px 1px #fff;">오시는 길</h1>
