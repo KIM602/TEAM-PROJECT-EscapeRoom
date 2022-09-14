@@ -49,15 +49,31 @@ public class BoardController {
 		return "board/board";
 	}
 	
+	@RequestMapping("/admin_board")
+	public String admin_board() {
+		return "board/admin_board";
+	}
+	
+	
 	@RequestMapping("/noticeBoard")
 	public String noticeBoard(HttpServletRequest request, Model model) {
 		System.out.println("noticeBoard요청");
 		int tn = dao.totalNotice();
 		model.addAttribute("totalNotice", tn);
 		
-		ArrayList<NoticeDto> nList = dao.listNotice();
-		model.addAttribute("nboard", nList);
+//		ArrayList<NoticeDto> nList = dao.listNotice();
+//		model.addAttribute("nboard", nList);
 		return "board/noticeBoard";
+	}
+	@RequestMapping("/admin_noticeBoard")
+	public String admin_noticeBoard(HttpServletRequest request, Model model) {
+		System.out.println("admin_noticeBoard요청");
+		int tn = dao.totalNotice();
+		model.addAttribute("totalNotice", tn);
+		
+//		ArrayList<NoticeDto> nList = dao.listNotice();
+//		model.addAttribute("nboard", nList);
+		return "board/admin_noticeBoard";
 	}
 	
 	@RequestMapping("/eventBoard")
@@ -66,9 +82,19 @@ public class BoardController {
 		int te = dao.totalEvent();
 		model.addAttribute("totalEvent", te);
 		
-		ArrayList<EventDto> eList = dao.listEvent();
-		model.addAttribute("eboard", eList);
+//		ArrayList<EventDto> eList = dao.listEvent();
+//		model.addAttribute("eboard", eList);
 		return "board/eventBoard";
+	}
+	@RequestMapping("/admin_eventBoard")
+	public String admin_eventBoard(HttpServletRequest request, Model model) {
+		System.out.println("admin_eventBoard요청");
+		int te = dao.totalEvent();
+		model.addAttribute("totalEvent", te);
+		
+//		ArrayList<EventDto> eList = dao.listEvent();
+//		model.addAttribute("eboard", eList);
+		return "board/admin_eventBoard";
 	}
 	
 	@RequestMapping("/writeNoticeForm")
@@ -85,36 +111,67 @@ public class BoardController {
 	
 	@RequestMapping(value = "/writeNotice", produces = "application/text; charset=UTF-8")
 	public String writeNotice(HttpServletRequest request, Model model) {
-		System.out.println("writeNotice");
-		
+		System.out.println("writeNotice 요청");
 		dao.writeNotice(request.getParameter("bTitle"), request.getParameter("bContent"), request.getParameter("bWriter"));
-		return "redirect:board";
+		return "redirect:admin_board";
 	}
 	
 	@RequestMapping(value = "/writeEvent", produces = "application/text; charset=UTF-8")
 	public String writeEvent(HttpServletRequest request, Model model) {
+		System.out.println("writeEvent 요청");
 		dao.writeEvent(request.getParameter("bTitle"), request.getParameter("bContent"), request.getParameter("bWriter"));
-		return "redirect:board";
+		return "redirect:admin_board";
 	}
 	
 	
 	@RequestMapping("/viewNotice")
 	public String viewNotice(HttpServletRequest request, Model model) {
+		System.out.println("viewNotice요청");
+
 		//조회수 증가
+		System.out.println("조회수 증가");
 		dao.countNotice(Integer.parseInt(request.getParameter("bNum")));
 		
 		NoticeDto dto = dao.viewNotice(Integer.parseInt(request.getParameter("bNum")));
 		model.addAttribute("viewNotice", dto);
 		return "board/viewNotice";
 	}
+	@RequestMapping("/admin_viewNotice")
+	public String admin_viewNotice(HttpServletRequest request, Model model) {
+		System.out.println("admin_viewNotice요청");
+
+		//조회수 증가
+		System.out.println("조회수 증가");
+		dao.countNotice(Integer.parseInt(request.getParameter("bNum")));
+		
+		NoticeDto dto = dao.viewNotice(Integer.parseInt(request.getParameter("bNum")));
+		model.addAttribute("viewNotice", dto);
+		return "board/admin_viewNotice";
+	}
+	
 	@RequestMapping("/viewEvent")
 	public String viewEvent(HttpServletRequest request, Model model) {
+		System.out.println("viewEvent요청");
+		
 		//조회수 증가
+		System.out.println("조회수 증가");
 		dao.countEvent(Integer.parseInt(request.getParameter("bNum")));
 		
 		EventDto dto = dao.viewEvent(Integer.parseInt(request.getParameter("bNum")));
 		model.addAttribute("viewEvent", dto);
 		return "board/viewEvent";
+	}
+	@RequestMapping("/admin_viewEvent")
+	public String admin_viewEvent(HttpServletRequest request, Model model) {
+		System.out.println("admin_viewEvent요청");
+		
+		//조회수 증가
+		System.out.println("조회수 증가");
+		dao.countEvent(Integer.parseInt(request.getParameter("bNum")));
+		
+		EventDto dto = dao.viewEvent(Integer.parseInt(request.getParameter("bNum")));
+		model.addAttribute("viewEvent", dto);
+		return "board/admin_viewEvent";
 	}
 	
 	
@@ -136,23 +193,23 @@ public class BoardController {
 	@RequestMapping(value = "/editNotice", produces = "application/text; charset=UTF-8")
 	public String editNotice(HttpServletRequest request, Model model) {
 		dao.editNotice(Integer.parseInt(request.getParameter("bNum")), request.getParameter("bTitle"), request.getParameter("bContent"));
-		return "redirect:viewNotice?bNum=" + request.getParameter("bNum");
+		return "redirect:admin_viewNotice?bNum=" + request.getParameter("bNum");
 	}
 	@RequestMapping(value = "/editEvent", produces = "application/text; charset=UTF-8")
 	public String editEvent(HttpServletRequest request, Model model) {
 		dao.editEvent(Integer.parseInt(request.getParameter("bNum")), request.getParameter("bTitle"), request.getParameter("bContent"));
-		return "redirect:viewEvent?bNum=" + request.getParameter("bNum");
+		return "redirect:admin_viewEvent?bNum=" + request.getParameter("bNum");
 	}
 	
 	@RequestMapping("/deleteNotice")
 	public String deleteNotice(HttpServletRequest request, Model model) {
 		dao.deleteNotice(Integer.parseInt(request.getParameter("bNum")));
-		return "redirect:board";
+		return "redirect:admin_board";
 	}
 	@RequestMapping("/deleteEvent")
 	public String deleteEvent(HttpServletRequest request, Model model) {
 		dao.deleteEvent(Integer.parseInt(request.getParameter("bNum")));
-		return "redirect:board";
+		return "redirect:admin_board";
 	}
 	
 	@RequestMapping("/plistN")
@@ -166,6 +223,19 @@ public class BoardController {
 		
 		return "board/pageBoardN";
 	}
+	@RequestMapping("/admin_plistN")
+	public String admin_plistN(HttpServletRequest request, Model model) {
+		System.out.println("admin_plistN요청");
+		int tn = dao.totalNotice();
+		model.addAttribute("totalNotice", tn);
+		
+		ArrayList<NoticeDto> nlist = dao.pageListN(request.getParameter("pageNo"));
+		model.addAttribute("nPage", nlist);
+		
+		return "board/admin_pageBoardN";
+	}
+	
+	
 	@RequestMapping("/plistE")
 	public String plistE(HttpServletRequest request, Model model) {
 		System.out.println("plistE요청");
@@ -176,6 +246,17 @@ public class BoardController {
 		model.addAttribute("ePage", elist);
 		
 		return "board/pageBoardE";
+	}
+	@RequestMapping("/admin_plistE")
+	public String admin_plistE(HttpServletRequest request, Model model) {
+		System.out.println("admin_plistE요청");
+		int tn = dao.totalEvent();
+		model.addAttribute("totalEvent", tn);
+		
+		ArrayList<EventDto> elist = dao.pageListE(request.getParameter("pageNo"));
+		model.addAttribute("ePage", elist);
+		
+		return "board/admin_pageBoardE";
 	}
 	
 	

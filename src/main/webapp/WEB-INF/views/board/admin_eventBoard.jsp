@@ -73,15 +73,23 @@
 </head>
 <body>
 
+<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="user_id"/>
+</sec:authorize>
 
 <h4 id="eventTitle" style="margin-top: 40px; margin-bottom: 20px;">이벤트</h4>
 
 <div id="eTop">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalEvent}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ e</b> 페이지 )
+	
+	<sec:authorize access="isAuthenticated()">
+		<a id="writeEventForm" href="writeEventForm" class="btn btn-info">글 작성하기</a>
+	</sec:authorize>
 </div>
 
 
-<div id="eventTab"></div>
+<div id="admin_eventTab"></div>
 <button type="button" id="page1btn" hidden=""></button>
 
 
@@ -113,7 +121,7 @@ $(document).ready(function() {
 					let cur;
 					if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
 						cur = pageNo;
-						purl = "plistE?pageNo=" + pageNo;
+						purl = "admin_plistE?pageNo=" + pageNo;
 					}
 					else if(pageNo == ">") {
 						pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -121,7 +129,7 @@ $(document).ready(function() {
 						pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 						pageNo2 = pageNo1 + 1;
 						cur = pageNo2;
-						purl = "plistE?pageNo=" + pageNo2;
+						purl = "admin_plistE?pageNo=" + pageNo2;
 					}
 					else if(pageNo == "<") {
 						pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -129,15 +137,15 @@ $(document).ready(function() {
 						pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 						pageNo2 = pageNo1 - 1;
 						cur = pageNo2;
-						purl = "plistE?pageNo=" + pageNo2;
+						purl = "admin_plistE?pageNo=" + pageNo2;
 					}
 					else if(pageNo == "<<") {
 						cur = 1;
-						purl = "plistE?pageNo=" + 1;
+						purl = "admin_plistE?pageNo=" + 1;
 					}
 					else if(pageNo == ">>") {
 						cur = 35;
-						purl = "plistE?pageNo=" + 35;
+						purl = "admin_plistE?pageNo=" + 35;
 					}
 					else {
 						return;
@@ -149,7 +157,7 @@ $(document).ready(function() {
 						success : function(data) {
 							$("b#cur").text(cur);
 							$("#eTotal").removeClass('d-none');
-							$("#eventTab").html(data);
+							$("#admin_eventTab").html(data);
 						},
 						error : function() {				
 							alert("에러");
@@ -167,14 +175,34 @@ $(document).ready(function() {
 		$("b#tot").text(' / ' + tot);
 	});
 	
+	/* 작성 버튼 ajax */
+	$("#writeEventForm").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: "writeEventForm",
+			type: "get",
+			data: "",
+			success: function(data) {
+				$("#eventTitle").text('이벤트 작성 페이지');
+				$("#eTop").addClass('d-none');
+				$("#paginationE").addClass('d-none');
+				$("a.tab").addClass('disabled');
+				$("#osm").removeAttr('href');
+				$("#admin_eventTab").html(data);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
 		
 	$("#page1btn").on('click', function() {
 		$.ajax({
-			url : "plistE?pageNo=1",
+			url : "admin_plistE?pageNo=1",
 			type : "get",
 			data : "",
 			success : function(d) {
-				$("#eventTab").html(d);
+				$("#admin_eventTab").html(d);
 			},
 			error : function() {
 				alert("에러");
