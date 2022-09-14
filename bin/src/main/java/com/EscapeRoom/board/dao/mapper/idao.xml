@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper문서형식 지정 -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- root element는 mapper -->
+<!-- 속성 namespace는 인터페이스의 경로 및 인터페이스명 -->
+<mapper namespace="com.EscapeRoom.board.dao.IDao">
+	<insert id="writeNotice" parameterType="com.EscapeRoom.board.dto.NoticeDto">
+		insert into NOTICE_BOARD(BNUM,BTITLE,BCONTENT,BWRITER,BHIT,BGROUP,BSTEP,BINDENT)
+		values(NOTICE_BOARD_SEQ.NEXTVAL, #{bTitle}, #{bContent}, #{bWriter}, 0, NOTICE_BOARD_SEQ.CURRVAL, 0, 0)
+	</insert>
+	<insert id="writeEvent" parameterType="com.EscapeRoom.board.dto.EventDto">
+		insert into EVENT_BOARD(BNUM,BTITLE,BCONTENT,BWRITER,BHIT,BGROUP,BSTEP,BINDENT)
+		values(EVENT_BOARD_SEQ.NEXTVAL, #{bTitle}, #{bContent}, #{bWriter}, 0, EVENT_BOARD_SEQ.CURRVAL, 0, 0)
+	</insert>
+	
+	<select id="listNotice" resultType="com.EscapeRoom.board.dto.NoticeDto">
+		select * from NOTICE_BOARD order by BNUM desc
+	</select>
+	<select id="listEvent" resultType="com.EscapeRoom.board.dto.EventDto">
+		select * from EVENT_BOARD order by BNUM desc
+	</select>
+	
+	<select id="viewNotice" parameterType="int" resultType="com.EscapeRoom.board.dto.NoticeDto">
+		select * from NOTICE_BOARD where BNUM = #{bNum}
+	</select>
+	
+	<select id="viewEvent" parameterType="int" resultType="com.EscapeRoom.board.dto.EventDto">
+		select * from EVENT_BOARD where BNUM = #{bNum}
+	</select>
+	
+	
+	<delete id="deleteNotice" parameterType="int">
+		delete from NOTICE_BOARD where BNUM = #{bNum}
+	</delete>
+	<delete id="deleteEvent" parameterType="int">
+		delete from EVENT_BOARD where BNUM = #{bNum}
+	</delete>
+	
+	<update id="countNotice">
+		update NOTICE_BOARD
+		set BHIT = BHIT + 1
+		where BNUM = #{bNum}
+	</update>
+	<update id="countEvent">
+		update EVENT_BOARD
+		set BHIT = BHIT + 1
+		where BNUM = #{bNum}
+	</update>
+	
+	<update id="editNotice" parameterType="com.EscapeRoom.board.dto.NoticeDto">
+		update NOTICE_BOARD
+		set
+		BTITLE = #{bTitle},
+		BCONTENT = #{bContent}
+		where BNUM = #{bNum}
+	</update>
+	<update id="editEvent" parameterType="com.EscapeRoom.board.dto.EventDto">
+		update EVENT_BOARD
+		set
+		BTITLE = #{bTitle},
+		BCONTENT = #{bContent}
+		where BNUM = #{bNum}
+	</update>
+	
+	<select id="totalNotice" resultType="int">
+		select count(*) from NOTICE_BOARD
+	</select>
+	<select id="totalEvent" resultType="int">
+		select count(*) from EVENT_BOARD
+	</select>
+	
+	<select id="listN" resultType="com.EscapeRoom.board.dto.NoticeDto">
+		<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from NOTICE_BOARD order by BGROUP desc, BSTEP asc)A)
+			where RNUM < 11
+		]]>
+	</select>
+	<select id="listE" resultType="com.EscapeRoom.board.dto.EventDto">
+		<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from EVENT_BOARD order by BGROUP desc, BSTEP asc)A)
+			where RNUM < 11
+		]]>
+	</select>
+	
+	<select id="pageListN" parameterType="int" resultType="com.EscapeRoom.board.dto.NoticeDto">
+		<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from NOTICE_BOARD order by BGROUP desc, BSTEP asc)A)
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+		]]>
+	</select>
+	<select id="pageListE" parameterType="int" resultType="com.EscapeRoom.board.dto.EventDto">
+		<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from EVENT_BOARD order by BGROUP desc, BSTEP asc)A)
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+		]]>
+	</select>
+	
+	
+</mapper>

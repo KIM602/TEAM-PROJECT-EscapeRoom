@@ -118,7 +118,7 @@
                 <input type="text" id="uNumber" class="form-control" name="pnumber" pattern="[0-9]+" placeholder="사업자 등록번호 입력" required>
             </div>
             <button type="submit" class="btn btn-success">회원가입</button>
-            <button type="button" class="btn btn-danger">취소</button>
+            <a href="AdminLoginView" class="btn btn-danger">취소</a>
            <!-- <a href="AdminLoginView" class="btn btn-primary" >로그인</a> -->
         </form>
     </div>

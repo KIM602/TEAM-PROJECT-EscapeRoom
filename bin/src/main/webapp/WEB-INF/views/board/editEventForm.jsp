@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!-- RWD -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- MS -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/> <!-- 페이지 위조 요청 방지 -->
+
+<title>이벤트 수정</title>
+
+<!--bootstrap-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<!--jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--propper jquery -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!--latest javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!--fontawesome icon-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<!--google icon -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="css/footerStyle.css">
+
+<script>
+function conf() {
+	var result = confirm("수정을 완료하시겠습니까?");
+	return result;
+}
+function back() {
+	var result = confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.");
+	return result;
+}
+function rst() {
+	var result = confirm("확인을 누르면 수정 전으로 초기화됩니다.");
+	return result;
+}
+function del() {
+	var result = confirm("정말 삭제하시겠습니까? 삭제시 모든 내용이 사라집니다.");
+	return result;
+}
+</script>
+
+</head>
+<body>
+
+<form id="eEditForm" action="editEvent" method="post">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<div class="form-group">
+		<input type="hidden" name="bNum" value="${viewEvent.bNum}"/>
+		<label for="eWriter">작성자</label>
+		<input type="text" class="form-control" id="eWriter" name="bWriter" value="${viewEvent.bWriter}" readonly/>
+		<br/>
+		<label for="eTitle">제목</label>
+		<input type="text" class="form-control" id="eTitle" name="bTitle" value="${viewEvent.bTitle}" required/>
+		<br/>
+		<label for="eContent">내용</label>
+		<textarea class="form-control" id="eContent" name="bContent" rows="10" required>${viewEvent.bContent}</textarea>
+		<br/>
+		<button type="submit" class="btn btn-success float-right" onclick="return conf()">저장</button>
+		<button type="reset" class="btn btn-warning float-right mr-1" onclick="return rst()">리셋</button>
+		<a href="deleteEvent?bNum=${viewEvent.bNum}" id="eventDel" class="btn btn-danger float-right mr-5" onclick="return del()">삭제</a>
+		<a href="board" class="btn btn-secondary" onclick="return back()">목록보기</a>
+	</div>
+</form>
+	
+<script>
+$(document).ready(function() {
+	/* 수정완료 후 이동 ajax */
+	$("#eEditForm").submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: "editEvent",
+			type: "post",
+			data: $("#eEditForm").serialize(),
+			success: function(data) {
+				$("#eventTab").html(data);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+});
+</script>
+
+</body>
+</html>

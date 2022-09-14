@@ -168,7 +168,9 @@ public class ReserveController {
 			rcom.execute(request, model);
 			return "reserve/reserveDeleteMessagePage";
 		}
-
+		
+		
+		// 테스트
 		@RequestMapping("/test")
 		public String test(HttpServletRequest request,Model model) {
 			System.out.println("test");
@@ -177,5 +179,14 @@ public class ReserveController {
 			
 			return "reserve/test";
 		}
+		
+		
+		// 관리자 페이지 예약자확인
+		@RequestMapping("/ReserverCheck")
+		public String ReserveCheck(HttpServletRequest request,Model model) {
+			System.out.println("ReserverCheck");
+			return "admin/reserver/ReserverCheck";
+		}
+		
 		
 }
