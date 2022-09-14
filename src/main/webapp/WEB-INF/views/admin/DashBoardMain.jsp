@@ -122,9 +122,10 @@
         </section>
         
         
-	<sec:authorize access="isAuthenticated()">
-		<a href="AdminLogoutView">로그아웃</a>
-	</sec:authorize>
+<!-- <sec:authorize access="isAuthenticated()">
+			<a href="AdminLogoutView">로그아웃</a>
+		</sec:authorize>
+	-->
     </div>
 
 <script src="js/DashBoardMain.js"></script>
