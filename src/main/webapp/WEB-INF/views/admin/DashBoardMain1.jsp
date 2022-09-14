@@ -37,7 +37,7 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="css/DashBoardMain.css">
+<link rel="stylesheet" href="css/DashBoardMain1.css">
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
@@ -45,11 +45,11 @@
 </sec:authorize>
 
     <div class="board-wrap">
-        <div class="nav-wrap">
-            <nav>
-                <ul class="nav-box">
+        <div class="header-wrap">
+            <header>
+                <ul class="header-box">
                     <li class="nav-list">
-                        <a id="ReserverCheck" href="ReserverCheck">예약자 확인</a>
+                        <a href="#">예약자 확인</a>
                     </li>
                     <li class="nav-list">
                         홈페이지 관리
@@ -58,7 +58,7 @@
                                 &#8250; 메인페이지 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">logo 수정11</a>
+                                        <a href="#">logo 수정</a>
                                     </li>
                                     <li class="nav-lastlist">
                                         <a href="#">이미지 수정</a>
@@ -94,7 +94,7 @@
                                 &#8250; 공지사항/이벤트 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a id="nav-board" href="board">공지사항/이벤트 수정</a>
+                                        <a id="nav-board" href="admin_board">공지사항/이벤트 수정</a>
                                     </li>
                                 </ul>
                             </li>
@@ -112,7 +112,7 @@
                         </ul>
                     </li>
                 </ul>
-            </nav>
+            </header>
         </div>
 
         <section>
@@ -122,9 +122,10 @@
         </section>
         
         
-	<sec:authorize access="isAuthenticated()">
-		<a href="AdminLogoutView">로그아웃</a>
-	</sec:authorize>
+<!-- <sec:authorize access="isAuthenticated()">
+			<a href="AdminLogoutView">로그아웃</a>
+		</sec:authorize>
+	-->
     </div>
 
 <script src="js/DashBoardMain.js"></script>
@@ -144,22 +145,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
-	
-	$("#ReserverCheck").click(function name(e) {
-		e.preventDefault();
-		$.ajax({
-			url : "ReserverCheck",
-			type: "get",
-			data : "",
-			success: function(d) {
-				$(".main-page").html(d);	
-			},
-			error: function() {
-				alert("에러");
-			}
-		})
-	})
+		
 	
 });
 </script>
