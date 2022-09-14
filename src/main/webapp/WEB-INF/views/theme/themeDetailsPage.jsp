@@ -110,7 +110,7 @@ p {
 	<div class="text-center">
 		<a href="themeEdit?tid=${tDetails.tid}" id="contentEdit" class="btn btn-secondary">수정</a>
 		<a href="delete?tid=${tDetails.tid}" id="contentDel" class="btn btn-secondary">삭제</a>
-		<a href="themeListPage" class="btn btn-dark">목록으로</a>
+		<a id="listback" href="themeListPage" class="btn btn-dark">목록으로</a>
 	</div>
 </section>
 
@@ -124,7 +124,23 @@ $(document).ready(function(){
 			type : "get",
 			data : "",
 			success : function(data) {
-				$("#mainRegion").html(data);
+				$(".main-page").html(data);
+			},
+			error : function(data) {
+				alert("땡!");
+			}
+		});
+	});
+	
+	$("#listback").click(function(event){
+		event.preventDefault();
+		let ceo = $(event.target);
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "get",
+			data : "",
+			success : function(data) {
+				$(".main-page").html(data);
 			},
 			error : function(data) {
 				alert("땡!");
