@@ -147,6 +147,22 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$("#contentDel").click(function(event){
+		event.preventDefault();
+		let ceo = $(event.target);
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "get",
+			data : "",
+			success : function(data) {
+				$(".main-page").html(data);
+			},
+			error : function(data) {
+				alert("땡!");
+			}
+		});
+	});
 });
 </script>
 </body>
