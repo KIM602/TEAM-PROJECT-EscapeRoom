@@ -5,8 +5,8 @@
 	
 	<mapper namespace="com.EscapeRoom.reserve.dao.ReserveDao">
 		<insert id="insertReserve" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
-			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice)
-			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice})
+			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice,rthemename)
+			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice},#{rThemeName})
 		</insert>	
 		
 		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">

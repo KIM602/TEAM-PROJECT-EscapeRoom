@@ -203,6 +203,7 @@ $("#rTerms").on('click', function() {
 <body>
  		<form name="reserveForm" class="reserveForm"action="reserve" method="post">
  		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> <!-- 안넣으려면 security-context.xml의 <csrf disabled="false"/> true로 변경  -->
+		<input type="hidden" name="tId" value="${theme.tid}"> 
 			<table id="step2-table">
 				<tbody>
 					<tr>
@@ -216,7 +217,7 @@ $("#rTerms").on('click', function() {
 						<th><a>테마명</a></th>
 						<td>
 							<a>${theme.tname}</a>
-							<input type="hidden" name="tId" value="${theme.tid}">
+							<input type="hidden" name="rThemeName" value="${theme.tname}">
 						</td>
 						
 					</tr>

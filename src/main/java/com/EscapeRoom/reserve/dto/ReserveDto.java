@@ -11,6 +11,7 @@ public class ReserveDto {
 	private String tId;
 	private String rName;
 	private int rPrice;
+	private String rThemeName;
 	
 	
 	public ReserveDto() {
@@ -20,6 +21,25 @@ public class ReserveDto {
 
 	
 	
+
+	public ReserveDto(String rId, String rPhone, int rCount, String rTerms, String rDate, String rTime, int rCheck,
+			String tId, String rName, int rPrice, String rThemeName) {
+		super();
+		this.rId = rId;
+		this.rPhone = rPhone;
+		this.rCount = rCount;
+		this.rTerms = rTerms;
+		this.rDate = rDate;
+		this.rTime = rTime;
+		this.rCheck = rCheck;
+		this.tId = tId;
+		this.rName = rName;
+		this.rPrice = rPrice;
+		this.rThemeName = rThemeName;
+	}
+
+
+
 
 	public ReserveDto(String rId) {
 		super();
@@ -161,6 +181,20 @@ public class ReserveDto {
 
 	public void setrPrice(int rPrice) {
 		this.rPrice = rPrice;
+	}
+
+
+
+
+	public String getrThemeName() {
+		return rThemeName;
+	}
+
+
+
+
+	public void setrThemeName(String rThemeName) {
+		this.rThemeName = rThemeName;
 	}
 
 
