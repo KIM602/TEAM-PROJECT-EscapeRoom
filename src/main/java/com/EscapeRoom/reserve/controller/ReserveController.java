@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.EscapeRoom.reserve.command.CalendarChoiceReserverList;
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.command.ReserveDelete;
 import com.EscapeRoom.reserve.command.ReserveFind;
+import com.EscapeRoom.reserve.command.ReserverList;
 import com.EscapeRoom.reserve.command.Test123132;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
@@ -159,7 +161,7 @@ public class ReserveController {
 		}
 		
 		
-		// 예약자 삭제
+		// 예약자가 예약 삭제
 		@RequestMapping("/reserveDelete")
 		public String reserveDelete(HttpServletRequest request,Model model) {
 			System.out.println("reserveDelete");
@@ -185,8 +187,33 @@ public class ReserveController {
 		@RequestMapping("/ReserverCheck")
 		public String ReserveCheck(HttpServletRequest request,Model model) {
 			System.out.println("ReserverCheck");
+			rcom = new ReserverList();
+			rcom.execute(request, model);
+			
 			return "admin/reserver/ReserverCheck";
 		}
+		// 관리자 페이지에서 테마 삭제
+		@RequestMapping("AdminReserveDelete")
+		public String AdminReserveDelete(HttpServletRequest request,Model model) {
+			System.out.println("adminReserveDelete");
+			rcom = new ReserveDelete();
+			rcom.execute(request, model);
+			
+			return "redirect:/main";
+		}
+		
+		// 관리자 페이지 달력으로 날짜 선택하여 예약자 찾기
+		@RequestMapping("/CalendarChoiceReserverList")
+		public String CalendarReserverList(HttpServletRequest request, Model model) {
+			
+			System.out.println("ymd값" + request.getParameter("ymd"));
+			
+			rcom = new CalendarChoiceReserverList();
+			rcom.execute(request, model);
+	
+			return "admin/reserver/calendarChoiceReserveList";
+		}
+		
 		
 		
 }

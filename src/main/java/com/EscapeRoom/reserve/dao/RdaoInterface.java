@@ -2,7 +2,7 @@ package com.EscapeRoom.reserve.dao;
 
 import java.util.ArrayList;
 
-import com.EscapeRoom.board.dto.EventDto;
+
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.reserve.dto.ReserveDto2;
 
@@ -13,5 +13,7 @@ public interface RdaoInterface {
 	public ReserveDto reserveFindCheck(ReserveDto dto);
 	public void deleteReserve(String rId);
 	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2);
+	public ArrayList<ReserveDto> ReserverList();
+	ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
 	
 }

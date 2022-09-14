@@ -5,6 +5,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,41 +32,35 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-	<div class="container mt-5">
-		
-		<form action="themeInsert" name="insertForm" method="post">
-			<div class="form-group">
-				<label for="uThemeName">테마명</label>
-				<input type="text" class="form-control" id="uThemeName" required="required" name="ThemeName">
-			</div>
-			<div class="form-group">
-				<label for="uGenre">장르</label>
-				<input type="text" class="form-control" id="uGenre" required="required" name="Genre">
-			</div>
-			<div class="form-group">
-				<label for="udifficulty">난이도</label>
-				<select name="difficulty" id="udifficulty">
-						<option value="1"selected>1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-			</div>
-			<div class="form-group">
-				<label for="uTimeTaken">테마시간</label>
-				<input type="text"  class="form-control" id="uTimeTaken" required="required" name="TimeTaken">
-			</div>
-			<div class="form-group">
-				<label for="uThemeProfile">테마설명:</label>
-				<textarea rows="10" cols="" id="uThemeProfile" name="ThemeProfile" class="form-control" required="required"></textarea>
-
-			</div>
-		
-			<button type="submit" class="btn btn-success">테마등록</button>&nbsp;&nbsp;
-		</form>
-	</div>
-
-
+	
+	<table id="searchTable" class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>예약자</th>
+				<th>테마명</th>
+				<th>날짜</th>
+				<th>시간대</th>
+				<th>인원수</th>
+				<th>연락처</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${result}" var="dto">
+			<tr>
+				<td class="bid">${dto.rId}</td>
+				<td>${dto.rName}</td>
+				<td>${dto.rThemeName}</td>
+				<td>${dto.rDate}</td>
+				<td>${dto.rTime}</td>
+				<td>${dto.rCount}명</td>
+				<td>${dto.rPhone}</td>
+				<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	
 </body>
 </html>

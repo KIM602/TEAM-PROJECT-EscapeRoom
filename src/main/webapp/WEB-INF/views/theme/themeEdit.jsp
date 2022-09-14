@@ -41,7 +41,7 @@
 		</div>
 		<div class="form-group">
 			<label for="uphoto">테마포스터</label><br />
-			<input type="image" src="upimage/${themeEdit.tphoto}" style="width:250px; height:400px;"/>
+			<img src="upimage/${themeEdit.tphoto}" style="width:285px; height:400px;"/>
 			<br />
 			<label for="uphoto1">테마포스터 변경 파일</label><br />
 			<input type="file" class="form-control" id="uphoto1" name="tphoto"/>
