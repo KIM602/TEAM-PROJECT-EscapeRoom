@@ -38,8 +38,8 @@ public class ThemeController {
 		Constant.tdao = tdao;
 	}
 	
-	private String path = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
-	private String path1 = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";
+	private String path ="C:/Users/kyk92/git/EscapeRoom/src/main/webapp/resources/upimage/";
+	private String path1 = "C:/KYK/Util/apache-tomcat-9.0.64-windows-x64/apache-tomcat-9.0.64/wtpwebapps/EscapeRoom_security/resources/upimage/";
 	
 	//관리자용도///////////////////////////////
 	//테마 등록창
@@ -48,13 +48,6 @@ public class ThemeController {
 		System.out.println("theme이동");
 		return "theme/themeInsert";
 	}
-	
-	@RequestMapping("/asd")
-	public String asd() {
-		System.out.println("테마페이지 관리자이동");
-		return "theme/asd";
-	}
-	///////////////////////
 	
 	//테마 페이지(리스트 불러옴)
 		@RequestMapping("/themePage")
@@ -83,7 +76,6 @@ public class ThemeController {
 		
 		//업로드 되는 파일 저장위치 (프로젝트내, 톰캣서버내)
 		//초기 신속 저장으로 바로 보여주기위해 톰캣에도 저장(war파일로 톰캣서버로 배포시는 불필요)
-		
 		
 		//업로드된 파일 이름
 		String originFileName = mf.getOriginalFilename();
@@ -114,12 +106,10 @@ public class ThemeController {
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			return "redirect:asd"; // ////////관리자/////////
-			////////////////////////////////////
-			///////////////////////////////////
+			return "redirect:/main";
 		}
 		else {
-			return "asd";
+			return "redirect:/main";
 		}
 	}
 	
@@ -129,7 +119,6 @@ public class ThemeController {
 			System.out.println("themeListPage");
 			com = new ThemeListPageCommand();
 			com.execute(request, model);
-			
 			return "theme/themeListPage";
 		}
 		
@@ -139,7 +128,6 @@ public class ThemeController {
 			System.out.println("themeDetailsPage입니다");
 			com = new ThemeDetailsPageCommand();
 			com.execute(request, model);
-			
 			return "theme/themeDetailsPage";
 		}
 		
@@ -166,9 +154,7 @@ public class ThemeController {
 			String tphoto = null;
 			
 			MultipartFile mf = request.getFile("tphoto");
-			
-			
-			
+		
 			//업로드된 파일 이름
 			String originFileName = mf.getOriginalFilename();
 			long prename = System.currentTimeMillis();
@@ -183,7 +169,6 @@ public class ThemeController {
 			//DB에 저장할 파일 이름
 			tphoto = prename + originFileName;
 			ThemeDto tdto = new ThemeDto(tid, tname, tgenre, tdifficulty, ttime, tprofile, tphoto);
-//			ThemeDto tdto = new ThemeDto(tid, tname, tgenre, tdifficulty, ttime, tprofile, tphoto);
 			request.setAttribute("tdto", tdto);
 			
 			com = new ThemeEditCommand();
@@ -199,15 +184,11 @@ public class ThemeController {
 				catch(Exception e) {
 					e.printStackTrace();
 				}
-				return "redirect:asd"; ///////////////////////////////////////////////////////////////////
-				/////////////////////////////////////////// 관리자 바꿔야함
-				/////////////////////////////////////////////
+				return "redirect:/main";
 			}
 			else {
-				return "asd";
+				return "redirect:/main";
 			}
-		
-			
 		}
 		
 		//테마 삭제
