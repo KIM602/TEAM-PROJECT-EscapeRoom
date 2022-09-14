@@ -45,9 +45,9 @@
 </sec:authorize>
 
     <div class="board-wrap">
-        <div class="nav-wrap">
-            <nav>
-                <ul class="nav-box">
+        <div class="header-wrap">
+            <header>
+                <ul class="header-box">
                     <li class="nav-list">
                         <a href="#">예약자 확인</a>
                     </li>
@@ -112,7 +112,7 @@
                         </ul>
                     </li>
                 </ul>
-            </nav>
+            </header>
         </div>
 
         <section>

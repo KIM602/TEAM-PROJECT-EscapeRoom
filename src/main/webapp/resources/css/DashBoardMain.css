@@ -20,14 +20,14 @@ body {
 }
 
 /* nav */
-.nav-wrap { 
+.header-wrap { 
     position: fixed;
     width: 20%;
     color: #fff;
     left:0;
     top:0;
 }
-nav > .nav-box {
+header > .header-box {
     height: 100vh;
     background-color: #333;
     padding: 35% 3% 0;
