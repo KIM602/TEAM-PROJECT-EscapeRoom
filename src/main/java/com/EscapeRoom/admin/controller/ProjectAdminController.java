@@ -90,7 +90,7 @@ public class ProjectAdminController {
 		String username = (String)request.getAttribute("username");
 		String auth = (String)request.getAttribute("auth");
 		
-		return "admin/DashBoardMain1";
+		return "admin/DashBoardMain";
 		
 	}
 	
@@ -137,7 +137,7 @@ public class ProjectAdminController {
 	@RequestMapping("/DashBoardMain")
 	public String DashBoardMain() {
 		System.out.println("DashBoardMain ฟไรป");
-		return "admin/DashBoardMain1";
+		return "admin/DashBoardMain";
 	}
 	
 	private void getUsername(Authentication authentication, HttpServletRequest request) {
