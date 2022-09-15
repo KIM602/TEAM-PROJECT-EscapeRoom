@@ -47,8 +47,8 @@
 .btn-info {
 	cursor: pointer;
 	position: fixed;
-	top: 29%;
-	right: 22%;
+	top: 26%;
+	right: 15%;
  	float: right;
 }
 
@@ -58,7 +58,7 @@
  	position: absolute;
     
     width: 100%;
-    height: 216px;
+    height: 190px;
    
     z-index: -1;
 }
@@ -85,30 +85,33 @@
 </head>
 <body>
 
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<!-- nav 메뉴버튼 -->
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<%@include file ="../main/menubar.jsp" %>
 
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="user_id"></sec:authentication>
+</sec:authorize>
 
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
 
 <div id="top"></div>
 <div style="font-family: 'GmarketSansMedium'; font-size: 12px;">
 
-<br/><br/><br/><br/>
-<div id="board_title" class="text-center mb-3">
-	<a id="osm" href="index">OSM ESCAPE</a>
-</div><br/>
-
-<div class="container">
-	<a id="btn1" href="noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
-	<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
+<div id="board_title" class="text-center mb-3" style="margin-top: 60px;">
+	<a id="osm">OSM ESCAPE</a>
+</div>
+<div style="float: right; margin-right: 100px;">
+	
+</div>
+	
+<div class="container pt-1">
+	<a id="btn1" href="admin_noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
+	<a id="btn2" href="admin_eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
+	<sec:authorize access="isAuthenticated()">
+		<a href="AdminLogoutView" class="btn-sm btn-secondary ml-3" style="padding: 7px; float: right;">로그아웃</a>
+		<span style="font-size: 20px; float: right;"><b>${user_id}</b> 님 환영합니다.</span>
+	</sec:authorize>
 	
 	<div class="container">
-		<div id="mainTab"></div>
+		<div id="admin_mainTab"></div>
 	</div>
 </div>
 </div>
@@ -116,18 +119,18 @@
 
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<script src="js/footerJs.js"></script>
+
 
 <script>
 $(document).ready(function() {
 	$("#btn1").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "noticeBoard",
+			url: "admin_noticeBoard",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#mainTab").html(d);
+				$("#admin_mainTab").html(d);
 			},
 			error: function() {
 				alert("에러");
@@ -140,11 +143,11 @@ $(document).ready(function() {
 	$("#btn2").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "eventBoard",
+			url: "admin_eventBoard",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#mainTab").html(d);
+				$("#admin_mainTab").html(d);
 			},
 			error: function() {
 				alert("에러");

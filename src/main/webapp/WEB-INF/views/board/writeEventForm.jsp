@@ -41,20 +41,20 @@ function conf() {
 	var result = confirm("등록하시겠습니까?");
 	return result;
 }
-function back() {
-	var result = confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.");
-	return result;
-}
 </script>
 
 </head>
 <body>
 
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="user_id"></sec:authentication>
+</sec:authorize>
+
 <form id="eWriteForm" action="writeEvent" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<div class="form-group">
 		<label for="writer">작성자</label>
-		<input type="text" name="bWriter" id="writer" value="관리자" class="form-control" required/>
+		<input type="text" name="bWriter" id="writer" value="${user_id}" class="form-control" required/>
 		<br/>
 		
 		<label for="title">제목</label>
@@ -65,7 +65,7 @@ function back() {
 		<textarea name="bContent" id="content" rows="10" placeholder="내용을 입력하세요" class="form-control" required></textarea>
 		<br/>
 	</div>
-	<a href="board" class="btn btn-secondary" onclick="return back()">목록보기</a>
+	<input type="button" id="adminList" class="btn btn-secondary" onclick="back()" value="목록보기"/>
 	<button type="submit" class="btn btn-success float-right" onclick="return conf()">등록</button>
 </form>
 
@@ -79,7 +79,7 @@ $(document).ready(function() {
 			data: $("#eWriteForm").serialize(),
 			success: function(data) {
 				$("#eventTitle").text('이벤트');
-				$("#eventTab").html(data);
+				$("#admin_eventTab").html(data);
 			},
 			error: function() {
 				alert("에러");
@@ -87,6 +87,25 @@ $(document).ready(function() {
 		});
 	});
 });
+
+function back() {
+	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
+		$.ajax({
+			url: "admin_board",
+			type: "get",
+			data: "",
+			success: function(d) {
+				$("#admin_mainTab").html(d);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	}
+	else {
+		console.log("목록보기 취소");
+	}
+}
 
 </script>
 
