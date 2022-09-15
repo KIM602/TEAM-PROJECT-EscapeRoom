@@ -18,7 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
 
-<title>이벤트 게시판</title>
+<title>공지사항 게시판</title>
 
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -69,25 +69,32 @@
     border: solid 1px #008080;
 }
 </style>
-
 </head>
 <body>
 
+<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="user_id"/>
+</sec:authorize>
 
-<h4 id="eventTitle" style="margin-top: 40px; margin-bottom: 20px;">이벤트</h4>
+<h4 id="noticeTitle" style="margin-top: 40px; margin-bottom: 20px;">공지사항</h4>
 
-<div id="eTop">
-	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalEvent}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ e</b> 페이지 )
+<div id="nTop">
+	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalNotice}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )
+	
+	<sec:authorize access="isAuthenticated()">
+		<a id="writeNoticeForm" href="writeNoticeForm" class="btn btn-info">글 작성하기</a>
+	</sec:authorize>
 </div>
 
 
-<div id="eventTab"></div>
+<div id="admin_noticeTab"></div>
 <button type="button" id="page1btn" hidden=""></button>
 
 
 <!-- 페이지 표시 -->
-<nav aria-label="Page navigation" class="container" style="position: fixed; float: revert; bottom: 8%;"> 
-	<ul class="pagination justify-content-center" id="paginationE" style="margin:20px 0;"></ul>
+<nav aria-label="Page navigation" class="container" style="position: fixed; float: revert; bottom: 8%;">
+	<ul class="pagination justify-content-center" id="paginationN" style="margin:20px;"></ul>
 </nav>
 
 
@@ -95,9 +102,9 @@
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
 <script>
-$(document).ready(function() {
+$(document).ready(function() {	
 	$(function() {
-		window.pagObj = $("#paginationE").twbsPagination({
+		window.pagObj = $("#paginationN").twbsPagination({
 			totalPages: 35, //총 페이지 수
 			visiblePages: 5, //보여지는 페이지 수
 			onPageClick: function(event, page) {
@@ -113,7 +120,7 @@ $(document).ready(function() {
 					let cur;
 					if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
 						cur = pageNo;
-						purl = "plistE?pageNo=" + pageNo;
+						purl = "admin_plistN?pageNo=" + pageNo;
 					}
 					else if(pageNo == ">") {
 						pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -121,7 +128,7 @@ $(document).ready(function() {
 						pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 						pageNo2 = pageNo1 + 1;
 						cur = pageNo2;
-						purl = "plistE?pageNo=" + pageNo2;
+						purl = "admin_plistN?pageNo=" + pageNo2;
 					}
 					else if(pageNo == "<") {
 						pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -129,15 +136,15 @@ $(document).ready(function() {
 						pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 						pageNo2 = pageNo1 - 1;
 						cur = pageNo2;
-						purl = "plistE?pageNo=" + pageNo2;
+						purl = "admin_plistN?pageNo=" + pageNo2;
 					}
 					else if(pageNo == "<<") {
 						cur = 1;
-						purl = "plistE?pageNo=" + 1;
+						purl = "admin_plistN?pageNo=" + 1;
 					}
 					else if(pageNo == ">>") {
 						cur = 35;
-						purl = "plistE?pageNo=" + 35;
+						purl = "admin_plistN?pageNo=" + 35;
 					}
 					else {
 						return;
@@ -148,8 +155,8 @@ $(document).ready(function() {
 						data : "",
 						success : function(data) {
 							$("b#cur").text(cur);
-							$("#eTotal").removeClass('d-none');
-							$("#eventTab").html(data);
+							$("#nTotal").removeClass('d-none');
+							$("#admin_noticeTab").html(data);
 						},
 						error : function() {				
 							alert("에러");
@@ -163,18 +170,39 @@ $(document).ready(function() {
 		});
 		
 		// 전체 페이지 개수
-		var tot = $("#paginationE").twbsPagination("getTotalPages");
+		var tot = $("#paginationN").twbsPagination("getTotalPages");
 		$("b#tot").text(' / ' + tot);
 	});
 	
-		
+	/* 작성 버튼 ajax */
+	$("#writeNoticeForm").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: "writeNoticeForm",
+			type: "get",
+			data: "",
+			success: function(data) {
+				$("#noticeTitle").text('공지사항 작성 페이지');
+				$("#nTop").addClass('d-none');
+				$("#paginationN").addClass('d-none');
+				$("a.tab").addClass('disabled');
+				$("#osm").removeAttr('href');
+				$("#admin_noticeTab").html(data);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+	
 	$("#page1btn").on('click', function() {
 		$.ajax({
-			url : "plistE?pageNo=1",
+			url : "admin_plistN?pageNo=1",
 			type : "get",
 			data : "",
 			success : function(d) {
-				$("#eventTab").html(d);
+				$("#admin_noticeTab").html(d);
 			},
 			error : function() {
 				alert("에러");
@@ -182,7 +210,6 @@ $(document).ready(function() {
 		});
 	});
 	$("#page1btn").trigger("click");
-	
 });
 
 </script>

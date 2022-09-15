@@ -17,7 +17,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
 
-<title>공지사항 게시판</title>
+<title>Insert Title</title>
 
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -35,27 +35,73 @@
 
 <link rel="stylesheet" href="css/footerStyle.css">
 
+<style>
+a#eTitle {
+	color : #008080;
+}
+a#eTitle:hover {
+	color : #004d4d;
+}
+</style>
+
 </head>
 <body>
 
 
-<div style="margin-top: 1.5rem;">
-	<div class="container pt-0 pl-5 pr-5 pb-5 mt-2 mb-3" style="height:450px; border: 1px solid lightgray; border-radius: 10px;">
-		<br/><br/>
-		<h4>${viewNotice.bTitle}</h4>
-		<br/>
-		<p>
-			<b>${viewNotice.bWriter}</b><br/>
-			<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${viewNotice.bDate}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>조회</b>&nbsp;&nbsp;${viewNotice.bHit}
-		</p>
-		<hr/>
-		<br/><br/><br/>
-		<h6>${viewNotice.bContent}</h6>
-	</div>
-	
-	<a href="board" class="btn btn-secondary">목록보기</a>
-</div>
+<table class="table table-hover">
+	<colgroup>
+		<col style="width:10%">
+		<col style="width:55%">
+		<col style="width:15%">
+		<col style="width:10%">
+		<col style="width:10%">
+	</colgroup>
+	<thead class="thead-light">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${ePage}" var="edto">
+			<tr>
+				<td>${edto.bNum}</td>
+				<td><a id="eTitle" href="admin_viewEvent?bNum=${edto.bNum}">${edto.bTitle}</a></td>
+				<td>${edto.bWriter}</td>
+				<td><fmt:formatDate pattern="yyyy.MM.dd" value="${edto.bDate}"/></td>
+				<td>${edto.bHit}</td>
+			</tr>
+		</c:forEach>
+	</tbody>
+	<tfoot></tfoot>
+</table>
 
+<script>
+$(document).ready(function() {
+	
+	/* 게시물 자세히보기 ajax */	
+	$("a#eTitle").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: $(e.target).attr("href"),
+			type: "get",
+			data: "",
+			success: function(data) {
+				$("#eTop").addClass('d-none');
+				$("#paginationE").addClass('d-none');
+				$("#admin_eventTab").html(data);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+});
+</script>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -16,9 +16,7 @@
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-
-<title>공지사항 게시판</title>
-
+<title>JSP</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!--jquery -->
@@ -32,30 +30,35 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-<link rel="stylesheet" href="css/footerStyle.css">
-
 </head>
 <body>
 
-
-<div style="margin-top: 1.5rem;">
-	<div class="container pt-0 pl-5 pr-5 pb-5 mt-2 mb-3" style="height:450px; border: 1px solid lightgray; border-radius: 10px;">
-		<br/><br/>
-		<h4>${viewNotice.bTitle}</h4>
-		<br/>
-		<p>
-			<b>${viewNotice.bWriter}</b><br/>
-			<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${viewNotice.bDate}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>조회</b>&nbsp;&nbsp;${viewNotice.bHit}
-		</p>
-		<hr/>
-		<br/><br/><br/>
-		<h6>${viewNotice.bContent}</h6>
-	</div>
-	
-	<a href="board" class="btn btn-secondary">목록보기</a>
-</div>
-
-
+<table id="searchTable" class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>예약자</th>
+				<th>테마명</th>
+				<th>날짜</th>
+				<th>시간대</th>
+				<th>인원수</th>
+				<th>연락처</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${ReserveListContent}" var="dto">
+			<tr>
+				<td class="bid">${dto.rId}</td>
+				<td>${dto.rName}</td>
+				<td>${dto.rThemeName}</td>
+				<td>${dto.rDate}</td>
+				<td>${dto.rTime}</td>
+				<td>${dto.rCount}명</td>
+				<td>${dto.rPhone}</td>
+				<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>

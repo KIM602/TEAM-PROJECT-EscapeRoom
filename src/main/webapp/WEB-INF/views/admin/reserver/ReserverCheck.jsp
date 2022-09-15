@@ -20,8 +20,9 @@
 <title>JSP</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!--jquery -->
+<!--jquery 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+-->
 <!--propper jquery -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!--latest javascript -->
@@ -31,7 +32,11 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="js/jquery.twbsPagination2.js"></script>
 <style type="text/css">
+
+
+
 @font-face {
     font-family: 'GmarketSansBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
@@ -121,66 +126,139 @@ thead>tr>th{
 	font-size : 0.5rem;
 }
 </style>
+
+
 </head>
 <body>
 
 <div style="width: 100%;">
 
 		<div id="reserveRegion">			
-			<div class="box-step">
-				<dl class="date-choice">
-					<dt>
-						선택 날짜
-					</dt>
-					<ddd id="includeCallendar">
-						<jsp:include page="calendar.jsp"></jsp:include>
-					</ddd>
-					<p style="text-align: center">화살표를 눌러 날짜를 클릭</p>
-				</dl>
-				<dl class="theme-choice" style="width:75%">
-					<dt id="ajaxlist">
-						총 예약자 내역
-					</dt>
-					<dd class="theme">
-						<div id="indexListAjax">
-							<table id="searchTable" class="table table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>예약자</th>
-										<th>테마명</th>
-										<th>날짜</th>
-										<th>시간대</th>
-										<th>인원수</th>
-										<th>연락처</th>
-									</tr>
-								</thead>
-								<tbody >
-									<c:forEach items="${rlist}" var="dto">
-									<tr>
-										<td class="bid">${dto.rId}</td>
-										<td>${dto.rName}</td>
-										<td>${dto.rThemeName}</td>
-										<td>${dto.rDate}</td>
-										<td>${dto.rTime}</td>
-										<td>${dto.rCount}명</td>
-										<td>${dto.rPhone}</td>
-										<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</dd>
-				</dl>
-			</div>
+				<div class="box-step">
+					<dl class="date-choice">
+						<dt>
+							선택 날짜
+						</dt>
+						<ddd id="includeCallendar">
+							<jsp:include page="calendar.jsp"></jsp:include>
+						</ddd>
+						<p style="text-align: center">날짜를 클릭</p>
+					</dl>
+					<dl class="theme-choice" style="width:75%">
+						<dt id="ajaxlist">
+							총 예약자 내역
+						</dt>
+						<dd class="theme">
+							<div id="indexListAjax">
+								<table id="searchTable" class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>번호</th>
+											<th>예약자</th>
+											<th>테마명</th>
+											<th>날짜</th>
+											<th>시간대</th>
+											<th>인원수</th>
+											<th>연락처</th>
+										</tr>
+									</thead>
+									<tbody >
+										<c:forEach items="${rlist}" var="dto">
+										<tr>
+											<td class="bid">${dto.rId}</td>
+											<td>${dto.rName}</td>
+											<td>${dto.rThemeName}</td>
+											<td>${dto.rDate}</td>
+											<td>${dto.rTime}</td>
+											<td>${dto.rCount}명</td>
+											<td>${dto.rPhone}</td>
+											<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+										</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+					<nav aria-label="Page navigation"> <!-- aria-label은 라벨표시가 안되는 것 예방 -->
+						<ul class="pagination justify-content-center" id="pagination" style="margin:20px 0;">
+					</ul>
+					</nav>
+						</dd>
+					</dl>
+				</div>
+				
+			
 			</div>	
 	</div>
 	
 	
-	<script type="text/javascript">
 	
-	</script>
+<script type="text/javascript">
+	$(function() {
+		window.pagObj = $("#pagination").twbsPagination({
+			totalPages: 35, //총 페이지 수
+			visiblePages: 10, //보여지는 페이지 수
+			onPageClick: function(event, page) {
+				console.info(page + ' (from options)');
+				$(".page-link").on("click", function(event) { //클래스 page-link는 BS4의 pagination의 링크 A
+					event.preventDefault();
+					let peo = $(event.target);
+					let pageNo = peo.text();
+					let purl;
+					let pageA;
+					let pageNo1;
+					let pageNo2;
+					if(pageNo != "First" && pageNo != "Previous" && pageNo != "Next" && pageNo != "Last") {
+						purl = "ReservePageList?pageNo=" + pageNo;
+					}
+					else if(pageNo == "Next"){
+						pageA = $("li.active > a") ; // li에 active클래스가 있고 a에 페이지 번호가 있음
+						pageNo = pageA.text();
+						pageNo1 = parseInt(pageNo); // 페이지 번호를 1더해야 하므로 정수로 변환
+						pageNo2 = pageNo1 + 1;
+						purl = "ReservePageList?pageNo="+pageNo2;
+					
+					}
+					else if(pageNo == "Previous"){
+						pageA = $("li.active > a") ; // li에 active클래스가 있고 a에 페이지 번호가 있음
+						pageNo = pageA.text();
+						pageNo1 = parseInt(pageNo); // 페이지 번호를 1더해야 하므로 정수로 변환
+						pageNo2 = pageNo1 - 1;
+						purl = "ReservePageList?pageNo="+pageNo2;
+					
+					}
+					else if(pageNo=="First"){
+						purl = "ReservePageList?pageNo=" + 1;
+					}
+					else if(pageNo=="Last"){
+						purl = "ReservePageList?pageNo=" + 35;
+						
+					}
+					else {
+						return;
+					}
+					$.ajax({
+						url : purl,
+						type : "get",
+						data : "",
+						success : function(data) {
+
+							$("#indexListAjax").html(data);
+						//	let parent = $(peo).parent(); //page-link의 부모인 page-item에 추가
+						//	$(parent).addClass("active");
+						},
+						error : function() {				
+							alert("실패");
+							
+						}
+					}); //ajax
+				}); //page-link onclick
+			} //onPageClick
+		}) //window.pagObj
+		.on('page', function(event, page) { //chaining방식
+			console.info(page + ' (from event listening)');
+		});
+	});	
+</script>
 
 </body>
 </html>

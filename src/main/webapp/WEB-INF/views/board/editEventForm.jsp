@@ -41,16 +41,8 @@ function conf() {
 	var result = confirm("수정을 완료하시겠습니까?");
 	return result;
 }
-function back() {
-	var result = confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.");
-	return result;
-}
 function rst() {
 	var result = confirm("확인을 누르면 수정 전으로 초기화됩니다.");
-	return result;
-}
-function del() {
-	var result = confirm("정말 삭제하시겠습니까? 삭제시 모든 내용이 사라집니다.");
 	return result;
 }
 </script>
@@ -73,8 +65,8 @@ function del() {
 		<br/>
 		<button type="submit" class="btn btn-success float-right" onclick="return conf()">저장</button>
 		<button type="reset" class="btn btn-warning float-right mr-1" onclick="return rst()">리셋</button>
-		<a href="deleteEvent?bNum=${viewEvent.bNum}" id="eventDel" class="btn btn-danger float-right mr-5" onclick="return del()">삭제</a>
-		<a href="board" class="btn btn-secondary" onclick="return back()">목록보기</a>
+		<input type="button" class="btn btn-danger float-right mr-5" onclick="del()" value="삭제"/>
+		<input type="button" class="btn btn-secondary" onclick="back()" value="목록보기"/>
 	</div>
 </form>
 	
@@ -88,15 +80,53 @@ $(document).ready(function() {
 			type: "post",
 			data: $("#eEditForm").serialize(),
 			success: function(data) {
-				$("#eventTab").html(data);
+				$("#admin_eventTab").html(data);
 			},
 			error: function() {
 				alert("에러");
 			}
 		});
 	});
-	
 });
+
+function del() {
+	if(window.confirm("정말 삭제하시겠습니까? 삭제시 모든 내용이 사라집니다.")) {
+		$.ajax({
+			url: "deleteEvent?bNum=${viewEvent.bNum}",
+			type: "get",
+			data: "",
+			success: function(d) {
+				$("#admin_mainTab").html(d);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	}
+	else {
+		console.log("삭제 취소");
+	}
+}
+
+function back() {
+	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
+		$.ajax({
+			url: "admin_board",
+			type: "get",
+			data: "",
+			success: function(d) {
+				$("#admin_mainTab").html(d);
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	}
+	else {
+		console.log("목록보기 취소");
+	}
+}
+
 </script>
 
 </body>

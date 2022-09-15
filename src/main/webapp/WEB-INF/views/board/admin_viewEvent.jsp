@@ -16,9 +16,8 @@
 <!-- MS -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<meta id="_csrf" name="_csrf" content="${_csrf.token}"/> <!-- 페이지 위조 요청 방지 -->
 
-<title>공지사항 작성 페이지</title>
+<title>이벤트 게시판</title>
 
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -36,62 +35,63 @@
 
 <link rel="stylesheet" href="css/footerStyle.css">
 
-<script>
-function conf() {
-	var result = confirm("등록하시겠습니까?");
-	return result;
-}
-</script>
-
 </head>
 <body>
 
+<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"></sec:authentication>
+	<sec:authentication property="principal.username" var="user_id"/>
 </sec:authorize>
 
-<form id="nWriteForm" action="writeNotice" method="post">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	<div class="form-group">
-		<label for="writer">작성자</label>
-		<input type="text" name="bWriter" id="writer" value="${user_id}" class="form-control" required/>
+<div style="margin-top: 1.5rem;">
+	<div class="container pt-0 pl-5 pr-5 pb-5 mb-3" style="height:450px; border: 1px solid lightgray; border-radius: 10px;">
+		<br/><br/>
+		<h4>${viewEvent.bTitle}</h4>
 		<br/>
-		
-		<label for="title">제목</label>
-		<input type="text" name="bTitle" id="title" placeholder="제목을 입력하세요" class="form-control" required/>
-		<br/>
-		
-		<label for="content">내용</label>
-		<textarea name="bContent" id="content" rows="10" placeholder="내용을 입력하세요" class="form-control" required></textarea>
-		<br/>
+		<p>
+			<b>${viewEvent.bWriter}</b><br/>
+			<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${viewEvent.bDate}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>조회</b>&nbsp;&nbsp;${viewEvent.bHit}
+		</p>
+		<hr/>
+		<br/><br/><br/>
+		<h6>${viewEvent.bContent}</h6>
 	</div>
-	<input type="button" id="adminList" class="btn btn-secondary" onclick="back()" value="목록보기"/>
-	<button type="submit" class="btn btn-success float-right" onclick="return conf()">등록</button>
-</form>
+	
+	<sec:authorize access="isAuthenticated()">
+		<a id="editE" href="editEventForm?bNum=${viewEvent.bNum}" class="btn btn-warning float-right">수정</a>
+	</sec:authorize>
+	
+	<a id="adminList" href="admin_board" class="btn btn-secondary">목록보기</a>
+</div>
+
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
 <script>
 $(document).ready(function() {
-	$("#nWriteForm").submit(function(e) {
+	/* 게시물 수정 Form ajax */
+	$("a#editE").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "writeNotice",
-			type: "post",
-			data: $("#nWriteForm").serialize(),
-			success: function(data) {
-				$("#noticeTitle").text('공지사항');
-				$("#admin_noticeTab").html(data);
+			url: $(e.target).attr("href"),
+			type: "get",
+			data: "",
+			success: function(d) {
+				$("a.tab").addClass('disabled');
+				$("#osm").removeAttr('href');
+				$("#admin_eventTab").html(d);
 			},
 			error: function() {
 				alert("에러");
 			}
 		});
 	});
-});
-
-function back() {
-	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
+	
+	/* 목록 이동 */
+	$("a#adminList").click(function(e) {
+		e.preventDefault();
 		$.ajax({
-			url: "admin_board",
+			url: $(e.target).attr("href"),
 			type: "get",
 			data: "",
 			success: function(d) {
@@ -101,12 +101,8 @@ function back() {
 				alert("에러");
 			}
 		});
-	}
-	else {
-		console.log("목록보기 취소");
-	}
-}
-
+	});
+});
 </script>
 
 </body>
