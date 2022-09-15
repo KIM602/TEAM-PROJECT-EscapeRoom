@@ -50,13 +50,21 @@ public class ReserveDao implements RdaoInterface {
 	}
 	@Override
 	public ArrayList<ReserveDto> ReserverList() {
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("ReserveList");
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reserveList");
 		return result;
 	}
 	@Override
 	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto) {
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("CalendarChoiceReserverList",rdto);
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverList",rdto);
 		return result;
+	}
+	@Override
+	public ArrayList<ReserveDto> ReservePageList(String pageNo) {
+		int page = Integer.parseInt(pageNo);
+		int startNo = (page - 1) * 10 + 1;
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
+		return result;
+		
 	}
 
 

@@ -60,7 +60,7 @@ public class BoardController {
 		System.out.println("noticeBoardø‰√ª");
 		int tn = dao.totalNotice();
 		model.addAttribute("totalNotice", tn);
-		
+
 //		ArrayList<NoticeDto> nList = dao.listNotice();
 //		model.addAttribute("nboard", nList);
 		return "board/noticeBoard";

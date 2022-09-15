@@ -90,7 +90,8 @@ public class ProjectAdminController {
 		String username = (String)request.getAttribute("username");
 		String auth = (String)request.getAttribute("auth");
 		
-		return "admin/DashBoardMain1";
+		return "admin/DashBoardMain2";
+
 		
 	}
 	
