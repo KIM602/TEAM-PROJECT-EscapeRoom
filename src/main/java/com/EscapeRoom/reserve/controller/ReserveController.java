@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverList;
+import com.EscapeRoom.reserve.command.CalendarChoiceReserverPageList;
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.command.ReserveDelete;
@@ -225,6 +226,18 @@ public class ReserveController {
 			rcom.execute(request, model);
 	
 			return "admin/reserver/calendarChoiceReserveList";
+		}
+		
+		// 관리자 페이지 달력으로 날짜 선택하여 페이지 리스트 10개 단위로 추려서 보기
+		@RequestMapping("/calendarChoiceReserverPageList")
+		public String CalendarChoiceReserverPageList(HttpServletRequest request, Model model) {
+			System.out.println("calendarChoiceReserverPageList");
+			System.out.println(request.getParameter("pageNo"));
+			System.out.println("리퀘스트에서 rDate값은 ? " + request.getParameter("rDate"));
+			rcom = new CalendarChoiceReserverPageList();
+			rcom.execute(request, model);
+			
+			return "admin/reserver/calendarChoiceReserverPageList";
 		}
 		
 		

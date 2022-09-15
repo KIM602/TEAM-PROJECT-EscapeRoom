@@ -42,7 +42,19 @@
 		</select>
 		
 		<select id="calendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
-			select * from reserve where rdate = #{rDate}
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A where rdate = #{rDate})
+			where  RNUM < 11 
+			]]>
+		</select>
+		
+		<select id="calendarChoiceReserverPageList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A where rdate = #{rDate} )
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+			]]>
 		</select>
 		
 	</mapper>

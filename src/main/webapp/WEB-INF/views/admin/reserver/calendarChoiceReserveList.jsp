@@ -19,8 +19,9 @@
 <title>JSP</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!--jquery -->
+<!--jquery 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+-->
 <!--propper jquery -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!--latest javascript -->
@@ -30,37 +31,123 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="js/jquery.twbsPagination.js"></script>
 </head>
 <body>
 	
-	<table id="searchTable" class="table table-bordered table-hover">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>예약자</th>
-				<th>테마명</th>
-				<th>날짜</th>
-				<th>시간대</th>
-				<th>인원수</th>
-				<th>연락처</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${result}" var="dto">
-			<tr>
-				<td class="bid">${dto.rId}</td>
-				<td>${dto.rName}</td>
-				<td>${dto.rThemeName}</td>
-				<td>${dto.rDate}</td>
-				<td>${dto.rTime}</td>
-				<td>${dto.rCount}명</td>
-				<td>${dto.rPhone}</td>
-				<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 	
+	
+<div id="indexListAjax">
+		<table id="searchTable" class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>예약자</th>
+					<th>테마명</th>
+					<th>날짜</th>
+					<th>시간대</th>
+					<th>인원수</th>
+					<th>연락처</th>
+				</tr>
+			</thead>
+			<tbody >
+				<c:forEach items="${result}" var="dto" varStatus="status">
+				<tr>
+					<td class="bid">${status.count}</td>						
+					<td>${dto.rName}</td>
+					<td>${dto.rThemeName}</td>
+					<td>${dto.rDate}</td>
+					<td>${dto.rTime}</td>
+					<td>${dto.rCount}명</td>
+					<td>${dto.rPhone}</td>
+					<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+<nav aria-label="Page navigation"> <!-- aria-label은 라벨표시가 안되는 것 예방 -->
+<ul class="pagination justify-content-center" id="pagination" style="margin:20px 0;">
+</ul>
+</nav>
+
+
+
+<script type="text/javascript">
+$(function() {
+	window.pagObj = $("#pagination").twbsPagination({
+		totalPages: 35, //총 페이지 수
+		visiblePages: 5, //보여지는 페이지 수	
+		onPageClick: function(event, page) {
+			console.info(page + ' (from options)');
+			$(".page-link").on("click", function(event) { //클래스 page-link는 BS4의 pagination의 링크 A
+				event.preventDefault();
+				let peo = $(event.target);
+				let pageNo = peo.text();
+				let purl;
+				let pageA;
+				let pageNo1;
+				let pageNo2;
+				let cur;
+				let rdate = '${rdate}';  // rdate를 가져옴 
+				if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
+					cur = pageNo;
+					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo+"&&rDate="+rdate;
+				}
+				else if(pageNo == ">") {
+					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
+					pageNo = pageA.text(); //페이지 번호
+					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
+					pageNo2 = pageNo1 + 1;
+					cur = pageNo2;
+					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo2 +"&&rDate="+rdate;
+				}
+				else if(pageNo == "<") {
+					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
+					pageNo = pageA.text(); //페이지 번호
+					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
+					pageNo2 = pageNo1 - 1;
+					cur = pageNo2;
+					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo2+"&&rDate="+rdate;
+				}
+				else if(pageNo == "<<") {
+					cur = 1;
+					purl = "calendarChoiceReserverPageList?pageNo=" + 1+"&&rDate="+rdate;
+				}
+				else if(pageNo == ">>") {
+					cur = 35;
+					purl = "calendarChoiceReserverPageList?pageNo=" + 35+"&&rDate="+rdate;
+				}
+				else {
+					return;
+				}
+				$.ajax({
+					url : purl,
+					type : "get",
+					data : "",
+					success : function(data) {
+						//$("b#cur").text(cur);
+						
+						$("#indexListAjax").html(data);
+					},
+					error : function() {				
+						alert("에러");
+					}
+				}); //ajax
+			}); //page-link onclick
+		} //onPageClick
+	}) //window.pagObj
+	.on('page', function(event, page) { //chaining방식
+		console.info(page + ' (from event listening)');
+	});
+	
+	// 전체 페이지 개수
+	//var tot = $("#paginationE").twbsPagination("getTotalPages");
+	//$("b#tot").text(' / ' + tot);
+});
+
+
+</script>
 	
 </body>
 </html>
