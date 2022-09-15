@@ -121,6 +121,8 @@ thead>tr>th{
 	font-size : 0.5rem;
 }
 </style>
+
+<script src="js/jquery.twbsPagination.js"></script>
 </head>
 <body>
 
@@ -176,9 +178,84 @@ thead>tr>th{
 			</div>
 			</div>	
 	</div>
+	<nav aria-label="Page navigation" class="container" style="position: fixed; float: revert; bottom: 8%;"> 
+		<ul class="pagination justify-content-center" id="paginationE" style="margin:20px 0;"></ul>
+	</nav>
 	
 	
 	<script type="text/javascript">
+	$(document).ready(function name() {
+		$(function() {
+			window.pagObj = $("#paginationE").twbsPagination({
+				totalPages: 35, //총 페이지 수
+				visiblePages: 5, //보여지는 페이지 수
+				onPageClick: function(event, page) {
+					console.info(page + ' (from options)');
+					$(".page-link").on("click", function(event) { //클래스 page-link는 BS4의 pagination의 링크 A
+						event.preventDefault();
+						let peo = $(event.target);
+						let pageNo = peo.text();
+						let purl;
+						let pageA;
+						let pageNo1;
+						let pageNo2;
+						let cur;
+						if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
+							cur = pageNo;
+							purl = "plistE?pageNo=" + pageNo;
+						}
+						else if(pageNo == ">") {
+							pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
+							pageNo = pageA.text(); //페이지 번호
+							pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
+							pageNo2 = pageNo1 + 1;
+							cur = pageNo2;
+							purl = "plistE?pageNo=" + pageNo2;
+						}
+						else if(pageNo == "<") {
+							pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
+							pageNo = pageA.text(); //페이지 번호
+							pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
+							pageNo2 = pageNo1 - 1;
+							cur = pageNo2;
+							purl = "plistE?pageNo=" + pageNo2;
+						}
+						else if(pageNo == "<<") {
+							cur = 1;
+							purl = "plistE?pageNo=" + 1;
+						}
+						else if(pageNo == ">>") {
+							cur = 35;
+							purl = "plistE?pageNo=" + 35;
+						}
+						else {
+							return;
+						}
+						$.ajax({
+							url : purl,
+							type : "get",
+							data : "",
+							success : function(data) {
+								$("b#cur").text(cur);
+								$("#eTotal").removeClass('d-none');
+								$("#eventTab").html(data);
+							},
+							error : function() {				
+								alert("에러");
+							}
+						}); //ajax
+					}); //page-link onclick
+				} //onPageClick
+			}) //window.pagObj
+			.on('page', function(event, page) { //chaining방식
+				console.info(page + ' (from event listening)');
+			});
+			
+			// 전체 페이지 개수
+			var tot = $("#paginationE").twbsPagination("getTotalPages");
+			$("b#tot").text(' / ' + tot);
+		});
+	})
 	
 	</script>
 
