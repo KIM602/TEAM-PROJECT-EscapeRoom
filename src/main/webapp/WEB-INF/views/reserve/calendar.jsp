@@ -132,7 +132,7 @@ function buildCalendar() {
 			
 			clickedDate = clickedDate >= 10 ? clickedDate : "0" + clickedDate;
 			clickedMonth = clickedMonth >= 10 ? clickedMonth : "0" + clickedMonth;
-			clickedYMD = clickedYear + "_" + clickedMonth + "_" + clickedDate;
+			clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
 		
 			console.log("clickedDate",clickedDate);
 			console.log("clickedMonth",clickedMonth);

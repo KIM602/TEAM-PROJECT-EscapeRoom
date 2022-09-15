@@ -25,11 +25,23 @@
 			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
 		</select>
 		
-		<select id="ReserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
-			select * from reserve
+		<select id="reserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A)
+			where RNUM < 11
+			]]>
 		</select>
 		
-		<select id="CalendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+		<select id="reservePageList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A)
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+			]]>
+		</select>
+		
+		<select id="calendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			select * from reserve where rdate = #{rDate}
 		</select>
 		
