@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.reserve.dto.ReserveDto2;
+import com.EscapeRoom.reserve.dto.startNoRdate;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -65,6 +66,16 @@ public class ReserveDao implements RdaoInterface {
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
 		return result;
 		
+	}
+	@Override
+	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo, String rDate) {
+		int page = Integer.parseInt(pageNo);
+		int startNo = (page - 1) * 10 + 1;
+		
+		startNoRdate snr = new startNoRdate(startNo, rDate);
+		
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverPageList",snr);
+		return result;
 	}
 
 

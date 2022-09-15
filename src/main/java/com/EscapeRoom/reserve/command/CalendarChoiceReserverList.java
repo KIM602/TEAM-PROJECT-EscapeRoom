@@ -21,6 +21,7 @@ public class CalendarChoiceReserverList implements ReserveCommand {
 		
 		ArrayList<ReserveDto> result = rdao.CalendarChoiceReserverList(rdto);
 		model.addAttribute("result",result);
+		model.addAttribute("rdate",ymd);
 
 	}
 

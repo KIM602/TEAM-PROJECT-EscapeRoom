@@ -16,5 +16,6 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto> ReserverList();
 	ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
 	ArrayList<ReserveDto> ReservePageList(String pageNo);
+	ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
 	
 }
