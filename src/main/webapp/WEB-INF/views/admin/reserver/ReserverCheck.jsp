@@ -180,7 +180,7 @@ thead>tr>th{
 							</div>
 					<nav aria-label="Page navigation"> <!-- aria-label은 라벨표시가 안되는 것 예방 -->
 						<ul class="pagination justify-content-center" id="pagination" style="margin:20px 0;">
-							</ul>
+					</ul>
 					</nav>
 						</dd>
 					</dl>
