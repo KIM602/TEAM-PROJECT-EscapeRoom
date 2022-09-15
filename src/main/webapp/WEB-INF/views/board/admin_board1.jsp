@@ -85,8 +85,8 @@
 </div>
 
 <div class="container pt-1">
-	<a id="btn1" href="admin_noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
-	<a id="btn2" href="admin_eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
+	<a id="btn1" href="admin_noticeBoard" class="btn tab tabOn"><span style="font-size: 14px;">NOTICE</span></a>
+	<a id="btn2" href="admin_eventBoard" class="btn tab tabOff"><span style="font-size: 14px;">EVENT</span></a>
 	<sec:authorize access="isAuthenticated()">
 		<a href="AdminLogoutView" class="btn-sm btn-secondary ml-3" style="padding: 7px; float: right;">로그아웃</a>
 		<span style="font-size: 20px; float: right;"><b>${user_id}</b> 님 환영합니다.</span>

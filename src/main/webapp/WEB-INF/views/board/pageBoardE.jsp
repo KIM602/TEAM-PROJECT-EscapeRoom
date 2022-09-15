@@ -33,9 +33,15 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="css/footerStyle.css">
+<link rel="stylesheet" href="css/menubar.css">
 
 <style>
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 a#eTitle {
 	color : #008080;
 }
@@ -48,7 +54,8 @@ a#eTitle:hover {
 <body>
 
 
-<table class="table table-hover">
+<table class="table table-hover"
+		style="font-family: 'GmarketSansMedium'; font-size: 12px;">
 	<colgroup>
 		<col style="width:10%">
 		<col style="width:55%">
