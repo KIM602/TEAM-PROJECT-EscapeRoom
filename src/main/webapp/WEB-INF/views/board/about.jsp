@@ -403,7 +403,7 @@ table#price {
 						</tr>
 					</tbody>
 					<tfoot class="text-left">
-						<tr><td colspan="3">※ 각종 할인은 <a href="board" class="text-warning"><b>EVENT 게시판</b></a>에서 확인해주세요.</td></tr>
+						<tr><td colspan="3">※ 각종 할인은 <a href="board2" class="text-warning"><b>EVENT 게시판</b></a>에서 확인해주세요.</td></tr>
 					</tfoot>
 				</table>
 			</div>

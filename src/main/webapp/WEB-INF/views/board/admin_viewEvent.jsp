@@ -33,7 +33,6 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="css/footerStyle.css">
 
 </head>
 <body>
@@ -61,7 +60,7 @@
 		<a id="editE" href="editEventForm?bNum=${viewEvent.bNum}" class="btn btn-warning float-right">수정</a>
 	</sec:authorize>
 	
-	<a id="adminList" href="admin_board" class="btn btn-secondary">목록보기</a>
+	<a id="adminList" href="admin_board2" class="btn btn-secondary">목록보기</a>
 </div>
 
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -91,11 +90,11 @@ $(document).ready(function() {
 	$("a#adminList").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $(e.target).attr("href"),
+			url: "admin_board2",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$(".main-page").html(d);
 			},
 			error: function() {
 				alert("에러");

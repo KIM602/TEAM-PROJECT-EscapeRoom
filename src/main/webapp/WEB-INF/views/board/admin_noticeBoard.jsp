@@ -77,7 +77,7 @@
 	<sec:authentication property="principal.username" var="user_id"/>
 </sec:authorize>
 
-<h4 id="noticeTitle" style="margin-top: 40px; margin-bottom: 20px;">공지사항</h4>
+<h4 id="noticeTitle" style="margin-top: 40px; margin-bottom: 20px; font-weight: bold;">공지사항</h4>
 
 <div id="nTop">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalNotice}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )
@@ -173,6 +173,21 @@ $(document).ready(function() {
 		var tot = $("#paginationN").twbsPagination("getTotalPages");
 		$("b#tot").text(' / ' + tot);
 	});
+		
+	$("#page1btn").on('click', function() {
+		$.ajax({
+			url : "admin_plistN?pageNo=1",
+			type : "get",
+			data : "",
+			success : function(d) {
+				$("#admin_noticeTab").html(d);
+			},
+			error : function() {
+				alert("에러");
+			}
+		});
+	});
+	$("#page1btn").trigger("click");
 	
 	/* 작성 버튼 ajax */
 	$("#writeNoticeForm").click(function(e) {
@@ -194,22 +209,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
-	
-	$("#page1btn").on('click', function() {
-		$.ajax({
-			url : "admin_plistN?pageNo=1",
-			type : "get",
-			data : "",
-			success : function(d) {
-				$("#admin_noticeTab").html(d);
-			},
-			error : function() {
-				alert("에러");
-			}
-		});
-	});
-	$("#page1btn").trigger("click");
 });
 
 </script>

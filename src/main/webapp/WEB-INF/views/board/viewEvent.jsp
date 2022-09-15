@@ -53,7 +53,7 @@
 		<h6>${viewEvent.bContent}</h6>
 	</div>
 	
-	<a href="board" class="btn btn-secondary">목록보기</a>
+	<a href="board2" class="btn btn-secondary">목록보기</a>
 </div>
 
 

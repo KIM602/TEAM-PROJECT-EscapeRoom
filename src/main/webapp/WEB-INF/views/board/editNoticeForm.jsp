@@ -96,7 +96,7 @@ function del() {
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$(".main-page").html(d);
 			},
 			error: function() {
 				alert("에러");
@@ -111,11 +111,11 @@ function del() {
 function back() {
 	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
 		$.ajax({
-			url: "admin_board",
+			url: "admin_board1",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$(".main-page").html(d);
 			},
 			error: function() {
 				alert("에러");

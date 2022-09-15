@@ -40,93 +40,94 @@
 <link rel="stylesheet" href="css/DashBoardMain1.css">
 </head>
 <body>
+
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal.username" var="user_id"></sec:authentication>
 </sec:authorize>
 
-    <div class="board-wrap">
-        <div class="header-wrap">
-            <header>
-                <ul class="header-box">
-                    <li class="nav-list">
-                        <a href="#">예약자 확인</a>
-                    </li>
-                    <li class="nav-list">
-                        홈페이지 관리
-                        <ul class="">
-                            <li class="nav-sublist">
-                                &#8250; 메인페이지 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a href="#">logo 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">이미지 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">메뉴항목 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-sublist">
-                                &#8250; 회사소개 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a href="#">회사소개 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">주의사항 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-sublist">
-                                &#8250; 테마 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a href="#">이미지 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">테마 설명 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-sublist">
-                                &#8250; 공지사항/이벤트 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a id="nav-board" href="admin_board">공지사항/이벤트 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-sublist">
-                                &#8250; 정보 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a href="#">지도 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">footer 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </header>
-        </div>
+<div class="board-wrap">
+	<div class="header-wrap">
+		<header>
+			<ul class="header-box">
+				<li class="nav-list">
+					<a href="#">예약자 확인</a>
+				</li>
+				<li class="nav-list">
+					홈페이지 관리
+					<ul>
+						<li class="nav-sublist">
+							&#8250; 메인페이지 수정
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a href="#">logo 수정</a>
+								</li>
+								<li class="nav-lastlist">
+									<a href="#">이미지 수정</a>
+								</li>
+								<li class="nav-lastlist">
+									<a href="#">메뉴항목 수정</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-sublist">
+							&#8250; 회사소개 수정
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a href="#">회사소개 수정</a>
+								</li>
+								<li class="nav-lastlist">
+									<a href="#">주의사항 수정</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-sublist">
+							&#8250; 테마 수정
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a href="#">이미지 수정</a>
+								</li>
+								<li class="nav-lastlist">
+									<a href="#">테마 설명 수정</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-sublist">
+							&#8250; 공지사항/이벤트 수정
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a id="nav-board" href="admin_board1">공지사항/이벤트 수정</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-sublist">
+							&#8250; 정보 수정
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a href="#">지도 수정</a>
+								</li>
+								<li class="nav-lastlist">
+									<a href="#">footer 수정</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</header>
+	</div>
 
-        <section>
-            <article class="main-page">
-                <h3>DashBoard 메인페이지 ${user_id}</h3>
-            </article>
-        </section>
+	<section>
+		<article class="main-page">
+			<h3>DashBoard 메인페이지 ${user_id}</h3>
+		</article>
+	</section>
         
-        
-<!-- <sec:authorize access="isAuthenticated()">
-			<a href="AdminLogoutView">로그아웃</a>
-		</sec:authorize>
+	<!--
+	<sec:authorize access="isAuthenticated()">
+		<a href="AdminLogoutView">로그아웃</a>
+	</sec:authorize>
 	-->
-    </div>
+</div>
 
 <script src="js/DashBoardMain.js"></script>
 <script>
@@ -144,9 +145,7 @@ $(document).ready(function() {
 				alert("에러");
 			}
 		});
-	});
-		
-	
+	});	
 });
 </script>
 
