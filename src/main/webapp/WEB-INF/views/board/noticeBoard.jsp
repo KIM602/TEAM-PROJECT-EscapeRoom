@@ -72,10 +72,9 @@
 
 </head>
 <body>
+<h4 id="noticeTitle" style="margin-top: 30px; margin-bottom: 20px;">공지사항</h4>
 
-<h4 id="noticeTitle" style="margin-top: 40px; margin-bottom: 20px;">공지사항</h4>
-
-<div id="nTop">
+<div id="nTop" style="font-size: 14px;">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalNotice}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )
 </div>
 

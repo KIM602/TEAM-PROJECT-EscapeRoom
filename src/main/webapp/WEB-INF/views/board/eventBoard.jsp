@@ -74,9 +74,9 @@
 <body>
 
 
-<h4 id="eventTitle" style="margin-top: 40px; margin-bottom: 20px;">이벤트</h4>
+<h4 id="eventTitle" style="margin-top: 30px; margin-bottom: 20px;">이벤트</h4>
 
-<div id="eTop">
+<div id="eTop" style="font-size: 14px;">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalEvent}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ e</b> 페이지 )
 </div>
 

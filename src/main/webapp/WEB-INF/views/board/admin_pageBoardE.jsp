@@ -33,7 +33,6 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="css/footerStyle.css">
 
 <style>
 a#eTitle {

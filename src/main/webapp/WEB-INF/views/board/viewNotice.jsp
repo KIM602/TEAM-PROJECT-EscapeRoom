@@ -53,7 +53,7 @@
 		<h6>${viewNotice.bContent}</h6>
 	</div>
 	
-	<a href="board" class="btn btn-secondary">목록보기</a>
+	<a href="board1" class="btn btn-secondary">목록보기</a>
 </div>
 
 

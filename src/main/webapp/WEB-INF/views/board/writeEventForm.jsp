@@ -79,7 +79,7 @@ $(document).ready(function() {
 			data: $("#eWriteForm").serialize(),
 			success: function(data) {
 				$("#eventTitle").text('이벤트');
-				$("#admin_eventTab").html(data);
+				$(".main-page").html(data);
 			},
 			error: function() {
 				alert("에러");
@@ -91,11 +91,11 @@ $(document).ready(function() {
 function back() {
 	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
 		$.ajax({
-			url: "admin_board",
+			url: "admin_board2",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$(".main-page").html(d);
 			},
 			error: function() {
 				alert("에러");

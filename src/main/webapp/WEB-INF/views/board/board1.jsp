@@ -33,13 +33,13 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="css/footerStyle.css">
 
+<link rel="stylesheet" href="css/menubar.css">
 
 <style>
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -47,8 +47,8 @@
 .btn-info {
 	cursor: pointer;
 	position: fixed;
-	top: 26%;
-	right: 15%;
+	top: 29%;
+	right: 22%;
  	float: right;
 }
 
@@ -58,7 +58,7 @@
  	position: absolute;
     
     width: 100%;
-    height: 190px;
+    height: 216px;
    
     z-index: -1;
 }
@@ -85,52 +85,47 @@
 </head>
 <body>
 
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<!-- nav 메뉴버튼 -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<%@include file ="../main/menubar.jsp" %>
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"></sec:authentication>
-</sec:authorize>
 
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
 
 <div id="top"></div>
-<div style="font-family: 'GmarketSansMedium'; font-size: 12px;">
 
-<div id="board_title" class="text-center mb-3" style="margin-top: 60px;">
-	<a id="osm">OSM ESCAPE</a>
-</div>
-<div style="float: right; margin-right: 100px;">
-	
-</div>
-	
-<div class="container pt-1">
-	<a id="btn1" href="admin_noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
-	<a id="btn2" href="admin_eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
-	<sec:authorize access="isAuthenticated()">
-		<a href="AdminLogoutView" class="btn-sm btn-secondary ml-3" style="padding: 7px; float: right;">로그아웃</a>
-		<span style="font-size: 20px; float: right;"><b>${user_id}</b> 님 환영합니다.</span>
-	</sec:authorize>
+<div style="font-family: 'NanumSquareRound'; padding-top: 70px;">
+	<div id="board_title" class="text-center" style="margin-bottom: 34px;">
+		<a id="osm" href="index">OSM ESCAPE</a>
+	</div>
 	
 	<div class="container">
-		<div id="admin_mainTab"></div>
+		<a id="btn1" href="noticeBoard" class="btn tab tabOn"><span style="font-size: 14px;">NOTICE</span></a>
+		<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 14px;">EVENT</span></a>
+		
+		<div class="container">
+			<div id="mainTab"></div>
+		</div>
 	</div>
 </div>
-</div>
 
 
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-
 
 <script>
 $(document).ready(function() {
 	$("#btn1").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "admin_noticeBoard",
+			url: "noticeBoard",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$("#mainTab").html(d);
 			},
 			error: function() {
 				alert("에러");
@@ -143,11 +138,11 @@ $(document).ready(function() {
 	$("#btn2").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "admin_eventBoard",
+			url: "eventBoard",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$("#mainTab").html(d);
 			},
 			error: function() {
 				alert("에러");
@@ -164,10 +159,10 @@ $(document).ready(function() {
 
 
 </body>
-
+	
 <style>
 .tab {
-	margin: -2.4px;
+	margin: 0 -2.4px;
 	border: 1px solid #F9D142;
 	border-bottom: 0;
 	border-bottom-left-radius: 0;
