@@ -33,17 +33,9 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="css/footerStyle.css">
 
 
 <style>
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .btn-info {
 	cursor: pointer;
 	position: fixed;
@@ -52,17 +44,13 @@
  	float: right;
 }
 
-
 #top {
 	background-color: #F9D142;
  	position: absolute;
-    
     width: 100%;
     height: 190px;
-   
     z-index: -1;
 }
-
 
 #board_title {
 	margin: auto;
@@ -78,8 +66,6 @@
 #board_title a:hover {
 	color: #F9D142;
 }
-
-
 </style>
 
 </head>
@@ -93,15 +79,11 @@
 
 
 <div id="top"></div>
-<div style="font-family: 'GmarketSansMedium'; font-size: 12px;">
 
 <div id="board_title" class="text-center mb-3" style="margin-top: 60px;">
 	<a id="osm">OSM ESCAPE</a>
 </div>
-<div style="float: right; margin-right: 100px;">
-	
-</div>
-	
+
 <div class="container pt-1">
 	<a id="btn1" href="admin_noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
 	<a id="btn2" href="admin_eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
@@ -113,7 +95,6 @@
 	<div class="container">
 		<div id="admin_mainTab"></div>
 	</div>
-</div>
 </div>
 
 
@@ -160,8 +141,6 @@ $(document).ready(function() {
 	$("#btn1").trigger("click");
 });
 </script>
-
-
 
 </body>
 

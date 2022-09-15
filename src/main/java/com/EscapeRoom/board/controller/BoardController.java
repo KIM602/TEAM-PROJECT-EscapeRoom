@@ -35,23 +35,22 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("/board")
-	public String board() {
-//		int tn = dao.totalNotice();
-//		int te = dao.totalEvent();
-//		model.addAttribute("totalNotice", tn);
-//		model.addAttribute("totalEvent", te);
-//		
-//		ArrayList<NoticeDto> nList = dao.listNotice();
-//		ArrayList<EventDto> eList = dao.listEvent();
-//		model.addAttribute("nboard", nList);
-//		model.addAttribute("eboard", eList);
-		return "board/board";
+	@RequestMapping("/board1")
+	public String board1() {
+		return "board/board1";
+	}
+	@RequestMapping("/board2")
+	public String board2() {
+		return "board/board2";
 	}
 	
-	@RequestMapping("/admin_board")
-	public String admin_board() {
-		return "board/admin_board";
+	@RequestMapping("/admin_board1")
+	public String admin_board1() {
+		return "board/admin_board1";
+	}
+	@RequestMapping("/admin_board2")
+	public String admin_board2() {
+		return "board/admin_board2";
 	}
 	
 	
@@ -60,9 +59,6 @@ public class BoardController {
 		System.out.println("noticeBoard夸没");
 		int tn = dao.totalNotice();
 		model.addAttribute("totalNotice", tn);
-
-//		ArrayList<NoticeDto> nList = dao.listNotice();
-//		model.addAttribute("nboard", nList);
 		return "board/noticeBoard";
 	}
 	@RequestMapping("/admin_noticeBoard")
@@ -70,9 +66,6 @@ public class BoardController {
 		System.out.println("admin_noticeBoard夸没");
 		int tn = dao.totalNotice();
 		model.addAttribute("totalNotice", tn);
-		
-//		ArrayList<NoticeDto> nList = dao.listNotice();
-//		model.addAttribute("nboard", nList);
 		return "board/admin_noticeBoard";
 	}
 	
@@ -81,9 +74,6 @@ public class BoardController {
 		System.out.println("eventBoard夸没");
 		int te = dao.totalEvent();
 		model.addAttribute("totalEvent", te);
-		
-//		ArrayList<EventDto> eList = dao.listEvent();
-//		model.addAttribute("eboard", eList);
 		return "board/eventBoard";
 	}
 	@RequestMapping("/admin_eventBoard")
@@ -91,9 +81,6 @@ public class BoardController {
 		System.out.println("admin_eventBoard夸没");
 		int te = dao.totalEvent();
 		model.addAttribute("totalEvent", te);
-		
-//		ArrayList<EventDto> eList = dao.listEvent();
-//		model.addAttribute("eboard", eList);
 		return "board/admin_eventBoard";
 	}
 	
@@ -113,14 +100,13 @@ public class BoardController {
 	public String writeNotice(HttpServletRequest request, Model model) {
 		System.out.println("writeNotice 夸没");
 		dao.writeNotice(request.getParameter("bTitle"), request.getParameter("bContent"), request.getParameter("bWriter"));
-		return "redirect:admin_board";
+		return "redirect:admin_board1";
 	}
-	
 	@RequestMapping(value = "/writeEvent", produces = "application/text; charset=UTF-8")
 	public String writeEvent(HttpServletRequest request, Model model) {
 		System.out.println("writeEvent 夸没");
 		dao.writeEvent(request.getParameter("bTitle"), request.getParameter("bContent"), request.getParameter("bWriter"));
-		return "redirect:admin_board";
+		return "redirect:admin_board2";
 	}
 	
 	
@@ -204,12 +190,12 @@ public class BoardController {
 	@RequestMapping("/deleteNotice")
 	public String deleteNotice(HttpServletRequest request, Model model) {
 		dao.deleteNotice(Integer.parseInt(request.getParameter("bNum")));
-		return "redirect:admin_board";
+		return "redirect:admin_board1";
 	}
 	@RequestMapping("/deleteEvent")
 	public String deleteEvent(HttpServletRequest request, Model model) {
 		dao.deleteEvent(Integer.parseInt(request.getParameter("bNum")));
-		return "redirect:admin_board";
+		return "redirect:admin_board2";
 	}
 	
 	@RequestMapping("/plistN")

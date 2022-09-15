@@ -25,7 +25,7 @@
                 <li><a href="about">소개</a></li>
            	 	<li><a href="themePage">테마소개</a></li>
             	<li><a href="reservePage">예약확인/취소</a></li>
-          		<li><a href="board">공지사항</a></li>
+          		<li><a href="board1">공지사항</a></li>
             	<li><a href="map">오시는길</a></li>
             </ul>
         </nav>

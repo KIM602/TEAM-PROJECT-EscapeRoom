@@ -79,7 +79,7 @@ $(document).ready(function() {
 			data: $("#nWriteForm").serialize(),
 			success: function(data) {
 				$("#noticeTitle").text('공지사항');
-				$("#admin_noticeTab").html(data);
+				$(".main-page").html(data);
 			},
 			error: function() {
 				alert("에러");
@@ -91,11 +91,11 @@ $(document).ready(function() {
 function back() {
 	if(window.confirm("이동하시겠습니까? 저장되지 않은 내용은 모두 삭제됩니다.")) {
 		$.ajax({
-			url: "admin_board",
+			url: "admin_board1",
 			type: "get",
 			data: "",
 			success: function(d) {
-				$("#admin_mainTab").html(d);
+				$(".main-page").html(d);
 			},
 			error: function() {
 				alert("에러");
