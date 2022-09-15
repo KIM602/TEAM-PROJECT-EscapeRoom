@@ -1,9 +1,13 @@
 package com.EscapeRoom.reserve.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.reserve.dto.ReserveDto2;
+import com.EscapeRoom.reserve.dto.startNoRdate;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -33,14 +37,47 @@ public class ReserveDao implements RdaoInterface {
 			return Rdto;
 		
 	}
-
+	//예약삭제
 	@Override
 	public void deleteReserve(String rId) {
 		sqlSession.delete("deleteReserve",rId);
 		
 	}
-	
-	// 예약삭제
-	
+
+	@Override
+	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2) {
+		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("reserveTop31");
+		return result;
+	}
+	@Override
+	public ArrayList<ReserveDto> ReserverList() {
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reserveList");
+		return result;
+	}
+	@Override
+	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto) {
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverList",rdto);
+		return result;
+	}
+	@Override
+	public ArrayList<ReserveDto> ReservePageList(String pageNo) {
+		int page = Integer.parseInt(pageNo);
+		int startNo = (page - 1) * 10 + 1;
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
+		return result;
+		
+	}
+	@Override
+	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo, String rDate) {
+		int page = Integer.parseInt(pageNo);
+		int startNo = (page - 1) * 10 + 1;
+		
+		startNoRdate snr = new startNoRdate(startNo, rDate);
+		
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverPageList",snr);
+		return result;
+	}
+
+
 	
 }

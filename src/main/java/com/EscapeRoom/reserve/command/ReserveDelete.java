@@ -20,7 +20,7 @@ public class ReserveDelete implements ReserveCommand {
 		ReserveDto rdto = new ReserveDto(rid); // 파라메터 rid값 하나만 있는 생성자 생성
 		
 		rdao.deleteReserve(rid); // 삭제 메소드 실행
-
+	
 	}
 
 }

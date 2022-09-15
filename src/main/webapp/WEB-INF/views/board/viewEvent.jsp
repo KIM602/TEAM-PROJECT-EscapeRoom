@@ -38,10 +38,6 @@
 </head>
 <body>
 
-<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"/>
-</sec:authorize>
 
 <div style="margin-top: 1.5rem;">
 	<div class="container pt-0 pl-5 pr-5 pb-5 mb-3" style="height:450px; border: 1px solid lightgray; border-radius: 10px;">
@@ -57,37 +53,10 @@
 		<h6>${viewEvent.bContent}</h6>
 	</div>
 	
-	<sec:authorize access="isAuthenticated()">
-		<a id="editE" href="editEventForm?bNum=${viewEvent.bNum}" class="btn btn-warning float-right">수정</a>
-	</sec:authorize>
-	
-	<a href="board" class="btn btn-secondary">목록보기</a>
+	<a href="board2" class="btn btn-secondary">목록보기</a>
 </div>
 
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
-<script>
-$(document).ready(function() {
-	/* 게시물 수정 Form ajax */
-	$("a#editE").click(function(e) {
-		e.preventDefault();
-		$.ajax({
-			url: $(e.target).attr("href"),
-			type: "get",
-			data: "",
-			success: function(d) {
-				$("a.tab").addClass('disabled');
-				$("#osm").removeAttr('href');
-				$("#eventTab").html(d);
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	});
-});
-</script>
 
 </body>
 </html>

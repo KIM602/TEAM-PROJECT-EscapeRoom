@@ -5,8 +5,8 @@
 	
 	<mapper namespace="com.EscapeRoom.reserve.dao.ReserveDao">
 		<insert id="insertReserve" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
-			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice)
-			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice})
+			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice,rthemename)
+			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice},#{rThemeName})
 		</insert>	
 		
 		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
@@ -20,5 +20,41 @@
 		<delete id="deleteReserve" parameterType="String">
 			delete from reserve where rid = #{rId}
 		</delete>
+		
+		<select id="reserveTop31" resultType="com.EscapeRoom.reserve.dto.ReserveDto2">
+			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
+		</select>
+		
+		<select id="reserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A)
+			where RNUM < 11
+			]]>
+		</select>
+		
+		<select id="reservePageList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A)
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+			]]>
+		</select>
+		
+		<select id="calendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A where rdate = #{rDate})
+			where  RNUM < 11 
+			]]>
+		</select>
+		
+		<select id="calendarChoiceReserverPageList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			<![CDATA[
+			select * from (select A.*, ROWNUM as RNUM
+			from(select * from reserve order by rdate)A where rdate = #{rDate} )
+			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
+			]]>
+		</select>
 		
 	</mapper>

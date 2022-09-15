@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
 
-<title>소개</title>
+<title>소개1</title>
 
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -30,6 +30,7 @@
 
 
 <link rel="stylesheet" href="css/footerStyle.css">
+<link rel="stylesheet" href="css/menubar.css">
 
 <style>
 @font-face {
@@ -265,7 +266,7 @@ table#price {
 		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 			<div id="about" class="container mb-4">
 				<br/><br/><br/><br/><div class="loader6"></div>
-				<h1><b><span style="text-shadow: 1px 1px 7px lightyellow; color:#292826;">ABOUT </span> GIT3 WORLD</b></h1>
+				<h1><b><span style="text-shadow: 1px 1px 7px lightyellow; color:#292826;">ABOUT </span> OSM WORLD</b></h1>
 				<br/>
 				<h3><b>경험해보고 싶었던 “<span class="text-info">새로운 세상</span>”</b></h3>
 				<div style="font-size: 1.2rem;">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</div>
@@ -403,7 +404,7 @@ table#price {
 						</tr>
 					</tbody>
 					<tfoot class="text-left">
-						<tr><td colspan="3">※ 각종 할인은 <a href="board" class="text-warning"><b>EVENT 게시판</b></a>에서 확인해주세요.</td></tr>
+						<tr><td colspan="3">※ 각종 할인은 <a href="board2" class="text-warning"><b>EVENT 게시판</b></a>에서 확인해주세요.</td></tr>
 					</tfoot>
 				</table>
 			</div>

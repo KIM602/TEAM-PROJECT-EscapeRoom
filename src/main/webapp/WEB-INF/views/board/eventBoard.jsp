@@ -73,19 +73,11 @@
 </head>
 <body>
 
-<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"/>
-</sec:authorize>
 
-<h4 id="eventTitle" style="margin-top: 40px; margin-bottom: 20px;">이벤트</h4>
+<h4 id="eventTitle" style="margin-top: 30px; margin-bottom: 20px;">이벤트</h4>
 
-<div id="eTop">
+<div id="eTop" style="font-size: 14px;">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalEvent}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ e</b> 페이지 )
-	
-	<sec:authorize access="isAuthenticated()">
-		<a id="writeEventForm" href="writeEventForm" class="btn btn-sm btn-info mb-1">글 작성하기</a>
-	</sec:authorize>
 </div>
 
 
@@ -175,26 +167,6 @@ $(document).ready(function() {
 		$("b#tot").text(' / ' + tot);
 	});
 	
-	/* 작성 버튼 ajax */
-	$("#writeEventForm").click(function(e) {
-		e.preventDefault();
-		$.ajax({
-			url: "writeEventForm",
-			type: "get",
-			data: "",
-			success: function(data) {
-				$("#eventTitle").text('이벤트 작성 페이지');
-				$("#eTop").addClass('d-none');
-				$("#paginationE").addClass('d-none');
-				$("a.tab").addClass('disabled');
-				$("#osm").removeAttr('href');
-				$("#eventTab").html(data);
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	});
 		
 	$("#page1btn").on('click', function() {
 		$.ajax({

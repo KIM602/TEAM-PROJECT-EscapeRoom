@@ -1,0 +1,118 @@
+--테마 테이블 생성
+create table theme(
+	"TID" VARCHAR2(20 BYTE) CONSTRAINT pk primary key,
+	"TNAME" VARCHAR2(20 BYTE), 
+	"TGENRE" VARCHAR2(50 BYTE), 
+	"TDIFFICULTY" VARCHAR2(20 BYTE), 
+	"TTIME" VARCHAR2(20 BYTE), 
+	"TPROFILE" VARCHAR2(300 BYTE), 
+	"TPHOTO" VARCHAR2(100 BYTE)
+);
+
+
+create sequence theme_seq nocache;
+
+-- 예약테이블 생성
+create table reserve(
+	rid varchar2(20) primary key, 
+	rphone varchar2(20),
+	rcount number(5),
+	rterms varchar2(20),
+	rDate varchar2(50),
+	rtime varchar2(30),
+	rcheck number(7),
+    tid varchar2(20) unique,
+    rname varchar2(20),
+	rprice number(7),
+	CONSTRAINT FK_tid foreign key(tid) references theme(tid)
+
+);
+
+create sequence reserve_seq nocache;
+
+-- 관리자 테이블 생성
+CREATE TABLE adminUser 
+   (	"PID" VARCHAR2(30 BYTE), 
+	"PPW" VARCHAR2(120 BYTE), 
+	"PNAME" VARCHAR2(50 BYTE), 
+	"POADDRESS" VARCHAR2(100 BYTE), 
+	"PADDRESS" VARCHAR2(100 BYTE), 
+	"PDETAILADDRESS" VARCHAR2(100 BYTE), 
+	"PNUMBER" VARCHAR2(50 BYTE), 
+	"AUTH" VARCHAR2(20 BYTE) DEFAULT 'ROLE_USER'
+   )
+
+
+-- 이벤트 보드 테이블 생성
+create table event_board (
+    bNum number(4) primary key,
+    bTitle varchar2(100),
+    bContent varchar2(500),
+    bWriter varchar2(20),
+    bDate date default sysdate,
+    bHit number(4) default 0,
+    bGroup number(4),
+    bStep number(4),
+    bIndent number(4)
+);
+
+create sequence event_board_seq nocache;
+
+insert into event_board(bNum,bTitle,bContent,bWriter,bHit,bGroup,bStep,bIndent) 
+values(event_board_seq.nextval,'event title test1','test1 content','관리자',0,event_board_seq.currval,0,0);
+
+
+-- 노티스 보드 테이블 생성
+create table notice_board (
+    bNum number(4) primary key,
+    bTitle varchar2(100),
+    bContent varchar2(500),
+    bWriter varchar2(20),
+    bDate date default sysdate,
+    bHit number(4) default 0,
+    bGroup number(4),
+    bStep number(4),
+    bIndent number(4)
+);
+
+
+create sequence notice_board_seq nocache;
+
+
+insert into notice_board(bNum,bTitle,bContent,bWriter,bHit,bGroup,bStep,bIndent) 
+values(notice_board_seq.nextval,'notice title test1','test1 content','관리자',0,notice_board_seq.currval,0,0);
+ 
+
+-- 테마관련 DB 로우
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('3','DONE','범죄, 잠입, 액션','3','75분','우리는 런던 뒷골목을 누비는 Alex형제들.
+우연히 찰리 전파사에
+굉장히 큰 돈이 숨겨져 있다는
+소문을 들었다.
+오늘은 전파사의 휴무일.
+털자!','1660286703830done.jpg');
+--행 2
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('4','제로호텔L','스릴러','4','60분','나는 국민여배우 톱스타 홍설아와 비밀연애 중이다.','1660286744679zerohotel.jpg');
+--행 3
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('5','아이엠','추리, 스릴러','4','75분','내이름은 에론 머스크.
+어릴 때부터 내꿈은 슈퍼히어로였다.','1660286859696iam.jpg');
+--행 4
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('6','어느 겨울밤2','판타지','3','60분','나는 열살 클라라에요.
+크리스마스가 다가오는 지금
+나는 매일밤 왕자님 인형을
+갖게 해달라고 기도하면서 잠들어요.
+그런데 벌서 다섯밤째 자꾸 무서운 꿈을 꿔요.','1660286910610winternight.jpg');
+--행 5
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('7','콜러','공포','5','75분','나는 기억을 잃었다.','1660286974644caller.jpg');
+--행 6
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('1','헐','코믹','1','90분','뭐지? 끼이이익----!
+처음 듣는 날카로운 소리와 함께
+내 몸은 하늘로 붕 뜬다..','1660284804633her.jpg');
+--행 7
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('2','포레스트','공포/도전','1','75분','''Show down''초대장이 도착했습니다.
+
+<총 상금 50억의 호러퀴즈쇼 ''Show down''>
+당신은 이겨낼 수 있습니까?','16612357076921660286537232forest.jpg');
+--행 8
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('8','나비효과','SF/드라마','3','75분','다시 그때로 돌아갈 수만 있다면 얼마나 좋을까..?','1660287003009butterflyeffect.jpg');
+--행 9
+INSERT INTO THEME (TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO) VALUES ('9','링','공포','3','75분','내 조카 유키는 자살할 아이가 아닌데...','1660287023495ring.jpg');

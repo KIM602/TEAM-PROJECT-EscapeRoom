@@ -8,10 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.EscapeRoom.reserve.command.CalendarChoiceReserverList;
+import com.EscapeRoom.reserve.command.CalendarChoiceReserverPageList;
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.command.ReserveDelete;
 import com.EscapeRoom.reserve.command.ReserveFind;
+import com.EscapeRoom.reserve.command.ReservePageList;
+import com.EscapeRoom.reserve.command.ReserverList;
+import com.EscapeRoom.reserve.command.Test123132;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 
@@ -158,7 +163,7 @@ public class ReserveController {
 		}
 		
 		
-		// 예약자 삭제
+		// 예약자가 예약 삭제
 		@RequestMapping("/reserveDelete")
 		public String reserveDelete(HttpServletRequest request,Model model) {
 			System.out.println("reserveDelete");
@@ -167,5 +172,74 @@ public class ReserveController {
 			rcom.execute(request, model);
 			return "reserve/reserveDeleteMessagePage";
 		}
-
+		
+		
+		// 테스트
+		@RequestMapping("/test")
+		public String test(HttpServletRequest request,Model model) {
+			System.out.println("test");
+			tcom = new Test123132();
+			tcom.execute(request, model);
+			
+			return "reserve/test";
+		}
+		
+		
+		// 관리자 페이지 예약자 리스트 뽑기
+		@RequestMapping("/ReserverList")
+		public String ReserverList(HttpServletRequest request,Model model) {
+			System.out.println("ReserverList");
+			rcom = new ReserverList();
+			rcom.execute(request, model);
+			
+			return "admin/reserver/ReserverCheck";
+		}
+		// 관리자 페이지에서 테마 삭제
+		@RequestMapping("AdminReserveDelete")
+		public String AdminReserveDelete(HttpServletRequest request,Model model) {
+			System.out.println("adminReserveDelete");
+			rcom = new ReserveDelete();
+			rcom.execute(request, model);
+			
+			return "redirect:/main";
+		}
+		
+		// 관리자 페이지 페이지 리스트 10개 단위로 추려서 보기
+		@RequestMapping("ReservePageList")
+		public String ReservePageList(HttpServletRequest request,Model model) {
+			System.out.println("ReservePageList");
+			System.out.println(request.getParameter("pageNo"));
+			
+			rcom = new ReservePageList();
+			rcom.execute(request, model);
+			
+			return "admin/reserver/ReservePageList";
+		}
+		
+		// 관리자 페이지 달력으로 날짜 선택하여 예약자 찾기
+		@RequestMapping("/CalendarChoiceReserverList")
+		public String CalendarReserverList(HttpServletRequest request, Model model) {
+			
+			System.out.println("ymd값" + request.getParameter("ymd"));
+			
+			rcom = new CalendarChoiceReserverList();
+			rcom.execute(request, model);
+	
+			return "admin/reserver/calendarChoiceReserveList";
+		}
+		
+		// 관리자 페이지 달력으로 날짜 선택하여 페이지 리스트 10개 단위로 추려서 보기
+		@RequestMapping("/calendarChoiceReserverPageList")
+		public String CalendarChoiceReserverPageList(HttpServletRequest request, Model model) {
+			System.out.println("calendarChoiceReserverPageList");
+			System.out.println(request.getParameter("pageNo"));
+			System.out.println("리퀘스트에서 rDate값은 ? " + request.getParameter("rDate"));
+			rcom = new CalendarChoiceReserverPageList();
+			rcom.execute(request, model);
+			
+			return "admin/reserver/calendarChoiceReserverPageList";
+		}
+		
+		
+		
 }

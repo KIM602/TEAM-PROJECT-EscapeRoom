@@ -72,22 +72,11 @@
 
 </head>
 <body>
+<h4 id="noticeTitle" style="margin-top: 30px; margin-bottom: 20px;">공지사항</h4>
 
-<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"/>
-</sec:authorize>
-
-<h4 id="noticeTitle" style="margin-top: 40px; margin-bottom: 20px;">공지사항</h4>
-
-<div id="nTop">
+<div id="nTop" style="font-size: 14px;">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalNotice}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )
-	
-	<sec:authorize access="isAuthenticated()">
-		<a id="writeNoticeForm" href="writeNoticeForm" class="btn btn-sm btn-info mb-5">글 작성하기</a>
-	</sec:authorize>
 </div>
-
 
 <div id="noticeTab"></div>
 <button type="button" id="page1btn" hidden=""></button>
@@ -173,27 +162,6 @@ $(document).ready(function() {
 		// 전체 페이지 개수
 		var tot = $("#paginationN").twbsPagination("getTotalPages");
 		$("b#tot").text(' / ' + tot);
-	});
-	
-	/* 작성 버튼 ajax */
-	$("#writeNoticeForm").click(function(e) {
-		e.preventDefault();
-		$.ajax({
-			url: "writeNoticeForm",
-			type: "get",
-			data: "",
-			success: function(data) {
-				$("#noticeTitle").text('공지사항 작성 페이지');
-				$("#nTop").addClass('d-none');
-				$("#paginationN").addClass('d-none');
-				$("a.tab").addClass('disabled');
-				$("#osm").removeAttr('href');
-				$("#noticeTab").html(data);
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
 	});
 	
 	
