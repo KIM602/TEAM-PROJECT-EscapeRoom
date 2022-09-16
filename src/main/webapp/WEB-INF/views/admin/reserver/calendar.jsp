@@ -19,8 +19,9 @@
 <title>JSP bean 사용</title>
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!--jquery -->
+<!--jquery 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+-->
 <!--propper jquery -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!--latest javascript -->
@@ -63,9 +64,9 @@
 
 
 <script type="text/javascript">
-var absolutetoday = new Date();
+
 var today = new Date();
-var ymd = null
+
 function buildCalendar() {
 	var row = null
 	var cnt = 0;
@@ -132,7 +133,7 @@ function buildCalendar() {
 			
 			clickedDate = clickedDate >= 10 ? clickedDate : "0" + clickedDate;
 			clickedMonth = clickedMonth >= 10 ? clickedMonth : "0" + clickedMonth;
-			clickedYMD = clickedYear + "_" + clickedMonth + "_" + clickedDate;
+			clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
 		
 			console.log("clickedDate",clickedDate);
 			console.log("clickedMonth",clickedMonth);
@@ -143,12 +144,13 @@ function buildCalendar() {
 			ymd = clickedYMD;
 			
 			$.ajax({
-				url : "themeNameList",
+				url : "CalendarChoiceReserverList",
 				type : "get",
 				data : {ymd:ymd},
 				contentType : "application/json; charset=utf-8;",
 				success: function(data){
-					$("#indexListAjax").html(data);
+					$("#ddListAjax").html(data);
+					$("#ajaxlist").text(ymd+" 별 내역");
 					
 				},
 				error:function(data){
@@ -202,9 +204,14 @@ function prevCalendar() {
 
 
 </script>
+<script type="text/javascript">
+	document.onload=buildCalendar();
+</script>
 </head>
 
-<body onload="buildCalendar()">
+
+
+<body>
 <table id="calendar">
 	<tr>
 		<td><label onclick="prevCalendar()"> ◀ </label></td>
@@ -220,11 +227,8 @@ function prevCalendar() {
 		<td>금</td>
 		<td><font color ="skyblue">토</font></td>
 	</tr>
-		
-		
+			
 </table>
-
-
 
 </body>
 </html>

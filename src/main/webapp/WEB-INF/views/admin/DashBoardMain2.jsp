@@ -49,7 +49,7 @@
             <header>
                 <ul class="header-box">
                     <li class="nav-list">
-                        <a id="ReserverCheck" href="ReserverCheck">예약자 확인</a>
+                        <a id="ReserverList" href="ReserverList">예약자 확인</a>
                     </li>
                     <li class="nav-list">
                         홈페이지 관리
@@ -146,10 +146,10 @@ $(document).ready(function() {
 		});
 	});
 		
-	$("#ReserverCheck").click(function name(e) {
+	$("#ReserverList").click(function name(e) {
 		e.preventDefault();
 		$.ajax({
-			url : "ReserverCheck",
+			url : "ReserverList",
 			type: "get",
 			data : "",
 			success: function(d) {

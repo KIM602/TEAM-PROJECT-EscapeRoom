@@ -13,7 +13,7 @@ public class ReserveDto {
 	private int rPrice;
 	private String rThemeName;
 	
-	
+
 	public ReserveDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -37,9 +37,6 @@ public class ReserveDto {
 		this.rPrice = rPrice;
 		this.rThemeName = rThemeName;
 	}
-
-
-
 
 	public ReserveDto(String rId) {
 		super();

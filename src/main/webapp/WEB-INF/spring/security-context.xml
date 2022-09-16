@@ -37,6 +37,9 @@
 		<intercept-url pattern="/board" access="permitAll" />
 		<intercept-url pattern="/noticeBoard" access="permitAll" />
 		<intercept-url pattern="/eventBoard" access="permitAll" />
+		<intercept-url pattern="/admin_board" access="isAuthenticated()" />
+		<intercept-url pattern="/admin_noticeBoard" access="isAuthenticated()" />
+		<intercept-url pattern="/admin_eventBoard" access="isAuthenticated()" />
 		
 		<intercept-url pattern="/reservePage" access="permitAll" /> <!-- 가입창 이동 요청 -->
 	

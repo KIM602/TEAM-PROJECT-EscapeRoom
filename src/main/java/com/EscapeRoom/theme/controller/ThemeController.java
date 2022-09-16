@@ -51,6 +51,9 @@ public class ThemeController {
 	}
 	
 	//개인 폴더 주소에 맞게 변경
+	//private String path = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
+	//private String path1 = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";
+	
 	private String path ="C:/Users/kyk92/git/EscapeRoom/src/main/webapp/resources/upimage/";
 	private String path1 = "C:/KYK/Util/apache-tomcat-9.0.64-windows-x64/apache-tomcat-9.0.64/wtpwebapps/EscapeRoom_security/resources/upimage/";
 	
