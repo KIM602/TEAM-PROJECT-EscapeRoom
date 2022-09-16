@@ -49,7 +49,7 @@
             <header>
                 <ul class="header-box">
                     <li class="nav-list">
-                        <a href="#">예약자 확인</a>
+                        <a id="ReserverList" href="ReserverList">예약자 확인</a>
                     </li>
                     <li class="nav-list">
                         홈페이지 관리

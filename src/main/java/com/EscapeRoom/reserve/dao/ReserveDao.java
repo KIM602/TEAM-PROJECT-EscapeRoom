@@ -88,4 +88,14 @@ public class ReserveDao implements RdaoInterface {
 		ArrayList<ReserveDto3> result = (ArrayList)sqlSession.selectList("Top3");
 		return result;
 	}
+	@Override
+	public int ReserveListTotal() {
+		int result = sqlSession.selectOne("ReserveListTotal");
+		return result;
+	}
+	@Override
+	public int CalendarChoiceReserverListTotal(String ymd) {
+		int result = sqlSession.selectOne("CalendarChoiceReserverListTotal",ymd);
+		return result;
+	}
 }

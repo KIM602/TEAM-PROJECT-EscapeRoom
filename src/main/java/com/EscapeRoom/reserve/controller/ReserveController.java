@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverList;
+import com.EscapeRoom.reserve.command.CalendarChoiceReserverListTotal;
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverPageList;
 import com.EscapeRoom.reserve.command.InsertReserve;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.command.ReserveDelete;
 import com.EscapeRoom.reserve.command.ReserveFind;
+import com.EscapeRoom.reserve.command.ReserveListTotal;
 import com.EscapeRoom.reserve.command.ReservePageList;
 import com.EscapeRoom.reserve.command.ReserverList;
 import com.EscapeRoom.reserve.command.Test123132;
@@ -191,6 +193,8 @@ public class ReserveController {
 			System.out.println("ReserverList");
 			rcom = new ReserverList();
 			rcom.execute(request, model);
+			rcom = new ReserveListTotal();
+			rcom.execute(request, model);
 			
 			return "admin/reserver/ReserverCheck";
 		}
@@ -223,6 +227,9 @@ public class ReserveController {
 			System.out.println("ymd°ª" + request.getParameter("ymd"));
 			
 			rcom = new CalendarChoiceReserverList();
+			rcom.execute(request, model);
+			
+			rcom = new CalendarChoiceReserverListTotal();
 			rcom.execute(request, model);
 	
 			return "admin/reserver/calendarChoiceReserveList";
