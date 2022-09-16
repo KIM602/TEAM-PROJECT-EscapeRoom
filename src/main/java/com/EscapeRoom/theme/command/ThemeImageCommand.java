@@ -22,7 +22,6 @@ public class ThemeImageCommand implements ThemeCommand {
 		System.out.println("execute tdto´Â"+tdto);
 		model.addAttribute("theme",tdto);
 		
-
 	}
 
 }
