@@ -79,7 +79,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  height: 80%;
+  height: 75%;
   display: block;
   flex-direction: column;
   align-items: center;
@@ -128,30 +128,44 @@ body {
   justify-content: space-between;
 }
 
-img {
-	width: 300px;
-}
-
 ul,li {
 	list-style: none;
 }
+
+.top3img {
+	display: flex;
+}
+
+.top3img > li > img {
+	width: 300px;
+	margin: 30px;
+}
+
+.top3name {
+	display: flex;
+	justify-content: space-around;
+}
+
+.name {
+	width: 30%;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
 	<div class="modal">
-	  <p class="message">TOP 3</p>
+	  <p class="message text-center">TOP 3</p>
 	  		<div>
-	  			<ul class="d-flex">
-		  			<li><img alt="" src="upimage/${theme1.tphoto}" ></li>
-		  			<li><img alt="" src="upimage/${theme2.tphoto}" ></li>
-		  			<li><img alt="" src="upimage/${theme3.tphoto}" ></li>
+	  			<ul class="top3img">
+		  			<li><img src="upimage/${theme1.tphoto}" ></li>
+		  			<li><img src="upimage/${theme2.tphoto}" ></li>
+		  			<li><img src="upimage/${theme3.tphoto}" ></li>
 	  			</ul>
 	  		</div>
 	  			<br />
-	  			<div class="d-flex">
-	  				<c:forEach items="${rlist}" var="dto">
-	  					<p>${dto.rthemename}<p>
-					</c:forEach>
+	  			<div class="top3name">
+	  				<c:forEach items="${rlist}" var="dto"><p class="name">${dto.rthemename}</p></c:forEach>
 				</div>	
 	</div>
 </body>
