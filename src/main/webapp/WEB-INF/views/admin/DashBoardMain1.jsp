@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <link rel="stylesheet" href="css/DashBoardMain1.css">
+
 </head>
 <body>
 
@@ -48,6 +49,12 @@
 <div class="board-wrap">
 	<div class="header-wrap">
 		<header>
+			<sec:authorize access="isAuthenticated()">
+				<div class="mt-3 ml-4" style="font-size: 22px; float: left;">
+					<b style="color: #F9D142">${user_id}</b> 님 환영합니다.
+					<a href="AdminLogoutView" class="btn btn-warning ml-4">로그아웃</a>
+				</div>
+			</sec:authorize>
 			<ul class="header-box">
 				<li class="nav-list">
 					<a href="#">예약자 확인</a>
@@ -120,13 +127,8 @@
 		<article class="main-page">
 			<h3>DashBoard 메인페이지 ${user_id}</h3>
 		</article>
-	</section>
+	</section>	
         
-	<!--
-	<sec:authorize access="isAuthenticated()">
-		<a href="AdminLogoutView">로그아웃</a>
-	</sec:authorize>
-	-->
 </div>
 
 <script src="js/DashBoardMain.js"></script>

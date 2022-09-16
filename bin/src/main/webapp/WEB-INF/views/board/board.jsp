@@ -44,7 +44,8 @@
     font-style: normal;
 }
 
-.btn-info {
+.btn-write {
+	background-color: #008080;
 	cursor: pointer;
 	position: fixed;
 	top: 29%;
