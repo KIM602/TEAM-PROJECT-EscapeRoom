@@ -37,7 +37,15 @@
 
 </head>
 <body>
-<h3>접근 에러페이지</h3>
-<a href="AdminLoginView" class="btn btn-primary">Login으로 가기~</a>
+<h3 class="text-center">접근 에러</h3>
+<div class="container">
+	<sec:authorize access="isAnonymous()">
+		<a href="AdminLoginView" class="btn btn-primary">Login으로 가기</a>
+	</sec:authorize>
+	<sec:authorize access="isAuthenticated()">
+		<a href="DashBoardMain4" class="btn btn-info">대시보드로 돌아가기</a>
+	</sec:authorize>
+</div>
+
 </body>
 </html>
