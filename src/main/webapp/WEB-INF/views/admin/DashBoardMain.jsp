@@ -49,7 +49,7 @@
             <header>
                 <ul class="header-box">
                     <li class="nav-list">
-                        <a href="#">예약자 확인</a>
+                        <a id="ReserverList" href="ReserverList">예약자 확인</a>
                     </li>
                     <li class="nav-list">
                         홈페이지 관리
@@ -177,6 +177,22 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	// 예약자 목록 리스트
+	$("#ReserverList").click(function name(e) {
+		e.preventDefault();
+		$.ajax({
+			url : "ReserverList",
+			type: "get",
+			data : "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		})
+	})
 	
 });
 </script>

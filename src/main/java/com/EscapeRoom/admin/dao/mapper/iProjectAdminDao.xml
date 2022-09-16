@@ -15,4 +15,20 @@
 		SELECT * FROM ADMINUSER WHERE PID = #{pid}
 	</select>
 	
+	<insert id="mainInsert" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
+		INSERT INTO MAINIMG(LIMAGE,MIMAGENORMAL,MIMAGEEVENT)
+		VALUES(#{lImage},#{mImageNormal},#{mImageEvent})
+	</insert>
+
+	<select id="MainList" resultType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
+		SELECT * FROM MAINIMG
+	</select>
+	
+	<update id="mainModify" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
+		UPDATE MAINIMG SET
+		LIMAGE = #{lImage},
+		MIMAGENORMAL = #{mImageNormal},
+		MIMAGEEVENT = #{mImageEvent}
+	</update>
+	
 </mapper>
