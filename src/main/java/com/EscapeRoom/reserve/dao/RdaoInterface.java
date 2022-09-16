@@ -14,8 +14,8 @@ public interface RdaoInterface {
 	public void deleteReserve(String rId);
 	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2);
 	public ArrayList<ReserveDto> ReserverList();
-	ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
-	ArrayList<ReserveDto> ReservePageList(String pageNo);
-	ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
+	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
+	public ArrayList<ReserveDto> ReservePageList(String pageNo);
+	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
 	
 }
