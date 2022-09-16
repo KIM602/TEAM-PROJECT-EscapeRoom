@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ page session="false" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
@@ -57,7 +55,7 @@
 			</sec:authorize>
 			<ul class="header-box">
 				<li class="nav-list">
-					<a href="#">예약자 확인</a>
+					<a id="ReserverList" href="ReserverList">예약자 확인</a>
 				</li>
 				<li class="nav-list">
 					홈페이지 관리
@@ -77,13 +75,10 @@
 							</ul>
 						</li>
 						<li class="nav-sublist">
-							&#8250; 회사소개 수정
+							&#8250; 월별 예약/매출
 							<ul class="nav-line-style">
 								<li class="nav-lastlist">
-									<a href="#">회사소개 수정</a>
-								</li>
-								<li class="nav-lastlist">
-									<a href="#">주의사항 수정</a>
+									<a id="MonthTotal" href="MonthTotal">월별 예약/매출</a>
 								</li>
 							</ul>
 						</li>
@@ -148,6 +143,36 @@ $(document).ready(function() {
 			}
 		});
 	});	
+	
+	$("#ReserverList").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : "ReserverList",
+			type: "get",
+			data : "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+	$("#MonthTotal").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : "MonthTotal",
+			type: "get",
+			data : "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
 });
 </script>
 
