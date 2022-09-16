@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.reserve.dto.ReserveDto2;
-import com.EscapeRoom.reserve.dto.ReserveDto3;
+import com.EscapeRoom.theme.dto.ReserveDto3;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -56,7 +56,6 @@ public class ReserveDao implements RdaoInterface {
 		return result;
 	}
 	
-	//top3
 	@Override
 	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto) {
 		ArrayList<ReserveDto3> result = (ArrayList)sqlSession.selectList("Top3");

@@ -29,4 +29,11 @@
 			select * from reserve
 		</select>
 		
+		<select id="Top3" resultType="com.EscapeRoom.reserve.dto.ReserveDto3">
+			<![CDATA[
+					SELECT * FROM (SELECT RTHEMENAME, TID, COUNT(*) AS cnt
+					FROM RESERVE GROUP BY RTHEMENAME, TID ORDER BY cnt DESC)
+					WHERE ROWNUM  <=  3
+			]]>
+		</select>
 	</mapper>
