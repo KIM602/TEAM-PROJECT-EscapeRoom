@@ -16,10 +16,14 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2);
 	public ArrayList<ReserveDto> ReserverList();
 
-	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto);
+	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
+	public ArrayList<ReserveDto> ReservePageList(String pageNo);
+	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
 
-	ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
-	ArrayList<ReserveDto> ReservePageList(String pageNo);
-	ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
+
+	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto);
+	public int ReserveListTotal();
+	public int CalendarChoiceReserverListTotal(String ymd);
+
 	
 }
