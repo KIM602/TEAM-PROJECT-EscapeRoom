@@ -79,7 +79,8 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  display: inline-flex;
+  height: 75%;
+  display: block;
   flex-direction: column;
   align-items: center;
   padding: 1.6rem 3rem;
@@ -88,11 +89,13 @@ body {
   background: white;
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .message {
   font-size:1.1rem;
   margin-bottom: 1.6rem;
   margin-top: 0;
 }
+
 .btn {
   color:inherit;
   font-family:inherit;
@@ -124,23 +127,46 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+ul,li {
+	list-style: none;
+}
+
+.top3img {
+	display: flex;
+}
+
+.top3img > li > img {
+	width: 300px;
+	margin: 30px;
+}
+
+.top3name {
+	display: flex;
+	justify-content: space-around;
+}
+
+.name {
+	width: 30%;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
-<div class="modal">
-  <p class="message">TOP 3 <br />
-  			<c:forEach items="${rlist}" var="dto">
-				<label class="hover2">
-					<span>rthemename 값은 ${dto.rthemename}</span><br/>
-					<span>tid 값은 ${dto.tid}</span><br/>
-					<span>cnt 값은 ${dto.cnt}</span>
-				</label>
-			</c:forEach>
-  </p>
-  <div class="options">
-    <button class="btn">Yes</button>
-    <button class="btn">No</button>
-  </div>
-</div>
+	<div class="modal">
+	  <p class="message text-center">TOP 3</p>
+	  		<div>
+	  			<ul class="top3img">
+		  			<li><img src="upimage/${theme1.tphoto}" ></li>
+		  			<li><img src="upimage/${theme2.tphoto}" ></li>
+		  			<li><img src="upimage/${theme3.tphoto}" ></li>
+	  			</ul>
+	  		</div>
+	  			<br />
+	  			<div class="top3name">
+	  				<c:forEach items="${rlist}" var="dto"><p class="name">${dto.rthemename}</p></c:forEach>
+				</div>	
+	</div>
 </body>
 </html>

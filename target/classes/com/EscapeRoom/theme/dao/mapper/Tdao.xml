@@ -49,13 +49,12 @@
 		<select id="reserveTop3" resultType="int">
 			select count(*) as cnt from reserve group by tid order by count(*) desc;
 		</select>
+		
 		<select id="reserveTop3133" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			select tid from reserve group by tid order by count(*) desc;
 		</select>
-
-
-		<!-- reserve용도용1-->
 		
-		
-		
+		<select id="top3Image" resultType="com.EscapeRoom.theme.dto.ThemeDto">
+			select * from theme where tid = #{tid}
+		</select>
 	</mapper>

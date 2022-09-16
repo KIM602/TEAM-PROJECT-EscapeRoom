@@ -68,8 +68,7 @@ public class ThemeDao implements TdaoInterface {
 		System.out.println(res);
 	}
 	
-	
-	
+	/* reserve */
 	// 테마네임 리스트 reserve용도
 	@Override
 	public ArrayList<ThemeDto> themeNameList() {
@@ -82,6 +81,14 @@ public class ThemeDao implements TdaoInterface {
 	public ThemeDto themeImage(String tId) {
 		System.out.println("테마tId값은?"+tId);
 		ThemeDto dto = sqlSession.selectOne("themeImage",tId);
+		return dto;
+	}
+	
+	@Override
+	//예약 top3 포스터 이미지 불러오기
+	public ThemeDto top3Image(String tid) {
+		System.out.println("테마id값" + tid);
+		ThemeDto dto = sqlSession.selectOne("top3Image",tid);
 		return dto;
 	}
 }

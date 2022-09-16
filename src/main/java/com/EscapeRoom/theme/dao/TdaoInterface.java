@@ -15,7 +15,6 @@ public interface TdaoInterface {
 	// reserve용도용1
 	public ArrayList<ThemeDto> themeNameList();
 	public ThemeDto themeImage(String tId);
-	// reserve용도용2
-	
-	
+	// top3
+	public ThemeDto top3Image(String tid);
 }
