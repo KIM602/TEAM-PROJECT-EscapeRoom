@@ -33,36 +33,24 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="css/footerStyle.css">
 
+<link rel="stylesheet" href="css/menubar.css">
 
 <style>
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-.btn-info {
-	cursor: pointer;
-	position: fixed;
-	top: 29%;
-	right: 22%;
- 	float: right;
-}
-
-
 #top {
 	background-color: #F9D142;
  	position: absolute;
-    
     width: 100%;
     height: 216px;
-   
     z-index: -1;
 }
-
 
 #board_title {
 	margin: auto;
@@ -96,27 +84,25 @@
 
 
 <div id="top"></div>
-<div style="font-family: 'GmarketSansMedium'; font-size: 12px;">
 
-<br/><br/><br/><br/>
-<div id="board_title" class="text-center mb-3">
-	<a id="osm" href="index">OSM ESCAPE</a>
-</div><br/>
-
-<div class="container">
-	<a id="btn1" href="noticeBoard" class="btn tab tabOn"><span style="font-size: 12px;">NOTICE</span></a>
-	<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 12px;">EVENT</span></a>
+<div style="font-family: 'NanumSquareRound'; padding-top: 70px;">
+	<div id="board_title" class="text-center" style="margin-bottom: 34px;">
+		<a id="osm" href="index">OSM ESCAPE</a>
+	</div>
 	
 	<div class="container">
-		<div id="mainTab"></div>
+		<a id="btn1" href="noticeBoard" class="btn tab tabOn"><span style="font-size: 14px;">NOTICE</span></a>
+		<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 14px;">EVENT</span></a>
+		
+		<div class="container">
+			<div id="mainTab"></div>
+		</div>
 	</div>
 </div>
-</div>
 
 
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<script src="js/footerJs.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -161,10 +147,10 @@ $(document).ready(function() {
 
 
 </body>
-
+	
 <style>
 .tab {
-	margin: -2.4px;
+	margin: 0 -2.4px;
 	border: 1px solid #F9D142;
 	border-bottom: 0;
 	border-bottom-left-radius: 0;

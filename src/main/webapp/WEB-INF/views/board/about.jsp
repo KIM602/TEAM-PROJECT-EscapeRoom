@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
 
-<title>소개</title>
+<title>소개1</title>
 
 <!--bootstrap-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -30,6 +30,7 @@
 
 
 <link rel="stylesheet" href="css/footerStyle.css">
+<link rel="stylesheet" href="css/menubar.css">
 
 <style>
 @font-face {

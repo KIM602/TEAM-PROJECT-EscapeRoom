@@ -46,7 +46,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${ReserveListContent}" var="dto" varStatus="status">
+			<c:forEach items="${CalendarChoiceReserverPageList}" var="dto" varStatus="status">
 			<tr>
 				<td class="bid">${status.count}</td>
 				<td>${dto.rName}</td>
