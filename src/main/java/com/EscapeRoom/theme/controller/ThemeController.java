@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.EscapeRoom.reserve.command.ReserveCommand;
+import com.EscapeRoom.reserve.command.Top3Command;
 import com.EscapeRoom.reserve.dao.ReserveDao;
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeContentCommand;
@@ -22,6 +23,7 @@ import com.EscapeRoom.theme.command.ThemeEditCommand;
 import com.EscapeRoom.theme.command.ThemeInsertCommand;
 import com.EscapeRoom.theme.command.ThemeListCommand;
 import com.EscapeRoom.theme.command.ThemeListPageCommand;
+import com.EscapeRoom.theme.command.Top3ImageCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
 import com.EscapeRoom.theme.dto.ThemeDto;
 import com.EscapeRoom.util.Constant;
@@ -65,6 +67,17 @@ public class ThemeController {
 		com = new ThemeListCommand();
 		com.execute(request, model);
 		return "theme/themePage";
+	}
+	
+	//top3
+	@RequestMapping("/top3")
+	public String top3(HttpServletRequest request, Model model) {
+		System.out.println("top3ø‰√ª");
+		rcom = new Top3Command();
+		rcom.execute(request, model);
+		com = new Top3ImageCommand();
+		com.execute(request, model);
+		return "theme/top3";
 	}
 	
 	/* Admin page */
