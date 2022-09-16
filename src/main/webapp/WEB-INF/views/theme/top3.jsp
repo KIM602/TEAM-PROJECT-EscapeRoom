@@ -79,7 +79,8 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  display: inline-flex;
+  height: 80%;
+  display: block;
   flex-direction: column;
   align-items: center;
   padding: 1.6rem 3rem;
@@ -88,11 +89,13 @@ body {
   background: white;
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .message {
   font-size:1.1rem;
   margin-bottom: 1.6rem;
   margin-top: 0;
 }
+
 .btn {
   color:inherit;
   font-family:inherit;
@@ -124,23 +127,32 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+img {
+	width: 300px;
+}
+
+ul,li {
+	list-style: none;
+}
 </style>
 </head>
 <body>
-<div class="modal">
-  <p class="message">TOP 3 <br />
-  			<c:forEach items="${rlist}" var="dto">
-				<label class="hover2">
-					<span>rthemename 값은 ${dto.rthemename}</span><br/>
-					<span>tid 값은 ${dto.tid}</span><br/>
-					<span>cnt 값은 ${dto.cnt}</span>
-				</label>
-			</c:forEach>
-  </p>
-  <div class="options">
-    <button class="btn">Yes</button>
-    <button class="btn">No</button>
-  </div>
-</div>
+	<div class="modal">
+	  <p class="message">TOP 3</p>
+	  		<div>
+	  			<ul class="d-flex">
+		  			<li><img alt="" src="upimage/${theme1.tphoto}" ></li>
+		  			<li><img alt="" src="upimage/${theme2.tphoto}" ></li>
+		  			<li><img alt="" src="upimage/${theme3.tphoto}" ></li>
+	  			</ul>
+	  		</div>
+	  			<br />
+	  			<div class="d-flex">
+	  				<c:forEach items="${rlist}" var="dto">
+	  					<p>${dto.rthemename}<p>
+					</c:forEach>
+				</div>	
+	</div>
 </body>
 </html>
