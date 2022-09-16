@@ -73,19 +73,10 @@
 </head>
 <body>
 
-<!-- 로그인 id반환. var값인 user_id를 EL로 사용 -->
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.username" var="user_id"/>
-</sec:authorize>
-
 <h4 id="eventTitle" style="margin-top: 40px; margin-bottom: 20px;">이벤트</h4>
 
 <div id="eTop">
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalEvent}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ e</b> 페이지 )
-	
-	<sec:authorize access="isAuthenticated()">
-		<a id="writeEventForm" href="writeEventForm" class="btn btn-sm btn-info mb-1">글 작성하기</a>
-	</sec:authorize>
 </div>
 
 
@@ -95,12 +86,9 @@
 
 <!-- 페이지 표시 -->
 <nav aria-label="Page navigation" class="container" style="position: fixed; float: revert; bottom: 8%;"> 
-	<ul class="pagination justify-content-center" id="paginationE" style="margin:20px 0;"></ul>
+	<ul class="pagination justify-content-center" id="paginationE"></ul>
 </nav>
 
-
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 
 <script>
 $(document).ready(function() {

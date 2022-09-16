@@ -44,25 +44,13 @@
     font-style: normal;
 }
 
-.btn-info {
-	cursor: pointer;
-	position: fixed;
-	top: 29%;
-	right: 22%;
- 	float: right;
-}
-
-
 #top {
 	background-color: #F9D142;
  	position: absolute;
-    
     width: 100%;
     height: 216px;
-   
     z-index: -1;
 }
-
 
 #board_title {
 	margin: auto;

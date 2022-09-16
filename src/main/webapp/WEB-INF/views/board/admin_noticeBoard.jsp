@@ -83,7 +83,7 @@
 	<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${totalNotice}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )
 	
 	<sec:authorize access="isAuthenticated()">
-		<a id="writeNoticeForm" href="writeNoticeForm" class="btn btn-info">글 작성하기</a>
+		<a id="writeNoticeForm" href="writeNoticeForm" class="btn btn-write">글 작성하기</a>
 	</sec:authorize>
 </div>
 
@@ -94,7 +94,7 @@
 
 <!-- 페이지 표시 -->
 <nav aria-label="Page navigation" class="container" style="position: fixed; float: revert; bottom: 8%;">
-	<ul class="pagination justify-content-center" id="paginationN" style="margin:20px;"></ul>
+	<ul class="pagination justify-content-center" id="paginationN"></ul>
 </nav>
 
 
