@@ -36,7 +36,7 @@
 <body>
 	
 	
-	
+<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${CalendarChoiceReserverListTotal}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )	
 <div id="indexListAjax">
 		<table id="searchTable" class="table table-bordered table-hover">
 			<thead>
@@ -126,7 +126,7 @@ $(function() {
 					type : "get",
 					data : "",
 					success : function(data) {
-						//$("b#cur").text(cur);
+						$("b#cur").text(cur);
 						
 						$("#indexListAjax").html(data);
 					},
@@ -142,8 +142,8 @@ $(function() {
 	});
 	
 	// 전체 페이지 개수
-	//var tot = $("#paginationE").twbsPagination("getTotalPages");
-	//$("b#tot").text(' / ' + tot);
+	var tot = Math.ceil(${CalendarChoiceReserverListTotal}/10);
+	$("b#tot").text(' / ' + tot);
 });
 
 

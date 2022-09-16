@@ -19,6 +19,13 @@ public class Top3Command implements ReserveCommand {
 		ReserveDto3 dto = new ReserveDto3("null","null","null");
 		
 		ArrayList<ReserveDto3> rlist = rdao.Top3(dto);
+		
+		request.setAttribute("tid1", rlist.get(0).getTid());
+		request.setAttribute("tid2", rlist.get(1).getTid());
+		request.setAttribute("tid3", rlist.get(2).getTid());
+		
+		System.out.println("rlist" + rlist.get(0).getTid());
+		
 		model.addAttribute("rlist", rlist);
 		System.out.println("³¡");
 	}
