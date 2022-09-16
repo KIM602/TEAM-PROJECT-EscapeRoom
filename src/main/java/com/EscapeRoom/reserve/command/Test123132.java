@@ -18,7 +18,6 @@ public class Test123132 implements ThemeCommand {
 		
 	ReserveDao rdao = Constant.rdao;
 	
-	
 	ReserveDto2 dto = new ReserveDto2("1","1");
 	
 	ArrayList<ReserveDto2> dlist = rdao.reserveTop31(dto);

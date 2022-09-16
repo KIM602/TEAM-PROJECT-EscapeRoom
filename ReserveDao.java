@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.reserve.dto.ReserveDto2;
-
-import com.EscapeRoom.reserve.dto.ReserveDto3;
-
-import com.EscapeRoom.reserve.dto.startNoRdate;
+import com.EscapeRoom.theme.dto.ReserveDto3;
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -55,34 +52,10 @@ public class ReserveDao implements RdaoInterface {
 	
 	@Override
 	public ArrayList<ReserveDto> ReserverList() {
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reserveList");
-		return result;
-	}
-	@Override
-	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto) {
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverList",rdto);
-		return result;
-	}
-	@Override
-	public ArrayList<ReserveDto> ReservePageList(String pageNo) {
-		int page = Integer.parseInt(pageNo);
-		int startNo = (page - 1) * 10 + 1;
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
-		return result;
-		
-	}
-	@Override
-	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo, String rDate) {
-		int page = Integer.parseInt(pageNo);
-		int startNo = (page - 1) * 10 + 1;
-		
-		startNoRdate snr = new startNoRdate(startNo, rDate);
-		
-		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverPageList",snr);
+		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("ReserveList");
 		return result;
 	}
 	
-	//top3
 	@Override
 	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto) {
 		ArrayList<ReserveDto3> result = (ArrayList)sqlSession.selectList("Top3");
