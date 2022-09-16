@@ -40,12 +40,20 @@
 <!-- 메뉴바 -->
 <%@include file ="../main/menubar.jsp" %>
 
+	<h1> 
+	<c:forEach items="${MainList}" var="dto">
+		<img src="upimage/${dto.lImage}" alt="로고 샘플이미지" /> 
+	</c:forEach>
+	</h1>
+	
     <div class="container">
         <section class="main-imgpage">
             <div class="img-box">
                 <div class="img-inner">
-                    <img src="image/locked.png" alt="자물쇠이미지" onmouseenter="this.src='image/unlocked.png'" onmouseleave="this.src='image/locked.png'">
-                </div>
+		                <c:forEach items="${MainList}" var="dto">
+		                    <img src="upimage/${dto.mImageNormal}" alt="자물쇠이미지"  onmouseenter="this.src='upimage/${dto.mImageEvent}'"  onmouseleave="this.src='upimage/${dto.mImageNormal}'">
+		                </c:forEach>    
+	                </div>
             </div>
             <div class="text-box">
                 <p class="text"></p>
