@@ -145,9 +145,9 @@ function buildCalendar() {
 			
 			$.ajax({
 				url : "CalendarChoiceReserverList",
-				type : "get",
-				data : {ymd:ymd},
-				contentType : "application/json; charset=utf-8;",
+				type : "post",
+				data : {ymd:ymd,
+					${_csrf.parameterName}: "${_csrf.token}"},
 				success: function(data){
 					$("#ddListAjax").html(data);
 					$("#ajaxlist").text(ymd+" 별 내역");

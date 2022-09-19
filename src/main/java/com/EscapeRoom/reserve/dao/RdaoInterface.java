@@ -24,6 +24,7 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto);
 	public int ReserveListTotal();
 	public int CalendarChoiceReserverListTotal(String ymd);
+	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto);
 
 	
 }
