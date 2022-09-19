@@ -54,11 +54,18 @@ function buildCalendar() {
 		
 	clickedYear = today.getFullYear(); // 오늘년도
 	clickedMonth = today.getMonth()+1; // 오늘월
+	
+	
+	var firstDate = new Date(today.getF)
+	
+	
 	console.log("clickedYear",clickedYear);
 	console.log("clickedMonth",clickedMonth);
 	
 	clickedMonth = clickedMonth >= 10 ? clickedMonth : "0" + clickedMonth;
-
+	clickedYM = clickedYear + "-" + clickedMonth;
+	
+	
 	console.log("clickedMonth",clickedMonth);
 	
 	$(".monthNow").html(clickedMonth);
@@ -99,11 +106,11 @@ function prevCalendar() {
 	<br/>
 	<div style="border: 1px solid lightgrey; border-radius: 25px; padding: 30px; ">
 		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 예약 건수</div><br/>
-		<div>: 123</div>
+		<div id="mTotalCount">: 123</div>
 		<hr/>
 		
 		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 매출 총액</div><br/>
-		<div>: 456</div>
+		<div id="mTotalSales">: 456</div>
 		<hr/>
 		
 		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 테마 예약 순위</div>
@@ -112,6 +119,23 @@ function prevCalendar() {
 	</div>
 </div>
 
+<script>
+$(document).ready(function() {
+	$.ajax({
+		url: "mTotalCount",
+		type: "get",
+		data: {ym:clickedYM},
+		success: function(d) {
+			$("#mTotalCount").html(d);
+		},
+		error : function() {				
+			alert("에러");
+		}
+	});
+});
+
+
+</script>
 
 </body>
 </html>

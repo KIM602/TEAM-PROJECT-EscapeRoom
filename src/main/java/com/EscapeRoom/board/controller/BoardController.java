@@ -22,7 +22,7 @@ public class BoardController {
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	
-	//예약 통계 작업용으로 가져옴
+	//admin 통계 작업용으로 가져옴
 	//예약 다오
 	private ReserveDao rdao;
 	private ReserveCommand rcom;
@@ -38,6 +38,14 @@ public class BoardController {
 		return "board/MonthTotal";
 	}
 	
+	@RequestMapping("/mTotalCount")
+	public void AdminMonthTotalCount(HttpServletRequest request, Model model) {
+		System.out.println("ym값 : " + request.getParameter("ym"));
+		
+		rcom = new AdminMonthTotalCount();
+		rcom.execute(request, model);
+				
+	}
 	
 	
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -48,6 +56,7 @@ public class BoardController {
 	@Autowired
 	public void setDao(BoardDao dao) {
 		this.dao = dao;
+		Constant.bdao = dao;
 	}
 	
 	

@@ -3,35 +3,40 @@ package com.EscapeRoom.board.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
+import com.EscapeRoom.reserve.dto.ReserveDto;
 
 public class BoardDao implements IDao {
+	
+	//빈을 주입받는 어노테이션
+	@Autowired
 	private SqlSession sqlSession;
 	
-	/**
-	 * 
-	 */
-	public BoardDao() {
-		super();
-	}
 	
-	public BoardDao(SqlSession sqlSession) {
-		super();
-		this.sqlSession = sqlSession;
-	}
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// 예약 통계 관련
 	
-	public SqlSession getSqlSession() {
-		return sqlSession;
+	@Override
+	public String AdminMonthTotalCount(String ym) {
+		String rdto = sqlSession.selectOne("AdminMonthTotalCount", ym);
+		
+		return rdto;
 	}
 
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
+	@Override
+	public ReserveDto AdminMonthTotalSales(ReserveDto dto) {
+		
+		return null;
 	}
 	
 	
-
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
+	
 	@Override
 	public void writeNotice(String bTitle, String bContent, String bWriter) {
 		NoticeDto dto = new NoticeDto(bTitle, bContent, bWriter);

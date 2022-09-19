@@ -7,6 +7,18 @@
 <!-- root element는 mapper -->
 <!-- 속성 namespace는 인터페이스의 경로 및 인터페이스명 -->
 <mapper namespace="com.EscapeRoom.board.dao.IDao">
+
+	<!-- 예약 통계 -->
+	<select id="AdminMonthTotalCount" resultType="int" parameterType="String">
+		select count(*) from reserve
+		where rdate = #{ym}
+		
+	</select>
+	
+
+
+
+
 	<insert id="writeNotice" parameterType="com.EscapeRoom.board.dto.NoticeDto">
 		insert into NOTICE_BOARD(BNUM,BTITLE,BCONTENT,BWRITER,BHIT,BGROUP,BSTEP,BINDENT)
 		values(NOTICE_BOARD_SEQ.NEXTVAL, #{bTitle}, #{bContent}, #{bWriter}, 0, NOTICE_BOARD_SEQ.CURRVAL, 0, 0)
