@@ -37,26 +37,31 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<link rel="stylesheet" href="css/mainModify.css" />
+
 </head>
 <body>
-<h3 class="text-center">main 이미지 수정</h3>
+<h3 class="text-center text-titleSize">메인이미지 수정</h3>
 <div class="container">
-	<form action="mainModify?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-		<div class="form-group">
-			<label for="mainLR">메인 로고 수정</label><br />
-			<input type="file" id="mainLR" name="lImage" placeholder="메인 로고 수정"/>
+	<form action="mainModify?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data" class="form-widthSize">
+		<div class="form-group form-group-margin">
+			<label for="mainLR" class="text-labelSize">&#9656; 메인 로고 수정</label><br />
+			<input type="file" id="mainLR" name="lImage" class="form-inputStyle" placeholder="메인 로고 수정"/>
 		</div>
-		<div class="form-group">
-				<label for="mainNR">기본 이미지 수정</label><br/>
-				<input type="file" id="mainNR" name="mImageNormal" placeholder="기본 이미지 수정"/>
+		<div class="form-group form-group-margin">
+				<label for="mainNR" class="text-labelSize">&#9656; 기본 이미지 수정</label><br/>
+				<input type="file" id="mainNR" name="mImageNormal" class="form-inputStyle" placeholder="기본 이미지 수정"/>
 			</div> 
-			<div class="form-group">
-				<label for="mainER">마우스 올렸을때, 바뀔 이미지 수정</label><br/>
-				<input type="file" id="mainER" name="mImageEvent" placeholder="조건이 충족될 시 변경되는 이미지 수정"/>
+			<div class="form-group" >
+				<label for="mainER" class="text-labelSize">&#9656; 마우스 올렸을때, 바뀔 이미지 수정</label><br/>
+				<input type="file" id="mainER" name="mImageEvent" class="form-inputStyle" placeholder="조건이 충족될 시 변경되는 이미지 수정"/>
 			</div>
 			
-			<button type="submit" class="btn btn-success">이미지 등록</button>
-			<button type="reset" class="btn btn-danger">취소</button>
+			<div class="btn-box">
+				<button type="submit" class="btn btn-success">등록</button>
+				<button type="reset" class="btn btn-danger">취소</button>
+			</div>
+			
 	</form>
 </div>
 </body>
