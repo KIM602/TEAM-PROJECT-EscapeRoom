@@ -16,8 +16,9 @@ public class ReserveFind implements ReserveCommand {
 	public void execute(HttpServletRequest request, Model model) {
 		ReserveDao rdao = Constant.rdao;
 		String rid = request.getParameter("rId");
+		System.out.println("rid°ªÀº  ? " + rid);
 		ReserveDto rdto = new ReserveDto(rid);
-		ArrayList<ReserveDto> result = rdao.reserveFindCheck(rdto);
+		ArrayList<ReserveDto> result = rdao.ReserveFindMoreThan2DetailPage(rdto);
 		model.addAttribute("reserveCheckData",result);
 	}
 	
