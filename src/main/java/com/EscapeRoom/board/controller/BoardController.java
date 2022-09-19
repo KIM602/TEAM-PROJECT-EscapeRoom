@@ -12,9 +12,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.EscapeRoom.board.dao.BoardDao;
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
+import com.EscapeRoom.reserve.command.ReserveCommand;
+import com.EscapeRoom.reserve.dao.ReserveDao;
+import com.EscapeRoom.util.Constant;
 
 @Controller
 public class BoardController {
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
+	//예약 통계 작업용으로 가져옴
+	//예약 다오
+	private ReserveDao rdao;
+	private ReserveCommand rcom;
+	
+	@Autowired
+	public void setRdao(ReserveDao rdao) {
+		this.rdao = rdao;
+		Constant.rdao = rdao;
+	}
+	
+	@RequestMapping("/MonthTotal")
+	public String MonthTotal() {
+		return "board/MonthTotal";
+	}
+	
+	
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
 	
 	private BoardDao dao;
 	@Autowired
