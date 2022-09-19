@@ -173,7 +173,7 @@ thead>tr>th{
 											<td>${dto.rTime}</td>
 											<td>${dto.rCount}명</td>
 											<td>${dto.rPhone}</td>
-											<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+											<td><a class="contentView" href="AdminReserveDelete" data-value="${dto.rId}">삭제하기</a></td>
 										</tr>
 										</c:forEach>
 									</tbody>
@@ -195,6 +195,31 @@ thead>tr>th{
 	
 <script type="text/javascript">
 $(function() {
+	
+	$("a.contentView").click(function name(e) {
+		e.preventDefault();
+		let ceo = $(e.target);
+		let val = ceo.attr('data-value');
+
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "post",
+			data :{ reserveid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+				
+			},
+			success : function name(d) {
+				window.location.href = "main";
+			},
+			error : function name() {
+				alert("실해");
+			}
+		})
+		
+	})
+	
+	
+	
 	window.pagObj = $("#pagination").twbsPagination({
 		totalPages: 35, //총 페이지 수
 		visiblePages: 5, //보여지는 페이지 수
@@ -211,7 +236,7 @@ $(function() {
 				let cur;
 				if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
 					cur = pageNo;
-					purl = "ReservePageList?pageNo=" + pageNo;
+					purl =  pageNo;
 				}
 				else if(pageNo == ">") {
 					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -219,7 +244,7 @@ $(function() {
 					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 					pageNo2 = pageNo1 + 1;
 					cur = pageNo2;
-					purl = "ReservePageList?pageNo=" + pageNo2;
+					purl =  pageNo2;
 				}
 				else if(pageNo == "<") {
 					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -227,24 +252,29 @@ $(function() {
 					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 					pageNo2 = pageNo1 - 1;
 					cur = pageNo2;
-					purl = "ReservePageList?pageNo=" + pageNo2;
+					purl =  pageNo2;
 				}
 				else if(pageNo == "<<") {
 					cur = 1;
-					purl = "ReservePageList?pageNo=" + 1;
+					purl = 1;
 				}
 				else if(pageNo == ">>") {
 					cur = 35;
-					purl = "ReservePageList?pageNo=" + 35;
+					purl =  35;
 				}
 				else {
 					return;
 				}
 				$.ajax({
-					url : purl,
-					type : "get",
-					data : "",
+					url : "ReservePageList",
+					type : "post",
+					data : { pageNo : purl,
+						${_csrf.parameterName}: "${_csrf.token}",
+					},
 					success : function(data) {
+						
+						
+						
 						$("b#cur").text(cur);
 						
 						$("#indexListAjax").html(data);
