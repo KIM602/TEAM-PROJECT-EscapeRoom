@@ -17,6 +17,10 @@ body, * {
     position: relative;
 }
 
+a {
+	display:block;
+}
+
 /* nav */
 .header-wrap { 
     position: fixed;
@@ -74,6 +78,5 @@ section {
 article {
     width: 93%;
     height: 90vh;
-    background-color: rgb(136, 212, 212);
     margin: 3% auto;
 }
