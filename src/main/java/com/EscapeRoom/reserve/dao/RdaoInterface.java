@@ -11,7 +11,7 @@ public interface RdaoInterface {
 	// 추상메서드
 	public void insertReserve(ReserveDto dto);
 	public ReserveDto themeReserveTimeCheck(ReserveDto dto);
-	public ReserveDto reserveFindCheck(ReserveDto dto);
+	public ArrayList<ReserveDto> reserveFindCheck(ReserveDto dto);
 	public void deleteReserve(String rId);
 	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2);
 	public ArrayList<ReserveDto> ReserverList();
@@ -24,6 +24,7 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto);
 	public int ReserveListTotal();
 	public int CalendarChoiceReserverListTotal(String ymd);
+	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto);
 
 	
 }
