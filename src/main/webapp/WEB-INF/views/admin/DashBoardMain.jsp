@@ -47,6 +47,12 @@
     <div class="board-wrap">
         <div class="header-wrap">
             <header>
+	            <sec:authorize access="isAuthenticated()">
+					<div class="mt-3 ml-4" style="font-size: 22px; float: left;">
+						<b style="color: #F9D142">${user_id}</b> 님 환영합니다.
+						<a href="AdminLogoutView" class="btn btn-warning ml-4">로그아웃</a>
+					</div>
+				</sec:authorize>
                 <ul class="header-box">
                     <li class="nav-list">
                         <a id="ReserverList" href="ReserverList">예약자 확인</a>
@@ -55,30 +61,24 @@
                         홈페이지 관리
                         <ul class="">
                             <li class="nav-sublist">
-                                &#8250; 메인페이지 수정
+                                &#8250; 메인페이지 수정 
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">logo 수정</a>
+                                        <a href="MainRegistration" id="MainRegistration">이미지 최초 등록</a>
                                     </li>
                                     <li class="nav-lastlist">
-                                        <a href="#">이미지 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">메뉴항목 수정</a>
+                                        <a href="MainModify" id="MainModify">이미지 수정</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-sublist">
-                                &#8250; 회사소개 수정
-                                <ul class="nav-line-style">
-                                    <li class="nav-lastlist">
-                                        <a href="#">회사소개 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
-                                        <a href="#">주의사항 수정</a>
-                                    </li>
-                                </ul>
-                            </li>
+                         <li class="nav-sublist">
+							&#8250; 월별 예약/매출
+							<ul class="nav-line-style">
+								<li class="nav-lastlist">
+									<a id="MonthTotal" href="MonthTotal">월별 예약/매출</a>
+								</li>
+							</ul>
+						</li>
                             <li class="nav-sublist">
                                 &#8250; 테마 수정
                                 <ul class="nav-line-style">
@@ -94,7 +94,7 @@
                                 &#8250; 공지사항/이벤트 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a id="nav-board" href="board">공지사항/이벤트 수정</a>
+                                        <a id="nav-board" href="admin_board1">공지사항/이벤트 수정</a>
                                     </li>
                                 </ul>
                             </li>
@@ -131,6 +131,8 @@
 <script src="js/DashBoardMain.js"></script>
 <script>
 $(document).ready(function() {
+	
+	// 보드 관련
 	$("#nav-board").click(function(e) {
 		e.preventDefault();
 		$.ajax({
@@ -145,6 +147,40 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	$("#ReserverList").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : "ReserverList",
+			type: "get",
+			data : "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+	$("#MonthTotal").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : "MonthTotal",
+			type: "get",
+			data : "",
+			success: function(d) {
+				$(".main-page").html(d);	
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
+	});
+	
+	
+	
+	
 	
 	//테마 등록
 	$("#nav-themeInsert").click(function(e) {
@@ -193,6 +229,37 @@ $(document).ready(function() {
 			}
 		})
 	})
+	
+	// 로고 이미지 수정 관련
+	$("#MainRegistration").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url : "MainRegistration",
+			type : "get",
+			data : "",
+			success : function(data){
+				$(".main-page").html(data);
+			},
+			error : function(){
+				alert("접근 제한");
+			}
+		});
+	});
+	
+	$("#MainModify").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url : "MainModify",
+			type : "get",
+			data : "",
+			success : function(data){
+				$(".main-page").html(data);
+			},
+			error : function(){
+				alert("접근 제한");
+			}
+		});
+	});
 	
 });
 </script>

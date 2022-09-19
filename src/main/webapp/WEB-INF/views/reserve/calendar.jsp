@@ -75,6 +75,8 @@ function buildCalendar() {
 	var firstDate = new Date(today.getFullYear(), today.getMonth(),1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
 
+	console.log("퍼스트",firstDate);	
+	console.log("라스트",lastDate);	
 	//var day = ('0' + today.getDate());
 	//console.log(day);
 	

@@ -24,7 +24,6 @@ import com.EscapeRoom.reserve.dao.ReserveDao;
 
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeImageCommand;
-import com.EscapeRoom.theme.command.ThemeNameCommand;
 import com.EscapeRoom.theme.command.ThemeNameListCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
 import com.EscapeRoom.util.Constant;
@@ -46,7 +45,6 @@ public class ReserveController {
 		this.rdao = rdao;
 		Constant.rdao = rdao;
 	}
-
 	@Autowired
 	public void setTdao(ThemeDao tdao) {
 		this.tdao = tdao;
@@ -152,18 +150,28 @@ public class ReserveController {
 			ReserveFind rF = new ReserveFind(); // 객체생성
 			String result =(String)rF.StrExecute(request, model);  // 동작 부분 
 	
-			System.out.println("tid가져올수있나?" + request.getAttribute("tid"));
-				
+		
+			System.out.println("result값?" + result);
 			if(result == "success") {
-				tcom = new ThemeNameCommand();  // 가져온 테마 Id값을 활용하여 테마이름을 가져오기 위해 새로 생성 
-				tcom.execute(request, model);// 정상적으로 값 가져오기 성공시 정보 페이지로 이동
+				
 				return "reserve/reserverInformation";   
+			}
+			
+			else if (result == "success2"){
+				return "reserve/reserveInformationList";
 			}
 			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
 				return "reserve/reserveCheckFailPage";
 			}
 		}
 		
+		@RequestMapping("/reserveFindMoreThan2DetailPage")
+		public String reserveFindMoreThan2DetailPage(HttpServletRequest request,Model model) {
+			System.out.println("reserveFindMoreThan2DetailPage");
+			rcom = new ReserveFind();
+			rcom.execute(request, model);
+			return "reserve/reserverInformation";
+		}
 		
 		// 예약자가 예약 삭제
 		@RequestMapping("/reserveDelete")

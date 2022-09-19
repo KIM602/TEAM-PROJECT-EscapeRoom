@@ -99,7 +99,7 @@ width: 200px;
 							</tr>
 							<tr>
 								<th>전화번호</th>
-								<td><input id="rPhone"class="formSt" type="text" placeholder="핸드폰번호를 입력하세요"></td>
+								<td><input id="rPhone"class="formSt" type="text" placeholder="Ex) 010-1234-1234"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -118,12 +118,15 @@ $(document).ready(function name() {
 		sessionStorage.setItem("이름값",name[0].value);   // 세션스토리지에 키값,Value 저장
 		let phone = $("#rPhone");
 		sessionStorage.setItem("폰값",phone[0].value);
+
 		
 		let namekey = "이름값" ;                          // 고정 키값명 설정
 		let phonekey = "폰값" ;                                
+
 		
 		jsonName1 = sessionStorage.getItem(namekey);     // 변수에 세션의 저장된 값을 가짐
 		jsonPhone1 = sessionStorage.getItem(phonekey);
+
 		let json = {                                     // 객체형식 값을 받음
 			nameKey : jsonName1,
 			phoneKey : jsonPhone1,
