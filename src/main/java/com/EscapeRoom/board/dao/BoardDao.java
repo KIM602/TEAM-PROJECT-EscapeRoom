@@ -22,16 +22,29 @@ public class BoardDao implements IDao {
 	@Override
 	public String AdminMonthTotalCount(String ym) {
 		String rdto = sqlSession.selectOne("AdminMonthTotalCount", ym);
-		
 		return rdto;
 	}
-
+	
 	@Override
-	public ReserveDto AdminMonthTotalSales(ReserveDto dto) {
-		
-		return null;
+	public int AdminMonthTotalSales(String ym) {
+		String rdto = sqlSession.selectOne("AdminMonthTotalSales", ym);
+		int result;
+		if(rdto == null) {
+			result = 0;
+		}
+		else {
+			result = Integer.parseInt(rdto);
+		}
+		System.out.println("result�� : " + result);
+		return result;
 	}
 	
+	@Override
+	public ArrayList<ReserveDto> AdminMonthBest(String ym) {
+		ArrayList<ReserveDto> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", ym);
+		
+		return dtos;
+	}
 	
 	
 	// �ѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤ�
@@ -147,5 +160,5 @@ public class BoardDao implements IDao {
 		return result;
 	}
 
-
+	
 }

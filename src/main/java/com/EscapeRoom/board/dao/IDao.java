@@ -10,29 +10,13 @@ public interface IDao {
 	
 	//월별 예약 건수
 	public String AdminMonthTotalCount(String ym);
-	/*
-	select count(*) from reserve
-	where rdate between
-	'2022-09-01' and '2022-09-30';
-	 */
-	
+		
 	//월별 매출액
-	public ReserveDto AdminMonthTotalSales(ReserveDto dto);
-	/*
-	select sum(rprice) from reserve
-	where rdate between
-	'2022-09-01' and '2022-09-30';
-	 */
+	public int AdminMonthTotalSales(String ym);
 	
 	//월별 테마 예약 순위
-	/*
-	select count(rthemename) as cnt, rthemename
-	from reserve
-	where rdate between
-	'2022-09-01' and '2022-09-30'
-	group by rthemename
-	order by count(rthemename) desc;
-	 */
+	public ArrayList<ReserveDto> AdminMonthBest(String ym);
+	
 	
 	
 	

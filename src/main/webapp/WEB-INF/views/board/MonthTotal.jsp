@@ -34,10 +34,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
-
-#calendar>* {
-	font-size: 15px;
-	font-family: 'GmarketSansBold';
+body {
+	background-color: #F9D142;
+	overflow: hidden;
+}
+#mTotalCount, #mTotalSales {
+	color: #EE7600;
+	font-size: 30px;
+	margin-top: 10px;
 }
 </style>
 
@@ -98,24 +102,26 @@ function prevCalendar() {
 	
 	<div id="calendar">
 		<div class="btn-group">
-			<button type="button" class="btn btn-dark" onclick="prevCalendar()">◀</button>
+			<button type="button" class="btn btn-dark" id="prevCal" onclick="prevCalendar()">◀</button>
 			<button type="button" class="btn btn-dark" id="calendarTitle"></button>
-			<button type="button" class="btn btn-dark" onclick="nextCalendar()">▶</button>
+			<button type="button" class="btn btn-dark" id="nextCal" onclick="nextCalendar()">▶</button>
 		</div>
 	</div>
 	<br/>
-	<div style="border: 1px solid lightgrey; border-radius: 25px; padding: 30px; ">
-		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 예약 건수</div><br/>
-		<div id="mTotalCount">: 123</div>
+	<div style="background-color: #FFF; border: 1px solid lightgrey; border-radius: 25px; padding: 30px; ">
+		<div style="font-size: 18px; font-weight: bold; "><span class="monthNow"></span>월 예약 건수</div>
+		<div id="mTotalCount"></div>
 		<hr/>
 		
-		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 매출 총액</div><br/>
-		<div id="mTotalSales">: 456</div>
+		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 매출 총액</div>
+		<div id="mTotalSales"></div>
 		<hr/>
 		
-		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow">n</span>월 테마 예약 순위</div>
+		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 테마 예약 순위</div>
+		<div id="mBestList">
+			<c:forEach items="${mList}" var="dto">${dto.cnt} - ${dto.rthemename}</c:forEach>
+		</div>
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		<hr/>
 	</div>
 </div>
 
@@ -132,6 +138,106 @@ $(document).ready(function() {
 			alert("에러");
 		}
 	});
+	$.ajax({
+		url: "mTotalSales",
+		type: "get",
+		data: {ym:clickedYM},
+		success: function(d) {
+			$("#mTotalSales").html(d);
+		},
+		error : function() {				
+			alert("에러");
+		}
+	});
+	$.ajax({
+		url: "mBestList",
+		type: "get",
+		data: {ym:clickedYM},
+		success: function(d) {
+			$("#mBestList").html(d);
+		},
+		error : function() {				
+			alert("에러");
+		}
+	});
+	
+	
+	$("#prevCal").click(function(e) {
+		$.ajax({
+			url: "mTotalCount",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mTotalCount").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+		$.ajax({
+			url: "mTotalSales",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mTotalSales").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+		$.ajax({
+			url: "mBestList",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mBestList").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+	});
+	
+	
+	$("#nextCal").click(function(e) {
+		$.ajax({
+			url: "mTotalCount",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mTotalCount").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+		$.ajax({
+			url: "mTotalSales",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mTotalSales").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+		$.ajax({
+			url: "mBestList",
+			type: "get",
+			data: {ym:clickedYM},
+			success: function(d) {
+				$("#mBestList").html(d);
+			},
+			error : function() {				
+				alert("에러");
+			}
+		});
+	});
+	
+	
+	
+
 });
 
 
