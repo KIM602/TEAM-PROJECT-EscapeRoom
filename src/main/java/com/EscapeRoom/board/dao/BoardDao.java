@@ -40,8 +40,8 @@ public class BoardDao implements IDao {
 	}
 	
 	@Override
-	public ArrayList<ReserveDto> AdminMonthBest(String ym) {
-		ArrayList<ReserveDto> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", ym);
+	public ArrayList<ReserveDto> AdminMonthBest(ReserveDto dto) {
+		ArrayList<ReserveDto> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", dto);
 		
 		return dtos;
 	}

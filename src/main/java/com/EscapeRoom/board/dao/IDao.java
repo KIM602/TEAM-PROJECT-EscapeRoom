@@ -15,7 +15,7 @@ public interface IDao {
 	public int AdminMonthTotalSales(String ym);
 	
 	//월별 테마 예약 순위
-	public ArrayList<ReserveDto> AdminMonthBest(String ym);
+	public ArrayList<ReserveDto> AdminMonthBest(ReserveDto dto);
 	
 	
 	
@@ -38,4 +38,5 @@ public interface IDao {
 	public ArrayList<EventDto> listE();
 	public ArrayList<NoticeDto> pageListN(String pageNo);
 	public ArrayList<EventDto> pageListE(String pageNo);
+
 }

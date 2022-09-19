@@ -17,12 +17,12 @@
 		select sum(rprice) from reserve
 		where rdate like '%'||#{ym}||'%'
 	</select>
-	<select id="AdminMonthBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto" parameterType="String">
-		select count(*) as cnt, rthemename
+	<select id="AdminMonthBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
+		select count(*), rthemename
 		from reserve
-		where rdate like '%'||#{ym}||'%'
+		where rdate like '%'||#{rDate}||'%'
 		group by rthemename
-		order by count(*) desc;
+		order by count(*) desc
 	</select>
 
 

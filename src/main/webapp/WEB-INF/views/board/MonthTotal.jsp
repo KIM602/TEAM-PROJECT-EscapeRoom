@@ -118,9 +118,7 @@ function prevCalendar() {
 		<hr/>
 		
 		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 테마 예약 순위</div>
-		<div id="mBestList">
-			<c:forEach items="${mList}" var="dto">${dto.cnt} - ${dto.rthemename}</c:forEach>
-		</div>
+		<div id="mBestList"></div>
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	</div>
 </div>

@@ -17,6 +17,7 @@ import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.dao.ReserveDao;
+import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.util.Constant;
 
 @Controller
@@ -81,13 +82,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/mBestList")
-	@ResponseBody
 	public String AdminMonthBest(HttpServletRequest request, Model model) {
 		rcom = new AdminMonthBest();
 		rcom.execute(request, model);
-		return "";
+		
+		return "board/mList";
 	}
 	
+//	ArrayList<NoticeDto> nlist = dao.pageListN(request.getParameter("pageNo"));
+//	model.addAttribute("nPage", nlist);
 	
 	
 	// �ѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤ�
