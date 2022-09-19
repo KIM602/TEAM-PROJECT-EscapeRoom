@@ -19,11 +19,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminIdcheckCommand;
 import com.EscapeRoom.admin.command.ProjectAdminJoinCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainModifyCommand;
@@ -76,6 +78,23 @@ public class ProjectAdminController {
 		}
 		else {
 			return "join-failed";
+		}
+	}
+	
+	//아이디 중복 체크
+	@RequestMapping(value="/idcheck" , produces="application/text; charset=UTF-8")
+	@ResponseBody
+	public String idcheck(HttpServletRequest request, Model model) {
+		com = new ProjectAdminIdcheckCommand();
+		com.execute(request, model);
+		
+		String result = (String)request.getAttribute("result");
+		System.out.println("result : " + result);
+		if(result.equals("success")) {
+			return "idcheck-success";
+		}
+		else {
+			return "idcheck-failed";
 		}
 	}
 	

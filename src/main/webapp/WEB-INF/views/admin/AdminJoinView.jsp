@@ -89,6 +89,11 @@
             <div class="form-group pt-4">
                 <label for="uId">아이디</label>
                 <input type="text" id="uId" class="form-control" name="pid" placeholder="아이디 입력" required >
+                <button id="idcheck" type="button" class="btn btn-info">아이디 중복체크</button>
+                <br/>
+	            <p id="textalert"></p>
+
+	                
             </div>
             <div class="form-group pt-3">
                 <label for="uPw">비밀번호</label>
@@ -122,5 +127,29 @@
            <!-- <a href="AdminLoginView" class="btn btn-primary" >로그인</a> -->
         </form>
     </div>
+    
+    <script>
+    	$(document).ready(function(){	
+    		$("#idcheck").click(function(){
+    			let pid=$('#uId').val();
+    			$.ajax({
+    				url : "idcheck",
+    				type : "get",
+    				data : {"pid" : pid},
+    				success : function(data){
+    					if(data.search("idcheck-success") > -1){
+    						$("#textalert").text("사용 가능한 아이디입니다.")
+    					}
+    					else {
+    						$("#textalert").text("중복된 아이디입니다.")
+    					}
+    				},
+    				error : function() {
+    					alert("서버 접속실패");
+    				}
+    			});
+    		});
+    	});
+    </script>
 </body>
 </html>

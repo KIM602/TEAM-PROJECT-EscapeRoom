@@ -90,5 +90,22 @@ public class ProjectAdminDao implements IProjectAdminDao {
 		
 		return result;
 	}
+
+	//아이디 중복체크
+	@Override
+	public String check(ProjectAdminJoinDto dto) {
+		System.out.println(dto);
+		
+		String result = null;
+		ProjectAdminJoinDto res1 = sqlSession.selectOne("check",dto);		
+			if(res1 != null) {
+				result = "failed";
+			}
+			else {
+				result = "success";
+			}
+	
+		return result;
+	}
 	
 }

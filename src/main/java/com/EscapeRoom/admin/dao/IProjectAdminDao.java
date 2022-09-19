@@ -13,5 +13,6 @@ public interface IProjectAdminDao {
 	public String mainInsert(ProjectAdminMainDto dto);
 	public ArrayList<ProjectAdminMainDto> MainList();
 	public String mainModify(ProjectAdminMainDto dto);
+	public String check(ProjectAdminJoinDto dto);
 	
 }

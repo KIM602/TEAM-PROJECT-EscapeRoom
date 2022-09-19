@@ -5,7 +5,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.EscapeRoom.admin.dao.IProjectAdminDao">
-
+	
+	<!-- 회원가입, 아이디 중복체크 -->
 	<insert id="join" parameterType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto">
 		INSERT INTO ADMINUSER(PID,PPW,PNAME,POADDRESS,PADDRESS,PDETAILADDRESS,PNUMBER)
 		VALUES(#{pid},#{ppw},#{pname},#{poaddress},#{paddress},#{pdetailaddress},#{pnumber})
@@ -15,6 +16,11 @@
 		SELECT * FROM ADMINUSER WHERE PID = #{pid}
 	</select>
 	
+	<select  id="check" parameterType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto"  resultType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto">
+		SELECT * FROM ADMINUSER WHERE PID = #{pid}
+	</select>
+	
+	<!-- 메인이미지 등록 및 수정 -->
 	<insert id="mainInsert" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
 		INSERT INTO MAINIMG(LIMAGE,MIMAGENORMAL,MIMAGEEVENT)
 		VALUES(#{lImage},#{mImageNormal},#{mImageEvent})
