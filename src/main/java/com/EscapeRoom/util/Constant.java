@@ -1,10 +1,8 @@
 package com.EscapeRoom.util;
 
-<<<<<<< HEAD
+
 import com.EscapeRoom.admin.dao.ProjectAdminDao;
-=======
 import com.EscapeRoom.board.dao.BoardDao;
->>>>>>> refs/heads/master
 import com.EscapeRoom.reserve.dao.ReserveDao;
 import com.EscapeRoom.theme.dao.ThemeDao;
 

@@ -85,10 +85,4 @@ public class HomeController {
 		
 		return "map/map";
 	}
-<<<<<<< HEAD
-
-	
-	
-=======
->>>>>>> refs/heads/master
 }

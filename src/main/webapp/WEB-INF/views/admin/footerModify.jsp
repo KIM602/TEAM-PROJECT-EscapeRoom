@@ -16,6 +16,8 @@
 <meta charset="UTF-8">
 <title></title>
 
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"> <!-- 페이지 위조 요청을 방지한 태그 -->
+
 <!-- RWD -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- MS -->
@@ -35,38 +37,40 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<link rel="stylesheet" href="css/footerModify.css" />
+
 </head>
 <body>
-<h3 class="text-center">회사 정보 수정</h3>
-	<div class="container">
+<h3 class="text-center text-titleSize">회사 정보 수정</h3>
+	<div class="container form-containerSize">
 		<form action="footerModify?${_csrf.parameterName}=${_csrf.token}"  method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="logoImg">로고 이미지 수정</label>
-				<input type="file" id="logoImg" name="fImg" placeholder="로고 이미지 수정"/>
+				<label for="logoImg" class="text-labelSize">&#9656; 로고 이미지 수정</label>
+				<input type="file" id="logoImg" name="fImg" class="form-inputStyle"  placeholder="로고 이미지 수정"/>
 			</div>
-			<div class="form-group">
-				<label for="businessName">&#9656; 상호</label>
-				<input type="text" id="businessName" name="fBusiness" placeholder="상호명을 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="businessName" class="text-labelSize">&#9656; 상호</label>
+				<input type="text" id="businessName" name="fBusiness" class="form-inputStyle"  placeholder="상호명을 입력하세요"/>
 			</div>
-			<div class="form-group">
-				<label for="fname">&#9656; 대표자명</label>
-				<input type="text" id="fname" name="fName" placeholder="대표자명을 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="fname" class="text-labelSize">&#9656; 대표자명</label>
+				<input type="text" id="fname" name="fName" class="form-inputStyle"  placeholder="대표자명을 입력하세요"/>
 			</div>
-			<div class="form-group">
-				<label for="femail">&#9656; 이메일</label>
-				<input type="text" id="femail" name="fEmail" placeholder="대표 이메일을 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="femail" class="text-labelSize">&#9656; 이메일</label>
+				<input type="text" id="femail" name="fEmail" class="form-inputStyle"  placeholder="대표 이메일을 입력하세요"/>
 			</div>
-			<div class="form-group">
-				<label for="faddress">&#9656; 주소</label>
-				<input type="text" id="faddress" name="fAddress" placeholder="주소를 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="faddress" class="text-labelSize">&#9656; 주소</label>
+				<input type="text" id="faddress" name="fAddress" class="form-inputStyle"  placeholder="주소를 입력하세요"/>
 			</div>
-			<div class="form-group">
-				<label for="fnumber">&#9656; 사업자 등록번호</label>
-				<input type="text" id="fnumber" name="fNumber" placeholder="사업자 등록 번호를 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="fnumber" class="text-labelSize">&#9656; 사업자 등록번호</label>
+				<input type="text" id="fnumber" name="fNumber" class="form-inputStyle"  placeholder="사업자 등록 번호를 입력하세요"/>
 			</div>
-			<div class="form-group">
-				<label for="ftel">&#9656; 고객센터 전화번호</label>
-				<input type="text"  id="ftel" name="fTel" placeholder="고객센터 전화번호를 입력하세요"/>
+			<div class="form-group form-group-margin">
+				<label for="ftel" class="text-labelSize">&#9656; 고객센터 전화번호</label>
+				<input type="text"  id="ftel" name="fTel" class="form-inputStyle"  placeholder="고객센터 전화번호를 입력하세요"/>
 			</div>
 			
 			<div class="btn-box">

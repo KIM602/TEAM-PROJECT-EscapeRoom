@@ -105,7 +105,7 @@
                                         <a href="#">지도 수정</a>
                                     </li>
                                     <li class="nav-lastlist">
-                                        <a href="footerRegistration" id="footerRegistration">회사 정보 수정</a>
+                                        <a href="footerModify" id="footerModify">회사 정보 수정</a>
                                     </li>
                                 </ul>
                             </li>
@@ -216,7 +216,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	// 로고 이미지 수정 관련
+	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){
 		event.preventDefault();
 		$.ajax({
@@ -231,11 +231,26 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+	//로고 이미지 수정
 	$("#MainModify").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			url : "MainModify",
+			type : "get",
+			data : "",
+			success : function(data){
+				$(".main-page").html(data);
+			},
+			error : function(){
+				alert("접근 제한");
+			}
+		});
+	});
+	//footer 수정
+	$("#footerModify").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url : "footerModify",
 			type : "get",
 			data : "",
 			success : function(data){
