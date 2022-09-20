@@ -55,12 +55,10 @@
 
 html {
  	width: 100%;
-    height: 100%;
     }
  
 body {
  	width: 100%;
-    height: 100%;
     font-family: "GmarketSansBold";
     background: #eee;
   	}
@@ -72,9 +70,10 @@ body {
 
 section {
   /* center + max-width:800px + min-margin: 10px */
+  width: 100%;
   margin-inline: max(10px, 50% - 800px/2);
   margin-block: 50px;
-  margin-top: 8rem;
+  margin-top: 7vh;
 }
 
 h1 {
@@ -91,14 +90,19 @@ p {
 	flex-direction: row;
 	align-items: center;
 }
+
+.detail {
+	margin-left: 35px;
+	list-style: none;
+}
 </style>
 </head>
 <body>
 <section>
   <h1 class="full-line">${tDetails.tname}</h1>
   	<div class="container">
-		<img src="upimage/${tDetails.tphoto}" alt="포스터" class="mx-auto img-responsive" style="max-width:100%; height:400px;"/>
-		<ul style="list-style: none;">
+		<img src="upimage/${tDetails.tphoto}" alt="포스터" style="max-width:100%; height:400px;"/>
+		<ul class="detail">
 			<li>장르 : ${tDetails.tgenre}</li>
 			<li>난이도 : ${tDetails.tdifficulty}</li>
 			<li>소요시간 : ${tDetails.ttime}</li>

@@ -32,8 +32,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<h3 class="container mt-5" id="result"></h3><br/>
-<div class="container mt-5">
+<h3 class="container" id="result"></h3><br/>
+<div class="container">
 	<h3 class="text-center text-danger">테마입력</h3>
 	<form action="inserttheme?${_csrf.parameterName}=${_csrf.token}" method="post" id="frm1" name="frm1" enctype="multipart/form-data">
 		<div class="form-group">
@@ -68,7 +68,7 @@
 		</div>
 		
 		<button type="submit" class="btn btn-success">등록</button>&nbsp;&nbsp;
-		<button type="reset" class="btn btn-danger">취소</button>&nbsp;&nbsp;
+		<a href="DashBoardMain" class="btn btn-danger">취소</a>
 	</form>
 </div>
 </body>
