@@ -180,10 +180,11 @@ $(document).ready(function() {
 				$('#nextBtn').attr("href", "reserveForm");
 					$.ajax({
 						url : "reserveForm",
-						type : "get",
+						type : "post",
 						data : { "ymd" : ymd,
 							"themevalue" : themevalue,
-							"themeTime" : themeTime
+							"themeTime" : themeTime,
+							${_csrf.parameterName}: "${_csrf.token}"
 						},
 						success: function name(d) {
 							$("#reserveRegion").html(d);

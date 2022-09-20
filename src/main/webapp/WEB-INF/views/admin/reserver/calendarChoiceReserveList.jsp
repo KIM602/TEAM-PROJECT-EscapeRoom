@@ -36,7 +36,7 @@
 <body>
 	
 	
-	
+<i class="fa fa-list" aria-hidden="true"></i>&nbsp;총 게시물&nbsp;&nbsp;<b>${CalendarChoiceReserverListTotal}</b> 개&nbsp;&nbsp;&nbsp;( <b id="cur" class="text-primary">1</b><b id="tot">/ n</b> 페이지 )	
 <div id="indexListAjax">
 		<table id="searchTable" class="table table-bordered table-hover">
 			<thead>
@@ -60,7 +60,7 @@
 					<td>${dto.rTime}</td>
 					<td>${dto.rCount}명</td>
 					<td>${dto.rPhone}</td>
-					<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+					<td><a class="contentView" href="AdminReserveDelete" data-value="${dto.rId}">삭제하기</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -75,6 +75,35 @@
 
 <script type="text/javascript">
 $(function() {
+	
+	$("a.contentView").click(function name(e) {
+		e.preventDefault();
+		let ceo = $(e.target);
+		let val = ceo.attr('data-value');
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "post",
+			data :{ reserveid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+				
+			},
+			success : function name(d) {
+				window.location.href = "main";
+			},
+			error : function name() {
+				alert("실해");
+			}
+		})
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
 	window.pagObj = $("#pagination").twbsPagination({
 		totalPages: 35, //총 페이지 수
 		visiblePages: 5, //보여지는 페이지 수	
@@ -92,7 +121,7 @@ $(function() {
 				let rdate = '${rdate}';  // rdate를 가져옴 
 				if(pageNo != "<<" && pageNo != "<" && pageNo != ">" && pageNo != ">>") {
 					cur = pageNo;
-					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo+"&&rDate="+rdate;
+					purl = pageNo;
 				}
 				else if(pageNo == ">") {
 					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -100,7 +129,7 @@ $(function() {
 					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 					pageNo2 = pageNo1 + 1;
 					cur = pageNo2;
-					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo2 +"&&rDate="+rdate;
+					purl = pageNo2;
 				}
 				else if(pageNo == "<") {
 					pageA = $("li.active > a"); //li에 active클래스가 있고 a에 페이지 번호가 있음
@@ -108,25 +137,32 @@ $(function() {
 					pageNo1 = parseInt(pageNo); //페이지 번호를 1 더해야 하므로 정수로 변환
 					pageNo2 = pageNo1 - 1;
 					cur = pageNo2;
-					purl = "calendarChoiceReserverPageList?pageNo=" + pageNo2+"&&rDate="+rdate;
+					purl = pageNo2;
 				}
 				else if(pageNo == "<<") {
 					cur = 1;
-					purl = "calendarChoiceReserverPageList?pageNo=" + 1+"&&rDate="+rdate;
+					purl = 1;
 				}
 				else if(pageNo == ">>") {
 					cur = 35;
-					purl = "calendarChoiceReserverPageList?pageNo=" + 35+"&&rDate="+rdate;
+					purl = 35;
+					
 				}
 				else {
 					return;
 				}
+				
 				$.ajax({
-					url : purl,
-					type : "get",
-					data : "",
+					url : "calendarChoiceReserverPageList",
+					type : "post",
+					data : {
+						pageNo : purl,
+						rDate : rdate,
+						${_csrf.parameterName}: "${_csrf.token}",
+						
+						},
 					success : function(data) {
-						//$("b#cur").text(cur);
+						$("b#cur").text(cur);
 						
 						$("#indexListAjax").html(data);
 					},
@@ -142,8 +178,8 @@ $(function() {
 	});
 	
 	// 전체 페이지 개수
-	//var tot = $("#paginationE").twbsPagination("getTotalPages");
-	//$("b#tot").text(' / ' + tot);
+	var tot = Math.ceil(${CalendarChoiceReserverListTotal}/10);
+	$("b#tot").text(' / ' + tot);
 });
 
 

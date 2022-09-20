@@ -63,7 +63,7 @@
 
 
 <script type="text/javascript">
-var absolutetoday = new Date();
+var absolutetoday = new Date(); //미사용
 var today = new Date();
 var ymd = null
 function buildCalendar() {
@@ -75,8 +75,10 @@ function buildCalendar() {
 	var firstDate = new Date(today.getFullYear(), today.getMonth(),1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
 
-	var day = ('0' + today.getDate()).slice(-2);
-	console.log(day);
+	console.log("퍼스트",firstDate);	
+	console.log("라스트",lastDate);	
+	//var day = ('0' + today.getDate());
+	//console.log(day);
 	
 	
 	while(calendarTable.rows.length > 2){
@@ -104,23 +106,18 @@ function buildCalendar() {
 		// 특수효과 누르면 값 출력
 		cell.onclick = function() {
 			
-	//		alert(this.getAttribute("id"));
-			
-			
-			
 			var s = document.getElementsByName("choice");
 		
-	
 			for(var i=0; i<s.length; i++) {
 				s[i].removeAttribute('style');
 			}
 			
-			this.style.backgroundColor='#F9D142';
+			this.style.backgroundColor='#F9D142'; // 색상 부여
 		    this.style.padding='1px';
 		    this.style.borderRadius='5px';
 		    this.style.color='#292826';
 			
-			this.setAttribute('name', 'choice')
+			this.setAttribute('name', 'choice')  // 구분을 위한 네임값 부여
 			
 			
 			clickedYear = today.getFullYear(); // 오늘년도
@@ -130,32 +127,27 @@ function buildCalendar() {
 			console.log("clickedMonth",clickedMonth);
 			console.log("clickedDate",clickedDate);
 			
-			clickedDate = clickedDate >= 10 ? clickedDate : "0" + clickedDate;
-			clickedMonth = clickedMonth >= 10 ? clickedMonth : "0" + clickedMonth;
-			clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+			clickedDate = clickedDate >= 10 ? clickedDate : "0" + clickedDate; // 한자리 수는 0을 붙여줌
+			clickedMonth = clickedMonth >= 10 ? clickedMonth : "0" + clickedMonth; // 위와 같음
+			clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate; // 값을 yyyy-mm-dd 식으로 나타내기 위함
 		
 			console.log("clickedDate",clickedDate);
 			console.log("clickedMonth",clickedMonth);
 			console.log("clickedYMD",clickedYMD);
 			
-			
-		
-			ymd = clickedYMD;
-			
-			
+			ymd = clickedYMD; 
+
 			$.ajax({
-				url : "themeNameList",
-				type : "get",
-				data : {ymd:ymd},
-				contentType : "application/json; charset=utf-8;",
+				url : "themeNameList", // 날짜값을 넘겨줄곳
+				type : "post",
+				data : {ymd:ymd,
+					${_csrf.parameterName}: "${_csrf.token}"}, // Json객체 방식으로 넘김
 				success: function(data){
-					$("#indexListAjax").html(data);
-					
+					$("#indexListAjax").html(data); // 성공시 바뀔 로딩될 페이지 부분
 				},
 				error:function(data){
-					alert("어림없지");
+					alert("어림없지"); 
 				}
-				
 			})
 			
 		}
@@ -185,12 +177,12 @@ function buildCalendar() {
 	}	
 	
 }
-function nextCalendar() {
+function nextCalendar() { // 다음 달
 	today = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
 
 	buildCalendar();
 }
-function prevCalendar() {
+function prevCalendar() { // 이전 달
 	
 
 		today = new Date(today.getFullYear(), today.getMonth()-1, today.getDate());

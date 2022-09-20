@@ -17,6 +17,13 @@
 			select * from reserve where rname = #{rName} and rphone = #{rPhone}
 		</select>
 		
+		<select id="ReserveFindMoreThan2DetailPage" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve where rid = #{rId}
+		</select>
+		
+		
+		
+		
 		<delete id="deleteReserve" parameterType="String">
 			delete from reserve where rid = #{rId}
 		</delete>
@@ -63,5 +70,13 @@
 					FROM RESERVE GROUP BY RTHEMENAME, TID ORDER BY cnt DESC)
 					WHERE ROWNUM  <=  3
 			]]>
+		</select>
+		
+		<select id="ReserveListTotal" resultType="int">
+			select count(*) from reserve
+		</select>
+		
+		<select id="CalendarChoiceReserverListTotal" resultType="int" parameterType="String">
+			select count(*) as rCount from reserve where rdate = #{ymd}
 		</select>
 	</mapper>
