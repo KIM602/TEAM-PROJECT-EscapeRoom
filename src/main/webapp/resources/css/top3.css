@@ -1,0 +1,174 @@
+@charset "EUC-KR";
+/* font */
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  color:black;
+  font-family: 'GmarketSansMedium';
+  background-size: 60px 60px;
+  background-position: 0 0;
+  animation: slide 4s infinite linear;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -120px 60px;
+  }
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 83%;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 3rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.message {
+  font-family: 'GmarketSansBold';
+  font-size: 2rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0;
+}
+
+.btn-secondary {
+  margin-left: 41%;
+  font-family: 'GmarketSansMedium';
+  color: black;
+  background: white;
+  padding: 0.3rem 3.4rem;
+  border: 3px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+}
+
+.btn-secondary:last-child {
+  margin: 0;
+  margin-left: 41%;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+  margin-left: 41%;
+}
+
+.btn-secondary:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+  margin-left: 41%;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul,li {
+	list-style: none;
+}
+
+.polaroid {
+  position: relative;
+}
+ 
+.polaroid img {
+  width: 300px;
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+
+.top3img {
+	display: flex;
+}
+
+.top3img > li > img {
+	margin: 30px;
+}
+
+.top3name {
+	display: flex;
+	justify-content: space-around;
+}
+
+.name {
+	width: 30%;
+	text-align: center;
+	font-size: 32px;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+	border: none;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.gold {
+	width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    right: 90%;
+    top: 35px;
+}
+
+.silver {
+	width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    right: 57%;
+    top: 35px;
+}
+
+.bronze {
+	width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    right: 23%;
+    top: 35px;
+}
