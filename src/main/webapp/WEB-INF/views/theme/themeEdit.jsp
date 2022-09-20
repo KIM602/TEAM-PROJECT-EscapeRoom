@@ -30,9 +30,18 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.text-center {
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+.form-control {
+	height: calc(2em + 0.75rem + 2px);
+}
+</style>
 </head>
 <body>
-<div class=container>
+<div class="container">
 	<h3 class="text-center">테마 수정</h3>
 		<form action="edit?${_csrf.parameterName}=${_csrf.token}" method="post" id="editContent" name="frm1" enctype="multipart/form-data">
 				<div class="form-group">
@@ -42,6 +51,7 @@
 				<div class="form-group">
 					<label for="uphoto">테마포스터</label><br />
 					<img src="upimage/${themeEdit.tphoto}" style="width:285px; height:400px;"/>
+					<br />
 					<br />
 					<label for="uphoto1">테마포스터 변경 파일</label><br />
 					<input type="file" class="form-control" id="uphoto1" name="tphoto"/>
