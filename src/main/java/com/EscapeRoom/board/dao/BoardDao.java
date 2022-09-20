@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
-import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.reserve.dto.ReserveDto4;
+import com.EscapeRoom.theme.dto.ThemeDto;
 
 public class BoardDao implements IDao {
 	
@@ -40,11 +41,27 @@ public class BoardDao implements IDao {
 	}
 	
 	@Override
-	public ArrayList<ReserveDto> AdminMonthBest(ReserveDto dto) {
-		ArrayList<ReserveDto> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", dto);
-		
+	public ArrayList<ReserveDto4> AdminMonthBest(ReserveDto4 dto) {
+		ArrayList<ReserveDto4> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", dto);
 		return dtos;
 	}
+	
+	//월별 top3용 이미지 가져오기
+	@Override
+	public ThemeDto AdminMonthBestImg(String tid) {
+		ThemeDto dto = sqlSession.selectOne("AdminMonthBestImg", tid);
+		return dto;
+	}
+	@Override
+	public ArrayList<ReserveDto4> AdminMonthTop3(ReserveDto4 dto) {
+		System.out.println("top3 dto값 : " + dto);
+		ArrayList<ReserveDto4> result = (ArrayList)sqlSession.selectList("AdminMonthTop3", dto);
+		
+		System.out.println("dao result크기 : " + result.size());
+		
+		return result;
+	}
+	
 	
 	
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
