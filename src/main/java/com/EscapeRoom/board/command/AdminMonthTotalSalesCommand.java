@@ -1,4 +1,4 @@
-package com.EscapeRoom.board.controller;
+package com.EscapeRoom.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -126,10 +126,6 @@ public class ProjectAdminController {
 		String auth = (String)request.getAttribute("auth");
 		
 		return "admin/DashBoardMain";
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/master
 
 	}
 	
