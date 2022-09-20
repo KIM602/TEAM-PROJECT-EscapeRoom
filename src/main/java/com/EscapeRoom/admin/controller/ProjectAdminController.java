@@ -25,12 +25,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterModifyCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterWriteCommand;
 import com.EscapeRoom.admin.command.ProjectAdminIdcheckCommand;
 import com.EscapeRoom.admin.command.ProjectAdminJoinCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainModifyCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainWriteCommand;
 import com.EscapeRoom.admin.dao.ProjectAdminDao;
+import com.EscapeRoom.admin.dto.ProjectAdminFooterDto;
 import com.EscapeRoom.admin.dto.ProjectAdminMainDto;
 import com.EscapeRoom.admin.util.Constant;
 
@@ -122,8 +126,6 @@ public class ProjectAdminController {
 		String auth = (String)request.getAttribute("auth");
 		
 		return "admin/DashBoardMain";
-
-
 	}
 	
 	//로그인처리
@@ -332,6 +334,127 @@ public class ProjectAdminController {
 		}
 	}
 	
+	//footer 최초 등록 페이지 mapping
+	@RequestMapping("/footerRegistration")
+	public String footerRegistration() {
+		return "admin/footerRegistration";
+	}
+	
+	//footer 등록(최초 작업시)
+	@RequestMapping("/footerInsert")
+	public String footerInsert(MultipartHttpServletRequest frequest, Model model) {
+
+		System.out.println("footer 등록");
+		
+		String fBusiness = frequest.getParameter("fBusiness");
+		String fName = frequest.getParameter("fName");
+		String fEmail = frequest.getParameter("fEmail");
+		String fAddress = frequest.getParameter("fAddress");
+		String fNumber = frequest.getParameter("fNumber");
+		String fTel = frequest.getParameter("fTel");
+		
+		String fImg = null;
+		
+		MultipartFile mImg = frequest.getFile("fImg");
+		
+		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+		
+	    String originFileName = mImg.getOriginalFilename();
+	    long prename = System.currentTimeMillis();
+	    long fileSize = mImg.getSize();
+	    
+	    String safeFileA = pathA + prename + originFileName;
+	    String safeFileB = pathB + prename + originFileName;
+	    
+	    fImg = prename + originFileName;
+	    
+	    ProjectAdminFooterDto fdto = new ProjectAdminFooterDto(fImg,fBusiness,fName,fEmail,fAddress,fNumber,fTel);
+	    
+	    frequest.setAttribute("fdto", fdto);
+	    
+	    com = new ProjectAdminFooterWriteCommand();
+	    com.execute(frequest, model);
+	    
+	    Map<String, Object> map = model.asMap();
+	    
+	    String res = (String)map.get("result");
+	    
+	    if(res.equals("success")) {
+	    	try {
+	    		mImg.transferTo(new File(safeFileA));
+	    		mImg.transferTo(new File(safeFileB));
+	    	}
+	    	catch (Exception e) {
+				e.printStackTrace();
+			}
+	    	return "redirect:main";
+	    }
+	    else {
+	    	return "main";
+	    }
+	}
+	
+	//footer 수정 페이지 mapping
+	@RequestMapping("/footerModify")
+		public String footerModify() {
+			return "admin/footerModify";
+	}
+	
+	//footer 수정
+	@RequestMapping(value="/footerModify", produces = "application/text; charset=UTF-8")
+	public String footerModify(MultipartHttpServletRequest frequest, Model model) {
+
+		System.out.println("footer 수정");
+		
+		String fBusiness = frequest.getParameter("fBusiness");
+		String fName = frequest.getParameter("fName");
+		String fEmail = frequest.getParameter("fEmail");
+		String fAddress = frequest.getParameter("fAddress");
+		String fNumber = frequest.getParameter("fNumber");
+		String fTel = frequest.getParameter("fTel");
+		
+		String fImg = null;
+		
+		MultipartFile mImg = frequest.getFile("fImg");
+		
+		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+		
+	    String originFileName = mImg.getOriginalFilename();
+	    long prename = System.currentTimeMillis();
+	    long fileSize = mImg.getSize();
+	    
+	    String safeFileA = pathA + prename + originFileName;
+	    String safeFileB = pathB + prename + originFileName;
+	    
+	    fImg = prename + originFileName;
+	    
+	    ProjectAdminFooterDto fdto = new ProjectAdminFooterDto(fImg,fBusiness,fName,fEmail,fAddress,fNumber,fTel);
+	    
+	    frequest.setAttribute("fdto", fdto);
+	    
+	    com = new ProjectAdminFooterModifyCommand();
+	    com.execute(frequest, model);
+	    
+	    Map<String, Object> map = model.asMap();
+	    
+	    String res = (String)map.get("result");
+	    
+	    if(res.equals("success")) {
+	    	try {
+	    		mImg.transferTo(new File(safeFileA));
+	    		mImg.transferTo(new File(safeFileB));
+	    	}
+	    	catch (Exception e) {
+				e.printStackTrace();
+			}
+	    	return "redirect:main";
+	    }
+	    else {
+	    	return "main";
+	    }
+	}
 	
 	//로그인 관련 일반메서드
 	private void getUsername(Authentication authentication, HttpServletRequest request) {

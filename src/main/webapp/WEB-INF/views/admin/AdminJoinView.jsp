@@ -88,13 +88,12 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <div class="form-group pt-4">
                 <label for="uId">아이디</label>
-                <input type="text" id="uId" class="form-control" name="pid" placeholder="아이디 입력" required >
-                <button id="idcheck" type="button" class="btn btn-info">아이디 중복체크</button>
-                <br/>
-	            <p id="textalert"></p>
-
-	                
-            </div>
+                <div class="d-flex">
+	                <input type="text" id="uId" class="form-controlStyle" name="pid" placeholder="아이디 입력" required >
+	                <button id="idcheck" type="button" class="btn btn-info">아이디 중복체크</button>
+                </div>
+			</div>
+            	<p id="textalert"></p>
             <div class="form-group pt-3">
                 <label for="uPw">비밀번호</label>
                 <input type="password" id="uPw" class="form-control" name="ppw" placeholder="비밀번호 입력" required >
@@ -138,10 +137,10 @@
     				data : {"pid" : pid},
     				success : function(data){
     					if(data.search("idcheck-success") > -1){
-    						$("#textalert").text("사용 가능한 아이디입니다.")
+    						$("#textalert").text("사용 가능한 아이디입니다.").css({'color':'green','font-size':'0.8rem'})
     					}
     					else {
-    						$("#textalert").text("중복된 아이디입니다.")
+    						$("#textalert").text("중복된 아이디입니다.").css({'color':'red','font-size':'0.8rem'})
     					}
     				},
     				error : function() {

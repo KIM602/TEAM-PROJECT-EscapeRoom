@@ -39,5 +39,10 @@
     </section>
 <%@include file="../main/footer.jsp" %>
 <script src="js/map.js"></script>
+<script>
+	$(document).ready(function(){
+		
+	});
+</script>
 </body>
 </html>

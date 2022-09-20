@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainCommand;
 import com.EscapeRoom.admin.dao.ProjectAdminDao;
 import com.EscapeRoom.admin.util.Constant;
@@ -69,11 +70,14 @@ public class HomeController {
 	
 	// ∏ ¿Ãµø
 	@RequestMapping("/map")
-	public String map() {
+	public String map(HttpServletRequest request, Model model) {
 		System.out.println("map¿Ãµø");
+		
+		com = new ProjectAdminFooterCommand();
+		com.execute(request, model);
+		
 		return "map/map";
 	}
-
 
 	
 	

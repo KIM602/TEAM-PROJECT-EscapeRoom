@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
+import com.EscapeRoom.admin.dao.ProjectAdminDao;
 import com.EscapeRoom.board.dao.BoardDao;
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
@@ -17,8 +20,19 @@ import com.EscapeRoom.reserve.dao.ReserveDao;
 import com.EscapeRoom.util.Constant;
 
 @Controller
-public class BoardController {
+public class BoardController {	
 	
+		//footer 가져오기
+		private ProjectAdminCommand com;
+		
+		//footer
+		//ProjectAdminDao bean
+		private ProjectAdminDao edao;
+		@Autowired
+		public void setEdao(ProjectAdminDao edao) {
+			this.edao = edao;
+			Constant.edao = edao;
+		}
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	
@@ -58,7 +72,12 @@ public class BoardController {
 	
 	
 	@RequestMapping("/about")
-	public String about() {
+	public String about(HttpServletRequest request, Model model) {
+		
+		//footer 출력으로 추가
+		com = new ProjectAdminFooterCommand();
+		com.execute(request, model);
+		
 		return "board/about";
 	}
 	

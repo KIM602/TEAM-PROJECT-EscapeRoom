@@ -105,7 +105,7 @@
                                         <a href="#">지도 수정</a>
                                     </li>
                                     <li class="nav-lastlist">
-                                        <a href="#">footer 수정</a>
+                                        <a href="footerRegistration" id="footerRegistration">회사 정보 수정</a>
                                     </li>
                                 </ul>
                             </li>

@@ -30,6 +30,7 @@
 		SELECT * FROM MAINIMG
 	</select>
 	
+	<!-- main 정보 수정 -->
 	<update id="mainModify" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
 		UPDATE MAINIMG SET
 		LIMAGE = #{lImage},
@@ -37,4 +38,26 @@
 		MIMAGEEVENT = #{mImageEvent}
 	</update>
 	
+	<!-- footer 정보 등록 -->
+	<insert id="footerInsert" parameterType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		INSERT INTO FOOTERINFO(FIMG,FBUSINESS,FNAME,FEMAIL,FADDRESS,FNUMBER,FTEL)
+		VALUES(#{fImg},#{fBusiness},#{fName},#{fEmail},#{fAddress},#{fNumber},#{fTel})
+	</insert>
+	
+	<!-- footer 뿌리기 -->
+	<select id="FooterList" resultType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		SELECT * FROM FOOTERINFO
+	</select>
+	
+	<!-- footer 정보 수정 -->
+	<update id="footerModify" parameterType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		UPDATE FOOTERINFO SET
+		FIMG = #{fImg},
+		FBUSINESS = #{fBusiness},
+		FNAME = #{fName},
+		FEMAIL = #{fEmail},
+		FADDRESS = #{fAddress},
+		FNUMBER = #{fNumber},
+		FTEL = #{fTel}
+	</update>
 </mapper>
