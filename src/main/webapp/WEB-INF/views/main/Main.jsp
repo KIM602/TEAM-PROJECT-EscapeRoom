@@ -38,30 +38,31 @@
 <script src="https://codepen.io/Gthibaud/pen/dybzvNw.js"></script>
 
 <style>
-html {
-  font-size: 18px;
+/* font */
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
   color:black;
-  font-family: "Questrial", sans-serif;
-  background-color: #ffec63;
-  background-image: linear-gradient(
-      45deg,
-      #ffd966 25%,
-      transparent 25%,
-      transparent 75%,
-      #ffd966 75%,
-      #ffd966
-    ),
-    linear-gradient(
-      -45deg,
-      #ffd966 25%,
-      transparent 25%,
-      transparent 75%,
-      #ffd966 75%,
-      #ffd966
-    );
+  font-family: 'GmarketSansMedium';
   background-size: 60px 60px;
   background-position: 0 0;
   animation: slide 4s infinite linear;
@@ -94,7 +95,8 @@ body {
 }
 
 .message {
-  font-size:1.1rem;
+  font-family: 'GmarketSansBold';
+  font-size: 2rem;
   margin-bottom: 1.6rem;
   margin-top: 0;
 }
@@ -135,6 +137,19 @@ ul,li {
 	list-style: none;
 }
 
+.polaroid {
+  position: relative;
+}
+ 
+.polaroid img {
+  width: 300px;
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+
 .top3img {
 	display: flex;
 }
@@ -152,6 +167,21 @@ ul,li {
 .name {
 	width: 30%;
 	text-align: center;
+	font-size: 32px;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+	border: none;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 </style>
 </head>
