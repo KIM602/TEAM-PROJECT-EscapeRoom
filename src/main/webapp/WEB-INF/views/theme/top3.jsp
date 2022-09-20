@@ -24,6 +24,9 @@
   			<div class="top3name">
   				<c:forEach items="${rlist}" var="dto1"><p class="name"><i class="fa-solid fa-medal"></i>&nbsp;${dto1.rthemename}</p></c:forEach>
 			</div>
+			<br />
+			<br />
+			<button class="btn btn-secondary" type="button" data-dismiss="modal">CLOSE</button>
 		</div>
 </body>
 </html>
