@@ -93,11 +93,7 @@
 	<beans:bean name="tdao" class="com.EscapeRoom.theme.dao.ThemeDao"/>
 	<beans:bean name="rdao" class="com.EscapeRoom.reserve.dao.ReserveDao"/>
 	<beans:bean name="edao" class="com.EscapeRoom.admin.dao.ProjectAdminDao" />
-	<!-- BoardDao 의 bean -->
-	<beans:bean name="dao" class="com.EscapeRoom.board.dao.BoardDao">
-		<beans:property name="sqlSession" ref="sqlSession"/>
-	</beans:bean>
-	
+	<beans:bean name="bdao" class="com.EscapeRoom.board.dao.BoardDao"/>
 	
 	
 	

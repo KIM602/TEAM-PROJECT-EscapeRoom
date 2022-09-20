@@ -55,10 +55,34 @@
 				<td>${dto.rTime}</td>
 				<td>${dto.rCount}명</td>
 				<td>${dto.rPhone}</td>
-				<td><a class="contentView" href="AdminReserveDelete?reserveid=${dto.rId}">삭제하기</a></td>
+				<td><a class="contentView" href="AdminReserveDelete" data-value="${dto.rId}">삭제하기</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-</body>
+<script type="text/javascript">	
+$(document).ready(function name() {
+
+	$("a.contentView").click(function name(e) {
+		e.preventDefault();
+		let ceo = $(e.target);
+		let val = ceo.attr('data-value');
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "post",
+			data :{ reserveid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+				
+			},
+			success : function name(d) {
+				window.location.href = "main";
+			},
+			error : function name() {
+				alert("실해");
+			}
+		})
+		
+	})
+})
+</script>	
 </html>

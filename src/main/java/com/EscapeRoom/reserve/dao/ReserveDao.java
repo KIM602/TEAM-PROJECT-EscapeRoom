@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.reserve.dto.ReserveDto2;
@@ -11,6 +12,7 @@ import com.EscapeRoom.reserve.dto.ReserveDto2;
 import com.EscapeRoom.reserve.dto.ReserveDto3;
 
 import com.EscapeRoom.reserve.dto.startNoRdate;
+
 
 public class ReserveDao implements RdaoInterface {
 	
@@ -34,12 +36,20 @@ public class ReserveDao implements RdaoInterface {
 	// 예약자가 진짜 있는지 유무 체크 및
 	// 예약자 네임과 폰번호로 데이터 가져오기
 	@Override
-	public ReserveDto reserveFindCheck(ReserveDto dto) {
-			ReserveDto Rdto = sqlSession.selectOne("reserveFindCheck",dto); // SelectOne메서드를 사용하여 가져온 2개의 정보로 쿼리 값을 가져옴
+	public ArrayList<ReserveDto> reserveFindCheck(ReserveDto dto) {
+			ArrayList<ReserveDto> Rdto = (ArrayList)sqlSession.selectList("reserveFindCheck",dto); // Select메서드를 사용하여 가져온 2개의 정보로 쿼리 값을 가져옴
 			System.out.println("Rdto값은 ? " + Rdto);
 			return Rdto;
 		
 	}
+	
+	//예약자 id값으로 데이터 가져오기
+	@Override
+	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto) {
+		ArrayList<ReserveDto> result  = (ArrayList)sqlSession.selectList("ReserveFindMoreThan2DetailPage",rdto);
+		return result;
+	}
+	
 	//예약삭제
 	@Override
 	public void deleteReserve(String rId) {
@@ -98,4 +108,5 @@ public class ReserveDao implements RdaoInterface {
 		int result = sqlSession.selectOne("CalendarChoiceReserverListTotal",ymd);
 		return result;
 	}
+	
 }

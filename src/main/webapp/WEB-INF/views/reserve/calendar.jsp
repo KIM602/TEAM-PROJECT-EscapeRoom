@@ -75,6 +75,8 @@ function buildCalendar() {
 	var firstDate = new Date(today.getFullYear(), today.getMonth(),1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
 
+	console.log("퍼스트",firstDate);	
+	console.log("라스트",lastDate);	
 	//var day = ('0' + today.getDate());
 	//console.log(day);
 	
@@ -137,9 +139,9 @@ function buildCalendar() {
 
 			$.ajax({
 				url : "themeNameList", // 날짜값을 넘겨줄곳
-				type : "get",
-				data : {ymd:ymd}, // Json객체 방식으로 넘김
-				contentType : "application/json; charset=utf-8;",
+				type : "post",
+				data : {ymd:ymd,
+					${_csrf.parameterName}: "${_csrf.token}"}, // Json객체 방식으로 넘김
 				success: function(data){
 					$("#indexListAjax").html(data); // 성공시 바뀔 로딩될 페이지 부분
 				},
