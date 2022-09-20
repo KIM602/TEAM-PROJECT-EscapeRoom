@@ -148,21 +148,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	$("#ReserverList").click(function(e) {
-		e.preventDefault();
-		$.ajax({
-			url : "ReserverList",
-			type: "get",
-			data : "",
-			success: function(d) {
-				$(".main-page").html(d);	
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	});
-	
+		
 	$("#MonthTotal").click(function(e) {
 		e.preventDefault();
 		$.ajax({
@@ -178,9 +164,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	
-	
-	
+
 	
 	//테마 등록
 	$("#nav-themeInsert").click(function(e) {
@@ -215,20 +199,22 @@ $(document).ready(function() {
 	});
 	
 	// 예약자 목록 리스트
-	$("#ReserverList").click(function name(e) {
+	$("#ReserverList").click(function(e) {
 		e.preventDefault();
 		$.ajax({
 			url : "ReserverList",
-			type: "get",
-			data : "",
+			type: "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+				},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
-				alert("에러");
+				alert("에러야");
 			}
-		})
-	})
+		});
+	});
 	
 	// 로고 이미지 수정 관련
 	$("#MainRegistration").click(function(event){

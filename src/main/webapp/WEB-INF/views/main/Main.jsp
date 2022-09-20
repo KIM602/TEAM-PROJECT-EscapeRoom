@@ -34,7 +34,156 @@
 
  <link rel="stylesheet" href="css/main.css">
 
+<script src="https://fonts.googleapis.com/css?family=Questrial"></script>
+<script src="https://codepen.io/Gthibaud/pen/dybzvNw.js"></script>
 
+<style>
+/* font */
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  color:black;
+  font-family: 'GmarketSansMedium';
+  background-size: 60px 60px;
+  background-position: 0 0;
+  animation: slide 4s infinite linear;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -120px 60px;
+  }
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 75%;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 3rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.message {
+  font-family: 'GmarketSansBold';
+  font-size: 2rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0;
+}
+
+.btn {
+  color:inherit;
+  font-family:inherit;
+  font-size: inherit;
+  background: white;
+  padding: 0.3rem 3.4rem;
+  border: 3px solid black;
+  margin-right: 2.6rem;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+}
+
+.btn:last-child {
+  margin: 0;
+}
+
+.btn:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+
+.btn:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul,li {
+	list-style: none;
+}
+
+.polaroid {
+  position: relative;
+}
+ 
+.polaroid img {
+  width: 300px;
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+
+.top3img {
+	display: flex;
+}
+
+.top3img > li > img {
+	width: 300px;
+	margin: 30px;
+}
+
+.top3name {
+	display: flex;
+	justify-content: space-around;
+}
+
+.name {
+	width: 30%;
+	text-align: center;
+	font-size: 32px;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+	border: none;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+</style>
 </head>
 <body>
 <!-- 메뉴바 -->
@@ -60,13 +209,41 @@
             </div>
         </section>
     </div>
-    <a href="top3" class="btn-resrvation">
+    
+    <a href="top3" id="top3bt" class="btn-resrvation" data-toggle="modal" data-target="#top3">
         <i class="fa-solid fa-key"></i>
     </a>
 
+<!-- 예약top3 -->
+<div id="top3" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content" id="mcontent">
+			<!-- ajax로 예약 top3 가져옴 -->
+			<button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
+		</div>
+	</div>
+</div>
+
 <script src="js/main.js"></script>
 
-
-
+<script>
+$(document).ready(function(){
+	$("#top3bt").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url : $("#top3bt").attr("href"),
+			type : "get",
+			data : "",
+			success : function(data) {
+				$("#mcontent").html(data);
+			},
+			error : function(data) {
+				$("#mbody").text("실패!");
+				$("#modal").trigger("click");
+			}
+		});
+	}); 
+});
+</script>
 </body>
 </html>

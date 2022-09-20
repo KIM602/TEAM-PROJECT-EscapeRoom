@@ -1,5 +1,7 @@
 package com.EscapeRoom.board.controller;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.admin.command.ProjectAdminCommand;
 import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
@@ -17,6 +20,7 @@ import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.dao.ReserveDao;
+import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.util.Constant;
 
 @Controller
@@ -36,7 +40,7 @@ public class BoardController {
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	
-	//예약 통계 작업용으로 가져옴
+	//admin 통계 작업용으로 가져옴
 	//예약 다오
 	private ReserveDao rdao;
 	private ReserveCommand rcom;
@@ -52,6 +56,55 @@ public class BoardController {
 		return "board/MonthTotal";
 	}
 	
+	@RequestMapping(value="/mTotalCount", produces="application/text; charset=UTF8")
+	@ResponseBody
+	public String AdminMonthTotalCount(HttpServletRequest request, Model model) {
+		System.out.println("ym값1 : " + request.getParameter("ym"));
+		
+		rcom = new AdminMonthTotalCount();
+		rcom.execute(request, model);
+		System.out.println("req값1 : " + (String)request.getAttribute("AdminMonthTotalCount"));
+		
+		String result = (String)request.getAttribute("AdminMonthTotalCount");
+		System.out.println("성공1");
+		
+		return result + " 건";
+	}
+	
+	@RequestMapping(value="/mTotalSales", produces="application/text; charset=UTF8")
+	@ResponseBody
+	public String AdminMonthTotalSales(HttpServletRequest request, Model model) {
+		System.out.println("ym값2 : " + request.getParameter("ym"));
+		
+		rcom = new AdminMonthTotalSales();
+		rcom.execute(request, model);
+		System.out.println("req값2 : " + request.getAttribute("AdminMonthTotalSales"));
+		
+		int result = (Integer)request.getAttribute("AdminMonthTotalSales");
+		
+
+		DecimalFormat df = new DecimalFormat("###,###");
+		String str;
+		
+		if(result == 0) {			
+			str = "0 원";
+		}
+		else {
+			str = df.format(result) + " 원";
+		}
+		return str;
+	}
+	
+	@RequestMapping("/mBestList")
+	public String AdminMonthBest(HttpServletRequest request, Model model) {
+		rcom = new AdminMonthBest();
+		rcom.execute(request, model);
+		
+		return "board/mList";
+	}
+	
+//	ArrayList<NoticeDto> nlist = dao.pageListN(request.getParameter("pageNo"));
+//	model.addAttribute("nPage", nlist);
 	
 	
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -62,6 +115,7 @@ public class BoardController {
 	@Autowired
 	public void setDao(BoardDao dao) {
 		this.dao = dao;
+		Constant.bdao = dao;
 	}
 	
 	

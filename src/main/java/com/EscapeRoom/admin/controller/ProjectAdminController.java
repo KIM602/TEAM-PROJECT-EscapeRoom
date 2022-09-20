@@ -125,7 +125,13 @@ public class ProjectAdminController {
 		String username = (String)request.getAttribute("username");
 		String auth = (String)request.getAttribute("auth");
 		
+<<<<<<< HEAD
 		return "admin/DashBoardMain";
+=======
+		return "admin/DashBoardMain1";
+
+
+>>>>>>> refs/heads/master
 	}
 	
 	//로그인처리
@@ -194,11 +200,21 @@ public class ProjectAdminController {
 		MultipartFile mfN = mrequest.getFile("mImageNormal");
 		MultipartFile mfE = mrequest.getFile("mImageEvent");
 		
+<<<<<<< HEAD
 //		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
 //		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 		
 		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
 	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+=======
+
+		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
+		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
+
+		//String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
+		//String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
+
+>>>>>>> refs/heads/master
 		
 		String orignalFileNameL = mfL.getOriginalFilename();
 		String orignalFileNameN = mfN.getOriginalFilename();
