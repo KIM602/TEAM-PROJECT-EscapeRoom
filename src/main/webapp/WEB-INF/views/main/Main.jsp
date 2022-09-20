@@ -83,7 +83,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  height: 75%;
+  height: 83%;
   display: block;
   flex-direction: column;
   align-items: center;
@@ -101,30 +101,32 @@ body {
   margin-top: 0;
 }
 
-.btn {
-  color:inherit;
-  font-family:inherit;
-  font-size: inherit;
+.btn-secondary {
+  margin-left: 41%;
+  font-family: 'GmarketSansMedium';
+  color: black;
   background: white;
   padding: 0.3rem 3.4rem;
   border: 3px solid black;
-  margin-right: 2.6rem;
   box-shadow: 0 0 0 black;
   transition: all 0.2s;
 }
 
-.btn:last-child {
+.btn-secondary:last-child {
   margin: 0;
+  margin-left: 41%;
 }
 
-.btn:hover {
+.btn-secondary:hover {
   box-shadow: 0.4rem 0.4rem 0 black;
   transform: translate(-0.4rem, -0.4rem);
+  margin-left: 41%;
 }
 
-.btn:active {
+.btn-secondary:active {
   box-shadow: 0 0 0 black;
   transform: translate(0, 0);
+  margin-left: 41%;
 }
 
 .options {
@@ -211,7 +213,7 @@ ul,li {
     </div>
     
     <a href="top3" id="top3bt" class="btn-resrvation" data-toggle="modal" data-target="#top3">
-        <i class="fa-solid fa-key"></i>
+        <i class="fa-solid fa-trophy"></i>
     </a>
 
 <!-- 예약top3 -->
@@ -219,7 +221,6 @@ ul,li {
 	<div class="modal-dialog">
 		<div class="modal-content" id="mcontent">
 			<!-- ajax로 예약 top3 가져옴 -->
-			<button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
 		</div>
 	</div>
 </div>
