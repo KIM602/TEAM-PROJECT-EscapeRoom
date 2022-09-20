@@ -201,8 +201,6 @@ public class ProjectAdminController {
 		
 		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
 		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
-<<<<<<< HEAD
-=======
 
 
 //		String pathA = "C:/Users/kyk92/git/EscapeRoom/src/main/webapp/resources/upimage/";
@@ -219,7 +217,6 @@ public class ProjectAdminController {
 //		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 
 
->>>>>>> refs/heads/master
 		
 		String orignalFileNameL = mfL.getOriginalFilename();
 		String orignalFileNameN = mfN.getOriginalFilename();
