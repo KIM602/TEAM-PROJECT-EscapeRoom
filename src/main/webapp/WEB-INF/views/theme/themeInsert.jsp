@@ -38,6 +38,10 @@
 .form-control {
 	height: calc(2em + 0.75rem + 2px);
 }
+a {
+	display:block;
+	color:#333;
+}
 </style>
 </head>
 <body>
