@@ -23,13 +23,14 @@ public class AdminMonthBest3Command implements ReserveCommand {
 		
 		ArrayList<ReserveDto4> rlist = bdao.AdminMonthTop3(dto);
 		
-		if(rlist.size() != 0) {
+		if(rlist.size() != 0 ) {
+			model.addAttribute("rlist", rlist);
+			
 			request.setAttribute("tid1", rlist.get(0).gettId());
 			request.setAttribute("tid2", rlist.get(1).gettId());
 			request.setAttribute("tid3", rlist.get(2).gettId());
-		
-			model.addAttribute("rlist", rlist);
 		}
+		
 	}
 
 }
