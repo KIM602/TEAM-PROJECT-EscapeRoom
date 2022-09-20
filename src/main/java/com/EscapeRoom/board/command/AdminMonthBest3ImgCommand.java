@@ -23,14 +23,16 @@ public class AdminMonthBest3ImgCommand implements ThemeCommand {
 		System.out.println("tid2은" + tid2);
 		System.out.println("tid3은" + tid3);
 		
-		ThemeDto tdto = bdao.AdminMonthBestImg(tid1);
-		model.addAttribute("theme1", tdto);
-		tdto = bdao.AdminMonthBestImg(tid2);
-		model.addAttribute("theme2", tdto);
-		tdto = bdao.AdminMonthBestImg(tid3);
-		model.addAttribute("theme3", tdto);
-		
-		System.out.println("execute tdto는 :" + tdto);
+		if(tid1 != null) {
+			ThemeDto tdto = bdao.AdminMonthBestImg(tid1);
+			model.addAttribute("theme1", tdto);
+			tdto = bdao.AdminMonthBestImg(tid2);
+			model.addAttribute("theme2", tdto);
+			tdto = bdao.AdminMonthBestImg(tid3);
+			model.addAttribute("theme3", tdto);
+			
+			System.out.println("execute tdto는 :" + tdto);
+		}
 		
 		
 	}

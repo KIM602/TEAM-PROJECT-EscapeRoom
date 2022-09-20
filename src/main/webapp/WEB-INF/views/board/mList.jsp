@@ -59,9 +59,9 @@ div.name {
 
 <div class="row">
 	<div class="col-8" style="display:flex; justify-content: space-around;">
-		<img class="tImg" src="upimage/${theme1.tphoto}"/>
-		<img class="tImg" src="upimage/${theme2.tphoto}"/>
-		<img class="tImg" src="upimage/${theme3.tphoto}"/>
+		<img class="tImg" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
+		<img class="tImg" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
+		<img class="tImg" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
 	</div>
 	<div class="col-4">
 		<c:forEach items="${mList}" var="dto" varStatus="status">
