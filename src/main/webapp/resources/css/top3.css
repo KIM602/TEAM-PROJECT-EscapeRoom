@@ -51,7 +51,7 @@ body {
   padding: 1.6rem 3rem;
   border: 3px solid black;
   border-radius: 5px;
-  background: white;
+  background: whitesmoke;
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -139,6 +139,7 @@ ul,li {
 
 .modal-content {
 	border: none;
+	background-color: whitesmoke;
 }
 
 .modal-open .modal {
