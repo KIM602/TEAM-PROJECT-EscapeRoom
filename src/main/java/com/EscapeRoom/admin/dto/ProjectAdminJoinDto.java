@@ -92,4 +92,10 @@ public class ProjectAdminJoinDto {
 		this.auth = auth;
 	}
 	
+	//부모생성자가 없어서 자식클래스(idcheckcommand)에서 기본생성자를 이용하여 생성하려하니 오류나서 작성
+	public ProjectAdminJoinDto(String pid) {
+		super();
+		this.pid = pid;
+	}
+	
 }
