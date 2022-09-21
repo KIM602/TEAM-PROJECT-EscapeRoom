@@ -86,11 +86,21 @@ body {
 	display: flex;
 	justify-content: center;
 }
+
+h1 {
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+a {
+	display:block;
+	color:#333;
+}
 </style>
 </head>
 <body>
 <div id="mainRegion" class="container mt-3">
-	<h1 class="text-center text-info">테마목록</h1>
+	<h1 class="text-center mt-5">현재테마목록</h1>
+		<br /><br />
 		<div class="row mb-4" >
 			<c:forEach items="${themeList}" var="dto">
 				<div class="col-md-4" style="height:auto;">

@@ -30,11 +30,24 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.text-center {
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+.form-control {
+	height: calc(2em + 0.75rem + 2px);
+}
+a {
+	display:block;
+	color:#333;
+}
+</style>
 </head>
 <body>
-<h3 class="container" id="result"></h3><br/>
-<div class="container">
-	<h3 class="text-center text-danger">테마입력</h3>
+<div class="container mt-5">
+	<h3 class="text-center">테마 등록</h3>
+	<br />
 	<form action="inserttheme?${_csrf.parameterName}=${_csrf.token}" method="post" id="frm1" name="frm1" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="uphoto">테마포스터</label>
