@@ -29,68 +29,14 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style>
-/* font */
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+<link rel="stylesheet" href="css/theme/themeListPage.css" />
 
-html {
- 	width: 100%;
-    height: 100%;
-}
- 
-body {
- 	width: 100%;
-    height: 100%;
-    font-family: "GmarketSansBold";
-}
-  	
-.card {
-	border: ridge;
-	border-radius: 15px 50px 30px 5px;
-}
-	
-.col-md-4 {
-	padding-bottom: 15px;
-}
-
-.card-title {
-	font-family: "GmarketSansBold";
-	font-size: 1.2rem;
-}
-
-.card-img, .card-img-top {
-    border-top-left-radius: calc(1.25rem - 8px);
-    border-top-right-radius: calc(3.25rem - 5px);
-}
-
-.btn-dark {
-	display: flex;
-	justify-content: center;
-}
-</style>
 </head>
 <body>
 <div id="mainRegion" class="container mt-3">
-	<h1 class="text-center text-info">테마목록</h1>
+	<h1 class="text-center mt-5">현재테마목록</h1>
+		<br /><br />
 		<div class="row mb-4" >
 			<c:forEach items="${themeList}" var="dto">
 				<div class="col-md-4" style="height:auto;">
