@@ -1,4 +1,6 @@
-package com.EscapeRoom.board.controller;
+package com.EscapeRoom.board.command;
+
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,21 +8,23 @@ import org.springframework.ui.Model;
 
 import com.EscapeRoom.board.dao.BoardDao;
 import com.EscapeRoom.reserve.command.ReserveCommand;
+import com.EscapeRoom.reserve.dto.ReserveDto4;
 import com.EscapeRoom.util.Constant;
 
-public class AdminMonthTotalSales implements ReserveCommand {
+public class AdminMonthBestCommand implements ReserveCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
 		BoardDao dao = Constant.bdao;
 		String ym = request.getParameter("ym");
 		
-		int result = dao.AdminMonthTotalSales(ym);
+		ReserveDto4 dto = new ReserveDto4(null, null, ym, null);
 		
-		System.out.println("ÅäÅ»°ª:" + result);
+		ArrayList<ReserveDto4> mlist = dao.AdminMonthBest(dto);
 		
-		model.addAttribute("AdminMonthTotalSales", result);
-		request.setAttribute("AdminMonthTotalSales", result);
+		
+		model.addAttribute("mList", mlist);
+		request.setAttribute("AdminMonthBest", mlist);
 		
 	}
 

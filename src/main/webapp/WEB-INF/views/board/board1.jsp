@@ -86,7 +86,7 @@
 
 <div style="font-family: 'NanumSquareRound'; padding-top: 70px;">
 	<div id="board_title" class="text-center" style="margin-bottom: 34px;">
-		<a id="osm" href="index">OSM ESCAPE</a>
+		<a id="osm" href="Homemain">OSM ESCAPE</a>
 	</div>
 	
 	<div class="container">

@@ -93,8 +93,10 @@ function del() {
 	if(window.confirm("정말 삭제하시겠습니까? 삭제시 모든 내용이 사라집니다.")) {
 		$.ajax({
 			url: "deleteNotice?bNum=${viewNotice.bNum}",
-			type: "get",
-			data: "",
+			type: "post",
+			data: {
+				${_csrf.parameterName}: "${_csrf.token}"
+			},
 			success: function(d) {
 				$(".main-page").html(d);
 			},

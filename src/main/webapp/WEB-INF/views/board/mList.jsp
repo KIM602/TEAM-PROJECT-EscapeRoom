@@ -32,15 +32,49 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+body {
+	background-color: #F9D142;
+	overflow: hidden;
+}
+#mlist {
+	color: #EE7600;
+	font-size: 20px;
+	margin-top: 7px;
+}
+.tImg {
+	width: 200px;
+}
+div.name {
+	display: flex;
+	text-align: center;
+	justify-content: space-around;
+}
+</style>
+
 </head>
 <body>
 
 
-<c:forEach items="${mList}" var="dto" varStatus="status">
-	<div>${status.count}위 ${dto.rThemeName}</div>
-</c:forEach>
-
-
-
+<div class="row">
+	<div class="col-8" style="display:flex; justify-content: space-around;">
+		<img class="tImg" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
+		<img class="tImg" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
+		<img class="tImg" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
+	</div>
+	<div class="col-4">
+		<c:forEach items="${mList}" var="dto" varStatus="status">
+			<div id="mlist">${status.count}위&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;${dto.cnt}건&nbsp;&nbsp;-&nbsp;${dto.rThemeName}</div>
+		</c:forEach>
+	</div>
+</div>
+<div class="row">
+	<div class="col-8 mt-2 name">
+		<c:forEach items="${rlist}" var="dto" varStatus="status">
+			<span style="font-size: 22px; width: 200px;">${status.count}. ${dto.rThemeName}</span>
+		</c:forEach>
+	</div>
+</div>
 </body>
 </html>
