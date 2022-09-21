@@ -60,7 +60,7 @@ public class ThemeController {
 	private String path1 = "C:/KYK/Util/apache-tomcat-9.0.64-windows-x64/apache-tomcat-9.0.64/wtpwebapps/EscapeRoom_security/resources/upimage/";
 	
 	/* User page */
-	//테마 페이지(리스트 불러옴)
+	//테마 소개 페이지(리스트 불러옴)
 	@RequestMapping("/themePage")
 	public String themePage(HttpServletRequest request, Model model) {
 		System.out.println("테마페이지요청");
