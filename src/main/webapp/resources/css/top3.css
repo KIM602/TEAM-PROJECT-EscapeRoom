@@ -51,14 +51,14 @@ body {
   padding: 1.6rem 3rem;
   border: 3px solid black;
   border-radius: 5px;
-  background: white;
+  background: whitesmoke;
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .message {
   font-family: 'GmarketSansBold';
-  font-size: 2rem;
-  margin-bottom: 1.6rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.6rem;
   margin-top: 0;
 }
 
@@ -129,7 +129,7 @@ ul,li {
 .name {
 	width: 30%;
 	text-align: center;
-	font-size: 32px;
+	font-size: 26px;
 }
 
 .modal-dialog {
@@ -139,6 +139,7 @@ ul,li {
 
 .modal-content {
 	border: none;
+	background-color: whitesmoke;
 }
 
 .modal-open .modal {

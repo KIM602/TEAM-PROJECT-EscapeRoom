@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
 import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.reserve.dto.ReserveDto4;
+import com.EscapeRoom.theme.dto.ThemeDto;
 
 public interface IDao {
 	
@@ -15,9 +17,11 @@ public interface IDao {
 	public int AdminMonthTotalSales(String ym);
 	
 	//월별 테마 예약 순위
-	public ArrayList<ReserveDto> AdminMonthBest(ReserveDto dto);
+	public ArrayList<ReserveDto4> AdminMonthBest(ReserveDto4 dto);
 	
-	
+	//월별 top3 테마 이미지
+	ArrayList<ReserveDto4> AdminMonthTop3(ReserveDto4 dto);
+	public ThemeDto AdminMonthBestImg(String tid);
 	
 	
 	public void writeNotice(String bTitle, String bContent, String bWriter);
@@ -38,5 +42,7 @@ public interface IDao {
 	public ArrayList<EventDto> listE();
 	public ArrayList<NoticeDto> pageListN(String pageNo);
 	public ArrayList<EventDto> pageListE(String pageNo);
+
+
 
 }

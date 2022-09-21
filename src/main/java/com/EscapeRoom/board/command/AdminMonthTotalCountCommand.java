@@ -1,4 +1,4 @@
-package com.EscapeRoom.board.controller;
+package com.EscapeRoom.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import com.EscapeRoom.reserve.dao.ReserveDao;
 import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.util.Constant;
 
-public class AdminMonthTotalCount implements ReserveCommand {
+public class AdminMonthTotalCountCommand implements ReserveCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, Model model) {

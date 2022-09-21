@@ -107,7 +107,7 @@ a {
 }
 .nav-box ul li a:hover {
     text-decoration: none;
-    color: rgb(255, 130, 13);
+    color: rgb(255, 210, 9);
 }
 
 @media only screen and (max-width:767px) {

@@ -108,7 +108,8 @@ function prevCalendar() {
 		</div>
 	</div>
 	<br/>
-	<div style="background-color: #FFF; border: 1px solid lightgrey; border-radius: 25px; padding: 30px; ">
+	<div style="background-color: #FFF; border: 1px solid lightgrey;
+			border-radius: 25px; padding: 30px; height: 670px;">
 		<div style="font-size: 18px; font-weight: bold; "><span class="monthNow"></span>월 예약 건수</div>
 		<div id="mTotalCount"></div>
 		<hr/>
@@ -118,8 +119,7 @@ function prevCalendar() {
 		<hr/>
 		
 		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 테마 예약 순위</div>
-		<div id="mBestList"></div>
-		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<div id="mBestList" class="mt-3"></div>
 	</div>
 </div>
 
