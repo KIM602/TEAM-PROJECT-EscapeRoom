@@ -55,9 +55,7 @@ html, body {
     width: 100%;
 	height: 100%;
 }
-.scrollpage {
-    height: 100vh;
-}
+
 
 /* mobile */
 @media only screen and (max-width:767px) {
@@ -260,7 +258,7 @@ table#price {
 	<!-- 1 -->
 	<!-- 1 -->
     <div class="scrollpage">
-		<div style="font-family: 'GmarketSansMedium'; background-color: #0C3338; color: lightyellow;">
+		<div style="font-family: 'GmarketSansMedium'; background-color: #0C3338; color: lightyellow; height:100vh;">
     	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 		<!-- 소개 타이틀 -->
 		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
