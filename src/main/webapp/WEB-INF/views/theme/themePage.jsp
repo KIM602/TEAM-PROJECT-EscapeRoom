@@ -36,7 +36,7 @@
 <!-- Link Swiper's CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
-<link rel="stylesheet" href="style/theme.css" />
+<link rel="stylesheet" href="css/theme/theme.css" />
 
 </head>
 <body>
