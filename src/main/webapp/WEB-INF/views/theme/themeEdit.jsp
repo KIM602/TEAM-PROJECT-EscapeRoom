@@ -38,10 +38,14 @@
 .form-control {
 	height: calc(2em + 0.75rem + 2px);
 }
+.container {
+	margin-top: 30px;
+	height: 150vh;
+}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-top: 30px;">
 	<h3 class="text-center">테마 수정</h3>
 		<form action="edit?${_csrf.parameterName}=${_csrf.token}" method="post" id="editContent" name="frm1" enctype="multipart/form-data">
 				<div class="form-group">
