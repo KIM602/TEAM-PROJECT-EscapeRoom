@@ -1,5 +1,12 @@
 package com.EscapeRoom.reserve.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +27,16 @@ import com.EscapeRoom.reserve.command.ReserveFind;
 import com.EscapeRoom.reserve.command.ReserveListTotal;
 import com.EscapeRoom.reserve.command.ReservePageList;
 import com.EscapeRoom.reserve.command.ReserverList;
-import com.EscapeRoom.reserve.command.Test123132;
+import com.EscapeRoom.reserve.command.ThemeMultipleReserveTimeCheck;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
-
+import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.theme.command.ThemeImageCommand;
+import com.EscapeRoom.theme.command.ThemeListCommand;
 import com.EscapeRoom.theme.command.ThemeNameListCommand;
 import com.EscapeRoom.theme.dao.ThemeDao;
+import com.EscapeRoom.theme.dto.ThemeDto;
 import com.EscapeRoom.util.Constant;
 
 
@@ -186,14 +195,25 @@ public class ReserveController {
 		}
 		
 		
-		// 테스트
-		@RequestMapping("/test")
-		public String test(HttpServletRequest request,Model model) {
-			System.out.println("test");
-			tcom = new Test123132();
+		// 당일 예약가능한 목록 보기
+		@RequestMapping("/TodayReserveAvailable")
+		public String TodayReserveAvailable(HttpServletRequest request,Model model) {
+			System.out.println("TodayReserveAvailable");
+			
+		
+			
+			// 테마리스트 가져오기
+			tcom= new ThemeListCommand();
 			tcom.execute(request, model);
 			
-			return "reserve/test";
+			// 예약 가능시간 불러오기
+			rcom = new ThemeMultipleReserveTimeCheck();
+			rcom.execute(request, model);
+			
+			// 누적예약 체크	
+	
+			
+			return "reserve/TodayReserveAvailable";
 		}
 		
 		

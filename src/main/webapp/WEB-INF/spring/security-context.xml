@@ -40,6 +40,10 @@
 		<intercept-url pattern="/admin_board" access="isAuthenticated()" />
 		<intercept-url pattern="/admin_noticeBoard" access="isAuthenticated()" />
 		<intercept-url pattern="/admin_eventBoard" access="isAuthenticated()" />
+		<intercept-url pattern="/editNoticeForm" access="isAuthenticated()" />
+		<intercept-url pattern="/deleteNotice" access="isAuthenticated()" />
+		<intercept-url pattern="/editNotice" access="isAuthenticated()" />
+		
 		
 		<intercept-url pattern="/reservePage" access="permitAll" /> <!-- 가입창 이동 요청 -->
 	
