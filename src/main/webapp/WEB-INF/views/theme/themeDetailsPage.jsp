@@ -30,73 +30,17 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="css/theme/themeDetailsPage.css" />
+
 <style>
-/* font */
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-    
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-
-html {
- 	width: 100%;
-    }
- 
-body {
- 	width: 100%;
-    font-family: "GmarketSansBold";
-    background: #eee;
-  	}
-
 .full-line {
   border-image: linear-gradient(0deg,#0C3338 5px,#0000 0) fill 0//0 100vw 0 0;
   padding: 10px 0;
 }
-
-section {
-  /* center + max-width:800px + min-margin: 10px */
-  width: 100%;
-  margin-inline: max(10px, 50% - 800px/2);
-  margin-block: 50px;
-  margin-top: 7vh;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-p {
-  font-size: 1.5rem;
-  text-align: justify;
-}
-
-.container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-.detail {
-	margin-left: 35px;
-	list-style: none;
-}
 </style>
 </head>
+
 <body>
 <section>
   <h1 class="full-line">${tDetails.tname}</h1>
