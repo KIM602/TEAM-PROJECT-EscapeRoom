@@ -25,7 +25,7 @@
             <ul class="nav-ul-padding">
                 <li><a href="about">소개</a></li>
            	 	<li><a href="themePage">테마소개</a></li>
-            	<li><a href="reservePage">예약확인/취소</a></li>
+            	<li><a href="reservePage">예약하기</a></li>
           		<li><a href="board1">공지사항</a></li>
             	<li><a href="map">오시는길</a></li>
             	<li class="formain"><a href="Homemain"><i class="fa-solid fa-house"></i></a></li>
