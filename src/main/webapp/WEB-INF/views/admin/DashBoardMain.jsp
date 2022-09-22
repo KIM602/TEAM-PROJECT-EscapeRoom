@@ -166,7 +166,7 @@ $(document).ready(function() {
 	
 
 	
-	//테마 등록
+	//등록된 테마 목록
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
 		$.ajax({

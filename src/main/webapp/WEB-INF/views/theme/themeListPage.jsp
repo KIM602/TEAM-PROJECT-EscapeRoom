@@ -63,7 +63,7 @@ $(document).ready(function(){
 			type : "get",
 			data : "",
 			success : function(data) {
-				$("#mainRegion").html(data);
+				$(".main-page").html(data);
 			},
 			error : function() {
 				alert("땡!");
