@@ -40,16 +40,30 @@ body {
 }
 #mlist {
 	color: #EE7600;
-	font-size: 20px;
-	margin-top: 7px;
+	font-size: 18px;
+	margin-top: 4px;
 }
-.tImg {
-	width: 200px;
-}
-div.name {
-	display: flex;
-	text-align: center;
+.tImgs {
+	display:flex;
 	justify-content: space-around;
+}
+.tName {
+	text-align: center;
+	display:flex;
+	justify-content: space-around;
+}
+.tName span {
+	font-size: 22px;
+	width: 200px;
+} 
+.polaroid img {
+	height: 282px;
+	width: 200px;
+	border: 10px solid #fff;
+	border-bottom: 45px solid #fff;
+	-webkit-box-shadow: 3px 3px 3px #777;
+	-moz-box-shadow: 3px 3px 3px #777;
+	box-shadow: 3px 3px 3px #777;
 }
 </style>
 
@@ -58,10 +72,10 @@ div.name {
 
 
 <div class="row">
-	<div class="col-8" style="display:flex; justify-content: space-around;">
-		<img class="tImg" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
-		<img class="tImg" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
-		<img class="tImg" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
+	<div class="col-8 tImgs">
+		<div class="polaroid"><img src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/></div>
+		<div class="polaroid"><img src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/></div>
+		<div class="polaroid"><img src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/></div>
 	</div>
 	<div class="col-4">
 		<c:forEach items="${mList}" var="dto" varStatus="status">
@@ -70,11 +84,12 @@ div.name {
 	</div>
 </div>
 <div class="row">
-	<div class="col-8 mt-2 name">
+	<div class="col-8 tName">
 		<c:forEach items="${rlist}" var="dto" varStatus="status">
-			<span style="font-size: 22px; width: 200px;">${status.count}. ${dto.rThemeName}</span>
+			<span>${dto.rThemeName}</span>
 		</c:forEach>
 	</div>
 </div>
+	
 </body>
 </html>
