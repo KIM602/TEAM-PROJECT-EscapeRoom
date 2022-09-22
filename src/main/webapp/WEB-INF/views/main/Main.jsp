@@ -35,7 +35,6 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/top3.css">
 
-<script src="https://fonts.googleapis.com/css?family=Questrial"></script>
 <script src="https://codepen.io/Gthibaud/pen/dybzvNw.js"></script>
 
 </head>

@@ -30,19 +30,8 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style>
-.text-center {
-	font-size: 2.3rem;
-	font-weight: bold;
-}
-.form-control {
-	height: calc(2em + 0.75rem + 2px);
-}
-.container {
-	margin-top: 30px;
-	height: 150vh;
-}
-</style>
+<link rel="stylesheet" href="css/theme/themeEdit.css" />
+
 </head>
 <body>
 <div class="container" style="margin-top: 30px;">
