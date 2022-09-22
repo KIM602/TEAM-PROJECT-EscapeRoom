@@ -30,50 +30,74 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="css/theme/themeEdit.css" />
+
 </head>
 <body>
-<div class=container>
-<h3 class="text-center">테마 수정</h3>
-	<form action="edit?${_csrf.parameterName}=${_csrf.token}" method="post" id="editContent" name="frm1" enctype="multipart/form-data">
-		<div class="form-group">
-			<label for="uId">번호</label>
-			<input type="text" class="form-control" id="uId" name="tid" value="${themeEdit.tid}" readonly />
-		</div>
-		<div class="form-group">
-			<label for="uphoto">테마포스터</label><br />
-			<img src="upimage/${themeEdit.tphoto}" style="width:285px; height:400px;"/>
-			<br />
-			<label for="uphoto1">테마포스터 변경 파일</label><br />
-			<input type="file" class="form-control" id="uphoto1" name="tphoto"/>
-		</div>
-		<div class="form-group">
-			<label for="uName">테마명</label>
-			<input type="text" value="${themeEdit.tname}" class="form-control" id="uName" required="required" name="tname">
-		</div>
-		<div class="form-group">
-			<label for="uGenre">장르</label>
-			<input type="text" value="${themeEdit.tgenre}" class="form-control" id="uGenre" required="required" name="tgenre">
-		</div>
-		<div class="form-group">
-			<label for="uDifficulty">난이도</label>
-			<select name="tdifficulty" id="uDifficulty">
-						<option value="1"selected>1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-		</div>
-		<div class="form-group">
-			<label for="uTime">테마시간</label>
-			<input type="text" value="${themeEdit.ttime}" class="form-control" id="uTime" required="required" name="ttime">
-		</div>
-		<div class="form-group">
-			<label for="uProfile">테마설명</label>
-			<textarea rows="10" cols="" id="uProfile" name="tprofile" class="form-control" required="required">${themeEdit.tprofile}</textarea>
-		</div>
-	<button type="submit" id="ed" class="btn btn-success">수정</button>
-</form>
+<div class="container" style="margin-top: 30px;">
+	<h3 class="text-center">테마 수정</h3>
+		<form action="edit?${_csrf.parameterName}=${_csrf.token}" method="post" id="editContent" name="frm1" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="uId">번호</label>
+					<input type="text" class="form-control" id="uId" name="tid" value="${themeEdit.tid}" readonly />
+				</div>
+				<div class="form-group">
+					<label for="uphoto">테마포스터</label><br />
+					<img src="upimage/${themeEdit.tphoto}" style="width:285px; height:400px;"/>
+					<br />
+					<br />
+					<label for="uphoto1">테마포스터 변경 파일</label><br />
+					<input type="file" class="form-control" id="uphoto1" name="tphoto"/>
+				</div>
+				<div class="form-group">
+					<label for="uName">테마명</label>
+					<input type="text" value="${themeEdit.tname}" class="form-control" id="uName" required="required" name="tname">
+				</div>
+				<div class="form-group">
+					<label for="uGenre">장르</label>
+					<input type="text" value="${themeEdit.tgenre}" class="form-control" id="uGenre" required="required" name="tgenre">
+				</div>
+				<div class="form-group">
+					<label for="uDifficulty">난이도</label>
+					<select name="tdifficulty" id="uDifficulty">
+								<option value="1"selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+				</div>
+				<div class="form-group">
+					<label for="uTime">테마시간</label>
+					<input type="text" value="${themeEdit.ttime}" class="form-control" id="uTime" required="required" name="ttime">
+				</div>
+				<div class="form-group">
+					<label for="uProfile">테마설명</label>
+					<textarea rows="10" cols="" id="uProfile" name="tprofile" class="form-control" required="required">${themeEdit.tprofile}</textarea>
+				</div>
+			<button type="submit" id="ed" class="btn btn-success">수정</button>
+			<a id="listback" href="themeListPage" class="btn btn-dark">목록으로</a>
+		</form>
 </div>
+
+<script>
+$(document).ready(function(){
+	$("#listback").click(function(event){
+		event.preventDefault();
+		let ceo = $(event.target);
+		$.ajax({
+			url : ceo.attr("href"),
+			type : "get",
+			data : "",
+			success : function(data) {
+				$(".main-page").html(data);
+			},
+			error : function(data) {
+				alert("땡!");
+			}
+		});
+	});
+});
+</script>
 </body>
 </html>

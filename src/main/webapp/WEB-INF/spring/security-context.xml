@@ -32,12 +32,8 @@
 		<!--pattern은 요청경로 속성, access는 접근 대상 지정  -->
 		<intercept-url pattern="/" access="permitAll"/> <!-- 맨처음 접근하는 첫페이지는 로그인 여부 관계 없이 모두 접근 가능 -->
 		
-		<intercept-url pattern="/index" access="permitAll" />
-		<intercept-url pattern="/about" access="permitAll" />
-		<intercept-url pattern="/board" access="permitAll" />
-		<intercept-url pattern="/noticeBoard" access="permitAll" />
-		<intercept-url pattern="/eventBoard" access="permitAll" />
-		<intercept-url pattern="/admin_board" access="isAuthenticated()" />
+		<intercept-url pattern="/admin_board1" access="isAuthenticated()" />
+		<intercept-url pattern="/admin_board2" access="isAuthenticated()" />
 		<intercept-url pattern="/admin_noticeBoard" access="isAuthenticated()" />
 		<intercept-url pattern="/admin_eventBoard" access="isAuthenticated()" />
 		<intercept-url pattern="/editNoticeForm" access="isAuthenticated()" />

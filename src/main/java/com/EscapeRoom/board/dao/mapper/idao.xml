@@ -17,14 +17,27 @@
 		select sum(rprice) from reserve
 		where rdate like '%'||#{ym}||'%'
 	</select>
-	<select id="AdminMonthBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
-		select count(*), rthemename
+	<select id="AdminMonthBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto4" parameterType="com.EscapeRoom.reserve.dto.ReserveDto4">
+		select count(*) as cnt, rthemename
 		from reserve
 		where rdate like '%'||#{rDate}||'%'
 		group by rthemename
-		order by count(*) desc
+		order by cnt desc, rthemename asc
 	</select>
-
+	<select id="AdminMonthTop3" resultType="com.EscapeRoom.reserve.dto.ReserveDto4">
+		<![CDATA[
+			SELECT * FROM
+			(SELECT COUNT(*) AS cnt, RTHEMENAME, TID
+			FROM RESERVE
+			where rdate like '%'||#{rDate}||'%'
+			GROUP BY RTHEMENAME, TID
+			ORDER BY cnt DESC, rthemename asc)
+			WHERE ROWNUM  <=  3
+		]]>
+	</select>
+	<select id="AdminMonthBestImg" resultType="com.EscapeRoom.theme.dto.ThemeDto" parameterType="String">
+		select * from theme where tid = #{tid}
+	</select>
 
 
 

@@ -97,19 +97,17 @@ a {
     height: 0;
     background-color: aliceblue;
     overflow-y: hidden;
-    font-size: 6rem;
     z-index: 997;
 }
 .nav-box {
     width: 85%;
-    padding: 6%;
 }
 .nav-box ul li a {
     display: block;
 }
 .nav-box ul li a:hover {
     text-decoration: none;
-    color: rgb(255, 130, 13);
+    color: rgb(255, 210, 9);
 }
 
 @media only screen and (max-width:767px) {
@@ -120,17 +118,59 @@ a {
 
     /* nav list */
     .nav-wrap {
-        font-size: 4.6em;
+        font-size: 3rem !important;
     }
     .nav-box {
         width: 100%;
-        padding: 30% 3%;
+        padding-top: 30% !important;
+        padding-left : 8% !important;
     }
     .nav-box li:nth-child(even){
         margin: 6% 0;
     }
+    .nav-ul-padding {
+    	padding : 0 !important;
+    }
+    
+    li.formain {
+    	position:absolute;
+    	bottom: -3%;
+    	right: 4%;
+    }
 }
 
-@media only screen and (min-width:768px) {}
+@media only screen and (min-width:768px) {
+	 .nav-wrap {
+        font-size: 4rem !important;
+    }
+    
+    .nav-box {
+    	padding : 20% 6%;
+    }
+    
+	li.formain {
+    	position:absolute;
+    	bottom: 3%;
+    	right: 4%;
+    	font-size: 3rem !important;
+    }
+	
+}
 
-@media only screen and (min-width:992px) {}
+@media only screen and (min-width:992px) {
+	 .nav-wrap {
+        font-size: 6rem !important;
+    }
+	
+	.nav-box {
+		padding : 6%;
+	}
+	
+	li.formain {
+    	position:absolute;
+    	bottom: 3%;
+    	right: 2%;
+    	font-size: 3rem !important;
+    }
+	
+}

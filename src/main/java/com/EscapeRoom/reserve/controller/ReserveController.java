@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
+import com.EscapeRoom.admin.dao.ProjectAdminDao;
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverList;
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverListTotal;
 import com.EscapeRoom.reserve.command.CalendarChoiceReserverPageList;
@@ -42,7 +45,19 @@ import com.EscapeRoom.util.Constant;
 
 @Controller
 public class ReserveController {
-
+	
+	//footer 가져오기
+	private ProjectAdminCommand com;
+	
+	//footer
+	//ProjectAdminDao bean
+	private ProjectAdminDao edao;
+	@Autowired
+	public void setEdao(ProjectAdminDao edao) {
+		this.edao = edao;
+		Constant.edao = edao;
+	}
+	
 	//테마 네임 리스트 가져오기용도
 	private ThemeCommand tcom;
 	private ThemeDao tdao;
@@ -95,6 +110,10 @@ public class ReserveController {
 	public String reservePage(HttpServletRequest request, Model model) {
 		System.out.println("reservePage");
 
+		//footer 출력으로 추가
+		com = new ProjectAdminFooterCommand();
+		com.execute(request, model);
+		
 		return "reserve/reservePage";
 	}
 	

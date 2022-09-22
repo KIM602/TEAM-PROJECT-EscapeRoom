@@ -204,3 +204,7 @@
 #btx {
 	margin-top: 9px;
 }
+
+.modal-dialog {
+    max-width: 650px;
+}

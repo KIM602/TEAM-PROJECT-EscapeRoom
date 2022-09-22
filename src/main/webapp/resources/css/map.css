@@ -25,7 +25,7 @@ section {
 	}
 	
     .wrap {
-    padding-top: 3.646vw;
+    padding-top: 5.646vw;
     width: 70%;
     margin: auto;
 	}
@@ -50,3 +50,22 @@ section {
     box-sizing: border-box;
 	}
 
+
+@media only screen and (max-width:767px){
+	.title2 {
+		margin: 8% 0 10% 0;
+	}
+}
+@media only screen and (min-width:768px){
+	.title2 {
+		margin: 8% 0 10% 0;
+	}
+}
+@media only screen and (min-width:992px){
+	.title2 {
+		margin: 0;
+	}
+	#map iframe {
+   		height: 645px;
+    }
+}

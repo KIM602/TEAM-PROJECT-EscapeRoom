@@ -30,10 +30,12 @@
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
- <script src="https://kit.fontawesome.com/77ad8525ff.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/77ad8525ff.js" crossorigin="anonymous"></script>
 
- <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/top3.css">
 
+<script src="https://codepen.io/Gthibaud/pen/dybzvNw.js"></script>
 
 </head>
 <body>
@@ -60,13 +62,40 @@
             </div>
         </section>
     </div>
-    <a href="top3" class="btn-resrvation">
-        <i class="fa-solid fa-key"></i>
+    
+    <a href="top3" id="top3bt" class="btn-resrvation" data-toggle="modal" data-target="#top3">
+        <i class="fa-solid fa-trophy"></i>
     </a>
+
+<!-- 예약top3 -->
+<div id="top3" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content" id="mcontent">
+			<!-- ajax로 예약 top3 가져옴 -->
+		</div>
+	</div>
+</div>
 
 <script src="js/main.js"></script>
 
-
-
+<script>
+$(document).ready(function(){
+	$("#top3bt").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url : $("#top3bt").attr("href"),
+			type : "get",
+			data : "",
+			success : function(data) {
+				$("#mcontent").html(data);
+			},
+			error : function(data) {
+				$("#mbody").text("실패!");
+				$("#modal").trigger("click");
+			}
+		});
+	}); 
+});
+</script>
 </body>
 </html>
