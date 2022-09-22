@@ -121,15 +121,11 @@ ul,li {
 	margin: 30px;
 }
 
-.top3name {
-	display: flex;
-	justify-content: flex-start;
-	width: 111%;
-}
-
-.name {
-	width: 30%;
+.polaroid p {
+	position: absolute;
 	text-align: center;
+	width: 100%;
+	bottom: 0px;
 	font-size: 26px;
 }
 
