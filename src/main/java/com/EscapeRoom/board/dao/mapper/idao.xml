@@ -22,7 +22,7 @@
 		from reserve
 		where rdate like '%'||#{rDate}||'%'
 		group by rthemename
-		order by cnt desc
+		order by cnt desc, rthemename asc
 	</select>
 	<select id="AdminMonthTop3" resultType="com.EscapeRoom.reserve.dto.ReserveDto4">
 		<![CDATA[
@@ -31,7 +31,7 @@
 			FROM RESERVE
 			where rdate like '%'||#{rDate}||'%'
 			GROUP BY RTHEMENAME, TID
-			ORDER BY cnt DESC)
+			ORDER BY cnt DESC, rthemename asc)
 			WHERE ROWNUM  <=  3
 		]]>
 	</select>
