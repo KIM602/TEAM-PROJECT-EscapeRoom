@@ -94,6 +94,7 @@
 		<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 14px;">EVENT</span></a>
 		
 		<div class="container">
+		
 			<div id="mainTab"></div>
 		</div>
 	</div>
