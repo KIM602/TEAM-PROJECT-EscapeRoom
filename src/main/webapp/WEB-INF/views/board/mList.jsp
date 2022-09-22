@@ -38,29 +38,18 @@ body {
 	background-color: #F9D142;
 	overflow: hidden;
 }
+
 #mlist {
 	color: #EE7600;
 	font-size: 20px;
 	margin-top: 4px;
 }
+
 .tImgs {
 	display:flex;
 	justify-content: space-around;
 }
-.tName {
-	position: absolute;
-	text-align: center;
-	display:flex;
-	justify-content: space-around;
-	z-index: 1;
-	top: 77.5%;
-	width: 37.3%;
-	left: 32%;
-}
-.tName span {
-	font-size: 22px;
-	width: 200px;	
-} 
+
 .polaroid .poster {
 	z-index: 0;
 	width: 200px;
@@ -70,6 +59,7 @@ body {
 	-moz-box-shadow: 3px 3px 3px #777;
 	box-shadow: 3px 3px 3px #777;
 }
+
 .gold {
 	width: 60px;
 	height: 60px;
@@ -93,6 +83,14 @@ body {
 	z-index: 2;
 	right: 26%;
 }
+
+.polaroid p {
+	position: absolute;
+	text-align: center;
+	width: 200px;
+	bottom: -10px;
+	font-size: 22px;
+}
 </style>
 
 </head>
@@ -113,18 +111,21 @@ body {
 			<img class="gold" src="image/gold.png"/>
 			<div class="polaroid">
 				<img class="poster" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[0].rThemeName}</p>
 			</div>
 		</c:if>
 		<c:if test="${not empty theme2.tphoto}">
 			<img class="silver" src="image/silver.png"/>
 			<div class="polaroid">
 				<img class="poster" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[1].rThemeName}</p>
 			</div>
 		</c:if>
 		<c:if test="${not empty theme3.tphoto}">
 			<img class="bronze" src="image/bronze.png"/>
 			<div class="polaroid">
 				<img class="poster" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[2].rThemeName}</p>
 			</div>
 		</c:if>
 	</div>
@@ -134,13 +135,17 @@ body {
 		</c:forEach>
 	</div>
 </div>
+<!-- 
 <div class="row">
 	<div class="col-8 tName">
-		<c:forEach items="${rlist}" var="dto" varStatus="status">
+		<c:forEach items="${rlist}" var="dto">
 			<span>${dto.rThemeName}</span>
 		</c:forEach>
 	</div>
 </div>
-	
+ -->
+
+
+
 </body>
 </html>
