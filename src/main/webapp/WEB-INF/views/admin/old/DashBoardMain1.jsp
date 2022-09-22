@@ -64,13 +64,10 @@
 							&#8250; 메인페이지 수정
 							<ul class="nav-line-style">
 								<li class="nav-lastlist">
-									<a href="#">logo 수정</a>
+									<a href="MainRegistration" id="MainRegistration">메인페이지 이미지 최초 등록</a>
 								</li>
 								<li class="nav-lastlist">
-									<a href="#">이미지 수정</a>
-								</li>
-								<li class="nav-lastlist">
-									<a href="#">메뉴항목 수정</a>
+									<a href="MainModify" id="MainModify">메인페이지 이미지 수정</a>
 								</li>
 							</ul>
 						</li>

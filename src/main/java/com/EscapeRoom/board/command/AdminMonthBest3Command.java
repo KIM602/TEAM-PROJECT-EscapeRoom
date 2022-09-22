@@ -29,9 +29,6 @@ public class AdminMonthBest3Command implements ReserveCommand {
 			for(int i=0; i<rlist.size(); i++) {
 				request.setAttribute(("tid"+(i+1)), rlist.get(i).gettId());
 			}
-//			request.setAttribute("tid1", rlist.get(0).gettId());
-//			request.setAttribute("tid2", rlist.get(1).gettId());
-//			request.setAttribute("tid3", rlist.get(2).gettId());
 		}
 		
 	}
