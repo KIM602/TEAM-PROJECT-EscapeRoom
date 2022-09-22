@@ -186,17 +186,20 @@ $(document).ready(function() {
 	$("#nav-themeEdit").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeEdit").attr('href'),
-			type: "get",
-			data: "",
+			url : "themeListPage",
+			type: "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+				},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
-				alert("에러");
+				alert("에러야");
 			}
 		});
 	});
+	
 	
 	// 예약자 목록 리스트
 	$("#ReserverList").click(function(e) {
@@ -215,6 +218,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){

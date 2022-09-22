@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -143,7 +144,7 @@ public class ThemeController {
 	}
 	
 	//등록된 테마 목록 페이지
-	@RequestMapping("/themeListPage")
+	@RequestMapping(value="/themeListPage",method = RequestMethod.POST)
 	public String themeListPage(HttpServletRequest request, Model model) {
 		System.out.println("themeListPage");
 		com = new ThemeListPageCommand();
@@ -152,7 +153,7 @@ public class ThemeController {
 	}
 		
 	//등록된 테마 상세보기 페이지
-	@RequestMapping("/themeDetailsPage")
+	@RequestMapping(value="/themeDetailsPage",method = RequestMethod.POST)
 	public String themeDetailsPage(HttpServletRequest request, Model model) {
 		System.out.println("themeDetailsPage입니다");
 		com = new ThemeDetailsPageCommand();
