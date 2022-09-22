@@ -205,7 +205,7 @@ $(function() {
 			url : ceo.attr("href"),
 			type : "post",
 			data :{ reserveid : val,
-				${_csrf.parameterName}: "${_csrf.token}",
+				${_csrf.parameterName}: "${_csrf.token}"
 				
 			},
 			success : function name(d) {
