@@ -30,11 +30,12 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="css/theme/themeInsert.css" />
 </head>
 <body>
-<h3 class="container mt-5" id="result"></h3><br/>
 <div class="container mt-5">
-	<h3 class="text-center text-danger">테마입력</h3>
+	<h3 class="text-center">테마 등록</h3>
+	<br />
 	<form action="inserttheme?${_csrf.parameterName}=${_csrf.token}" method="post" id="frm1" name="frm1" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="uphoto">테마포스터</label>
@@ -68,7 +69,7 @@
 		</div>
 		
 		<button type="submit" class="btn btn-success">등록</button>&nbsp;&nbsp;
-		<button type="reset" class="btn btn-danger">취소</button>&nbsp;&nbsp;
+		<a href="DashBoardMain" class="btn btn-danger">취소</a>
 	</form>
 </div>
 </body>
