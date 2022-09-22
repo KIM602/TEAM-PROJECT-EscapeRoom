@@ -123,7 +123,8 @@ ul,li {
 
 .top3name {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
+	width: 111%;
 }
 
 .name {
