@@ -7,112 +7,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<!-- RWD -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- MS -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8,IE=EmulateIE9"/> 
-<meta id="_csfr" name="_csrf" content="${_csrf.token}"/> 
-<title>JSP</title>
-<!--bootstrap-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!--jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--propper jquery -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!--latest javascript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<!--fontawesome icon-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
-	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<!--google icon -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- reservePage css -->
+<link href='css/reserve/reserveForm.css' rel='stylesheet' />
 
-<style type="text/css">
-
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-*{ font-family: 'GmarketSansBold';
-}
-
-
-#step2-table {
-	width:100%;
-    
-
-}
-
-
-#step2-table th {
-    font-size: 1.2rem;
-    font-weight: 300;
-    width:15%;
-    border: 0.052vw solid #f6f6f6;
-    text-align: center;
-    color:#fff;
-}
-
-#step2-table th:first-child {
-	border: 0.052vw solid #000;
-    background-color: #000;
-    border-bottom-color: #fff;
-    
-   
-}
-
-
-#step2-table td {
-
-    border: 0.052vw solid #000;
-    font-size:1.2rem;
-    width:80%;
-    padding: 0.5vw;
-}
-#step2-table td p{
-    margin-bottom:0;
-}
-
-#count-select{
-  margin-bottom:0;
-}
-#count-select select {
-    width: 100%;
-    height: 1.646vw;
-    border: 0.052vw solid #000;
-    padding: 0 0.5vw;
-    box-sizing: border-box;
-    font-size: 1.2rem;
-    box-sizing: border-box;
-    font-family: 'GmarketSansBold'
-}
-
-
-#reserveOk{
-text-align: center;
-
-}
-
-
-#checkboxform{
-margin-bottom: 3%;
-margin-top: 3%;
-}
-
-#checkboxform > #rTerms{
-	width: 0.8rem;
-    height: 0.8rem;
-    cursor: pointer;
-}
-</style>
 </head>
 <script type="text/javascript">
 
@@ -131,23 +28,30 @@ function reserveCheck() {
 	if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){
 		return false;
 	}
-	alert("예약완료")
 	
-	form.submit(function name(e) {
-		e.preventDefault();
-		alert("gogo");
-		$.ajax({
-			url : "reserveOK",
-			type : "get",
-			data : "",
-			success : function name(d) {
-				$("#reserveRegion").html(d);
-			},
-			error : function name() {
-				alert("예약체크/확인실패");
-			}
-		})
-	});
+	if(window.confirm("예약하시겠습니까?")) {
+		alert("예약완료");
+		form.submit(function name(e) {
+			e.preventDefault();
+			$.ajax({
+				url : "reserveOK",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					
+					$("#reserveRegion").html(d);
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		});
+	}
+	else{
+		alert("최소")
+	}
+	
+	
 	
 	
 	

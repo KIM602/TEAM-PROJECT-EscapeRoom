@@ -10,20 +10,25 @@
 		</insert>	
 		
 		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
-			select rcheck from reserve where rdate = #{rDate} and tid=#{tId} and rtime = #{rTime}
+			select * from reserve where rdate = #{rDate} and tid=#{tId} and rtime = #{rTime}
 		</select>
 		
 		<select id="reserveFindCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			select * from reserve where rname = #{rName} and rphone = #{rPhone}
 		</select>
 		
+		<select id="ReserveFindMoreThan2DetailPage" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
+			select * from reserve where rid = #{rId}
+		</select>
+		
+		
+		
+		
 		<delete id="deleteReserve" parameterType="String">
 			delete from reserve where rid = #{rId}
 		</delete>
 		
-		<select id="reserveTop31" resultType="com.EscapeRoom.reserve.dto.ReserveDto2">
-			select tid, count(*) as cnt from reserve group by tid order by count(*) desc
-		</select>
+		
 		
 		<select id="reserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
 			<![CDATA[
@@ -72,4 +77,18 @@
 		<select id="CalendarChoiceReserverListTotal" resultType="int" parameterType="String">
 			select count(*) as rCount from reserve where rdate = #{ymd}
 		</select>
+		
+		<!-- Today 테마별 예약이 다 되어있는지 파악여부용 -->
+		<select id="todayReservethemeCheck" parameterType="com.EscapeRoom.reserve.dto.TodayReserveTidDto" resultType="int">
+			select count(*) from reserve where rdate = #{rDate} and tid = #{tId} and rCheck = 1
+		</select>
+		
+		<!-- 순위 집계용 -->
+		<select id="themeBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto2" parameterType="com.EscapeRoom.reserve.dto.ReserveDto2">
+		select count(*) as cnt, tid, dense_rank() over(order by count(*) desc) as rank
+		from reserve
+		group by tid
+		order by cnt desc
+		</select>
+		
 	</mapper>

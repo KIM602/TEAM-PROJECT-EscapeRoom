@@ -103,40 +103,40 @@
 					<tr>
 						<th><a>예약일</a></th>
 						<td>
-							<a>${reserveCheckData.rDate}</a>
+							<a>${reserveCheckData.get(0).rDate}</a>
 						</td>
 					</tr>
 					<tr>
 						<th><a>테마명</a></th>
 						<td>
-							<a>${theme.tname}</a>
+							<a>${reserveCheckData.get(0).rThemeName}</a>
 						</td>
 						
 					</tr>
 					<tr>
 						<th><a>시간</a></th>
 						<td>
-							<a>${reserveCheckData.rTime}</a>
+							<a>${reserveCheckData.get(0).rTime}</a>
 						</td>
 						
 					</tr>
 					<tr>
 						<th><a>성함</a></th>
 						<td>
-							<a>${reserveCheckData.rName}</a>
+							<a>${reserveCheckData.get(0).rName}</a>
 							
 						</td>
 					</tr>	
 					<tr>
 						<th><a>인원</a></th>
 						<td> 
-							<a>${reserveCheckData.rCount}</a>
+							<a>${reserveCheckData.get(0).rCount}</a>
 						</td>
 						
 					</tr>
 					<tr>
 						<th><a>비용</a></th>
-						<td><a>${reserveCheckData.rPrice}</a></td>
+						<td><a>${reserveCheckData.get(0).rPrice}</a></td>
 					</tr>
 					<tr>
 						<th><a>주의사항</a></th>
@@ -159,13 +159,13 @@
 		
 <script type="text/javascript">
 $(document).ready(function name() {
-	var themeid = '${reserveCheckData.rId}'
+	var themeid = '${reserveCheckData.get(0).rId}'
 	console.log(themeid);
 	$("#reserveDeleteBtn").click(function name(e) {
 		$.ajax({
 			url : "reserveDelete",
 			type : "post",
-			data : {reserveid : '${reserveCheckData.rId}',
+			data : {reserveid : '${reserveCheckData.get(0).rId}',
 				${_csrf.parameterName}: "${_csrf.token}"
 				},
 			success : function name(d) {

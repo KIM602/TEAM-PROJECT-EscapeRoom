@@ -1,0 +1,22 @@
+/*모바일*/
+dd.themeStyleImg {
+	width: 100%;
+}
+
+@media only screen and (max-width:767px){
+	dd.themeStyleImg > img {
+		width: 80%;
+		margin: 0 10% ;
+	}
+}
+/*태블릿*/
+@media only screen and (min-width:768px){
+	
+}
+/*pc*/
+@media only screen and (min-width:992px){
+	dd.themeStyleImg > img {
+		width: 100%;
+		height: 40vh;
+	}
+}

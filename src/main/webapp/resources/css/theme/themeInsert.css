@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+.text-center {
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+.form-control {
+	height: calc(2em + 0.75rem + 2px);
+}
+a {
+	display:block;
+	color:#333;
+}
