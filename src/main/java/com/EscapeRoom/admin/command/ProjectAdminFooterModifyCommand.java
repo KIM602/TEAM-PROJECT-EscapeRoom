@@ -12,14 +12,12 @@ public class ProjectAdminFooterModifyCommand implements ProjectAdminCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
-
 		ProjectAdminDao edao = Constant.edao;
 		ProjectAdminFooterDto dto = (ProjectAdminFooterDto)request.getAttribute("fdto");
 		
 		String result = edao.footerModify(dto);
 		
 		model.addAttribute("result",result);
-
 	}
 
 }

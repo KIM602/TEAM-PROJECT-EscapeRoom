@@ -195,8 +195,8 @@ public class ProjectAdminController {
 		MultipartFile mfN = mrequest.getFile("mImageNormal");
 		MultipartFile mfE = mrequest.getFile("mImageEvent");
 		
-		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
-		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
+//		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
+//		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 
 
 //		String pathA = "C:/Users/kyk92/git/EscapeRoom/src/main/webapp/resources/upimage/";
@@ -205,8 +205,8 @@ public class ProjectAdminController {
 //		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
 //		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 		
-		//String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
-	   // String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
 
 
 //		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
@@ -358,7 +358,7 @@ public class ProjectAdminController {
 	@RequestMapping("/footerInsert")
 	public String footerInsert(MultipartHttpServletRequest frequest, Model model) {
 
-		System.out.println("footer 등록");
+		System.out.println("footer 등록요청");
 		
 		String fBusiness = frequest.getParameter("fBusiness");
 		String fName = frequest.getParameter("fName");
@@ -411,15 +411,16 @@ public class ProjectAdminController {
 	
 	//footer 수정 페이지 mapping
 	@RequestMapping("/footerModify")
-		public String footerModify() {
-			return "admin/footerModify";
-	}
+	public String footerModifyA() {
+		System.out.println("footerModify요청");
+		return "admin/footerModify";
+}
 	
-	//footer 수정
-	@RequestMapping(value="/footerModify", produces = "application/text; charset=UTF-8")
+	
+	@RequestMapping(value="/footerModifyA", produces = "application/text; charset=UTF-8")
 	public String footerModify(MultipartHttpServletRequest frequest, Model model) {
-
-		System.out.println("footer 수정");
+		
+		System.out.println("footer 수정요청");
 		
 		String fBusiness = frequest.getParameter("fBusiness");
 		String fName = frequest.getParameter("fName");
@@ -433,41 +434,44 @@ public class ProjectAdminController {
 		MultipartFile mImg = frequest.getFile("fImg");
 		
 		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
-	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/"; 
+	    
+	    String originalFileName = mImg.getOriginalFilename();
 		
-	    String originFileName = mImg.getOriginalFilename();
-	    long prename = System.currentTimeMillis();
-	    long fileSize = mImg.getSize();
-	    
-	    String safeFileA = pathA + prename + originFileName;
-	    String safeFileB = pathB + prename + originFileName;
-	    
-	    fImg = prename + originFileName;
-	    
+		long prename = System.currentTimeMillis();
+		long fileSize = mImg.getSize();
+	
+		String safeFileA = pathA + prename + originalFileName;
+	    String safeFileB = pathB + prename + originalFileName;
+	
+	    fImg = prename + originalFileName;
+	
 	    ProjectAdminFooterDto fdto = new ProjectAdminFooterDto(fImg,fBusiness,fName,fEmail,fAddress,fNumber,fTel);
-	    
+	
 	    frequest.setAttribute("fdto", fdto);
-	    
+		
 	    com = new ProjectAdminFooterModifyCommand();
 	    com.execute(frequest, model);
-	    
-	    Map<String, Object> map = model.asMap();
-	    
-	    String res = (String)map.get("result");
-	    
-	    if(res.equals("success")) {
-	    	try {
-	    		mImg.transferTo(new File(safeFileA));
+		
+		Map<String, Object> map = model.asMap();
+		
+		String res = (String)map.get("result");
+		
+		System.out.println("res : " + res);
+		
+		if(res.equals("success")) {
+			try {
+				mImg.transferTo(new File(safeFileA));
 	    		mImg.transferTo(new File(safeFileB));
-	    	}
-	    	catch (Exception e) {
-				e.printStackTrace();
 			}
-	    	return "redirect:main";
-	    }
-	    else {
-	    	return "main";
-	    }
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+			return "redirect:main";
+		}
+		else {
+			return "main";
+		}
 	}
 	
 	//로그인 관련 일반메서드

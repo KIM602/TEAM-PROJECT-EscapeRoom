@@ -43,7 +43,7 @@
 <body>
 <h3 class="text-center text-titleSize">회사 정보 수정</h3>
 	<div class="container form-containerSize">
-		<form action="footerModify?${_csrf.parameterName}=${_csrf.token}"  method="post" enctype="multipart/form-data">
+		<form action="footerModifyA?${_csrf.parameterName}=${_csrf.token}"  method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="logoImg" class="text-labelSize">&#9656; 로고 이미지 수정</label>
 				<input type="file" id="logoImg" name="fImg" class="form-inputStyle"  placeholder="로고 이미지 수정"/>
