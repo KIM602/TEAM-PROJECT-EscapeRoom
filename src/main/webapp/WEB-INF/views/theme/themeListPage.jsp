@@ -44,7 +44,7 @@
 						<img class="card-img-top" src="upimage/${dto.tphoto}" alt="Card image" style="width:100%; height:100%; margin:auto;"/>
 						<div class="card-body">
 							<h5 class="card-title text-center">제목 : ${dto.tname}</h5>
-							<a href="themeDetailsPage?tid=${dto.tid}" class="themeDetailsPage btn btn-dark stretched-link">자세히보기</a>
+							<a data-value="${dto.tid}" class="themeDetailsPage btn btn-dark stretched-link">자세히보기</a>
 						</div>
 					</div>
 				</div>
@@ -58,10 +58,17 @@ $(document).ready(function(){
 	$("a.themeDetailsPage").click(function(event){
 		event.preventDefault();
 		let ceo = $(event.target);
-		$.ajax ({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+		let val = ceo.attr('data-value');
+		
+		$.ajax({ 
+			url : "themeDetailsPage",
+			type : "post",
+			data : {
+				tid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+				
+			},
+			
 			success : function(data) {
 				$(".main-page").html(data);
 			},
