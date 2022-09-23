@@ -59,16 +59,13 @@ $(document).ready(function(){
 		event.preventDefault();
 		let ceo = $(event.target);
 		let val = ceo.attr('data-value');
-		
 		$.ajax({ 
 			url : "themeDetailsPage",
 			type : "post",
 			data : {
 				tid : val,
 				${_csrf.parameterName}: "${_csrf.token}",
-				
 			},
-			
 			success : function(data) {
 				$(".main-page").html(data);
 			},
