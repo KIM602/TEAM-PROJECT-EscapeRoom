@@ -47,13 +47,10 @@
 .box-step>dl>dd {
  
     padding: 19px 30px;
-    border-left: ;
 
 }
 .box-step>dl>ddd {
-   
     padding: 19px 30px;
-    border-left: ;
 }
 .box-step>dl>dt {
     padding: 18px 30px 18px;
@@ -61,7 +58,6 @@
     color: #000;
     text-align:center;
     font-size: 1.5rem;
-    border:;
 }
 .round {
     display: inline-block;
