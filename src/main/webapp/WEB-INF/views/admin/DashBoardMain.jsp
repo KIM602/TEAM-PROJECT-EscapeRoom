@@ -102,9 +102,6 @@
                                 &#8250; 정보 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">지도 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
                                         <a href="footerModify" id="footerModify">회사 정보 수정</a>
                                     </li>
                                 </ul>
@@ -170,9 +167,11 @@ $(document).ready(function() {
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeInsert").attr('href'),
-			type: "get",
-			data: "",
+			url: "themeInsert",
+			type: "post",
+			data: {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},

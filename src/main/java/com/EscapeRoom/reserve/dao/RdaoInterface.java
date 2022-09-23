@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
-
+import com.EscapeRoom.reserve.dto.ReserveDto2;
 import com.EscapeRoom.reserve.dto.ReserveDto3;
 import com.EscapeRoom.reserve.dto.TodayReserveTidDto;
 
@@ -28,6 +28,8 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto);
 	
 	public int todayReservethemeCheck(TodayReserveTidDto dto);
+	
+	public ArrayList<ReserveDto2> ThemeBest(ReserveDto2 rdto);
 	
 	
 

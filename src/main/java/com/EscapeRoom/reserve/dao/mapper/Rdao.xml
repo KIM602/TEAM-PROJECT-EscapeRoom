@@ -83,4 +83,12 @@
 			select count(*) from reserve where rdate = #{rDate} and tid = #{tId} and rCheck = 1
 		</select>
 		
+		<!-- 순위 집계용 -->
+		<select id="themeBest" resultType="com.EscapeRoom.reserve.dto.ReserveDto2" parameterType="com.EscapeRoom.reserve.dto.ReserveDto2">
+		select count(*) as cnt, tid, dense_rank() over(order by count(*) desc) as rank
+		from reserve
+		group by tid
+		order by cnt desc
+		</select>
+		
 	</mapper>

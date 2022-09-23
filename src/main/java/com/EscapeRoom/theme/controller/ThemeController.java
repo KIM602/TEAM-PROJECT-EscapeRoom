@@ -70,7 +70,7 @@ public class ThemeController {
 		return "theme/themePage";
 	}
 	
-	//top3
+	//예약 top3
 	@RequestMapping("/top3")
 	public String top3(HttpServletRequest request, Model model) {
 		System.out.println("top3요청");
@@ -83,13 +83,13 @@ public class ThemeController {
 	
 	/* Admin page */
 	//테마 등록창
-	@RequestMapping("/themeInsert")
+	@RequestMapping(value="/themeInsert", method = RequestMethod.POST)
 	public String themeInsert() {
 		System.out.println("theme이동");
 		return "theme/themeInsert";
 	}
 	
-	//테마등록처리
+	//테마 DB등록처리
 	@RequestMapping("/inserttheme")
 	public String inserttheme(MultipartHttpServletRequest mphr, Model model) {
 		System.out.println("inserttheme");
@@ -144,7 +144,7 @@ public class ThemeController {
 	}
 	
 	//등록된 테마 목록 페이지
-	@RequestMapping(value="/themeListPage",method = RequestMethod.POST)
+	@RequestMapping(value="/themeListPage", method = RequestMethod.POST)
 	public String themeListPage(HttpServletRequest request, Model model) {
 		System.out.println("themeListPage");
 		com = new ThemeListPageCommand();
@@ -153,7 +153,7 @@ public class ThemeController {
 	}
 		
 	//등록된 테마 상세보기 페이지
-	@RequestMapping(value="/themeDetailsPage",method = RequestMethod.POST)
+	@RequestMapping(value="/themeDetailsPage", method = RequestMethod.POST)
 	public String themeDetailsPage(HttpServletRequest request, Model model) {
 		System.out.println("themeDetailsPage입니다");
 		com = new ThemeDetailsPageCommand();
@@ -162,7 +162,7 @@ public class ThemeController {
 	}
 		
 	//태마 수정 페이지
-	@RequestMapping("/themeEdit")
+	@RequestMapping(value="/themeEdit", method = RequestMethod.POST)
 	public String themeEdit(HttpServletRequest request, Model model) {
 		System.out.println("themeEdit");
 		com = new ThemeContentCommand();
@@ -222,7 +222,7 @@ public class ThemeController {
 	}
 		
 	//테마 삭제
-	@RequestMapping("/delete")
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
 	public String delete(HttpServletRequest request, Model model) {
 		System.out.println("delete요청");
 		com = new ThemeDeleteCommand();

@@ -67,6 +67,8 @@
     border-top: none;
     font-size: 15px;
     display : flex;
+    margin-top: 7%;
+}
 }
 .box-step dl {
     width: 25%;
@@ -119,11 +121,13 @@ body {
 
 tbody>tr>td{
 	font-family: 'GmarketSansMedium';
-	font-size : 0.5rem;
+	font-size : 0.9rem;
+	text-align: center;
 }
 thead>tr>th{
 	font-family: 'GmarketSansBold';
-	font-size : 0.5rem;
+	font-size : 0.9rem;
+	text-align: center;
 }
 </style>
 
@@ -135,7 +139,7 @@ thead>tr>th{
 
 		<div id="reserveRegion">			
 				<div class="box-step">
-					<dl class="date-choice">
+					<dl class="date-choice" style="margin-left: 3%;">
 						<dt>
 							선택 날짜
 						</dt>
