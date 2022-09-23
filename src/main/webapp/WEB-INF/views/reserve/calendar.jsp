@@ -30,37 +30,13 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- Calendar css -->
+<link href='css/reserve/calendar.css' rel='stylesheet' />
 <style type="text/css">
 
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-#caledar>tbody>tr>td:checked {
-    background-color: #ff3f3e;
-    color: #fff;
-}
-
-#calendar {
-    margin-left:auto; 
-    margin-right:auto;
-    border-spacing: 0.8vw;
-  	border-collapse: separate;
-}
-
-#calendar>tbody>tr>td {
-	font-size : 1.5rem;
-	  width: 30px;
-	  font-family: 'GmarketSansBold'
-    
-};
 
 
 </style>
-
 
 <script type="text/javascript">
 var absolutetoday = new Date(); //미사용
