@@ -20,6 +20,55 @@
 *{ font-family: 'GmarketSansBold';
 }
 
+.hover2 {
+    transition: transform 0.3s ease;
+}
+.hover2:hover {
+    transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -1deg);
+}
+.hover1:hover {
+    transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -1deg);
+}
+.hover1 {
+    transition: transform 0.3s ease;
+}
+
+.resscrolldesign{
+scrollbar-track-color:#f6f6f6;
+scrollbar-base-color:#f6f6f6;
+scrollbar-face-color:#000;
+scrollbar-shadow-color:#000;
+scrollbar-arrow-color:#f6f6f6;
+scrollbar-3dlight-color:#f6f6f6;
+scrollbar-highlight-color:#f6f6f6;
+-ms-overflow-style:scrollbar}
+::-webkit-scrollbar{
+width:.938vw}
+::-webkit-scrollbar-thumb{
+background-color:#F9D142;border-radius:.521vw}
+::-webkit-scrollbar-track{
+background-color:white;border-radius:.521vw}
+
+
+
+.reserve-title {
+   	font-size: 2rem;
+    padding-top: 40px;
+    display: block;
+    font-family: 'GmarketSansBold';
+    
+}
+.reserve-title1 {
+    font-size: 1.3rem;
+    display: block;
+    font-family: 'GmarketSansBold';
+}
+.reserve-title2 {
+    font-size: 1.0rem;
+    display: block;
+    font-family: 'GmarketSansMedium';
+}
+
 
 .box-step {
     overflow: hidden;
@@ -109,23 +158,6 @@
 }
 
 
-
-.hover2 {
-    transition: transform 0.3s ease;
-}
-.hover2:hover {
-    transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -1deg);
-}
-.hover1:hover {
-    transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -1deg);
-}
-.hover1 {
-    transition: transform 0.3s ease;
-}
-
-
-
-
 .time-choice input {
     position: absolute;
     width: 0;
@@ -170,27 +202,10 @@
     overflow-y: scroll;
 }
 
-.resscrolldesign{
-scrollbar-track-color:#f6f6f6;
-scrollbar-base-color:#f6f6f6;
-scrollbar-face-color:#000;
-scrollbar-shadow-color:#000;
-scrollbar-arrow-color:#f6f6f6;
-scrollbar-3dlight-color:#f6f6f6;
-scrollbar-highlight-color:#f6f6f6;
--ms-overflow-style:scrollbar}
-::-webkit-scrollbar{
-width:.938vw}
-::-webkit-scrollbar-thumb{
-background-color:#F9D142;border-radius:.521vw}
-::-webkit-scrollbar-track{
-background-color:white;border-radius:.521vw}
 
 .step-btn1 {
-    width: 10%;
-    height: 7vh;
+    width: 20%;
     font-size: 1.5rem;
-    line-height: 3.7vw;
     font-weight: 700;
     border: 1px solid;
     border-color: #F9D142;
@@ -199,19 +214,17 @@ background-color:white;border-radius:.521vw}
     text-align: center;
     margin-bottom: 5%;
 }
-
 .step-btn2 {
-    width: 80%;
-    height: 8vh;
-    font-size: 2.0rem;
-    line-height: 5vw;
-    font-weight: 700;
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 1.2rem;
     border: 1px solid;
     border-color: #F9D142;
     background: #F9D142;
     color: #292826;
-    text-align: center;
 }
+	
+
 
 .step2-table th:first-child {
     background-color: #000;
@@ -224,15 +237,17 @@ body {
     /* background-color: rgb(255, 144, 144); */
     
 }
-
-
+#reserveRegion {
+	width:100%;
+	maring:auto;
+}
+/*여기까지 완료*/
 #fullDiv{
 	width: 100%
 }
 #headerDiv{
 	width: 70%;
 	margin:auto;
-	display: flex 
 }
 
 
@@ -242,23 +257,17 @@ body {
 	margin-bottom:2%;
 	text-align: center
 }
-#reserveCheckCancle{
-	text-align: center;
-	line-height: 4vw;
-}
-#reserveRegion{
-	width: 70%;
-	margin:auto;
-}
+
+
 
 /*모바일*/
 @media only screen and (max-width:767px){
-	#reserveRegion {
-		width:100%;
-	}
+	
 	.box-step {
-		   flex-direction: column;
+		  flex-direction: column;
 	}
+	
+	
 	.box-step dl {
 		width:100%
 	}
@@ -277,6 +286,21 @@ body {
 		width: 90%;
 		margin: 3% auto;
 	}
+	
+	#reserveCheckCancleDiv{
+	text-align: center;
+	margin: 5% auto;
+	}
+	
+	#headerDiv{
+	flex-direction: column;
+	}
+	
+	#reserveCheckCancleDiv {
+    width: 34%;
+   
+	}
+	
 }
 /*태블릿*/
 @media only screen and (min-width:768px){
@@ -284,23 +308,36 @@ body {
 }
 /*pc*/
 @media only screen and (min-width:992px){
-	.reserve-title {
-    text-align: left;
-    font-size: 4rem;
-    font-weight: 700;
-    padding-top: 40px;
+.reserve-title {
+    font-size: 4rem;  
     
 }
 .reserve-title1 {
-    text-align: left;
     font-size: 3rem;
-    font-weight: 600;
 }
 .reserve-title2 {
-    text-align: left;
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 2rem; 
 }
+
+#reserveCheckCancle{
+	line-height: 4vw;
+}
+
+
+.box-step {
+    overflow: hidden;
+    width: 100%;
+    margin: 50px 0;
+    border: 0.5px solid #d6d6d6;
+    border-top: none;
+    font-size: 15px;
+    background: white;
+    display : flex;
+}
+
+
+
+
 	
 	.theme-choice label span {
     display: block;
@@ -360,8 +397,51 @@ body {
     padding-right: 0.521vw;
     height: 23vw;
 }
+
+
 #headerTitleDiv{
 	width:70%;
 	margin:auto;
 }
+
+.step-btn1 {
+    width: 10%;
+    height: 7vh;
+    font-size: 1.5rem;
+    line-height: 3.7vw;
+    font-weight: 700;
+    border: 1px solid;
+    border-color: #F9D142;
+    background: #F9D142;
+    color: #292826;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.step-btn2 {
+    width: 80%;
+    height: 8vh;
+    font-size: 2.0rem;
+    line-height: 5vw;
+    font-weight: 700;
+    border: 1px solid;
+    border-color: #F9D142;
+    background: #F9D142;
+    color: #292826;
+    text-align: center;
+}
+
+#headerDiv{
+	width: 70%;
+	margin:auto;
+	display: flex; 
+}
+
+#reserveRegion{
+	width: 70%;
+	margin: auto;
+}
+
+
+
+
 }
