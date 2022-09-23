@@ -30,11 +30,15 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="css/reserve/themeImgStyle.css" />
+
 </head>
+
 <body>
 	
-	<dd>
-		<img alt="" src="upimage/${theme.tphoto}" style="width: 100% ; height:40vh ;">
+	<dd class="themeStyleImg">
+		<img alt="" src="upimage/${theme.tphoto}" >
 		<br/>
 		<br/>
 		${theme.tprofile}
