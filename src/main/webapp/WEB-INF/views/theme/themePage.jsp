@@ -88,9 +88,6 @@
 							</ul>
 						</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="w-btn-outline w-btn-yellow-outline btn_reservation" onclick="location.href='reservePage'">예약하기</button>
-				</div>
 			</div>
 		</div>
 	</div>

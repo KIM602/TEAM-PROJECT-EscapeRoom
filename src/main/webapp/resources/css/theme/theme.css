@@ -159,6 +159,10 @@
 }
 
 /* 모달창 */
+.modal {
+	left: -3%;
+}
+
 .modal-open .modal {
     overflow-y: hidden;
 }
@@ -190,7 +194,7 @@
 }
 
 .content {
-	width: 50%;
+	width: 62%;
 }
 
 .modal-title {
