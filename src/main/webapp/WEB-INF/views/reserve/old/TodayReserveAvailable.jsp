@@ -137,12 +137,22 @@ font-family: 'GmarketSansMedium';
 	   font-size: 1.1rem;
 		   
 		}
-		
+		.time-choice input {
+		    position: absolute;
+		    width: 0;
+		    height: 0;
+		    opacity: 0;
+		}
+
+		.time-choice input:checked+span {
+		    background-color: #F9D142;
+		    color: #292826;
+		}
     </style>
 </head>
 
 <body>
-<%@include file ="../main/menubar.jsp" %>
+
 
 <div class="container" id="StartForm">
     
@@ -193,7 +203,7 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
+																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}">
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
