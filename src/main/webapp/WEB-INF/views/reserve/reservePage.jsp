@@ -34,15 +34,6 @@
 <!-- reservePage css -->
 <link href='css/reserve/reservePage.css' rel='stylesheet' />
 
-
-
-<style type="text/css">
-
-
-</style>
-
-
-
 </head>
 <body>
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->

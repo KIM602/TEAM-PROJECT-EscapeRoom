@@ -1,7 +1,18 @@
-@charset "UTF-8";
 @font-face {
     font-family: 'GmarketSansBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,26 +20,7 @@
 *{ font-family: 'GmarketSansBold';
 }
 
-.reserve-title {
-    position: relative;
-    text-align: left;
-    font-size: 4rem;
-    font-weight: 700;
-    padding-top: 40px;
-    
-}
-.reserve-title1 {
-    position: relative;
-    text-align: left;
-    font-size: 3rem;
-    font-weight: 600;
-}
-.reserve-title2 {
-    position: relative;
-    text-align: left;
-    font-size: 2rem;
-    font-weight: 400;
-}
+
 .box-step {
     overflow: hidden;
     width: 100%;
@@ -45,23 +37,18 @@
     border-top: 1px solid #e0e0e0;
 }
 .box-step>dl>dd {
- 
     padding: 19px 30px;
-    border-left: ;
-
 }
 .box-step>dl>ddd {
-   
     padding: 19px 30px;
-    border-left: ;
 }
+
 .box-step>dl>dt {
     padding: 18px 30px 18px;
     background: #fff;
     color: #000;
     text-align:center;
     font-size: 1.5rem;
-    border:;
 }
 .round {
     display: inline-block;
@@ -73,11 +60,7 @@
     vertical-align: middle;
 }
 
-.theme-choice>.theme {
-    overflow-y: scroll;
-    height: 23vw;
-    padding-right: 0.521vw;
-}
+
 .date-choice>.includeCallendar {
     overflow-y: scroll;
     
@@ -106,8 +89,6 @@
 .theme-choice label span {
     display: block;
     width: 100%;
-    height: 2.802vw;
-    line-height: 2.802vw;
     padding: 0 1.563vw;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -143,20 +124,7 @@
 }
 
 
-.time-choice>.time {
-    overflow-y: scroll;
-    padding-right: 0.521vw;
-}
-.time-choice label {
-    float: left;
-    position: relative;
-    display: block;
-    width: 48.5%;
-    margin-bottom: 0.521vw;
-    margin-right: 1.5%;
-    text-align: center;
-    cursor: pointer;
-}
+
 
 .time-choice input {
     position: absolute;
@@ -170,11 +138,15 @@
     color: #292826;
 }
 
+.time-choice label {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
 .time-choice label span {
     display: block;
     width: 100%;
-    height: 3.802vw;
-    line-height: 3.802vw;
     padding: 0.1563vw;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -196,9 +168,6 @@
 
 .poster-choice>#themeImage {
     overflow-y: scroll;
-    padding-right: 0.521vw;
-    height: 23vw;
-    
 }
 
 .resscrolldesign{
@@ -265,14 +234,9 @@ body {
 	margin:auto;
 	display: flex 
 }
-#headerTitleDiv{
-	float:left;
-	width:70%;
-	margin:auto;
-}
+
 
 #reserveCheckCancleDiv{
-	float:right;
 	width:30%;
 	margin-top:13% ;
 	margin-bottom:2%;
@@ -285,4 +249,119 @@ body {
 #reserveRegion{
 	width: 70%;
 	margin:auto;
+}
+
+/*모바일*/
+@media only screen and (max-width:767px){
+	#reserveRegion {
+		width:100%;
+	}
+	.box-step {
+		   flex-direction: column;
+	}
+	.box-step dl {
+		width:100%
+	}
+	.theme-choice label span {
+	    width: 90%;
+	    padding: 2.2vw;
+	    margin: 3% auto;
+	    text-align: center;
+	}
+	
+	.time-choice label span {
+	    padding: 3vw;
+	}
+	.time-choice label {
+		float: none;
+		width: 90%;
+		margin: 3% auto;
+	}
+}
+/*태블릿*/
+@media only screen and (min-width:768px){
+	
+}
+/*pc*/
+@media only screen and (min-width:992px){
+	.reserve-title {
+    text-align: left;
+    font-size: 4rem;
+    font-weight: 700;
+    padding-top: 40px;
+    
+}
+.reserve-title1 {
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.reserve-title2 {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 400;
+}
+	
+	.theme-choice label span {
+    display: block;
+    width: 100%;
+    height: 2.802vw;
+    line-height: 2.802vw;
+    padding: 0 1.563vw;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: lightgrey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.5rem;
+    border-radius: 8px 8px;
+	}
+	.theme-choice>.theme {
+    overflow-y: scroll;
+    height: 23vw;
+    padding-right: 0.521vw;
+	}
+	.time-choice label span {
+    display: block;
+    width: 100%;
+    height: 3.802vw;
+    line-height: 3.802vw;
+    padding: 0.1563vw;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+}
+
+.time-choice>.time {
+    overflow-y: scroll;
+    padding-right: 0.521vw;
+}
+.theme-choice>.theme {
+    overflow-y: scroll;
+    padding-right: 0.521vw;
+}
+.time-choice label {
+    float: left;
+    position: relative;
+    display: block;
+    width: 48.5%;
+    margin-bottom: 0.521vw;
+    margin-right: 1.5%;
+    text-align: center;
+    cursor: pointer;
+}
+.poster-choice>#themeImage {
+    overflow-y: scroll;
+    padding-right: 0.521vw;
+    height: 23vw;
+}
+#headerTitleDiv{
+	width:70%;
+	margin:auto;
+}
 }
