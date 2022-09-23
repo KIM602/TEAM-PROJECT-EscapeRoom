@@ -30,6 +30,7 @@ import com.EscapeRoom.reserve.command.ReserveFind;
 import com.EscapeRoom.reserve.command.ReserveListTotal;
 import com.EscapeRoom.reserve.command.ReservePageList;
 import com.EscapeRoom.reserve.command.ReserverList;
+import com.EscapeRoom.reserve.command.ThemeBest;
 import com.EscapeRoom.reserve.command.ThemeMultipleReserveTimeCheck;
 import com.EscapeRoom.reserve.command.themeReserveTimeCheck;
 import com.EscapeRoom.reserve.dao.ReserveDao;
@@ -229,7 +230,9 @@ public class ReserveController {
 			rcom = new ThemeMultipleReserveTimeCheck();
 			rcom.execute(request, model);
 			
-			// 누적예약 체크	
+			// 누적예약 체크
+			rcom = new ThemeBest();
+			rcom.execute(request, model);
 	
 			
 			return "reserve/TodayReserveAvailable";

@@ -131,23 +131,30 @@ function reserveCheck() {
 	if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){
 		return false;
 	}
-	alert("예약완료")
 	
-	form.submit(function name(e) {
-		e.preventDefault();
-		alert("gogo");
-		$.ajax({
-			url : "reserveOK",
-			type : "get",
-			data : "",
-			success : function name(d) {
-				$("#reserveRegion").html(d);
-			},
-			error : function name() {
-				alert("예약체크/확인실패");
-			}
-		})
-	});
+	if(window.confirm("예약하시겠습니까?")) {
+		alert("예약완료");
+		form.submit(function name(e) {
+			e.preventDefault();
+			$.ajax({
+				url : "reserveOK",
+				type : "get",
+				data : "",
+				success : function name(d) {
+					
+					$("#reserveRegion").html(d);
+				},
+				error : function name() {
+					alert("예약체크/확인실패");
+				}
+			})
+		});
+	}
+	else{
+		alert("최소")
+	}
+	
+	
 	
 	
 	

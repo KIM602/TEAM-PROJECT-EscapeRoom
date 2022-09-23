@@ -33,7 +33,6 @@
 
 <!--  -->
 <link href='css/reserve/bootstrap.css' rel='stylesheet' />
-<link href="css/reserve/pe-icon-7-stroke.css" rel="stylesheet" />
 <!--     <link href='css/ct-navbar.css' rel='stylesheet' /> -->
 <link href='css/reserve/rotating-card.css' rel='stylesheet' />
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -62,7 +61,7 @@
     font-style: normal;
 }
 
-*{
+#StartForm{
 font-family: 'GmarketSansMedium';
 font-size : 1.5rem;
 }	
@@ -70,9 +69,7 @@ h3,h4,h5{
 font-family: 'GmarketSansMedium';
 }
 	
-  body{
-          margin-top: 100px;
-      }
+ 
       .navbar-default .navbar-nav > li > a{
           padding: 15px 15px;
           margin: 5px 0;
@@ -155,11 +152,14 @@ font-family: 'GmarketSansMedium';
 </head>
 
 <body>
+<%@include file ="../main/menubar.jsp" %>
 
-<div class="container">
+<div class="container" id="StartForm">
+    
+    
     
 	    <div class="row">
-	        <h1 class="title">
+	        <h1 class="title" style="text-align: center">
 	            오늘 예약가능한 테마 
 	        </h1>
 	        <br/>    
@@ -167,6 +167,7 @@ font-family: 'GmarketSansMedium';
 	            <c:forEach var="i" begin="1" end="9" varStatus="status">
 	            	<c:set var="TodayReserve" value="TodayReserve${status.index}"></c:set>
 	            	<c:set var="ThemeList" value="ThemeList${status.index}"></c:set>
+	            	<c:set var="bestList" value="bestList${status.index}"></c:set>
 	            		<c:if test="${requestScope[TodayReserve] eq 'NotYet'}"> <!-- 8개의 시간 전부 예약이 덜된것만 출력 -->
 					         
 						         <div class="col-md-4 col-sm-6">
@@ -358,7 +359,7 @@ font-family: 'GmarketSansMedium';
 							                                    <div class="stats">
 							                                        <h5>인기 순위</h5>
 							                                        <p>
-							                                            1위
+							                                            ${requestScope[bestList].rank}위
 							                                        </p>
 							                                    </div>
 							                                    <div class="stats">
