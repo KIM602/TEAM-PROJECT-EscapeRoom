@@ -32,14 +32,104 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-asdsa
-	<c:forEach items="${dlist}" var="dto">
-				<label class="hover2">
-					<span>tid 값은 ${dto.tId}</span><br/>
-					<span>cnt 값은${dto.cnt}</span>
-				</label>
-			</c:forEach>
-
+			<!--  테마 1 -->
+			<div>
+			
+			</div>
+					<img alt="" src="upimage/${todayCheck1.tPhoto}" style="width: 100% ; height:40vh ;">
+					예약가능 목록
+					
+						<c:forEach var="i" begin="1" end="8" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										${requestScope[number].tName} ${requestScope[number].rDate} 
+										
+										<img alt="" src="image/icon2_black.png">${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 2 -->
+					<img alt="" src="upimage/${todayCheck11.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="11" end="18" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 3 -->
+					<img alt="" src="upimage/${todayCheck21.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="21" end="28" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 4 -->
+					<img alt="" src="upimage/${todayCheck31.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="31" end="38" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 5 -->
+					<img alt="" src="upimage/${todayCheck41.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="41" end="48" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 6 -->
+					<img alt="" src="upimage/${todayCheck51.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="51" end="58" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 7 -->
+					<img alt="" src="upimage/${todayCheck61.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="61" end="68" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 8 -->
+					<img alt="" src="upimage/${todayCheck71.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="71" end="78" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						<!--  테마 9 -->
+					<img alt="" src="upimage/${todayCheck81.tPhoto}" style="width: 100% ; height:40vh ;">
+						<c:forEach var="i" begin="81" end="88" varStatus="status2">
+							<c:set var="number" value ="todayCheck${status2.index}"/>
+								<c:choose>
+									<c:when test="${requestScope[number].rCheck eq 0}">
+										즉시예약가능 ${requestScope[number].tName} ${requestScope[number].rDate} ${requestScope[number].rTime}<br/>
+									</c:when>
+								</c:choose>
+						</c:forEach>
+						
 
 </body>
 </html>

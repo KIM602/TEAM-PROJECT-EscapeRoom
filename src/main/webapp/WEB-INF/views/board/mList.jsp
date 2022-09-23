@@ -38,30 +38,96 @@ body {
 	background-color: #F9D142;
 	overflow: hidden;
 }
+
 #mlist {
 	color: #EE7600;
 	font-size: 20px;
-	margin-top: 7px;
+	margin-top: 4px;
 }
-.tImg {
-	width: 200px;
-}
-div.name {
-	display: flex;
-	text-align: center;
+
+.tImgs {
+	display:flex;
 	justify-content: space-around;
+}
+
+.polaroid .poster {
+	z-index: 0;
+	width: 200px;
+	border: 10px solid #fff;
+	border-bottom: 45px solid #fff;
+	-webkit-box-shadow: 3px 3px 3px #777;
+	-moz-box-shadow: 3px 3px 3px #777;
+	box-shadow: 3px 3px 3px #777;
+}
+
+.gold {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	z-index: 2;
+	right: 90%;
+}
+
+.silver {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	z-index: 2;
+	right: 58%;
+}
+
+.bronze {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	z-index: 2;
+	right: 26%;
+}
+
+.polaroid p {
+	position: absolute;
+	text-align: center;
+	width: 200px;
+	bottom: -10px;
+	font-size: 22px;
 }
 </style>
 
 </head>
 <body>
 
+<c:choose>
+	<c:when test="${not empty theme1.tphoto && empty theme2.tphoto && empty theme3.tphoto}">
+		<style>.gold{right:58%;}</style>
+	</c:when>
+	<c:when test="${not empty theme1.tphoto && not empty theme2.tphoto && empty theme3.tphoto}">
+		<style>.gold{right:82%;} .silver{right:34%;}</style>
+	</c:when>
+</c:choose>
 
 <div class="row">
-	<div class="col-8" style="display:flex; justify-content: space-around;">
-		<img class="tImg" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
-		<img class="tImg" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
-		<img class="tImg" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
+	<div class="col-8 tImgs">
+		<c:if test="${not empty theme1.tphoto}">
+			<img class="gold" src="image/gold.png"/>
+			<div class="polaroid">
+				<img class="poster" src="upimage/${theme1.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[0].rThemeName}</p>
+			</div>
+		</c:if>
+		<c:if test="${not empty theme2.tphoto}">
+			<img class="silver" src="image/silver.png"/>
+			<div class="polaroid">
+				<img class="poster" src="upimage/${theme2.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[1].rThemeName}</p>
+			</div>
+		</c:if>
+		<c:if test="${not empty theme3.tphoto}">
+			<img class="bronze" src="image/bronze.png"/>
+			<div class="polaroid">
+				<img class="poster" src="upimage/${theme3.tphoto}" onerror="this.style.display='none'"/>
+				<p>${rlist[2].rThemeName}</p>
+			</div>
+		</c:if>
 	</div>
 	<div class="col-4">
 		<c:forEach items="${mList}" var="dto" varStatus="status">
@@ -69,12 +135,17 @@ div.name {
 		</c:forEach>
 	</div>
 </div>
+<!-- 
 <div class="row">
-	<div class="col-8 mt-2 name">
-		<c:forEach items="${rlist}" var="dto" varStatus="status">
-			<span style="font-size: 22px; width: 200px;">${status.count}. ${dto.rThemeName}</span>
+	<div class="col-8 tName">
+		<c:forEach items="${rlist}" var="dto">
+			<span>${dto.rThemeName}</span>
 		</c:forEach>
 	</div>
 </div>
+ -->
+
+
+
 </body>
 </html>

@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.EscapeRoom.reserve.dto.ReserveDto;
-import com.EscapeRoom.reserve.dto.ReserveDto2;
+
 
 import com.EscapeRoom.reserve.dto.ReserveDto3;
-
+import com.EscapeRoom.reserve.dto.TodayReserveTidDto;
 import com.EscapeRoom.reserve.dto.startNoRdate;
 
 
@@ -57,11 +57,6 @@ public class ReserveDao implements RdaoInterface {
 		
 	}
 
-	@Override
-	public ArrayList<ReserveDto2> reserveTop31(ReserveDto2 dto2) {
-		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("reserveTop31");
-		return result;
-	}
 	
 	@Override
 	public ArrayList<ReserveDto> ReserverList() {
@@ -106,6 +101,16 @@ public class ReserveDao implements RdaoInterface {
 	@Override
 	public int CalendarChoiceReserverListTotal(String ymd) {
 		int result = sqlSession.selectOne("CalendarChoiceReserverListTotal",ymd);
+		return result;
+	}
+
+	
+	// 테마id별 모두 예약이 되어있는지 확인용
+	@Override
+	public int todayReservethemeCheck(TodayReserveTidDto dto1) {
+		System.out.println("날짜"+dto1.getrDate());
+		System.out.println("아이디"+dto1.gettId());
+		int result = sqlSession.selectOne("todayReservethemeCheck",dto1);
 		return result;
 	}
 	

@@ -102,9 +102,6 @@
                                 &#8250; 정보 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">지도 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
                                         <a href="footerModify" id="footerModify">회사 정보 수정</a>
                                     </li>
                                 </ul>
@@ -170,9 +167,11 @@ $(document).ready(function() {
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeInsert").attr('href'),
-			type: "get",
-			data: "",
+			url: "themeInsert",
+			type: "post",
+			data: {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
@@ -186,17 +185,20 @@ $(document).ready(function() {
 	$("#nav-themeEdit").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeEdit").attr('href'),
-			type: "get",
-			data: "",
+			url : "themeListPage",
+			type: "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+				},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
-				alert("에러");
+				alert("에러야");
 			}
 		});
 	});
+	
 	
 	// 예약자 목록 리스트
 	$("#ReserverList").click(function(e) {
@@ -215,6 +217,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){

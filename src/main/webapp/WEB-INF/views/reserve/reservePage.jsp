@@ -228,16 +228,7 @@
     margin-bottom: 0.3rem;
 }
 
-.time-choice label {
-    float: left;
-    position: relative;
-    display: block;
-    width: 48.5%;
-    margin-bottom: 0.521vw;
-    margin-right: 1.5%;
-    text-align: center;
-    cursor: pointer;
-}
+
 
 .poster-choice>#themeImage {
     overflow-y: scroll;
@@ -325,7 +316,7 @@ body {
 <div style="width: 100%;">
 	<div style="width: 70%; margin:auto; display: flex ">
 		<div style="float:left; width:70%; margin:auto; ">
-	
+		<a href="TodayReserveAvailable">test용</a>
 			<h3 class="reserve-title">화곡 RESERVATION</h3>
 			<h4 class="reserve-title1">경험해보고 싶었던 “새로운 세상”</h4>
 			<h5 class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h5>
