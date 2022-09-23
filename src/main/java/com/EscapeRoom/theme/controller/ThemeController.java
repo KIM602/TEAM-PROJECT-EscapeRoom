@@ -90,7 +90,7 @@ public class ThemeController {
 	}
 	
 	//테마 DB등록처리
-	@RequestMapping("/inserttheme")
+	@RequestMapping(value="/inserttheme", method = RequestMethod.POST)
 	public String inserttheme(MultipartHttpServletRequest mphr, Model model) {
 		System.out.println("inserttheme");
 		String tid = ""; //rId는 임의로 정함(DB에서 seq넘버로 설정하니까 
@@ -171,7 +171,7 @@ public class ThemeController {
 	}
 		
 	//테마 수정 DB처리
-	@RequestMapping(value="/edit", produces="application/text; charset=UTF-8")
+	@RequestMapping(value="/edit", produces="application/text; charset=UTF-8", method = RequestMethod.POST)
 	public String edit(MultipartHttpServletRequest request, Model model) {
 		System.out.println("edit요청");
 		String tid = request.getParameter("tid"); //rId는 임의로 정함(DB에서 seq넘버로 설정하니까 
