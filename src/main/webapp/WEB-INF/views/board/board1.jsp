@@ -86,7 +86,7 @@
 
 <div style="font-family: 'NanumSquareRound'; padding-top: 70px;">
 	<div id="board_title" class="text-center" style="margin-bottom: 34px;">
-		<a id="osm" href="index">OSM ESCAPE</a>
+		<a id="osm" href="Homemain">OSM ESCAPE</a>
 	</div>
 	
 	<div class="container">
@@ -94,6 +94,7 @@
 		<a id="btn2" href="eventBoard" class="btn tab tabOff"><span style="font-size: 14px;">EVENT</span></a>
 		
 		<div class="container">
+		
 			<div id="mainTab"></div>
 		</div>
 	</div>

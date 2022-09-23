@@ -30,75 +30,23 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!--google icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="css/theme/themeDetailsPage.css" />
+
 <style>
-/* font */
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-    
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
-
-html {
- 	width: 100%;
-    height: 100%;
-    }
- 
-body {
- 	width: 100%;
-    height: 100%;
-    font-family: "GmarketSansBold";
-    background: #eee;
-  	}
-
 .full-line {
   border-image: linear-gradient(0deg,#0C3338 5px,#0000 0) fill 0//0 100vw 0 0;
   padding: 10px 0;
 }
-
-section {
-  /* center + max-width:800px + min-margin: 10px */
-  margin-inline: max(10px, 50% - 800px/2);
-  margin-block: 50px;
-  margin-top: 8rem;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-p {
-  font-size: 1.5rem;
-  text-align: justify;
-}
-
-.container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
 </style>
 </head>
+
 <body>
 <section>
   <h1 class="full-line">${tDetails.tname}</h1>
   	<div class="container">
-		<img src="upimage/${tDetails.tphoto}" alt="포스터" class="mx-auto img-responsive" style="max-width:100%; height:400px;"/>
-		<ul style="list-style: none;">
+		<img src="upimage/${tDetails.tphoto}" alt="포스터" style="max-width:100%; height:400px;"/>
+		<ul class="detail">
 			<li>장르 : ${tDetails.tgenre}</li>
 			<li>난이도 : ${tDetails.tdifficulty}</li>
 			<li>소요시간 : ${tDetails.ttime}</li>
@@ -108,9 +56,9 @@ p {
 	</div>
 	<br />
 	<div class="text-center">
-		<a href="themeEdit?tid=${tDetails.tid}" id="contentEdit" class="btn btn-secondary">수정</a>
-		<a href="delete?tid=${tDetails.tid}" id="contentDel" class="btn btn-secondary">삭제</a>
-		<a id="listback" href="themeListPage" class="btn btn-dark">목록으로</a>
+		<a data-value="${tDetails.tid}" id="contentEdit" class="btn btn-secondary">수정</a>
+		<a data-value="${tDetails.tid}" id="contentDel" class="btn btn-secondary">삭제</a>
+		<a id="listback" class="btn btn-dark">목록으로</a>
 	</div>
 </section>
 
@@ -119,10 +67,14 @@ $(document).ready(function(){
 	$("#contentEdit").click(function(event){
 		event.preventDefault();
 		let ceo = $(event.target);
+		let val = ceo.attr('data-value');
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "themeEdit",
+			type : "post",
+			data : {
+				tid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},
@@ -136,9 +88,11 @@ $(document).ready(function(){
 		event.preventDefault();
 		let ceo = $(event.target);
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "themeListPage",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},
@@ -151,10 +105,14 @@ $(document).ready(function(){
 	$("#contentDel").click(function(event){
 		event.preventDefault();
 		let ceo = $(event.target);
+		let val = ceo.attr('data-value');
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "delete",
+			type : "post",
+			data : {
+				tid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},

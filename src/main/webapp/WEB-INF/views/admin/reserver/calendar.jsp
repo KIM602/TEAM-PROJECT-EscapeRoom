@@ -39,6 +39,19 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 #caledar>tbody>tr>td:checked {
     background-color: #ff3f3e;
@@ -53,9 +66,9 @@
 }
 
 #calendar>tbody>tr>td {
-	font-size : 0.5rem;
+	font-size : 1.3rem;
 	  width: 30px;
-	  font-family: 'GmarketSansBold'
+	  font-family: 'GmarketSansMedium'
     
 };
 
@@ -145,9 +158,9 @@ function buildCalendar() {
 			
 			$.ajax({
 				url : "CalendarChoiceReserverList",
-				type : "get",
-				data : {ymd:ymd},
-				contentType : "application/json; charset=utf-8;",
+				type : "post",
+				data : {ymd:ymd,
+					${_csrf.parameterName}: "${_csrf.token}"},
 				success: function(data){
 					$("#ddListAjax").html(data);
 					$("#ajaxlist").text(ymd+" 별 내역");

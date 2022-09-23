@@ -61,6 +61,19 @@ public class ReserveDto {
 		this.tId = tId;
 		this.rTime = rTime;
 	}
+	
+	
+
+
+
+
+	public ReserveDto(String rId, String rPhone, String rTime, String rName) {
+		super();
+		this.rId = rId;
+		this.rPhone = rPhone;
+		this.rTime = rTime;
+		this.rName = rName;
+	}
 
 
 

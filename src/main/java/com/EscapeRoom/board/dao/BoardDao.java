@@ -3,35 +3,70 @@ package com.EscapeRoom.board.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
+import com.EscapeRoom.reserve.dto.ReserveDto4;
+import com.EscapeRoom.theme.dto.ThemeDto;
 
 public class BoardDao implements IDao {
+	
+	//빈을 주입받는 어노테이션
+	@Autowired
 	private SqlSession sqlSession;
 	
-	/**
-	 * 
-	 */
-	public BoardDao() {
-		super();
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// 예약 통계 관련
+	
+	@Override
+	public String AdminMonthTotalCount(String ym) {
+		String rdto = sqlSession.selectOne("AdminMonthTotalCount", ym);
+		return rdto;
 	}
 	
-	public BoardDao(SqlSession sqlSession) {
-		super();
-		this.sqlSession = sqlSession;
+	@Override
+	public int AdminMonthTotalSales(String ym) {
+		String rdto = sqlSession.selectOne("AdminMonthTotalSales", ym);
+		int result;
+		if(rdto == null) {
+			result = 0;
+		}
+		else {
+			result = Integer.parseInt(rdto);
+		}
+		System.out.println("result값 : " + result);
+		return result;
 	}
 	
-	public SqlSession getSqlSession() {
-		return sqlSession;
+	@Override
+	public ArrayList<ReserveDto4> AdminMonthBest(ReserveDto4 dto) {
+		ArrayList<ReserveDto4> dtos = (ArrayList)sqlSession.selectList("AdminMonthBest", dto);
+		return dtos;
 	}
-
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
+	
+	//월별 top3용 이미지 가져오기
+	@Override
+	public ThemeDto AdminMonthBestImg(String tid) {
+		ThemeDto dto = sqlSession.selectOne("AdminMonthBestImg", tid);
+		return dto;
+	}
+	@Override
+	public ArrayList<ReserveDto4> AdminMonthTop3(ReserveDto4 dto) {
+		System.out.println("top3 dto값 : " + dto);
+		ArrayList<ReserveDto4> result = (ArrayList)sqlSession.selectList("AdminMonthTop3", dto);
+		
+		System.out.println("dao result크기 : " + result.size());
+		
+		return result;
 	}
 	
 	
-
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
+	
 	@Override
 	public void writeNotice(String bTitle, String bContent, String bWriter) {
 		NoticeDto dto = new NoticeDto(bTitle, bContent, bWriter);
@@ -142,5 +177,5 @@ public class BoardDao implements IDao {
 		return result;
 	}
 
-
+	
 }

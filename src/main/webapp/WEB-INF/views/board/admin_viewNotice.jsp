@@ -73,8 +73,10 @@ $(document).ready(function() {
 		e.preventDefault();
 		$.ajax({
 			url: $(e.target).attr("href"),
-			type: "get",
-			data: "",
+			type: "post",
+			data: {
+				${_csrf.parameterName}: "${_csrf.token}"
+			},
 			success: function(d) {
 				$("a.tab").addClass('disabled');
 				$("#osm").removeAttr('href');

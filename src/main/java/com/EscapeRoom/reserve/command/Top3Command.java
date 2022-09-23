@@ -20,6 +20,15 @@ public class Top3Command implements ReserveCommand {
 		
 		ArrayList<ReserveDto3> rlist = rdao.Top3(dto);
 		
+		if(rlist.size() != 0) {
+			model.addAttribute("rlist", rlist);
+			
+			for(int i=0; i<rlist.size(); i++) {
+				request.setAttribute(("tid"+(i+1)), rlist.get(i).getTid());
+			}
+		}
+		
+		/*
 		request.setAttribute("tid1", rlist.get(0).getTid());
 		request.setAttribute("tid2", rlist.get(1).getTid());
 		request.setAttribute("tid3", rlist.get(2).getTid());
@@ -28,6 +37,7 @@ public class Top3Command implements ReserveCommand {
 		
 		model.addAttribute("rlist", rlist);
 		System.out.println("³¡");
+		 */
 	}
 
 }

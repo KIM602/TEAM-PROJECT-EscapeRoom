@@ -1,14 +1,19 @@
 package com.EscapeRoom.reserve.dto;
 
 public class ReserveDto2 {
-	private String tId;
 	private String cnt;
+	private String rank;
+	private String tid;
 	
-	public String gettId() {
-		return tId;
+	public ReserveDto2() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void settId(String tId) {
-		this.tId = tId;
+	public ReserveDto2(String cnt, String rank, String tid) {
+		super();
+		this.cnt = cnt;
+		this.rank = rank;
+		this.tid = tid;
 	}
 	public String getCnt() {
 		return cnt;
@@ -16,13 +21,17 @@ public class ReserveDto2 {
 	public void setCnt(String cnt) {
 		this.cnt = cnt;
 	}
-	public ReserveDto2() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getRank() {
+		return rank;
 	}
-	public ReserveDto2(String tId, String cnt) {
-		super();
-		this.tId = tId;
-		this.cnt = cnt;
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
+	public String getTid() {
+		return tid;
+	}
+	public void setTid(String tid) {
+		this.tid = tid;
+	}
+	
 }

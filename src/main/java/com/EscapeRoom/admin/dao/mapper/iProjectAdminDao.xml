@@ -5,7 +5,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.EscapeRoom.admin.dao.IProjectAdminDao">
-
+	
+	<!-- 회원가입, 아이디 중복체크 -->
 	<insert id="join" parameterType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto">
 		INSERT INTO ADMINUSER(PID,PPW,PNAME,POADDRESS,PADDRESS,PDETAILADDRESS,PNUMBER)
 		VALUES(#{pid},#{ppw},#{pname},#{poaddress},#{paddress},#{pdetailaddress},#{pnumber})
@@ -15,6 +16,11 @@
 		SELECT * FROM ADMINUSER WHERE PID = #{pid}
 	</select>
 	
+	<select  id="check" parameterType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto"  resultType="com.EscapeRoom.admin.dto.ProjectAdminJoinDto">
+		SELECT * FROM ADMINUSER WHERE PID = #{pid}
+	</select>
+	
+	<!-- 메인이미지 등록 및 수정 -->
 	<insert id="mainInsert" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
 		INSERT INTO MAINIMG(LIMAGE,MIMAGENORMAL,MIMAGEEVENT)
 		VALUES(#{lImage},#{mImageNormal},#{mImageEvent})
@@ -24,6 +30,7 @@
 		SELECT * FROM MAINIMG
 	</select>
 	
+	<!-- main 정보 수정 -->
 	<update id="mainModify" parameterType="com.EscapeRoom.admin.dto.ProjectAdminMainDto">
 		UPDATE MAINIMG SET
 		LIMAGE = #{lImage},
@@ -31,4 +38,26 @@
 		MIMAGEEVENT = #{mImageEvent}
 	</update>
 	
+	<!-- footer 정보 등록 -->
+	<insert id="footerInsert" parameterType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		INSERT INTO FOOTERINFO(FIMG,FBUSINESS,FNAME,FEMAIL,FADDRESS,FNUMBER,FTEL)
+		VALUES(#{fImg},#{fBusiness},#{fName},#{fEmail},#{fAddress},#{fNumber},#{fTel})
+	</insert>
+	
+	<!-- footer 뿌리기 -->
+	<select id="FooterList" resultType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		SELECT * FROM FOOTERINFO
+	</select>
+	
+	<!-- footer 정보 수정 -->
+	<update id="footerModify" parameterType="com.EscapeRoom.admin.dto.ProjectAdminFooterDto">
+		UPDATE FOOTERINFO SET
+		FIMG = #{fImg},
+		FBUSINESS = #{fBusiness},
+		FNAME = #{fName},
+		FEMAIL = #{fEmail},
+		FADDRESS = #{fAddress},
+		FNUMBER = #{fNumber},
+		FTEL = #{fTel}
+	</update>
 </mapper>

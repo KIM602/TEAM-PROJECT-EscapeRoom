@@ -17,50 +17,82 @@ public class themeReserveTimeCheck implements ReserveCommand {
 		
 		String tId = request.getParameter("themevalue");
 		String rDate = request.getParameter("ymd");
-		String rTime1 = "10:20";
-		String rTime2 = "11:50";
-		String rTime3 = "13:20";
-		String rTime4 = "14:50";
-		String rTime5 = "16:20";
-		String rTime6 = "17:50";
-		String rTime7 = "19:20";
-		String rTime8 = "20:50";
 		
-		
-		// 10½Ã20ºÐ
-		ReserveDto rdto1 = new ReserveDto(rDate, tId,rTime1); 
-		ReserveDto rdtoSu1 = rdao.themeReserveTimeCheck(rdto1);
-		model.addAttribute("theme1",rdtoSu1);
-		// 11½Ã50ºÐ
-		ReserveDto rdto2 = new ReserveDto(rDate, tId,rTime2); 
-		ReserveDto rdtoSu2 = rdao.themeReserveTimeCheck(rdto2);
-		model.addAttribute("theme2",rdtoSu2);
-		// 13½Ã20ºÐ
-		ReserveDto rdto3 = new ReserveDto(rDate, tId,rTime3); 
-		ReserveDto rdtoSu3 = rdao.themeReserveTimeCheck(rdto3);
-		model.addAttribute("theme3",rdtoSu3);
-		// 14½Ã50ºÐ
-		ReserveDto rdto4 = new ReserveDto(rDate, tId,rTime4); 
-		ReserveDto rdtoSu4 = rdao.themeReserveTimeCheck(rdto4);
-		model.addAttribute("theme4",rdtoSu4);
-		// 16½Ã20ºÐ
-		ReserveDto rdto5 = new ReserveDto(rDate, tId,rTime5); 
-		ReserveDto rdtoSu5 = rdao.themeReserveTimeCheck(rdto5);
-		model.addAttribute("theme5",rdtoSu5);
-		
-		//String theme = "theme"+i+1) 
-		// 17½Ã50ºÐ
-		ReserveDto rdto6 = new ReserveDto(rDate, tId,rTime6); 
-		ReserveDto rdtoSu6 = rdao.themeReserveTimeCheck(rdto6);
-		model.addAttribute("theme6",rdtoSu6);
-		// 19½Ã20ºÐ
-		ReserveDto rdto7 = new ReserveDto(rDate, tId,rTime7); 
-		ReserveDto rdtoSu7 = rdao.themeReserveTimeCheck(rdto7);
-		model.addAttribute("theme7",rdtoSu7);
-		// 20½Ã50ºÐ
-		ReserveDto rdto8 = new ReserveDto(rDate, tId,rTime8); 
-		ReserveDto rdtoSu8 = rdao.themeReserveTimeCheck(rdto8);
-		model.addAttribute("theme8",rdtoSu8);
+		String rtime;
+		String theme;
+		for(int i=1; i<9;i++) {   // ì‹œê°„ë“±ë¡ 
+			if(i%2==1) {//i=1 / 10:20ë¶„, i=3 / 13:20ë¶„ ,i=5 /16:20ë¶„  ,i=7 / 19:20ë¶„ 
+				rtime = "1"+ ((i-1)*3/2) +":20";
+				theme = "theme"+i;
+				ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
+				ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
+				model.addAttribute(theme,rdtoSu);
+				
+			}
+			
+			else if(i%2==0) {
+				if(i==8) { // i=8ì¼ë•Œ 20:50ë¶„
+					rtime = "20:50";
+					theme = "theme"+i;
+					ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
+					ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
+					model.addAttribute(theme,rdtoSu);
+				}
+				
+				else { // i=2 / 11:50, i=4 / 14:50, i=6 / 17:50;
+					rtime = "1"+ ((i-1)*3/2) + ":50";
+					theme = "theme"+i; 
+					ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
+					ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
+					model.addAttribute(theme,rdtoSu);
+				}
+			}
+		}	
+	
+//		String rTime1 = "10:20";
+//		String rTime2 = "11:50";
+//		String rTime3 = "13:20";
+//		String rTime4 = "14:50";
+//		String rTime5 = "16:20";
+//		String rTime6 = "17:50";
+//		String rTime7 = "19:20";
+//		String rTime8 = "20:50";
+//		
+//		
+//		// 10ì‹œ20ë¶„
+//		ReserveDto rdto1 = new ReserveDto(rDate, tId,rTime1); 
+//		ReserveDto rdtoSu1 = rdao.themeReserveTimeCheck(rdto1);
+//		model.addAttribute("theme1",rdtoSu1);
+//		// 11ì‹œ50ë¶„
+//		ReserveDto rdto2 = new ReserveDto(rDate, tId,rTime2); 
+//		ReserveDto rdtoSu2 = rdao.themeReserveTimeCheck(rdto2);
+//		model.addAttribute("theme2",rdtoSu2);
+//		// 13ì‹œ20ë¶„
+//		ReserveDto rdto3 = new ReserveDto(rDate, tId,rTime3); 
+//		ReserveDto rdtoSu3 = rdao.themeReserveTimeCheck(rdto3);
+//		model.addAttribute("theme3",rdtoSu3);
+//		// 14ì‹œ50ë¶„
+//		ReserveDto rdto4 = new ReserveDto(rDate, tId,rTime4); 
+//		ReserveDto rdtoSu4 = rdao.themeReserveTimeCheck(rdto4);
+//		model.addAttribute("theme4",rdtoSu4);
+//		// 16ì‹œ20ë¶„
+//		ReserveDto rdto5 = new ReserveDto(rDate, tId,rTime5); 
+//		ReserveDto rdtoSu5 = rdao.themeReserveTimeCheck(rdto5);
+//		model.addAttribute("theme5",rdtoSu5);
+//		
+//		//String theme = "theme"+i+1) 
+//		// 17ì‹œ50ë¶„
+//		ReserveDto rdto6 = new ReserveDto(rDate, tId,rTime6); 
+//		ReserveDto rdtoSu6 = rdao.themeReserveTimeCheck(rdto6);
+//		model.addAttribute("theme6",rdtoSu6);
+//		// 19ì‹œ20ë¶„
+//		ReserveDto rdto7 = new ReserveDto(rDate, tId,rTime7); 
+//		ReserveDto rdtoSu7 = rdao.themeReserveTimeCheck(rdto7);
+//		model.addAttribute("theme7",rdtoSu7);
+//		// 20ì‹œ50ë¶„
+//		ReserveDto rdto8 = new ReserveDto(rDate, tId,rTime8); 
+//		ReserveDto rdtoSu8 = rdao.themeReserveTimeCheck(rdto8);
+//		model.addAttribute("theme8",rdtoSu8);
 
 
 	}

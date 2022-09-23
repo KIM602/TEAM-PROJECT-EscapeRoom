@@ -36,7 +36,7 @@
 <!-- Link Swiper's CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
-<link rel="stylesheet" href="style/theme.css" />
+<link rel="stylesheet" href="css/theme/theme.css" />
 
 </head>
 <body>
@@ -49,7 +49,6 @@
 		<div class="container">
 	    	<h1 class="title text-center mt-5">테마소개</h1>
 	    	<button id="btn1" type="button" class="w-btn-outline w-btn-yellow-outline btn_reservation" onclick="location.href='reservePage'">예약하기</button>
-	    	<a href="top3">top3</a>
 	    </div>
 	    
 	    <div class="swiper-wrapper">  
@@ -88,9 +87,6 @@
 										${dto.tprofile}</li>
 							</ul>
 						</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="w-btn-outline w-btn-yellow-outline btn_reservation" onclick="location.href='reservePage'">예약하기</button>
 				</div>
 			</div>
 		</div>

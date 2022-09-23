@@ -1,5 +1,7 @@
 package com.EscapeRoom.board.controller;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,24 +10,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.EscapeRoom.admin.command.ProjectAdminCommand;
+import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
+import com.EscapeRoom.admin.dao.ProjectAdminDao;
+import com.EscapeRoom.board.command.AdminMonthBest3Command;
+import com.EscapeRoom.board.command.AdminMonthBest3ImgCommand;
+import com.EscapeRoom.board.command.AdminMonthBestCommand;
+import com.EscapeRoom.board.command.AdminMonthTotalCountCommand;
+import com.EscapeRoom.board.command.AdminMonthTotalSalesCommand;
 import com.EscapeRoom.board.dao.BoardDao;
 import com.EscapeRoom.board.dto.EventDto;
 import com.EscapeRoom.board.dto.NoticeDto;
 import com.EscapeRoom.reserve.command.ReserveCommand;
 import com.EscapeRoom.reserve.dao.ReserveDao;
+import com.EscapeRoom.reserve.dto.ReserveDto;
+import com.EscapeRoom.theme.command.ThemeCommand;
 import com.EscapeRoom.util.Constant;
 
 @Controller
-public class BoardController {
+public class BoardController {	
 	
+		//footer 가져오기
+		private ProjectAdminCommand com;
+		
+		//footer
+		//ProjectAdminDao bean
+		private ProjectAdminDao edao;
+		@Autowired
+		public void setEdao(ProjectAdminDao edao) {
+			this.edao = edao;
+			Constant.edao = edao;
+		}
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	
-	//예약 통계 작업용으로 가져옴
+	//admin 통계 작업용으로 가져옴
 	//예약 다오
 	private ReserveDao rdao;
 	private ReserveCommand rcom;
+	private ThemeCommand tcom;
 	
 	@Autowired
 	public void setRdao(ReserveDao rdao) {
@@ -38,7 +64,61 @@ public class BoardController {
 		return "board/MonthTotal";
 	}
 	
+	@RequestMapping(value="/mTotalCount", produces="application/text; charset=UTF8")
+	@ResponseBody
+	public String AdminMonthTotalCount(HttpServletRequest request, Model model) {
+		System.out.println("ym값1 : " + request.getParameter("ym"));
+		
+		rcom = new AdminMonthTotalCountCommand();
+		rcom.execute(request, model);
+		System.out.println("req값1 : " + (String)request.getAttribute("AdminMonthTotalCount"));
+		
+		String result = (String)request.getAttribute("AdminMonthTotalCount");
+		System.out.println("성공1");
+		
+		return result + " 건";
+	}
 	
+	@RequestMapping(value="/mTotalSales", produces="application/text; charset=UTF8")
+	@ResponseBody
+	public String AdminMonthTotalSales(HttpServletRequest request, Model model) {
+		System.out.println("ym값2 : " + request.getParameter("ym"));
+		
+		rcom = new AdminMonthTotalSalesCommand();
+		rcom.execute(request, model);
+		System.out.println("req값2 : " + request.getAttribute("AdminMonthTotalSales"));
+		
+		int result = (Integer)request.getAttribute("AdminMonthTotalSales");
+		
+
+		DecimalFormat df = new DecimalFormat("###,###");
+		String str;
+		
+		if(result == 0) {			
+			str = "0 원";
+		}
+		else {
+			str = df.format(result) + " 원";
+		}
+		return str;
+	}
+	
+	@RequestMapping("/mBestList")
+	public String AdminMonthBest(HttpServletRequest request, Model model) {
+		rcom = new AdminMonthBestCommand();
+		rcom.execute(request, model);
+		
+		rcom = new AdminMonthBest3Command();
+		rcom.execute(request, model);
+		tcom = new AdminMonthBest3ImgCommand();
+		tcom.execute(request, model);
+		
+		
+		return "board/mList";
+	}
+	
+	
+		
 	
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -48,17 +128,17 @@ public class BoardController {
 	@Autowired
 	public void setDao(BoardDao dao) {
 		this.dao = dao;
-	}
-	
-	
-	@RequestMapping("/index")
-	public String index() {
-		return "main/Main";
+		Constant.bdao = dao;
 	}
 	
 	
 	@RequestMapping("/about")
-	public String about() {
+	public String about(HttpServletRequest request, Model model) {
+		
+		//footer 출력으로 추가
+		com = new ProjectAdminFooterCommand();
+		com.execute(request, model);
+		
 		return "board/about";
 	}
 	
@@ -190,13 +270,13 @@ public class BoardController {
 	
 	
 	
-	@RequestMapping("/editNoticeForm")
+	@RequestMapping(value="/editNoticeForm", method = RequestMethod.POST)
 	public String editNoticeForm(HttpServletRequest request, Model model) {
 		NoticeDto dto = dao.viewNotice(Integer.parseInt(request.getParameter("bNum")));
 		model.addAttribute("viewNotice", dto);
 		return "board/editNoticeForm";
 	}	
-	@RequestMapping("/editEventForm")
+	@RequestMapping(value="/editEventForm", method = RequestMethod.POST)
 	public String editEventForm(HttpServletRequest request, Model model) {
 		EventDto dto = dao.viewEvent(Integer.parseInt(request.getParameter("bNum")));
 		model.addAttribute("viewEvent", dto);
@@ -204,23 +284,23 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping(value = "/editNotice", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/editNotice", produces = "application/text; charset=UTF-8", method = RequestMethod.POST)
 	public String editNotice(HttpServletRequest request, Model model) {
 		dao.editNotice(Integer.parseInt(request.getParameter("bNum")), request.getParameter("bTitle"), request.getParameter("bContent"));
 		return "redirect:admin_viewNotice?bNum=" + request.getParameter("bNum");
 	}
-	@RequestMapping(value = "/editEvent", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/editEvent", produces = "application/text; charset=UTF-8", method = RequestMethod.POST)
 	public String editEvent(HttpServletRequest request, Model model) {
 		dao.editEvent(Integer.parseInt(request.getParameter("bNum")), request.getParameter("bTitle"), request.getParameter("bContent"));
 		return "redirect:admin_viewEvent?bNum=" + request.getParameter("bNum");
 	}
 	
-	@RequestMapping("/deleteNotice")
+	@RequestMapping(value = "/deleteNotice", method = RequestMethod.POST)
 	public String deleteNotice(HttpServletRequest request, Model model) {
 		dao.deleteNotice(Integer.parseInt(request.getParameter("bNum")));
 		return "redirect:admin_board1";
 	}
-	@RequestMapping("/deleteEvent")
+	@RequestMapping(value = "/deleteEvent", method = RequestMethod.POST)
 	public String deleteEvent(HttpServletRequest request, Model model) {
 		dao.deleteEvent(Integer.parseInt(request.getParameter("bNum")));
 		return "redirect:admin_board2";

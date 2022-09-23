@@ -4,23 +4,33 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.EscapeRoom.theme.dao.ThemeDao">
+		
+		<!-- USER PAGE -->
+		
+		<!-- 테마소개 -->
+		<select id="themeList" resultType="com.EscapeRoom.theme.dto.ThemeDto">
+			SELECT * FROM THEME ORDER BY TID ASC
+		</select>
+		
+		<!-- ADMIN PAGE -->
+		
+		<!-- 테마 등록 -->
 		<insert id="insertform" parameterType="com.EscapeRoom.theme.dto.ThemeDto">
 			insert into theme(tid,tname,tgenre,tdifficulty,ttime,tprofile,tphoto)
 			values(theme_seq.nextval,#{tname},#{tgenre},#{tdifficulty},#{ttime},#{tprofile},#{tphoto})
 		</insert>
 		
-		<select id="themeList" resultType="com.EscapeRoom.theme.dto.ThemeDto">
-			SELECT * FROM THEME ORDER BY TID ASC
-		</select>
-		
+		<!-- 현재 등록된 테마 상세보기 -->
 		<select id="themeDetailsPage" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			SELECT * FROM THEME WHERE TID = #{tid}
 		</select>
 		
+		<!-- 테마 수정 페이지 -->
 		<select id="themeEdit" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			SELECT * FROM THEME WHERE TID = #{tid}
 		</select>
 		
+		<!-- 테마 수정 처리 -->
 		<update id="edit" parameterType="com.EscapeRoom.theme.dto.ThemeDto">
 			UPDATE THEME SET
 			TNAME = #{tname},
@@ -32,11 +42,14 @@
 			WHERE TID = #{tid}
 		</update>
 		
+		<!-- 테마 삭제 -->
 		<delete id="delete">
 			DELETE FROM THEME WHERE TID = #{tid}
 		</delete>
 		
-		<!-- reserve용도용1-->
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		
+		<!-- reserve용 -->
 		
 		<select id="themeNameList" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			select * from theme order by tid desc
@@ -46,15 +59,13 @@
 			select * from theme where tid = #{tid}
 		</select>
 		
+		<!-- 예약 TOP3 -->
 		<select id="reserveTop3" resultType="int">
 			select count(*) as cnt from reserve group by tid order by count(*) desc;
-		</select>
-		
-		<select id="reserveTop3133" resultType="com.EscapeRoom.theme.dto.ThemeDto">
-			select tid from reserve group by tid order by count(*) desc;
 		</select>
 		
 		<select id="top3Image" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			select * from theme where tid = #{tid}
 		</select>
+		
 	</mapper>

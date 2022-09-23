@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -60,7 +61,7 @@ public class ThemeController {
 	private String path1 = "C:/KYK/Util/apache-tomcat-9.0.64-windows-x64/apache-tomcat-9.0.64/wtpwebapps/EscapeRoom_security/resources/upimage/";
 	
 	/* User page */
-	//테마 페이지(리스트 불러옴)
+	//테마 소개 페이지(리스트 불러옴)
 	@RequestMapping("/themePage")
 	public String themePage(HttpServletRequest request, Model model) {
 		System.out.println("테마페이지요청");
@@ -69,7 +70,7 @@ public class ThemeController {
 		return "theme/themePage";
 	}
 	
-	//top3
+	//예약 top3
 	@RequestMapping("/top3")
 	public String top3(HttpServletRequest request, Model model) {
 		System.out.println("top3요청");
@@ -82,14 +83,14 @@ public class ThemeController {
 	
 	/* Admin page */
 	//테마 등록창
-	@RequestMapping("/themeInsert")
+	@RequestMapping(value="/themeInsert", method = RequestMethod.POST)
 	public String themeInsert() {
 		System.out.println("theme이동");
 		return "theme/themeInsert";
 	}
 	
-	//테마등록처리
-	@RequestMapping("/inserttheme")
+	//테마 DB등록처리
+	@RequestMapping(value="/inserttheme", method = RequestMethod.POST)
 	public String inserttheme(MultipartHttpServletRequest mphr, Model model) {
 		System.out.println("inserttheme");
 		String tid = ""; //rId는 임의로 정함(DB에서 seq넘버로 설정하니까 
@@ -143,7 +144,7 @@ public class ThemeController {
 	}
 	
 	//등록된 테마 목록 페이지
-	@RequestMapping("/themeListPage")
+	@RequestMapping(value="/themeListPage", method = RequestMethod.POST)
 	public String themeListPage(HttpServletRequest request, Model model) {
 		System.out.println("themeListPage");
 		com = new ThemeListPageCommand();
@@ -152,7 +153,7 @@ public class ThemeController {
 	}
 		
 	//등록된 테마 상세보기 페이지
-	@RequestMapping("/themeDetailsPage")
+	@RequestMapping(value="/themeDetailsPage", method = RequestMethod.POST)
 	public String themeDetailsPage(HttpServletRequest request, Model model) {
 		System.out.println("themeDetailsPage입니다");
 		com = new ThemeDetailsPageCommand();
@@ -161,7 +162,7 @@ public class ThemeController {
 	}
 		
 	//태마 수정 페이지
-	@RequestMapping("/themeEdit")
+	@RequestMapping(value="/themeEdit", method = RequestMethod.POST)
 	public String themeEdit(HttpServletRequest request, Model model) {
 		System.out.println("themeEdit");
 		com = new ThemeContentCommand();
@@ -170,7 +171,7 @@ public class ThemeController {
 	}
 		
 	//테마 수정 DB처리
-	@RequestMapping(value="/edit", produces="application/text; charset=UTF-8")
+	@RequestMapping(value="/edit", produces="application/text; charset=UTF-8", method = RequestMethod.POST)
 	public String edit(MultipartHttpServletRequest request, Model model) {
 		System.out.println("edit요청");
 		String tid = request.getParameter("tid"); //rId는 임의로 정함(DB에서 seq넘버로 설정하니까 
@@ -221,7 +222,7 @@ public class ThemeController {
 	}
 		
 	//테마 삭제
-	@RequestMapping("/delete")
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
 	public String delete(HttpServletRequest request, Model model) {
 		System.out.println("delete요청");
 		com = new ThemeDeleteCommand();

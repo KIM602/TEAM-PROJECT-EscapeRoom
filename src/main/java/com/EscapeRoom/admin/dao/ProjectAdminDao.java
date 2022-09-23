@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.EscapeRoom.admin.dto.ProjectAdminFooterDto;
 import com.EscapeRoom.admin.dto.ProjectAdminJoinDto;
 import com.EscapeRoom.admin.dto.ProjectAdminMainDto;
 
@@ -74,7 +75,8 @@ public class ProjectAdminDao implements IProjectAdminDao {
 		
 		return dto;
 	}
-
+	
+	//main 이미지 수정
 	@Override
 	public String mainModify(ProjectAdminMainDto dto) {
 		String result;
@@ -88,6 +90,64 @@ public class ProjectAdminDao implements IProjectAdminDao {
 			result = "failed";
 		}
 		
+		return result;
+	}
+
+	//아이디 중복체크
+	@Override
+	public String check(ProjectAdminJoinDto dto) {
+		System.out.println(dto);
+		
+		String result = null;
+		ProjectAdminJoinDto res1 = sqlSession.selectOne("check",dto);		
+			if(res1 != null) {
+				result = "failed";
+			}
+			else {
+				result = "success";
+			}
+	
+		return result;
+	}
+
+	//footer DB등록 처리
+	@Override
+	public String footerInsert(ProjectAdminFooterDto dto) {
+		String result;
+		int res = sqlSession.insert("footerInsert",dto);
+		if(res == 1) {
+			result = "success";
+		}
+		else {
+			result = "failed";
+		}
+		return result;
+	}
+	
+	//footer에 이미지 뿌리기
+	@Override
+	public ArrayList<ProjectAdminFooterDto> FooterList() {
+		System.out.println("FooterList");
+		
+		ArrayList<ProjectAdminFooterDto> dto = (ArrayList)sqlSession.selectList("FooterList");
+		
+		return dto;
+	}
+
+	//footer DB수정 처리
+	@Override
+	public String footerModify(ProjectAdminFooterDto dto) {
+		System.out.println("footer modify 수정 처리 요청");
+		String result;
+		
+		int res = sqlSession.update("footerModify",dto);
+		
+		if(res == 1) {
+			result = "success";
+		}
+		else {
+			result = "failed";
+		}
 		return result;
 	}
 	
