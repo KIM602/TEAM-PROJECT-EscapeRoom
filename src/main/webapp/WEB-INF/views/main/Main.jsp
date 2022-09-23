@@ -66,6 +66,8 @@
     <a href="top3" id="top3bt" class="btn-resrvation" data-toggle="modal" data-target="#top3">
         <i class="fa-solid fa-trophy"></i>
     </a>
+    
+    
 
 <!-- 예약top3 -->
 <div id="top3" class="modal fade">
