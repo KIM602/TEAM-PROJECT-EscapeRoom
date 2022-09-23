@@ -137,6 +137,7 @@ public class ProjectAdminDao implements IProjectAdminDao {
 	//footer DB荐沥 贸府
 	@Override
 	public String footerModify(ProjectAdminFooterDto dto) {
+		System.out.println("footer modify 荐沥 贸府 夸没");
 		String result;
 		
 		int res = sqlSession.update("footerModify",dto);
