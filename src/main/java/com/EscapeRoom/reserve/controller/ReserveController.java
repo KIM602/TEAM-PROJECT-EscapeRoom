@@ -235,7 +235,7 @@ public class ReserveController {
 			rcom.execute(request, model);
 	
 			
-			return "reserve/TodayReserveAvailable";
+			return "reserve/TodayReserveAvailable2";
 		}
 		
 		
