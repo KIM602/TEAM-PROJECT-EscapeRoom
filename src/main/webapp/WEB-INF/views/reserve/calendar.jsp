@@ -150,7 +150,7 @@ function prevCalendar() { // 이전 달
 <table id="calendar">
 	<tr>
 		<td><label onclick="prevCalendar()"> ◀ </label></td>
-		<td colspan="5" id="calendarTitle" style="text-align:center">yyyy년 m월</td>
+		<td colspan="5" id="calendarTitle" style="text-align:center;">yyyy년 m월</td>
 		<td><label onclick="nextCalendar()"> ▶ </label></td>
 	</tr>
 	<tr>

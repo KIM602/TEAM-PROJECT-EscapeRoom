@@ -16,9 +16,7 @@
 	
 	<dd class="themeStyleImg">
 		<img alt="" src="upimage/${theme.tphoto}" >
-		<br/>
-		<br/>
-		${theme.tprofile}
+		<label>${theme.tprofile}</label>
 	</dd>
 	
 <script type="text/javascript">
