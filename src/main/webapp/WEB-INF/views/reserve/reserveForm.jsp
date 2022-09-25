@@ -136,14 +136,14 @@ $("#rTerms").on('click', function() {
 					<tr>
 						<th><a>성함</a></th>
 						<td>
-							<input type="text" name="rName" placeholder="이름을 입력해주세요." style="font-family: 'GmarketSansBold';font-size: 1.2rem">
+							<input type="text" name="rName" placeholder="이름을 입력해주세요." id="rName">
 							
 						</td>
 					</tr>
 					<tr>
 						<th><a>연락처</a></th>
 						<td>
-							<input type="text" name="rPhone" placeholder="숫자만 입력해주세요" style="font-family: 'GmarketSansBold';font-size: 1.2rem">
+							<input type="text" name="rPhone" placeholder="숫자만 입력해주세요" id="rPhone">
 							
 						</td>
 					</tr>
@@ -167,13 +167,13 @@ $("#rTerms").on('click', function() {
 						<td><input type="hidden" id="inputprice" name="rPrice" value="44000"> <a id="price">44000원</a></td>
 					</tr>
 					<tr>
-						<th><a>주의사항</a></th>
-						<td><p>예약해 주신 시간은 입장시간입니다.<br/>
-							브리핑 및 짐 보관을 위해 15분전에 도착해주셔야합니다.<br/>
+						<th style="border-bottom-color: #000;"><a>주의사항</a></th>
+						<td><a style="display: block">예약해 주신 시간은 입장시간입니다.<br/>
+							브리핑 및 짐 보관을 위해 15분전에 <br/>도착해주셔야합니다.<br/>
 							늦으실 경우 늦은 시간만큼 시간이 차감됩니다.<br/>
 							장치를 힘으로 억지로 열거나 작동시키려 할 경우 부상과 파손의 위험이 있습니다.<br/>
 							소품 및 장치 파손 시 배상의 책임이 있습니다.<br/>
-							테마 진행 및 이동시에는 장난을 치거나 뛰지 않도록 주의해 주세요.</p></td>
+							테마 진행 및 이동시에는 장난을 치거나 뛰지 않도록 주의해 주세요.</a></td>
 					</tr>
 					
 				</tbody>
@@ -182,7 +182,7 @@ $("#rTerms").on('click', function() {
 			<br/><br/>
 			<div id="reserveOk">
 				<div id="checkboxform" >
-					<input type="checkbox" id="rTerms" name="rTerms" value="noncheck"><a style="font-size:1.0rem;"> 개인정보 처리방침 및 주의사항에 동의합니다.</a>
+					<input type="checkbox" id="rTerms" name="rTerms" value="noncheck"><a> 개인정보 처리방침 및 주의사항에 동의합니다.</a>
 				</div>
 				<input type="button" onclick="reserveCheck()" value="예약하기"  class="step-btn1 rounded-pill hover1" style="font-family: 'GmarketSansBold';"></input>
 			</div>
