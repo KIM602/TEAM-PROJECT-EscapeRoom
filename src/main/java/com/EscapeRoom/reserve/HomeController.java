@@ -20,11 +20,6 @@ import com.EscapeRoom.admin.command.ProjectAdminFooterCommand;
 import com.EscapeRoom.admin.command.ProjectAdminMainCommand;
 import com.EscapeRoom.admin.dao.ProjectAdminDao;
 import com.EscapeRoom.admin.util.Constant;
-import com.EscapeRoom.reserve.command.ReserveCommand;
-import com.EscapeRoom.reserve.command.Top3Command;
-import com.EscapeRoom.reserve.dao.ReserveDao;
-import com.EscapeRoom.theme.command.Top3ImageCommand;
-import com.EscapeRoom.theme.dao.ThemeDao;
 
 /**
  * Handles requests for the application home page.

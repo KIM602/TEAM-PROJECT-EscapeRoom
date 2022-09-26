@@ -129,9 +129,7 @@
 <script>
 $(document).ready(function() {
 	
-	
-
-	
+	/* 게시판 */
 	// 보드 관련
 	$("#nav-board").click(function(e) {
 		e.preventDefault();
@@ -165,7 +163,7 @@ $(document).ready(function() {
 	});
 	
 
-	
+	/* 테마 */
 	//테마 등록
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
@@ -203,6 +201,7 @@ $(document).ready(function() {
 	});
 	
 	
+	/* 예약 */
 	// 예약자 목록 리스트
 	$("#ReserverList").click(function(e) {
 		e.preventDefault();
@@ -220,9 +219,11 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	// 페이지 로드시 바로 예약확인 뜨게 하기
 	$("#ReserverList").trigger("click");
 	
+	/* 메인 */
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){
 		event.preventDefault();
@@ -253,6 +254,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	//footer 수정
 	$("#footerModify").click(function(event){
 		event.preventDefault();
@@ -271,10 +273,7 @@ $(document).ready(function() {
 	
 	// 페이지 로드시 바로 예약확인 뜨게 하기
 	$("#ReserverList").trigger("click");
-	
-	
-	
-	
+
 });
 </script>
 
