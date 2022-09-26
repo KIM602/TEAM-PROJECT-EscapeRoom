@@ -74,11 +74,13 @@
 					</c:otherwise>
 	  			</c:choose>
   			</ul>
+  			
   			<!-- 
   			<div class="top3name">
   				<c:forEach items="${rlist}" var="dto1"><p class="name">${dto1.rthemename}</p></c:forEach>
 			</div>
   			 -->
+  			 
 			<br/>
 			<br/>
 			<button class="btn btn-secondary" type="button" data-dismiss="modal">CLOSE</button>
