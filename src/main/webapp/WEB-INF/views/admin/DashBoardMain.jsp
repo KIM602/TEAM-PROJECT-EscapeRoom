@@ -102,9 +102,6 @@
                                 &#8250; 정보 수정
                                 <ul class="nav-line-style">
                                     <li class="nav-lastlist">
-                                        <a href="#">지도 수정</a>
-                                    </li>
-                                    <li class="nav-lastlist">
                                         <a href="footerModify" id="footerModify">회사 정보 수정</a>
                                     </li>
                                 </ul>
@@ -121,7 +118,7 @@
             </article>
         </section>
         
-        
+       
 <!-- <sec:authorize access="isAuthenticated()">
 			<a href="AdminLogoutView">로그아웃</a>
 		</sec:authorize>
@@ -131,6 +128,10 @@
 <script src="js/DashBoardMain.js"></script>
 <script>
 $(document).ready(function() {
+	
+	// 페이지 로드시 바로 예약확인 뜨게 하기
+	$("#ReserverList").trigger("click");
+
 	
 	// 보드 관련
 	$("#nav-board").click(function(e) {
@@ -170,9 +171,11 @@ $(document).ready(function() {
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $("#nav-themeInsert").attr('href'),
-			type: "get",
-			data: "",
+			url: "themeInsert",
+			type: "post",
+			data: {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
@@ -265,6 +268,11 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	
+	
+	
+	
 	
 });
 </script>

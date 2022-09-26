@@ -56,9 +56,9 @@
 	</div>
 	<br />
 	<div class="text-center">
-		<a href="themeEdit?tid=${tDetails.tid}" id="contentEdit" class="btn btn-secondary">수정</a>
-		<a href="delete?tid=${tDetails.tid}" id="contentDel" class="btn btn-secondary">삭제</a>
-		<a id="listback" href="themeListPage" class="btn btn-dark">목록으로</a>
+		<a data-value="${tDetails.tid}" id="contentEdit" class="btn btn-secondary">수정</a>
+		<a data-value="${tDetails.tid}" id="contentDel" class="btn btn-secondary">삭제</a>
+		<a id="listback" class="btn btn-dark">목록으로</a>
 	</div>
 </section>
 
@@ -67,10 +67,14 @@ $(document).ready(function(){
 	$("#contentEdit").click(function(event){
 		event.preventDefault();
 		let ceo = $(event.target);
+		let val = ceo.attr('data-value');
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "themeEdit",
+			type : "post",
+			data : {
+				tid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},
@@ -84,9 +88,11 @@ $(document).ready(function(){
 		event.preventDefault();
 		let ceo = $(event.target);
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "themeListPage",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},
@@ -99,10 +105,14 @@ $(document).ready(function(){
 	$("#contentDel").click(function(event){
 		event.preventDefault();
 		let ceo = $(event.target);
+		let val = ceo.attr('data-value');
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "delete",
+			type : "post",
+			data : {
+				tid : val,
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},

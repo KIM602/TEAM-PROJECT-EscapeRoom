@@ -1,0 +1,62 @@
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#caledar>tbody>tr>td:checked {
+    background-color: #ff3f3e;
+    color: #fff;
+}
+
+#calendar {
+    margin-left:auto; 
+    margin-right:auto;
+    border-spacing: 2vw;
+  	border-collapse: separate;
+}
+
+#calendar>tbody>tr>td {
+	font-size : 1.5rem;
+	  width: 30px;
+	  font-family: 'GmarketSansBold'
+    
+}
+
+
+/*모바일*/
+@media only screen and (max-width:767px){
+	
+
+}
+/*태블릿*/
+@media only screen and (min-width:768px){
+	
+#calendar>tbody>tr>td {
+	font-size : 1.8rem;
+	  width: 50px;
+	 
+    
+}
+		
+}
+/*pc*/
+@media only screen and (min-width:992px){
+	
+	#calendar {
+    margin-left:auto; 
+    margin-right:auto;
+    border-spacing: 0.5vw;
+  	border-collapse: separate;
+}
+
+#calendar>tbody>tr>td {
+	font-size : 1.5vw;
+	  font-family: 'GmarketSansBold'
+    
+}
+	
+	
+}

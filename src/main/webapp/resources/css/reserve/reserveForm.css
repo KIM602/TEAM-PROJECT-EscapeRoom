@@ -1,0 +1,338 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.box-step2{
+width:100%;
+margin: 5% 0;
+}
+
+.box-step2-div1{
+width: 80%;
+margin: auto; 
+border: 0.7px solid #d6d6d6;
+}
+.box-step2-h3{
+border-bottom: 0.7px solid #d6d6d6;
+text-align: center;
+padding: 2% 0 1.5%;
+}
+.box-step2-div1-div{
+    padding: 0 15%;
+}
+
+
+tbody>tr>th{
+height: 75px;
+font-family: 'GmarketSansmedium';
+font-size : 1.0rem;
+}
+
+.formSt{
+font-family: 'GmarketSansmedium';
+font-size : 1.0rem;
+width: 100%;
+margin-left: 5%;
+}
+
+.step-btn3{
+	display: block;
+    text-align: center;
+    width: 22%;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.2rem;
+    border: 1px solid;
+    border-color: #F9D142;
+    background: #F9D142;
+    color: #292826;
+    font-family: 'GmarketSansbold';
+}
+
+/* reserveForm*/
+
+
+
+#count-select{
+  margin-bottom:0;
+  margin-left: 2%;
+}
+#count-select select {
+    width: 100%;
+    border: 0.052vw solid #000;
+    padding: 0 0.5vw;
+    font-size: 1.0rem;
+    box-sizing: border-box;
+    font-family: 'GmarketSansmedium'
+}
+
+
+#reserveOk{
+text-align: center;
+
+}
+
+
+#checkboxform{
+margin-bottom: 3%;
+margin-top: 3%;
+font-size:1.1rem; color: red;
+}
+
+#checkboxform > #rTerms{
+	width: 0.8rem;
+    height: 0.8rem;
+    cursor: pointer;
+}
+
+
+#rName{
+	font-family: 'GmarketSansmedium';font-size: 1.0rem;
+	margin-left: 2%;
+}
+
+#rPhone {
+	font-family: 'GmarketSansmedium';font-size: 1.0rem;
+	margin-left: 2%;
+}
+
+
+
+/*reserveCheckFailPage*/
+.message{
+	font-family:'GmarketSansmedium';
+	font-size: 1.3rem;
+    text-align: center;
+    margin: 5;
+    margin: 10px 0px;
+}
+
+/*reserveInformation*/
+#step2-table {
+	width:80%;
+    margin:auto;
+	
+}
+#step2-table th {
+    font-size: 1.2rem;
+    border: 0.052vw solid #f6f6f6;
+    text-align: center;
+    color:#fff;
+}
+#step2-table th:first-child {
+	border: 0.052vw solid #000;
+    background-color: #000;
+    border-bottom-color: #fff;
+    
+   
+}
+
+#step2-table td {
+
+    border: 0.052vw solid #000;
+    padding: 0.5vw;
+    width: 80%;
+}
+#step2-table td p{
+    margin-bottom:0;
+}
+
+#step2-table>tbody>tr>th{
+height: 50px;
+
+}
+#step2-table>tbody>tr>th>a{
+	font-family:'GmarketSansmedium';
+	font-size: 1.0rem;
+}
+#step2-table>tbody>tr>td>a{
+	font-family:'GmarketSansmedium';
+	font-size: 1.0rem;
+	margin-left: 2%;
+}
+
+/*reserveInformationList 정보가 2개이상일시 선택 페이지*/
+
+#searchTable {
+	width:80%;
+    margin:auto;
+}
+
+#searchTable th {
+    border: 0.052vw solid #000;
+    padding: 3px;
+    text-align: center;
+    background-color: #000;
+    color:#fff;
+    border-right: 0.7px solid #d6d6d6;
+}
+
+#searchTable th>a {
+	font-family:'GmarketSansBold';
+    font-size:0.9rem;
+    
+}
+
+#searchTable td {
+    border: 0.052vw solid #000;
+    padding: 3px;
+    text-align: center;
+}
+#searchTable td>a {
+	font-family:'GmarketSansmedium';
+    font-size:0.65rem;
+    
+}
+
+
+/*모바일*/
+@media only screen and (max-width:767px){
+	
+}
+/*태블릿*/
+@media only screen and (min-width:768px){
+	
+	
+	
+	.box-step2-div1-div {
+    padding: 0 25%;
+	}		
+	.formSt{
+	font-size : 1.2rem;
+	width: 250px;
+	
+	}
+	
+	#searchTable th>a {
+    font-size:1.1rem;
+    
+	}
+	
+	#searchTable td>a {
+    font-size:1rem;
+	}
+}
+/*pc*/
+@media only screen and (min-width:992px){
+	
+	tbody>tr>th{
+	height: 75px;
+	font-family: 'GmarketSansmedium';
+	font-size : 1.5vw;
+	}
+
+	.formSt{
+	font-family: 'GmarketSansmedium';
+	font-size : 1.4vw;
+	width: 100%;
+	margin-left: 5%;
+	}
+	
+	
+	.box-step-div1 {
+	width:100%;
+	}
+	.box-step2-div1 {
+	width:100%;
+	}
+	
+	.box-step2-h3{
+	border-bottom: 0.7px solid #d6d6d6;
+	text-align: center;
+	padding: 2% 0 1.5%;
+	font-size : 1.7vw;
+	}
+	
+	.box-step2-div1-div>table{
+	width:100%;
+	}
+	.box-step2-div1-div>table.th{
+	width:20%;
+	}
+	
+	
+	#step2-table {
+	
+	width:100%;
+    margin:auto;
+	
+	}
+	.step-btn3 {
+		width:10%;
+		font-size: 1.4vw;  
+	}
+	
+	#step2-table td {
+    border: 0.052vw solid #000;
+    padding: 0.5vw;
+    width: 90%;
+	}
+	
+	#step2-table>tbody>tr>th>a{
+	font-family:'GmarketSansmedium';
+	font-size: 1.3vw;
+	}
+	#step2-table>tbody>tr>td>a{
+	font-family:'GmarketSansmedium';
+	font-size: 1.3vw;
+	margin-left: 1%;
+	}
+	
+	
+	#rName{
+	font-family: 'GmarketSansmedium';font-size: 1.5vw;
+	margin-left: 1%;
+	width:50%;
+	}
+	
+	#rPhone {
+		font-family: 'GmarketSansmedium';font-size: 1.5vw;
+		margin-left: 1%;
+		width:50%;
+	}
+	
+	#checkboxform{
+	font-size:1.3vw;
+	}
+	
+	#count-select select {
+	font-size:1.3vw;
+	}
+	#count-select{
+  	margin-left: 1%;
+	}
+	#checkboxform > #rTerms {
+    width: 1.1vw;
+    height: 0.9vw;
+    cursor: pointer;
+	}
+	
+	
+	/*reserveCheckFailPage*/
+	.message{
+	font-family:'GmarketSansmedium';
+	font-size: 1.6vw;
+    text-align: center;
+    margin: 10px 0px;
+	}
+	
+	
+	/*reserveInforamationList*/
+	#searchTable {
+	width:100%;
+    margin:auto;
+	}
+	
+	#searchTable th>a {
+    font-size:1.4vw;
+    
+	}
+	
+	#searchTable td>a {
+    font-size:1.1vw;
+	}
+}

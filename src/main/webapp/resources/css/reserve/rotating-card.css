@@ -1,8 +1,7 @@
 body {
-	margin-top: 60px;
+	
 	font-size: 14px;
 	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
-	background-color: #E5E9ED;
 }
 .btn:hover,
 .btn:focus,
@@ -17,23 +16,12 @@ body {
         perspective: 800px;
         margin-bottom: 30px;
 }
-/* flip the pane when hovered */
-.card-container:not(.manual-flip):hover .card,
-.card-container.hover.manual-flip .card{
-	-webkit-transform: rotateY( 180deg );
--moz-transform: rotateY( 180deg );
- -o-transform: rotateY( 180deg );
-    transform: rotateY( 180deg );
-}
 
 
-.card-container.static:hover .card,
-.card-container.static.hover .card {
-	-webkit-transform: none;
--moz-transform: none;
- -o-transform: none;
-    transform: none;
+.row{
+	display:block;
 }
+
 /* flip speed goes here */
 .card {
 	 -webkit-transition: -webkit-transform .5s;
@@ -91,26 +79,28 @@ body {
 	width: 100%;
 	height: 420px;
 	border-radius: 4px;
+	background-color: gainsboro;
 }
 .card .cover{
-    height: 105px;
+    height: 59px;
     overflow: hidden;
     border-radius: 4px 4px 0 0;
 }
 .card .cover img{
     width: 100%;
 }
-.card .user{
-    border-radius: 50%;
-    display: block;
-    height: 120px;
+.card .user {
+    /* border-radius: 50%; */
+    /* display: block; */
+    /* height: 120px; */
     margin: -55px auto 0;
     overflow: hidden;
     width: 120px;
 }
-.card .user img{
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 4px solid #FFFFFF;
+
+.card .user img {
+    /* background: none repeat scroll 0 0 #FFFFFF; */
+    /* border: 4px solid #FFFFFF; */
     width: 100%;
 }
 
@@ -133,14 +123,13 @@ body {
     text-transform: capitalize;
 }
 .card h5{
-    margin: 5px 0;
+    
     font-weight: 400;
     line-height: 20px;
 }
 .card .profession{
     color: #999999;
     text-align: center;
-    margin-bottom: 20px;
 }
 .card .footer {
     border-top: 1px solid #EEEEEE;
@@ -296,24 +285,122 @@ body {
 }
 
 
-/*       Fix bug for IE      */
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .front, .back{
-        -ms-backface-visibility: visible;
-        backface-visibility: visible;
-    }
 
-    .back {
-        visibility: hidden;
-        -ms-transition: all 0.2s cubic-bezier(.92,.01,.83,.67);
-    }
-    .front{
-        z-index: 4;
-    }
-    .card-container:not(.manual-flip):hover .back,
-    .card-container.manual-flip.hover .back{
-        z-index: 5;
-        visibility: visible;
-    }
+
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#StartForm{
+font-family: 'GmarketSansMedium';
+font-size : 1.5rem;
+}	
+h3,h4,h5{
+font-family: 'GmarketSansMedium';
+}
+	
+ 
+      .navbar-default .navbar-nav > li > a{
+          padding: 15px 15px;
+          margin: 5px 0;
+      }
+
+      .navbar-default{
+          padding: 10px 0;
+          background-color: rgba(255, 255, 255, 0.95);
+          border-color: transparent;
+          box-shadow: 0 0px 13px rgba(0,0,0,.2);
+      }
+      .time-choice label span img{
+	   width: 1.5vw;
+   		height: 1.5vw;
+    	margin-right: 4px;
+    	margin-bottom: 4px;
+	}
+	.time-choice label {
+	  	float: left;
+	    position: relative;
+	    display: block;
+	    width: 47.5%;
+	    margin-right: 2.5%;
+	    text-align: center;
+
+	}
+	.time-choice label span {
+	   display: block;
+	   width: 100%;
+	   height: 26px;
+    	line-height: 31px;
+	   -webkit-box-sizing: border-box;
+	   box-sizing: border-box;
+	   background-color: #ebebeb;
+	   white-space: nowrap;
+	   overflow: hidden;
+	   text-overflow: ellipsis;
+	  font-size: 1.2vw;
+		   
+	}
+	
+		
+
+
+
+
+/*ÅÂºí¸´*/
+@media only screen and (min-width:768px){
+	
+	
+	
+		
+}
+/*pc*/
+@media only screen and (min-width:992px){
+	.time-choice label span img{
+	   width: 0.9vw;
+   		height: 0.9vw;
+    	margin-right: 4px;
+    	margin-bottom: 4px;
+}
+	
+	.time-choice label {
+	  	float: left;
+	    position: relative;
+	    display: block;
+	    width: 47.5%;
+	    margin-right: 2.5%;
+	    text-align: center;
+
+	}
+	.time-choice label span {
+	   display: block;
+	   width: 100%;
+	   height: 26px;
+    	line-height: 31px;
+	   -webkit-box-sizing: border-box;
+	   box-sizing: border-box;
+	   background-color: #ebebeb;
+	   white-space: nowrap;
+	   overflow: hidden;
+	   text-overflow: ellipsis;
+	  font-size: 0.5vw;
+		   
+	}
 }

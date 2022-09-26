@@ -43,7 +43,7 @@
 		<a href="AdminLoginView" class="btn btn-primary">Login으로 가기</a>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-		<a href="DashBoardMain4" class="btn btn-info">대시보드로 돌아가기</a>
+		<a href="DashBoardMain" class="btn btn-info">대시보드로 돌아가기</a>
 	</sec:authorize>
 </div>
 

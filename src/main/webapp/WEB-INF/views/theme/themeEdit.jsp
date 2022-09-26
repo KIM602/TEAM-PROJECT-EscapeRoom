@@ -76,7 +76,7 @@
 					<textarea rows="10" cols="" id="uProfile" name="tprofile" class="form-control" required="required">${themeEdit.tprofile}</textarea>
 				</div>
 			<button type="submit" id="ed" class="btn btn-success">수정</button>
-			<a id="listback" href="themeListPage" class="btn btn-dark">목록으로</a>
+			<a id="listback" class="btn btn-dark">목록으로</a>
 		</form>
 </div>
 
@@ -86,9 +86,11 @@ $(document).ready(function(){
 		event.preventDefault();
 		let ceo = $(event.target);
 		$.ajax({
-			url : ceo.attr("href"),
-			type : "get",
-			data : "",
+			url : "themeListPage",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data) {
 				$(".main-page").html(data);
 			},
