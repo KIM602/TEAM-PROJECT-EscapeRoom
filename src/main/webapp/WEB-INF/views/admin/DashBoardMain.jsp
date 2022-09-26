@@ -118,7 +118,7 @@
             </article>
         </section>
         
-        
+       
 <!-- <sec:authorize access="isAuthenticated()">
 			<a href="AdminLogoutView">로그아웃</a>
 		</sec:authorize>
@@ -128,6 +128,10 @@
 <script src="js/DashBoardMain.js"></script>
 <script>
 $(document).ready(function() {
+	
+	// 페이지 로드시 바로 예약확인 뜨게 하기
+	$("#ReserverList").trigger("click");
+
 	
 	// 보드 관련
 	$("#nav-board").click(function(e) {
@@ -264,6 +268,11 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	
+	
+	
+	
 	
 });
 </script>
