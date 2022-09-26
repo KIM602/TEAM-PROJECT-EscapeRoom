@@ -73,6 +73,22 @@ a.btn-resrvation i:hover {
     animation-fill-mode: both;
     color: rgb(255, 210, 9);
 }
+a.btn-resrvation1 {
+    position: absolute;
+}
+
+a.btn-resrvation1 i {
+    font-size: 3.5rem;
+    color: #555;
+}
+
+a.btn-resrvation1 i:hover {
+    animation-name: bounce;
+    transform-origin: center bottom;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    color: rgb(255, 210, 9);
+}
 
 /* btn animate */
 @keyframes bounce {
@@ -116,6 +132,13 @@ a.btn-resrvation i:hover {
     a.btn-resrvation i {
         font-size: 3rem;
     }
+     a.btn-resrvation1 {
+        right: 18%;
+        bottom: 3%;
+    }
+    a.btn-resrvation1 i {
+        font-size: 3rem;
+    }
 }
 
 @media only screen and (min-width:768px) {
@@ -135,6 +158,10 @@ a.btn-resrvation i:hover {
     /* btn-resrvation */
     a.btn-resrvation {
         right: 4%;
+        bottom: 4%;
+    }
+    a.btn-resrvation1 {
+        right: 13%;
         bottom: 4%;
     }
 }
@@ -159,5 +186,9 @@ a.btn-resrvation i:hover {
     a.btn-resrvation {
         bottom: 5%;
         right: 2.5%;
+    }
+    a.btn-resrvation1 {
+        bottom: 5%;
+        right: 8%;
     }
 }

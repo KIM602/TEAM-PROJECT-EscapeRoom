@@ -60,10 +60,6 @@
 		</select>
 		
 		<!-- 예약 TOP3 -->
-		<select id="reserveTop3" resultType="int">
-			select count(*) as cnt from reserve group by tid order by count(*) desc;
-		</select>
-		
 		<select id="top3Image" resultType="com.EscapeRoom.theme.dto.ThemeDto">
 			select * from theme where tid = #{tid}
 		</select>
