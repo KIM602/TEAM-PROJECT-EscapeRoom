@@ -263,8 +263,8 @@ $(function() {
 					purl = 1;
 				}
 				else if(pageNo == ">>") {
-					cur = 35;
-					purl =  35;
+					cur = Math.ceil(${ReserveListTotal}/10);
+					purl =  Math.ceil(${ReserveListTotal}/10);
 				}
 				else {
 					return;
