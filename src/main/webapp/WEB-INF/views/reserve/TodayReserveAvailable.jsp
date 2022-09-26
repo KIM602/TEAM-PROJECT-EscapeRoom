@@ -73,7 +73,7 @@
 						                <div class="card">
 						                    <div class="front">
 						                        <div class="cover">
-						                            <img src="upimage/${requestScope[ThemeList].tPhoto}"/>
+						                            <a style="background-color: red;"></a>
 						                        </div>
 						                        <div class="user">
 						                            <img class="img-circle" src="upimage/${requestScope[ThemeList].tPhoto}"/>
