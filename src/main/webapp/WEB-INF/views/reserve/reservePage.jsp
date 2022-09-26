@@ -46,7 +46,6 @@
 <div id="fullDiv">
 	<div id="headerDiv">
 		<div id="headerTitleDiv">
-		<a href="TodayReserveAvailable">test용</a>
 			<span class="reserve-title">화곡 RESERVATION</span>
 			<span class="reserve-title1">경험해보고 싶었던 “새로운 세상”</span>
 			<span class="reserve-title2">사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</span>

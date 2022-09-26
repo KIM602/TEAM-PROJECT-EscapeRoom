@@ -66,6 +66,9 @@
     <a href="top3" id="top3bt" class="btn-resrvation" data-toggle="modal" data-target="#top3">
         <i class="fa-solid fa-trophy"></i>
     </a>
+    <a href="TodayReserveAvailable" id="todayReserve" class="btn-resrvation1">
+        <i class="fa-solid fa-calendar-check"></i>
+    </a>
     
     
 
