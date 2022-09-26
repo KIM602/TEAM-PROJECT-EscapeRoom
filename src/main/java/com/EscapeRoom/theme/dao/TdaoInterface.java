@@ -8,6 +8,8 @@ public interface TdaoInterface {
 	/* User page */
 	//테마 소개
 	public ArrayList<ThemeDto> themeList();
+	// top3
+	public ThemeDto top3Image(String tid);
 	
 	/* Admin page */
 	//테마등록
@@ -24,6 +26,4 @@ public interface TdaoInterface {
 	/* Reserve */
 	public ArrayList<ThemeDto> themeNameList();
 	public ThemeDto themeImage(String tId);
-	// top3
-	public ThemeDto top3Image(String tid);
 }
