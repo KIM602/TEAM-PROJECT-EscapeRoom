@@ -42,101 +42,9 @@
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <style type="text/css">
 
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
-#StartForm{
-font-family: 'GmarketSansMedium';
-font-size : 1.5rem;
-}	
-h3,h4,h5{
-font-family: 'GmarketSansMedium';
-}
-	
- 
-      .navbar-default .navbar-nav > li > a{
-          padding: 15px 15px;
-          margin: 5px 0;
-      }
-
-      .navbar-default{
-          padding: 10px 0;
-          background-color: rgba(255, 255, 255, 0.95);
-          border-color: transparent;
-          box-shadow: 0 0px 13px rgba(0,0,0,.2);
-      }
-      .btn-info,
-      .btn-info:hover,
-      .btn-info:focus{
-          color: #FFF !important;
-          background-color: #00bbff !important;
-          border-color: #00bbff !important;
-      }
-
-      .btn-info{
-          opacity: .8;
-          transition: all 0.1s;
-          -webkit-transition: all 0.1s;
-      }
-      .btn-info:hover,
-      .btn-info:focus{
-          opacity: 1;
-      }
-      .hover2 {
-    transition: transform 0.3s ease;
-	}
-	.hover2:hover {
-	    transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -1deg);
-	}
-	
-	.time-choice label span img{
-	    width: 24px;
-	    height: 24px;
-	    margin-right: 4px;
-	    margin-bottom: 4px;
-	}
-	
-	.time-choice label {
-	  	float: left;
-	    position: relative;
-	    display: block;
-	    width: 47.5%;
-	    margin-bottom: 0.521vw;
-	    margin-right: 2.5%;
-	    text-align: center;
-	    cursor: pointer;
-	}
-	.time-choice label span {
-	   display: block;
-	   width: 100%;
-	   height: 50px;
-	   line-height: 50px;
-	   padding: 0.1563vw;
-	   -webkit-box-sizing: border-box;
-	   box-sizing: border-box;
-	   background-color: #ebebeb;
-	   white-space: nowrap;
-	   overflow: hidden;
-	   text-overflow: ellipsis;
-	   font-size: 1.1rem;
-		   
-		}
+		
+		
 		
     </style>
 </head>
@@ -172,19 +80,28 @@ font-family: 'GmarketSansMedium';
 						                        </div>
 						                        <div class="content">
 						                            <div class="main">
-						                                <h3 class="name" style="font-family: 'GmarketSansMedium';font-size : 1.5rem;">${requestScope[ThemeList].tName}</h3>
-						                                <p class="profession">${requestScope[ThemeList].tGenre}</p>
-						                                <p class="text-center">${requestScope[ThemeList].tProfile}</p>
-						                            </div>
-						                        </div>
-						                    </div> <!-- end front panel -->
-						                    <div class="back">
-						                        
-						                        <div class="content">
-						                            <div class="main">
-						                           
-							                               <h4 class="text-center">가능 시간대</h4>
-							                               <div style="height: 200px">
+															<div class="profile" style="height: 92px;">
+							                                    <div class="stats">
+							                                        
+							                                        <h5>이름</h5>
+							                                        <p>
+							                                            ${requestScope[ThemeList].tName}
+							                                        </p>
+							                                    </div>
+							                                    <div class="stats">
+							                                        <h5>장르</h5>
+							                                        <p>
+							                                            ${requestScope[ThemeList].tGenre}
+							                                        </p>
+							                                    </div>
+							                                    <div class="stats">
+							                                        <h5>인기 순위</h5>
+							                                        <p>
+							                                            ${requestScope[bestList].rank}위
+							                                        </p>
+							                                    </div>
+							                        		</div>
+						                                <div style="width:100%;display: inline-block;">
 							                            <c:choose>	
 						                            		<c:when test="${i==1}">
 						                            			<c:forEach begin="1" end="8" varStatus="status3">
@@ -193,7 +110,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -210,7 +126,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -227,7 +142,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -244,7 +158,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled> 
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -261,7 +174,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -278,7 +190,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -295,7 +206,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -312,7 +222,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -329,7 +238,6 @@ font-family: 'GmarketSansMedium';
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
 							                            				<div class="time-choice">
 							                            					<label class="hover2" style="background-color:#FFFFFF">
-																				<input type="radio"  name="reservationTime" value="${requestScope[todayCheck].rTime}" disabled>
 																					<span>
 																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
 																			</label>
@@ -342,42 +250,11 @@ font-family: 'GmarketSansMedium';
 						                                	
 						                                	
 														 </c:choose>
-														 </div>   	
-							                                <p class="text-center"></p>
-							
-							                                <div class="stats-container">
-							                                    <div class="stats">
-							                                        <h5>인기 순위</h5>
-							                                        <p>
-							                                            ${requestScope[bestList].rank}위
-							                                        </p>
-							                                    </div>
-							                                    <div class="stats">
-							                                        <h5>난이도</h5>
-							                                        <p>
-							                                            ${requestScope[ThemeList].tDifficulty}
-							                                        </p>
-							                                    </div>
-							                                    <div class="stats">
-							                                        <h5>PlayTime</h5>
-							                                        <p>
-							                                            ${requestScope[ThemeList].tTime}
-							                                        </p>
-							                                    </div>
-							                                </div>
-							                              
-							                                
-						                            </div>
-						                            
-						                            
-						                            
-						                        </div>
-						                        <div class="footer">
-						                            <div class="social-links text-center">
-						                                
+														 </div>  
 						                            </div>
 						                        </div>
-						                    </div> <!-- end back panel -->
+						                    </div> <!-- end front panel -->
+						                    
 						                </div> <!-- end card -->
 						            </div> <!-- end card-container -->
 						        </div>
@@ -391,33 +268,9 @@ font-family: 'GmarketSansMedium';
 </div>
 
 
-<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
 
 <script type="text/javascript">
-    $().ready(function(){
-        $('[rel="tooltip"]').tooltip();
-
-        $('a.scroll-down').click(function(e){
-            e.preventDefault();
-            scroll_target = $(this).data('href');
-             $('html, body').animate({
-                 scrollTop: $(scroll_target).offset().top - 60
-             }, 1000);
-        });
-
-    });
-
-    function rotateCard(btn){
-        var $card = $(btn).closest('.card-container');
-        console.log($card);
-        if($card.hasClass('hover')){
-            $card.removeClass('hover');
-        } else {
-            $card.addClass('hover');
-        }
-    }
-
 
 </script>
 
