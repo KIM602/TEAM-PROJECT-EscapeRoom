@@ -193,12 +193,12 @@ $(document).ready(function() {
 			type: "post",
 			data : {
 				${_csrf.parameterName}: "${_csrf.token}",
-				},
+			},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
-				alert("에러야");
+				alert("에러");
 			}
 		});
 	});
