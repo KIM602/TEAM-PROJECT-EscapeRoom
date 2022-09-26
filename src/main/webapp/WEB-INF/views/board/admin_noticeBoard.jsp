@@ -104,7 +104,7 @@
 $(document).ready(function() {	
 	$(function() {
 		window.pagObj = $("#paginationN").twbsPagination({
-			totalPages: 35, //총 페이지 수
+			totalPages: Math.ceil(${totalNotice}/10), //총 페이지 수
 			visiblePages: 5, //보여지는 페이지 수
 			onPageClick: function(event, page) {
 				console.info(page + ' (from options)');
@@ -142,8 +142,8 @@ $(document).ready(function() {
 						purl = "admin_plistN?pageNo=" + 1;
 					}
 					else if(pageNo == ">>") {
-						cur = 35;
-						purl = "admin_plistN?pageNo=" + 35;
+						cur = Math.ceil(${totalNotice}/10);
+						purl = "admin_plistN?pageNo=" + Math.ceil(${totalNotice}/10);
 					}
 					else {
 						return;
