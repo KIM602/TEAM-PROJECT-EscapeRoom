@@ -1,8 +1,13 @@
-/*모바일*/
+
+dd.themeStyleImg > label {
+		margin: 5% 10% 0;
+}
+
 dd.themeStyleImg {
 	width: 100%;
 }
 
+/*모바일*/
 @media only screen and (max-width:767px){
 	dd.themeStyleImg > img {
 		width: 80%;
@@ -12,11 +17,26 @@ dd.themeStyleImg {
 /*태블릿*/
 @media only screen and (min-width:768px){
 	
+	dd.themeStyleImg > img {
+	display: block;
+   	 margin: auto;
+	}
+	
+	dd.themeStyleImg > label {
+		font-size: 1.1rem;
+		margin: 3% 18% 0;
+	}
+	
+		
 }
 /*pc*/
 @media only screen and (min-width:992px){
 	dd.themeStyleImg > img {
 		width: 100%;
 		height: 40vh;
+	}
+	dd.themeStyleImg > label {
+		font-size: 1.3vw;
+		margin: 3% 18% 0;
 	}
 }
