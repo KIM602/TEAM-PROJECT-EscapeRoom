@@ -220,7 +220,8 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+	// 페이지 로드시 바로 예약확인 뜨게 하기
+	$("#ReserverList").trigger("click");
 	
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){

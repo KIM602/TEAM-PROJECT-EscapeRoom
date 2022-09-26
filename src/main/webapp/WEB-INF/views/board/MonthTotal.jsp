@@ -43,6 +43,15 @@ body {
 	font-size: 30px;
 	margin-top: 10px;
 }
+.mTitle {
+	font-size: 18px;
+	font-weight: bold;
+}
+#mBody {
+	background-color: #FFF;
+	border: 1px solid lightgrey;
+	border-radius: 25px; padding: 30px; height: 670px;
+}
 </style>
 
 
@@ -108,17 +117,16 @@ function prevCalendar() {
 		</div>
 	</div>
 	<br/>
-	<div style="background-color: #FFF; border: 1px solid lightgrey;
-			border-radius: 25px; padding: 30px; height: 670px;">
-		<div style="font-size: 18px; font-weight: bold; "><span class="monthNow"></span>월 예약 건수</div>
+	<div id="mBody" style="">
+		<div class="mTitle"><span class="monthNow"></span>월 예약 건수</div>
 		<div id="mTotalCount"></div>
 		<hr/>
 		
-		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 매출 총액</div>
+		<div class="mTitle"><span class="monthNow"></span>월 매출 총액</div>
 		<div id="mTotalSales"></div>
 		<hr/>
 		
-		<div style="font-size: 18px; font-weight: bold;"><span class="monthNow"></span>월 테마 예약 순위</div>
+		<div class="mTitle"><span class="monthNow"></span>월 테마 예약 순위</div>
 		<div id="mBestList" class="mt-3"></div>
 	</div>
 </div>
