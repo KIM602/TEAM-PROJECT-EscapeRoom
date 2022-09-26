@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -176,14 +177,14 @@ public class ProjectAdminController {
 	}
 	
 	//메인 이미지 등록 페이지 mapping
-	@RequestMapping("/MainRegistration")
+	@RequestMapping(value="/MainRegistration",method = RequestMethod.POST)
 	public String MainRegistration() {
 		System.out.println("MainRegistration 요청");
 		return "admin/MainRegistration";
 	}
 	
 	//메인 이미지 DB 등록 처리
-	@RequestMapping("/MainInsert")
+	@RequestMapping(value="/MainInsert",method = RequestMethod.POST)
 	public	String MainInsert(MultipartHttpServletRequest mrequest, Model model) {
 		System.out.println("Main img DB등록 요청");
 		
@@ -264,7 +265,7 @@ public class ProjectAdminController {
 	}
 	
 	//메인이미지 수정 페이지 mapping
-	@RequestMapping("/MainModify")
+	@RequestMapping(value="/MainModify", method=RequestMethod.POST)
 	public String mainModify() {
 		return "admin/MainModify";
 	}

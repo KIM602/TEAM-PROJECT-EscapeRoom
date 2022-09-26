@@ -114,7 +114,6 @@
 
         <section>
             <article class="main-page">
-                <h3>DashBoard 메인페이지 ${user_id}</h3>
             </article>
         </section>
         
@@ -227,8 +226,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.ajax({
 			url : "MainRegistration",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},
