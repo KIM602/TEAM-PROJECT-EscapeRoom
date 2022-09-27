@@ -161,7 +161,7 @@ public class ThemeController {
 		return "theme/themeDetailsPage";
 	}
 		
-	//태마 수정 페이지
+	//테마 수정 페이지
 	@RequestMapping(value="/themeEdit", method = RequestMethod.POST)
 	public String themeEdit(HttpServletRequest request, Model model) {
 		System.out.println("themeEdit");
@@ -174,7 +174,7 @@ public class ThemeController {
 	@RequestMapping(value="/edit", produces="application/text; charset=UTF-8", method = RequestMethod.POST)
 	public String edit(MultipartHttpServletRequest request, Model model) {
 		System.out.println("edit요청");
-		String tid = request.getParameter("tid"); //rId는 임의로 정함(DB에서 seq넘버로 설정하니까 
+		String tid = request.getParameter("tid"); //rId는 임의로 정함(DB에서 seq넘버로 설정하니까)
 		System.out.println("tid는" + tid);
 		String tname = request.getParameter("tname");
 		String tgenre = request.getParameter("tgenre");
