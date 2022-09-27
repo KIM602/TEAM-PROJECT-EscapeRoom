@@ -134,8 +134,10 @@ public class ReserveController {
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		model.addAttribute("themeTime",request.getParameter("themeTime"));
 		// 
-		tcom = new ThemeImageCommand();
-		tcom.execute(request, model);
+		
+		
+		//tcom = new ThemeImageCommand();
+		tcom1.execute(request, model);
 		
 		return "reserve/reserveForm";
 	}
