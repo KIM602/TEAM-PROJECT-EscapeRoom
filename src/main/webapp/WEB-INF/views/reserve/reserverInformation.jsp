@@ -71,7 +71,7 @@
 		
 <script type="text/javascript">
 $(document).ready(function name() {
-	var themeid = '${reserveCheckData.get(0).rId}'
+	var themeid = '${reserveCheckData.get(0).rId}' // 리스트로 받았으나, 실제로는 한개를 의미
 	console.log(themeid);
 	$("#reserveDeleteBtn").click(function name(e) {
 		$.ajax({
