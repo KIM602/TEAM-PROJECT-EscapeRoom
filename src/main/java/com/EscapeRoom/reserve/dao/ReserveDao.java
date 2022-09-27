@@ -16,7 +16,7 @@ public class ReserveDao implements RdaoInterface {
 	
 	@Autowired //빈을 주입받는 어노테이션
 	private SqlSession sqlSession;
-
+	//예약하기
 	@Override
 	public void insertReserve(ReserveDto dto) {
 		sqlSession.insert("insertReserve",dto);

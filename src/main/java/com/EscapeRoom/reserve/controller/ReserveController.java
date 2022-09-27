@@ -183,7 +183,7 @@ public class ReserveController {
 			return "reserve/reserveCheckCanclePage";
 		}
 
-		// 예약자가 있는지 체크 유무와 예약자 정보 
+		// 예약자가 있는지 체크 유무와 예약자 정보리스트 
 		@RequestMapping(value="/reserveFind",method = RequestMethod.POST)
 		public String reserveFind(HttpServletRequest request,Model model) {
 			System.out.println("reserveFind");
@@ -195,19 +195,20 @@ public class ReserveController {
 	
 		
 			System.out.println("result값?" + result);
-			if(result == "success") {
+			if(result == "success") {  // 결과 값이 하나 일시 success
 				
-				return "reserve/reserverInformation";   
+				return "reserve/reserverInformation";   // 바로 정보 창 이동
 			}
 			
-			else if (result == "success2"){
-				return "reserve/reserveInformationList";
+			else if (result == "success2"){ // 결과 값이 하나 일시 success2
+				return "reserve/reserveInformationList";  // 리스트로 선택하는 정보 창으로 이동
 			}
 			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
 				return "reserve/reserveCheckFailPage";
 			}
 		}
 		
+		// 예약자 확인 (예약자 하나 일시)  
 		@RequestMapping(value="/reserveFindMoreThan2DetailPage",method = RequestMethod.POST)
 		public String reserveFindMoreThan2DetailPage(HttpServletRequest request,Model model) {
 			System.out.println("reserveFindMoreThan2DetailPage");
