@@ -16,8 +16,8 @@
 		
 		<!-- 테마 등록 -->
 		<insert id="insertform" parameterType="com.EscapeRoom.theme.dto.ThemeDto">
-			insert into theme(tid,tname,tgenre,tdifficulty,ttime,tprofile,tphoto)
-			values(theme_seq.nextval,#{tname},#{tgenre},#{tdifficulty},#{ttime},#{tprofile},#{tphoto})
+			INSERT INTO THEME(TID, TNAME, TGENRE, TDIFFICULTY, TTIME, TPROFILE, TPHOTO)
+			VALUES(theme_seq.nextval,#{tname},#{tgenre},#{tdifficulty},#{ttime},#{tprofile},#{tphoto})
 		</insert>
 		
 		<!-- 현재 등록된 테마 상세보기 -->
