@@ -243,8 +243,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.ajax({
 			url : "MainModify",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},
@@ -258,8 +260,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.ajax({
 			url : "footerModify",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},

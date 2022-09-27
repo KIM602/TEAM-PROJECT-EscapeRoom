@@ -271,7 +271,7 @@ public class ProjectAdminController {
 	}
 	
 	//메인이미지 수정 처리
-	@RequestMapping(value="/mainModify", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value="/mainModify", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String mainModify(MultipartHttpServletRequest mrequest, Model model) {
 		
 		String lImage = null;
@@ -344,13 +344,13 @@ public class ProjectAdminController {
 	}
 	
 	//footer 최초 등록 페이지 mapping
-	@RequestMapping("/footerRegistration")
+	@RequestMapping(value="/footerRegistration", method=RequestMethod.POST)
 	public String footerRegistration() {
 		return "admin/footerRegistration";
 	}
 	
 	//footer 등록(최초 작업시)
-	@RequestMapping("/footerInsert")
+	@RequestMapping(value="/footerInsert", method=RequestMethod.POST)
 	public String footerInsert(MultipartHttpServletRequest frequest, Model model) {
 
 		System.out.println("footer 등록요청");
@@ -405,14 +405,14 @@ public class ProjectAdminController {
 	}
 	
 	//footer 수정 페이지 mapping
-	@RequestMapping("/footerModify")
+	@RequestMapping(value="/footerModify", method=RequestMethod.POST)
 	public String footerModifyA() {
 		System.out.println("footerModify요청");
 		return "admin/footerModify";
 }
 	
 	
-	@RequestMapping(value="/footerModifyA", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value="/footerModifyA", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String footerModify(MultipartHttpServletRequest frequest, Model model) {
 		
 		System.out.println("footer 수정요청");
