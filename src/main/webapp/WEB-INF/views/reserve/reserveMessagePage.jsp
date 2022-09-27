@@ -39,7 +39,7 @@
 
 </head>
 <body>
-	<form action="reserveFind">
+	<form action="reserveOK">
 		<div class="box-step2">
 			
 			<div class="box-step2-div1">

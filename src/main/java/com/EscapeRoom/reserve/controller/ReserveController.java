@@ -91,8 +91,8 @@ public class ReserveController {
 	public String themeNameList(HttpServletRequest request, Model model) {
 		System.out.println("테마네임입니다");
 		
-		System.out.println("ymd값" + request.getParameter("ymd"));
-		model.addAttribute("ymd",request.getParameter("ymd"));
+		System.out.println("ymd값" + request.getParameter("ymd")); 
+		model.addAttribute("ymd",request.getParameter("ymd")); // 달력에서 받아온 ymd값을 모델의 저장을 해줌
 		tcom = new ThemeNameListCommand();
 		tcom.execute(request, model);
 		
@@ -102,9 +102,9 @@ public class ReserveController {
 	// 예약에서 테마를 선택하여 값을 받아 이미지 출력 
 	@RequestMapping(value="/imageView",method = RequestMethod.POST)
 	public String imageView(HttpServletRequest request, Model model) {
-		System.out.println("themevalue값은" + request.getParameter("themevalue"));
-		System.out.println("넘어온ymd값은" + request.getParameter("ymd"));
-		model.addAttribute("ymd",request.getParameter("ymd"));
+		System.out.println("themevalue값은" + request.getParameter("themevalue"));  //가져온 테마 id값 확인용
+		System.out.println("넘어온ymd값은" + request.getParameter("ymd")); //가져온 날짜 ymd값 확인용
+		model.addAttribute("ymd",request.getParameter("ymd")); // 날짜는 다음 프로세스의 사용하기 위해 모델의 저장 해둠
 		
 		// tcom=new ThemeImageCommand();
 		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
@@ -143,6 +143,7 @@ public class ReserveController {
 		return "reserve/reserveForm";
 	}
 	
+	//예약 완료 
 	@RequestMapping("/reserveOK")
 	public String reserveOK(HttpServletRequest request,Model model) {
 		System.out.println("reserveOK");
@@ -164,8 +165,8 @@ public class ReserveController {
 	@RequestMapping(value="/themeReserveTimeCheck",method = RequestMethod.POST)
 	public String themeReserveTimeCheck(HttpServletRequest request,Model model) {
 		System.out.println("themeReserveTimeCheck");
-		model.addAttribute("ymd",request.getParameter("ymd"));
-		model.addAttribute("themevalue",request.getParameter("themevalue"));
+		model.addAttribute("ymd",request.getParameter("ymd"));  // 날짜데이터 모델에 저장
+		model.addAttribute("themevalue",request.getParameter("themevalue")); // 테마id 모델에 저장
 		System.out.println("ymd값 : " + request.getParameter("ymd"));
 		System.out.println("themevalue값 : " + request.getParameter("themevalue"));
 		
