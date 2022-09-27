@@ -110,9 +110,9 @@ a:hover{
         <h1>500</h1>
         <div class="error-divider">
             <h2>ooops!!</h2>
-            <p class="description">SOMETHING WENT WRONG.</p>
+            <p class="description">잘못된 수식이에요</p>
         </div>
-        <a href="#index.html" class="return-btn"><i class="fa fa-home"></i>Home</a>
+        <a href="Homemain" class="return-btn"><i class="fa fa-home"></i>Home</a>
     </section>
 </div>
 </body>

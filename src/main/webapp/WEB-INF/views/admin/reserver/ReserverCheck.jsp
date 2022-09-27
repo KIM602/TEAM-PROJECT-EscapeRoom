@@ -225,7 +225,7 @@ $(function() {
 	
 	
 	window.pagObj = $("#pagination").twbsPagination({
-		totalPages: 35, //총 페이지 수
+		totalPages: Math.ceil(${ReserveListTotal}/10), //총 페이지 수
 		visiblePages: 5, //보여지는 페이지 수
 		onPageClick: function(event, page) {
 			console.info(page + ' (from options)');
@@ -263,8 +263,8 @@ $(function() {
 					purl = 1;
 				}
 				else if(pageNo == ">>") {
-					cur = 35;
-					purl =  35;
+					cur = Math.ceil(${ReserveListTotal}/10);
+					purl =  Math.ceil(${ReserveListTotal}/10);
 				}
 				else {
 					return;

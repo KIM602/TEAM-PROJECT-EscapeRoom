@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,13 @@ public class ReserveController {
 	
 	//footer 가져오기
 	private ProjectAdminCommand com;
+	
+	
+	// ConStant방식이 아닌 방법 
+	// Bean주입
+	@Autowired
+	private ThemeImageCommand tcom1;
+	////
 	
 	//footer
 	//ProjectAdminDao bean
@@ -98,9 +106,10 @@ public class ReserveController {
 		System.out.println("넘어온ymd값은" + request.getParameter("ymd"));
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		
+		// tcom=new ThemeImageCommand();
+		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
 		
-		tcom = new ThemeImageCommand();
-		tcom.execute(request, model);
+		tcom1.execute(request, model);
 		
 		return "theme/themeImage";
 
@@ -125,8 +134,11 @@ public class ReserveController {
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		model.addAttribute("themeTime",request.getParameter("themeTime"));
 		// 
-		tcom = new ThemeImageCommand();
-		tcom.execute(request, model);
+		
+		
+		//tcom = new ThemeImageCommand();
+		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
+		tcom1.execute(request, model);
 		
 		return "reserve/reserveForm";
 	}

@@ -39,10 +39,18 @@
 		<intercept-url pattern="/editNoticeForm" access="isAuthenticated()" />
 		<intercept-url pattern="/deleteNotice" access="isAuthenticated()" />
 		<intercept-url pattern="/editNotice" access="isAuthenticated()" />
-		<intercept-url pattern="/themeInsert" access="isAuthenticated()" />
 		
 		
-		<intercept-url pattern="/reservePage" access="permitAll" /> <!-- 가입창 이동 요청 -->
+		
+		
+		<!-- 예약관련 -->
+		<intercept-url pattern="/ReserverList" access="isAuthenticated()" />
+		<intercept-url pattern="/AdminReserveDelete" access="isAuthenticated()" />
+		<intercept-url pattern="/ReservePageList" access="isAuthenticated()" />
+		<intercept-url pattern="/CalendarChoiceReserverList" access="isAuthenticated()" />
+		<intercept-url pattern="/calendarChoiceReserverPageList" access="isAuthenticated()" />
+		
+		<!-- 가입창 이동 요청 -->
 	
 		<intercept-url pattern="/AdminLoginView" access="isAnonymous()" />
 		<intercept-url pattern="/AdminJoinView" access="isAnonymous()" /> <!-- 회원가입창이동 요청 -->

@@ -191,12 +191,12 @@ $(document).ready(function() {
 			type: "post",
 			data : {
 				${_csrf.parameterName}: "${_csrf.token}",
-				},
+			},
 			success: function(d) {
 				$(".main-page").html(d);	
 			},
 			error: function() {
-				alert("에러야");
+				alert("에러");
 			}
 		});
 	});
@@ -219,7 +219,8 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+	// 페이지 로드시 바로 예약확인 뜨게 하기
+	$("#ReserverList").trigger("click");
 	
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){
