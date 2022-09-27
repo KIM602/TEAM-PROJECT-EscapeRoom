@@ -134,8 +134,11 @@ public class ReserveController {
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		model.addAttribute("themeTime",request.getParameter("themeTime"));
 		// 
-		tcom = new ThemeImageCommand();
-		tcom.execute(request, model);
+		
+		
+		//tcom = new ThemeImageCommand();
+		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
+		tcom1.execute(request, model);
 		
 		return "reserve/reserveForm";
 	}
