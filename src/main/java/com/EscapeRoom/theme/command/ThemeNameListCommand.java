@@ -18,9 +18,9 @@ public class ThemeNameListCommand implements ThemeCommand {
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
 		ThemeDao tdao = Constant.tdao;
-		ArrayList<ThemeDto> dtos = tdao.themeNameList();
+		ArrayList<ThemeDto> dtos = tdao.themeNameList(); // 배열의 테마이름 리스트 출력
 		
-		model.addAttribute("themeNameList",dtos);
+		model.addAttribute("themeNameList",dtos); // 모델 저장
 
 	}
 

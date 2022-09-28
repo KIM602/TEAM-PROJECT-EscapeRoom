@@ -114,7 +114,6 @@
 
         <section>
             <article class="main-page">
-                <h3>DashBoard 메인페이지 ${user_id}</h3>
             </article>
         </section>
         
@@ -129,9 +128,7 @@
 <script>
 $(document).ready(function() {
 	
-	
-
-	
+	/* 게시판 */
 	// 보드 관련
 	$("#nav-board").click(function(e) {
 		e.preventDefault();
@@ -165,7 +162,7 @@ $(document).ready(function() {
 	});
 	
 
-	
+	/* 테마 */
 	//테마 등록
 	$("#nav-themeInsert").click(function(e) {
 		e.preventDefault();
@@ -203,6 +200,7 @@ $(document).ready(function() {
 	});
 	
 	
+	/* 예약 */
 	// 예약자 목록 리스트
 	$("#ReserverList").click(function(e) {
 		e.preventDefault();
@@ -220,16 +218,20 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	// 페이지 로드시 바로 예약확인 뜨게 하기
 	$("#ReserverList").trigger("click");
 	
+	/* 메인 */
 	// 로고 이미지 등록
 	$("#MainRegistration").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			url : "MainRegistration",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},
@@ -243,8 +245,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.ajax({
 			url : "MainModify",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},
@@ -253,13 +257,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	//footer 수정
 	$("#footerModify").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			url : "footerModify",
-			type : "get",
-			data : "",
+			type : "post",
+			data : {
+				${_csrf.parameterName}: "${_csrf.token}",
+			},
 			success : function(data){
 				$(".main-page").html(data);
 			},
@@ -271,10 +278,7 @@ $(document).ready(function() {
 	
 	// 페이지 로드시 바로 예약확인 뜨게 하기
 	$("#ReserverList").trigger("click");
-	
-	
-	
-	
+
 });
 </script>
 

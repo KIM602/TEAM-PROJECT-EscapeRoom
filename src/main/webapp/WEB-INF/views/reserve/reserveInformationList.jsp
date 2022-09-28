@@ -45,12 +45,12 @@ $(document).ready(function name() {
 	$("a.contentView").click(function name(e) {
 		e.preventDefault();
 		let ceo = $(e.target);
-		let val = ceo.attr('data-value');
+		let val = ceo.attr('data-value'); 
 		$.ajax({
 			url : ceo.attr("href"),
-			type : "post",
-			data :{ rId : val,
-				${_csrf.parameterName}: "${_csrf.token}",
+			type : "post", //Post방식 
+			data :{ rId : val, // rId값 전달 
+				${_csrf.parameterName}: "${_csrf.token}", // 시큐리티 전달
 				
 			},
 			success : function name(d) {

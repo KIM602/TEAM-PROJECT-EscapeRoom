@@ -51,14 +51,22 @@
 		<intercept-url pattern="/calendarChoiceReserverPageList" access="isAuthenticated()" />
 		
 		<!-- 가입창 이동 요청 -->
-	
 		<intercept-url pattern="/AdminLoginView" access="isAnonymous()" />
 		<intercept-url pattern="/AdminJoinView" access="isAnonymous()" /> <!-- 회원가입창이동 요청 -->
 		<intercept-url pattern="/join" access="isAnonymous()" />
 		<intercept-url pattern="/login" access="isAnonymous()"/>
 		<intercept-url pattern="/main" access="isAuthenticated()"/>
 		
+		<!-- 테마관련 -->
+		<intercept-url pattern="/themeEdit" access="isAuthenticated()" />
+		<intercept-url pattern="/themeListPage" access="isAuthenticated()" />
+		<intercept-url pattern="/themeInsert" access="isAuthenticated()" />
+		<intercept-url pattern="/themeDetailsPage" access="isAuthenticated()" />
+
+		<!-- 가입창 이후 대시보드 -->
+		<intercept-url pattern="/DashBoardMain" access="isAuthenticated()"/>
 		
+
 		
 		
 		

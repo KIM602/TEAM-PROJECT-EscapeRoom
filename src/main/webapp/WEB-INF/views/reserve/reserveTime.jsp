@@ -11,14 +11,14 @@
 <body>
 <!-- 10시20분 -->
 <c:choose>
-	<c:when test="${not empty theme1.rCheck}">
+	<c:when test="${not empty theme1.rCheck}"> <!-- 예약되어 있는 값이 있을경우 아래로직 실행 -->
 	<label class="hover2" style="background-color:#FFFFFF">
 		<input type="radio"  name="reservationTime" value="10:20" disabled >
 			<span style="background-color:#FFFFFF">
 				<img alt="" src="image/icon1_black.png">10시 20분</span>
 	</label>
 	</c:when>
-	<c:otherwise>
+	<c:otherwise> <!-- 예약되어 있는 값이 없을경우 아래로직 실행 -->
 	<label class="hover2" style="background-color:#FFFFFF">
 		<input type="radio"  name="reservationTime" value="10:20">
 			<span>
@@ -149,16 +149,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('input[name=reservationTime]').click(function name(e) {
-			var ymd = "${ymd}";
-			var themevalue = "${themevalue}";
-			var themeTime = $(this).val();
-			$("#nextBtn").on('click',function name(e1) {
+			var ymd = "${ymd}"; // 날짜데이터 저장
+			var themevalue = "${themevalue}"; // 테마id 저장
+			var themeTime = $(this).val(); // 시간대 저장
+			$("#nextBtn").on('click',function name(e1) { // Next 버튼 클릭시 예약 Form으로 이동함
 				e1.preventDefault();
-				$('#nextBtn').attr("href", "reserveForm");
 					$.ajax({
-						url : "reserveForm",
+						url : "reserveForm",  // url 실행
 						type : "post",
-						data : { "ymd" : ymd,
+						data : { "ymd" : ymd,  // Json 형식 데이터 전송 
 							"themevalue" : themevalue,
 							"themeTime" : themeTime,
 							${_csrf.parameterName}: "${_csrf.token}"

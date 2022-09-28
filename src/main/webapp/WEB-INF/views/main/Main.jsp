@@ -69,9 +69,7 @@
     <a href="TodayReserveAvailable" id="todayReserve" class="btn-resrvation1">
         <i class="fa-solid fa-calendar-check"></i>
     </a>
-    
-    
-
+ 
 <!-- 예약top3 -->
 <div id="top3" class="modal fade">
 	<div class="modal-dialog">
