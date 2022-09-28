@@ -12,36 +12,31 @@ public class themeReserveTimeCheck implements ReserveCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
-		
 		ReserveDao rdao = Constant.rdao;
-		
 		String tId = request.getParameter("themevalue");
 		String rDate = request.getParameter("ymd");
-		
-		String rtime;
-		String theme;
-		for(int i=1; i<9;i++) {   // 시간등록 
+		String rtime; // 모델 키값
+		String theme; // 모델 키값
+		for(int i=1; i<9;i++) {   // 시간은 8개 밖에 없으므로 8번 반복 
 			if(i%2==1) {//i=1 / 10:20분, i=3 / 13:20분 ,i=5 /16:20분  ,i=7 / 19:20분 
-				rtime = "1"+ ((i-1)*3/2) +":20";
-				theme = "theme"+i;
+				rtime = "1"+ ((i-1)*3/2) +":20";  // 값이 변하는 모델 키값을 설정하기 위함  
+				theme = "theme"+i; // 키값 용도
 				ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
 				ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
 				model.addAttribute(theme,rdtoSu);
 				
 			}
-			
 			else if(i%2==0) {
-				if(i==8) { // i=8일때 20:50분
-					rtime = "20:50";
-					theme = "theme"+i;
+				if(i==8) { // i=8일때 20:50분 
+					rtime = "20:50"; // 키값 용도
+					theme = "theme"+i; // 키값 용도
 					ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
 					ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
 					model.addAttribute(theme,rdtoSu);
 				}
-				
 				else { // i=2 / 11:50, i=4 / 14:50, i=6 / 17:50;
-					rtime = "1"+ ((i-1)*3/2) + ":50";
-					theme = "theme"+i; 
+					rtime = "1"+ ((i-1)*3/2) + ":50"; //키값 용도
+					theme = "theme"+i;  // 키값 용도
 					ReserveDto rdto = new ReserveDto(rDate,tId,rtime);
 					ReserveDto rdtoSu = rdao.themeReserveTimeCheck(rdto);
 					model.addAttribute(theme,rdtoSu);

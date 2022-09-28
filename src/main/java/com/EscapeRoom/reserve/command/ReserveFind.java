@@ -11,14 +11,16 @@ import com.EscapeRoom.reserve.dto.ReserveDto;
 import com.EscapeRoom.util.Constant;
 
 public class ReserveFind implements ReserveCommand {
-
+	
+	
+	// 예약자가 단수
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
 		ReserveDao rdao = Constant.rdao;
-		String rid = request.getParameter("rId");
+		String rid = request.getParameter("rId"); // 아이디값 받기
 		System.out.println("rid값은  ? " + rid);
-		ReserveDto rdto = new ReserveDto(rid);
-		ArrayList<ReserveDto> result = rdao.ReserveFindMoreThan2DetailPage(rdto);
+		ReserveDto rdto = new ReserveDto(rid); // 해당되는 예약 id값 저장
+		ArrayList<ReserveDto> result = rdao.ReserveFindMoreThan2DetailPage(rdto); 
 		model.addAttribute("reserveCheckData",result);
 	}
 	

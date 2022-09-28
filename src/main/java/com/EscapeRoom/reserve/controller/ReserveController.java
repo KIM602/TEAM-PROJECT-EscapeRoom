@@ -91,8 +91,8 @@ public class ReserveController {
 	public String themeNameList(HttpServletRequest request, Model model) {
 		System.out.println("테마네임입니다");
 		
-		System.out.println("ymd값" + request.getParameter("ymd"));
-		model.addAttribute("ymd",request.getParameter("ymd"));
+		System.out.println("ymd값" + request.getParameter("ymd")); 
+		model.addAttribute("ymd",request.getParameter("ymd")); // 달력에서 받아온 ymd값을 모델의 저장을 해줌
 		tcom = new ThemeNameListCommand();
 		tcom.execute(request, model);
 		
@@ -102,9 +102,9 @@ public class ReserveController {
 	// 예약에서 테마를 선택하여 값을 받아 이미지 출력 
 	@RequestMapping(value="/imageView",method = RequestMethod.POST)
 	public String imageView(HttpServletRequest request, Model model) {
-		System.out.println("themevalue값은" + request.getParameter("themevalue"));
-		System.out.println("넘어온ymd값은" + request.getParameter("ymd"));
-		model.addAttribute("ymd",request.getParameter("ymd"));
+		System.out.println("themevalue값은" + request.getParameter("themevalue"));  //가져온 테마 id값 확인용
+		System.out.println("넘어온ymd값은" + request.getParameter("ymd")); //가져온 날짜 ymd값 확인용
+		model.addAttribute("ymd",request.getParameter("ymd")); // 날짜는 다음 프로세스의 사용하기 위해 모델의 저장 해둠
 		
 		// tcom=new ThemeImageCommand();
 		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
@@ -134,12 +134,16 @@ public class ReserveController {
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		model.addAttribute("themeTime",request.getParameter("themeTime"));
 		// 
-		tcom = new ThemeImageCommand();
-		tcom.execute(request, model);
+		
+		
+		//tcom = new ThemeImageCommand();
+		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
+		tcom1.execute(request, model);
 		
 		return "reserve/reserveForm";
 	}
 	
+	//예약 완료 
 	@RequestMapping("/reserveOK")
 	public String reserveOK(HttpServletRequest request,Model model) {
 		System.out.println("reserveOK");
@@ -161,8 +165,8 @@ public class ReserveController {
 	@RequestMapping(value="/themeReserveTimeCheck",method = RequestMethod.POST)
 	public String themeReserveTimeCheck(HttpServletRequest request,Model model) {
 		System.out.println("themeReserveTimeCheck");
-		model.addAttribute("ymd",request.getParameter("ymd"));
-		model.addAttribute("themevalue",request.getParameter("themevalue"));
+		model.addAttribute("ymd",request.getParameter("ymd"));  // 날짜데이터 모델에 저장
+		model.addAttribute("themevalue",request.getParameter("themevalue")); // 테마id 모델에 저장
 		System.out.println("ymd값 : " + request.getParameter("ymd"));
 		System.out.println("themevalue값 : " + request.getParameter("themevalue"));
 		
@@ -180,7 +184,7 @@ public class ReserveController {
 			return "reserve/reserveCheckCanclePage";
 		}
 
-		// 예약자가 있는지 체크 유무와 예약자 정보 
+		// 예약자가 있는지 체크 유무와 예약자 정보리스트 
 		@RequestMapping(value="/reserveFind",method = RequestMethod.POST)
 		public String reserveFind(HttpServletRequest request,Model model) {
 			System.out.println("reserveFind");
@@ -192,19 +196,20 @@ public class ReserveController {
 	
 		
 			System.out.println("result값?" + result);
-			if(result == "success") {
+			if(result == "success") {  // 결과 값이 하나 일시 success
 				
-				return "reserve/reserverInformation";   
+				return "reserve/reserverInformation";   // 바로 정보 창 이동
 			}
 			
-			else if (result == "success2"){
-				return "reserve/reserveInformationList";
+			else if (result == "success2"){ // 결과 값이 하나 일시 success2
+				return "reserve/reserveInformationList";  // 리스트로 선택하는 정보 창으로 이동
 			}
 			else {	// 정상적으로 값을 가져오지 못할 시 정보 불일치 페이지로 이동
 				return "reserve/reserveCheckFailPage";
 			}
 		}
 		
+		// 예약자 확인 (예약자 하나 일시)  
 		@RequestMapping(value="/reserveFindMoreThan2DetailPage",method = RequestMethod.POST)
 		public String reserveFindMoreThan2DetailPage(HttpServletRequest request,Model model) {
 			System.out.println("reserveFindMoreThan2DetailPage");

@@ -22,12 +22,12 @@ public class ThemeImageCommand implements ThemeCommand {
 	// reserve용도
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
-		String tId = request.getParameter("themevalue");
+		String tId = request.getParameter("themevalue"); // 테마 id가 담겨져있는 키값 themevalue를 tId 변수에 저장
 		System.out.println("tId는" + tId);
-		ThemeDto tdto = tdao.themeImage(tId);
+		ThemeDto tdto = tdao.themeImage(tId); // 변수를 파라메터로 이용하여 Dao 로직을 실행  타입은 Themedto로 받음
 		
 		System.out.println("execute tdto는"+tdto);
-		model.addAttribute("theme",tdto);
+		model.addAttribute("theme",tdto); // 모델에 저장
 		
 	}
 
