@@ -62,10 +62,10 @@
 	        </h1>
 	        <br/>    
 	        <div class="col-sm-10 col-sm-offset-1">
-	            <c:forEach var="i" begin="1" end="9" varStatus="status">
-	            	<c:set var="TodayReserve" value="TodayReserve${status.index}"></c:set>
-	            	<c:set var="ThemeList" value="ThemeList${status.index}"></c:set>
-	            	<c:set var="bestList" value="bestList${status.index}"></c:set>
+	            <c:forEach var="i" begin="1" end="10" varStatus="status"> 
+	            	<c:set var="TodayReserve" value="TodayReserve${status.index}"></c:set> <!-- 예약판단 유무 -->
+	            	<c:set var="ThemeList" value="ThemeList${status.index}"></c:set> <!-- 테마 별 정보 -->
+	            	<c:set var="bestList" value="bestList${status.index}"></c:set> <!-- 테마순위 추출 -->
 	            		<c:if test="${requestScope[TodayReserve] eq 'NotYet'}"> <!-- 8개의 시간 전부 예약이 덜된것만 출력 -->
 					         
 						         <div class="col-md-4 col-sm-6">
@@ -247,6 +247,22 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
+						                                	<c:when test="${i==10}">
+						                            			<c:forEach begin="91" end="98" varStatus="status3">
+						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
+						                            				 <c:choose>
+							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
+							                            				<div class="time-choice">
+							                            					<label class="hover2" style="background-color:#FFFFFF">
+																					<span>
+																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
+																			</label>
+								                               			</div>
+								                               			</c:when>
+							                               			</c:choose>
+							                               			
+							                            		</c:forEach>
+						                                	</c:when>
 						                                	
 						                                	
 														 </c:choose>
@@ -277,6 +293,3 @@
 </body>
 </html>
 
-
-</body>
-</html>
