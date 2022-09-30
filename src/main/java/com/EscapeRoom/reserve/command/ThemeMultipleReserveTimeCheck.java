@@ -197,26 +197,6 @@ public class ThemeMultipleReserveTimeCheck implements ReserveCommand {
 			int result = rdao.todayReservethemeCheck(Trdt);
 			
 			
-			//순위구하기
-//			ReserveDto4 rdto = new ReserveDto4(null, null, null, null);
-//			ArrayList<ReserveDto4> rlist =  rdao.ThemeBest(rdto);
-//			
-//			for(int k=0;k<rlist.size();k++) {
-//				String result1 = rlist.get(k).gettId();
-//				
-//				System.out.println("to값"+Integer.parseInt(TodayReserve));
-//				System.out.println("re값"+Integer.parseInt(result1));
-//				if(Integer.parseInt(TodayReserve)==Integer.parseInt(result1)) {
-//					
-//					System.out.println("-----------------------");
-//					System.out.println("Today값" + TodayReserve);
-//					System.out.println("result1값" + result1);
-//					String themeId = "themeId"+(0+k);
-//					model.addAttribute(themeId,result1);
-//				}
-//			}		
-			
-			
 			// 하루의 한 테마는 8개의 시간표가 존재함 
 			if(result == 8) { // 8개의 결과값이 뜨면 해당 테마는 모두 예약 종료된상태임
 				String rCheckFinish = "finish";

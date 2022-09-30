@@ -133,17 +133,15 @@ public class ReserveController {
 		System.out.println("reserveForm이동");
 		model.addAttribute("ymd",request.getParameter("ymd"));
 		model.addAttribute("themeTime",request.getParameter("themeTime"));
-		// 
-		
 		
 		//tcom = new ThemeImageCommand();
 		// New 생성자 사용시 빈을 주입받을수 없으므로 ThemeImageCommand tcom1을 위에서 주입 받음;
-		tcom1.execute(request, model);
+		tcom1.execute(request, model); // 예약폼을 보면 모델의 테마이름을 가져오는 파트가 있기에 사용함 
 		
 		return "reserve/reserveForm";
 	}
 	
-	//예약 완료 
+	//예약 완료 미사용
 	@RequestMapping("/reserveOK")
 	public String reserveOK(HttpServletRequest request,Model model) {
 		System.out.println("reserveOK");
@@ -257,9 +255,9 @@ public class ReserveController {
 		@RequestMapping(value="/ReserverList",method = RequestMethod.POST)
 		public String ReserverList(HttpServletRequest request,Model model) {
 			System.out.println("ReserverList");
-			rcom = new ReserverList();
+			rcom = new ReserverList(); // 예약자 리스트 목록 출력
 			rcom.execute(request, model);
-			rcom = new ReserveListTotal();
+			rcom = new ReserveListTotal(); // 예약자 누적수 출력
 			rcom.execute(request, model);
 			
 			return "admin/reserver/ReserverCheck";
@@ -278,7 +276,7 @@ public class ReserveController {
 		@RequestMapping(value="/ReservePageList",method = RequestMethod.POST)
 		public String ReservePageList(HttpServletRequest request,Model model) {
 			System.out.println("ReservePageList");
-			System.out.println(request.getParameter("pageNo"));
+			System.out.println(request.getParameter("pageNo")); //10개 단위로 쪼개서 만든 PageNo
 			
 			rcom = new ReservePageList();
 			rcom.execute(request, model);

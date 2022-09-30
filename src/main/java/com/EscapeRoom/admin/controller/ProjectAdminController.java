@@ -196,8 +196,8 @@ public class ProjectAdminController {
 		MultipartFile mfN = mrequest.getFile("mImageNormal");
 		MultipartFile mfE = mrequest.getFile("mImageEvent");
 		
-		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
-	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+//		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+//	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
 
 //		String pathA = "D:/CHOISUNKYU/GitHub/skcLocal/EscapeRoom/src/main/webapp/resources/upimage/";
 //		String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";	
@@ -205,8 +205,8 @@ public class ProjectAdminController {
 //		String pathA = "C:/Users/kyk92/git/EscapeRoom/src/main/webapp/resources/upimage/";
 //		String pathB = "C:/KYK/Util/apache-tomcat-9.0.64-windows-x64/apache-tomcat-9.0.64/wtpwebapps/EscapeRoom_security/resources/upimage/";
 
-//		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
-//		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
+		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
+		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 
 		
 		String orignalFileNameL = mfL.getOriginalFilename();
@@ -282,11 +282,11 @@ public class ProjectAdminController {
 		MultipartFile mfN = mrequest.getFile("mImageNormal");
 		MultipartFile mfE = mrequest.getFile("mImageEvent");
 		
-//		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
-//		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
+		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
+		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";	
 		
-		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
-	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
+//		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+//	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/";   
 		
 		String orignalFileNameL = mfL.getOriginalFilename();
 		String orignalFileNameN = mfN.getOriginalFilename();
@@ -428,9 +428,11 @@ public class ProjectAdminController {
 		
 		MultipartFile mImg = frequest.getFile("fImg");
 		
-		String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
-	    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/"; 
-	    
+	//	String pathA = "C:/Users/kimj1/git/EscapeRoom/src/main/webapp/resources/upimage/";
+	//    String pathB = "C:/project/server/apache-tomcat-9.0.65/wtpwebapps/EscapeRoom_security/resources/upimage/"; 
+		String pathA = "D:/osm/workSpace/EscapeRoom_security/src/main/webapp/resources/upimage/";
+		String pathB = "C:/kook/apache-tomcat-9.0.63/wtpwebapps/EscapeRoom_security/resources/upimage/";
+		
 	    String originalFileName = mImg.getOriginalFilename();
 		
 		long prename = System.currentTimeMillis();
