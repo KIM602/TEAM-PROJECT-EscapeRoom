@@ -16,56 +16,37 @@
 function reserveCheck() {
 	const form = document.reserveForm;
 	//name check
-	var namePattern = /^[가-힣]{2,6}$/;
+	var namePattern = /^[가-힣]{2,6}$/; // 네임 패턴
 	var name = form.rName.value;
 	// 약관 동의
 	var agree= form.rTerms.value;
-	
-	if(!check2(agree,"약관에 동의 해주세요")) {
+	if(!check2(agree,"약관에 동의 해주세요")) { //약관 동의
 		return false;
 	}
 	
-	if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){
+	if(!check(namePattern, name, "유효하지 않은 이름입니다. 2글자이상의 한글만 입력 가능합니다.")){  // 유효성 검사용
 		return false;
 	}
 	
 	if(window.confirm("예약하시겠습니까?")) {
 		alert("예약완료");
 		form.submit(function name(e) {
-			e.preventDefault();
-			$.ajax({
-				url : "reserveOK",
-				type : "get",
-				data : "",
-				success : function name(d) {
-					
-					$("#reserveRegion").html(d);
-				},
-				error : function name() {
-					alert("예약체크/확인실패");
-				}
-			})
 		});
 	}
 	else{
-		alert("최소")
+		alert("취소")
 	}
-	
-	
-	
-	
-	
 	
 }
 
-// 체크 메서드
-function check(pattern, taget, message) {
+// 유효성 검사 메서드
+function check(pattern, taget, message) { 
 	if(pattern.test(taget)) {
     	return true;
     }
     alert(message);
 }
-// 약관 동의 체크메서드
+// 약관 동의 유효성 검사 메서드
 function check2(taget,message) {
 	if(taget != 'noncheck'){
 		return true;
@@ -86,9 +67,7 @@ $(document).ready(function name() {
 		document.getElementById("inputprice").setAttribute('value',price1);
 	})
 })
-
 // 약관 동의 체크박스 ajax
-
 $(document).ready(function() {
 $("#rTerms").on('click', function() {
       if ( $(this).prop('checked') ) {
@@ -98,12 +77,7 @@ $("#rTerms").on('click', function() {
       }
     });
 });
-
-
 </script>
-
-
-
 <body>
  		<form name="reserveForm" class="reserveForm"action="reserve" method="post">
  		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> <!-- 안넣으려면 security-context.xml의 <csrf disabled="false"/> true로 변경  -->

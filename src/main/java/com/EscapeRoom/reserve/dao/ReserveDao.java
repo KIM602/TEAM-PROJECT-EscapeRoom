@@ -69,7 +69,7 @@ public class ReserveDao implements RdaoInterface {
 	@Override
 	public ArrayList<ReserveDto> ReservePageList(String pageNo) {
 		int page = Integer.parseInt(pageNo);
-		int startNo = (page - 1) * 10 + 1;
+		int startNo = (page - 1) * 10 + 1; // 시작번호
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
 		return result;
 		
