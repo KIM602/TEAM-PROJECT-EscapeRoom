@@ -16,4 +16,5 @@
 최선규 노션 : (https://www.notion.so/EscapeRoom-Spring-Project-1078375321ad4e3c9149edbfdd73730d) <br/>
 * 형상 관리 : Github
 
-
+## View
+[![Video Label](http://img.youtube.com/vi/0KrcJ7iWWaw/0.jpg)](https://www.youtube.com/watch?v=0KrcJ7iWWaw)
