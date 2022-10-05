@@ -24,9 +24,7 @@ public class ThemeBest implements ReserveCommand {
 		ReserveDao rdao = Constant.rdao;
 		
 		ReserveDto2 rdto = new ReserveDto2(null, null, null);
-		ArrayList<ReserveDto2> blist =  rdao.ThemeBest(rdto);
-		
-		
+		ArrayList<ReserveDto2> blist =  rdao.themeBest(rdto);
 		
 		
 		String tid = null; // request Set키값명
@@ -54,13 +52,13 @@ public class ThemeBest implements ReserveCommand {
 				String Rank = (String) request.getAttribute(rank); // request get용도
 				String Cnt = (String) request.getAttribute(cnt); // request get용도
 				
-				if(Tid.equals(ThemeListTid)) { // 문자열 비교
+				if(Tid.equals(ThemeListTid)) { // 테마id와 테마순위별 테마id와 일치하는지 비교
 					String bestList = "bestList" + j; // 베스트리스트는 ThemeList와 값이 일치해야 하므로 j번호로 이름을 세팅
 					System.out.println("bestList" + bestList);
 					System.out.println("ThemeListTid = " + ThemeList + " and Tid = " + Tid );
 					System.out.println("Rank = " + Rank);
 					rdto= new ReserveDto2(Cnt, Rank, Tid); //저장소
-					model.addAttribute(bestList,rdto); // 모델의 저장
+					model.addAttribute(bestList,rdto); // 모델에 저장
 				}
 			}
 			

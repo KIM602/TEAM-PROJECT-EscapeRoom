@@ -19,7 +19,7 @@ public class CalendarChoiceReserverPageList implements ReserveCommand {
 			String pageNo = request.getParameter("pageNo");
 			String rDate = request.getParameter("rDate");
 			System.out.println(rDate);
-			ArrayList<ReserveDto> dtos = rdao.CalendarChoiceReserverPageList(pageNo,rDate);
+			ArrayList<ReserveDto> dtos = rdao.calendarChoiceReserverPageList(pageNo,rDate);
 			model.addAttribute("CalendarChoiceReserverPageList",dtos);
 	}
 

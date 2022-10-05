@@ -33,23 +33,23 @@ public class ThemeMultipleReserveTimeCheck implements ReserveCommand {
 		String strToday = simpleDateFormat.format(today);
 		
 		
-		// 기존 모델값 'themeList' 에서 tid값,tname,tphoto,tprofile 추출 작업
+		// 기존 모델 'themeList' 에서 필요한 Theme관련 정보들 추출 작업
 		HashMap<String, Object> map = (HashMap)model.asMap();
 		ArrayList<ThemeDto> tList = (ArrayList)map.get("themeList");
-		String tid = null;
-		String tname = null;
-		String tphoto = null;
-		String tprofile = null;
-		String ttime = null;
-		String tdifficulty =null;
-		String tgenre = null;
+		String tid = null; // 키값 명
+		String tname = null; // 키값 명
+		String tphoto = null; // 키값 명
+		String tprofile = null; // 키값 명
+		String ttime = null; // 키값 명
+		String tdifficulty = null; // 키값 명
+		String tgenre = null; // 키값 명
 		
 		
 		
 		for(int j=0;j<tList.size();j++ ) {
 			// 추출작업
-			tid = "tid" + j;
-			tname = "tname" + j;
+			tid = "tid" + j; 
+			tname = "tname" + j;  
 			tphoto = "tphoto" + j;
 			tprofile = "tprofile" + j;
 			ttime = "ttime" + j;
@@ -185,21 +185,20 @@ public class ThemeMultipleReserveTimeCheck implements ReserveCommand {
 			
 			}
 			
-			//테마리스트8개 제목및 설명 추출용도
+			//테마리스트 제목및 설명 추출용도
 			String ThemeList = "ThemeList" + (j+1); // 테마리스트 추출
 			TodayReserveCheckDto trcDto = new TodayReserveCheckDto(tId, tName, tPhoto, tProfile, null, strToday, tTime, tDifficulty, tGenre, 0);
 			model.addAttribute(ThemeList,trcDto);
 		
-			
+			// 테마id별 당일 예약이 전부 되어있는지,안되어있는지 (NotYet,Finish) 확인용
 			String TodayReserve = "TodayReserve"+ (j+1);
-			// 테마id별 당일 예약이 되어있는지 확인용
 			TodayReserveTidDto Trdt = new TodayReserveTidDto(strToday, null, tId);
 			int result = rdao.todayReservethemeCheck(Trdt);
 			
 			
 			// 하루의 한 테마는 8개의 시간표가 존재함 
 			if(result == 8) { // 8개의 결과값이 뜨면 해당 테마는 모두 예약 종료된상태임
-				String rCheckFinish = "finish";
+				String rCheckFinish = "Finish";
 				model.addAttribute(TodayReserve,rCheckFinish);
 			}
 			else {

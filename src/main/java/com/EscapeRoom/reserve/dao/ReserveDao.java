@@ -43,7 +43,7 @@ public class ReserveDao implements RdaoInterface {
 	
 	//예약자 id값으로 데이터 가져오기
 	@Override
-	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto) {
+	public ArrayList<ReserveDto> reserveFindMoreThan2DetailPage(ReserveDto rdto) {
 		ArrayList<ReserveDto> result  = (ArrayList)sqlSession.selectList("ReserveFindMoreThan2DetailPage",rdto);
 		return result;
 	}
@@ -57,17 +57,17 @@ public class ReserveDao implements RdaoInterface {
 
 	
 	@Override
-	public ArrayList<ReserveDto> ReserverList() {
+	public ArrayList<ReserveDto> reserverList() {
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reserveList");
 		return result;
 	}
 	@Override
-	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto) {
+	public ArrayList<ReserveDto> calendarChoiceReserverList(ReserveDto rdto) {
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverList",rdto);
 		return result;
 	}
 	@Override
-	public ArrayList<ReserveDto> ReservePageList(String pageNo) {
+	public ArrayList<ReserveDto>reservePageList(String pageNo) {
 		int page = Integer.parseInt(pageNo);
 		int startNo = (page - 1) * 10 + 1; // 시작번호
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("reservePageList",startNo);
@@ -75,12 +75,10 @@ public class ReserveDao implements RdaoInterface {
 		
 	}
 	@Override
-	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo, String rDate) {
+	public ArrayList<ReserveDto> calendarChoiceReserverPageList(String pageNo, String rDate) {
 		int page = Integer.parseInt(pageNo);
-		int startNo = (page - 1) * 10 + 1;
-		
-		startNoRdate snr = new startNoRdate(startNo, rDate);
-		
+		int startNo = (page - 1) * 10 + 1;  // 시작번호
+		startNoRdate snr = new startNoRdate(startNo, rDate); //날짜 DTO용으로 따로 만들어줌 
 		ArrayList<ReserveDto> result = (ArrayList)sqlSession.selectList("calendarChoiceReserverPageList",snr);
 		return result;
 	}
@@ -92,12 +90,12 @@ public class ReserveDao implements RdaoInterface {
 		return result;
 	}
 	@Override
-	public int ReserveListTotal() {
+	public int reserveListTotal() {
 		int result = sqlSession.selectOne("ReserveListTotal");
 		return result;
 	}
 	@Override
-	public int CalendarChoiceReserverListTotal(String ymd) {
+	public int calendarChoiceReserverListTotal(String ymd) {
 		int result = sqlSession.selectOne("CalendarChoiceReserverListTotal",ymd);
 		return result;
 	}
@@ -112,7 +110,7 @@ public class ReserveDao implements RdaoInterface {
 	}
 	
 	@Override
-	public ArrayList<ReserveDto2> ThemeBest(ReserveDto2 rdto) {
+	public ArrayList<ReserveDto2> themeBest(ReserveDto2 rdto) {
 		ArrayList<ReserveDto2> result = (ArrayList)sqlSession.selectList("themeBest",rdto);
 		return result;
 	}

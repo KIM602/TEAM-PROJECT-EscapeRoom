@@ -20,7 +20,7 @@ public class ReserveFind implements ReserveCommand {
 		String rid = request.getParameter("rId"); // 아이디값 받기
 		System.out.println("rid값은  ? " + rid);
 		ReserveDto rdto = new ReserveDto(rid); // 해당되는 예약 id값 저장
-		ArrayList<ReserveDto> result = rdao.ReserveFindMoreThan2DetailPage(rdto); 
+		ArrayList<ReserveDto> result = rdao.reserveFindMoreThan2DetailPage(rdto); 
 		model.addAttribute("reserveCheckData",result);
 	}
 	
