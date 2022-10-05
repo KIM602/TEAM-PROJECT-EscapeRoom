@@ -15,7 +15,7 @@ public class CalendarChoiceReserverListTotal implements ReserveCommand {
 		ReserveDao rdao = Constant.rdao;
 		
 		String ymd = request.getParameter("ymd");
-		int tn = rdao.CalendarChoiceReserverListTotal(ymd);
+		int tn = rdao.calendarChoiceReserverListTotal(ymd); // 총합 수를 반환
 		
 		model.addAttribute("CalendarChoiceReserverListTotal",tn);
 		

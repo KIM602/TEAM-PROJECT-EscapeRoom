@@ -15,21 +15,21 @@ public interface RdaoInterface {
 	public ArrayList<ReserveDto> reserveFindCheck(ReserveDto dto);
 	public void deleteReserve(String rId);
 
-	public ArrayList<ReserveDto> ReserverList();
+	public ArrayList<ReserveDto> reserverList();
 
-	public ArrayList<ReserveDto> CalendarChoiceReserverList(ReserveDto rdto);
-	public ArrayList<ReserveDto> ReservePageList(String pageNo);
-	public ArrayList<ReserveDto> CalendarChoiceReserverPageList(String pageNo,String rDate);
+	public ArrayList<ReserveDto> calendarChoiceReserverList(ReserveDto rdto);
+	public ArrayList<ReserveDto> reservePageList(String pageNo);
+	public ArrayList<ReserveDto> calendarChoiceReserverPageList(String pageNo,String rDate);
 
 
 	public ArrayList<ReserveDto3> Top3(ReserveDto3 dto);
-	public int ReserveListTotal();
-	public int CalendarChoiceReserverListTotal(String ymd);
-	public ArrayList<ReserveDto> ReserveFindMoreThan2DetailPage(ReserveDto rdto);
+	public int reserveListTotal();
+	public int calendarChoiceReserverListTotal(String ymd);
+	public ArrayList<ReserveDto> reserveFindMoreThan2DetailPage(ReserveDto rdto);
 	
 	public int todayReservethemeCheck(TodayReserveTidDto dto);
 	
-	public ArrayList<ReserveDto2> ThemeBest(ReserveDto2 rdto);
+	public ArrayList<ReserveDto2> themeBest(ReserveDto2 rdto);
 	
 	
 

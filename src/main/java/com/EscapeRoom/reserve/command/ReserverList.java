@@ -16,7 +16,7 @@ public class ReserverList implements ReserveCommand {
 	public void execute(HttpServletRequest request, Model model) {
 		
 		ReserveDao rdao = Constant.rdao;
-		ArrayList<ReserveDto> rlist = rdao.ReserverList();
+		ArrayList<ReserveDto> rlist = rdao.reserverList();
 		model.addAttribute("rlist",rlist);
 		
 	}

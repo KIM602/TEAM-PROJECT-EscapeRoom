@@ -62,10 +62,10 @@
 	        </h1>
 	        <br/>    
 	        <div class="col-sm-10 col-sm-offset-1">
-	            <c:forEach var="i" begin="1" end="9" varStatus="status">
-	            	<c:set var="TodayReserve" value="TodayReserve${status.index}"></c:set>
-	            	<c:set var="ThemeList" value="ThemeList${status.index}"></c:set>
-	            	<c:set var="bestList" value="bestList${status.index}"></c:set>
+	            <c:forEach var="i" begin="1" end="10" varStatus="status"> 
+	            	<c:set var="TodayReserve" value="TodayReserve${status.index}"></c:set> <!-- 예약판단 유무 -->
+	            	<c:set var="ThemeList" value="ThemeList${status.index}"></c:set> <!-- 테마 별 정보 -->
+	            	<c:set var="bestList" value="bestList${status.index}"></c:set> <!-- 테마순위 추출 -->
 	            		<c:if test="${requestScope[TodayReserve] eq 'NotYet'}"> <!-- 8개의 시간 전부 예약이 덜된것만 출력 -->
 					         
 						         <div class="col-md-4 col-sm-6">
@@ -103,8 +103,8 @@
 							                        		</div>
 						                                <div style="width:100%;display: inline-block;">
 							                            <c:choose>	
-						                            		<c:when test="${i==1}">
-						                            			<c:forEach begin="1" end="8" varStatus="status3">
+						                            		<c:when test="${i==1}">  <!-- 첫번째 테마를 의미 -->
+						                            			<c:forEach begin="1" end="8" varStatus="status3">  <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -119,8 +119,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==2}">
-						                            			<c:forEach begin="11" end="18" varStatus="status3">
+						                                	<c:when test="${i==2}"> <!-- 두번째 테마를 의미 -->
+						                            			<c:forEach begin="11" end="18" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -135,8 +135,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==3}">
-						                            			<c:forEach begin="21" end="28" varStatus="status3">
+						                                	<c:when test="${i==3}"> <!-- 세번째 테마를 의미 -->
+						                            			<c:forEach begin="21" end="28" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -151,8 +151,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==4}">
-						                            			<c:forEach begin="31" end="38" varStatus="status3">
+						                                	<c:when test="${i==4}"> <!-- 네번째 테마를 의미 -->
+						                            			<c:forEach begin="31" end="38" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -167,8 +167,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==5}">
-						                            			<c:forEach begin="41" end="48" varStatus="status3">
+						                                	<c:when test="${i==5}"> <!-- 다섯번째 테마를 의미 -->
+						                            			<c:forEach begin="41" end="48" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -183,8 +183,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==6}">
-						                            			<c:forEach begin="51" end="58" varStatus="status3">
+						                                	<c:when test="${i==6}"> <!-- 여섯번째 테마를 의미 -->
+						                            			<c:forEach begin="51" end="58" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -199,8 +199,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==7}">
-						                            			<c:forEach begin="61" end="68" varStatus="status3">
+						                                	<c:when test="${i==7}">  <!-- 일곱번째 테마를 의미 -->
+						                            			<c:forEach begin="61" end="68" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -215,8 +215,8 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==8}">
-						                            			<c:forEach begin="71" end="78" varStatus="status3">
+						                                	<c:when test="${i==8}"> <!-- 여덟번째 테마를 의미 -->
+						                            			<c:forEach begin="71" end="78" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -231,8 +231,24 @@
 							                               			
 							                            		</c:forEach>
 						                                	</c:when>
-						                                	<c:when test="${i==9}">
-						                            			<c:forEach begin="81" end="88" varStatus="status3">
+						                                	<c:when test="${i==9}"> <!-- 아홉번째 테마를 의미 -->
+						                            			<c:forEach begin="81" end="88" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
+						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
+						                            				 <c:choose>
+							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
+							                            				<div class="time-choice">
+							                            					<label class="hover2" style="background-color:#FFFFFF">
+																					<span>
+																					<img alt="" src="image/icon2_black.png">${requestScope[todayCheck].rTime}</span>
+																			</label>
+								                               			</div>
+								                               			</c:when>
+							                               			</c:choose>
+							                               			
+							                            		</c:forEach>
+						                                	</c:when>
+						                                	<c:when test="${i==10}"> <!-- 열번째 테마를 의미 -->
+						                            			<c:forEach begin="91" end="98" varStatus="status3"> <!-- 테마의 예약시간은 8개가 존재 -->
 						                            				<c:set var="todayCheck" value="todayCheck${status3.index}"></c:set>
 						                            				 <c:choose>
 							                            				<c:when test="${requestScope[todayCheck].rCheck == 0}">
@@ -277,6 +293,3 @@
 </body>
 </html>
 
-
-</body>
-</html>
