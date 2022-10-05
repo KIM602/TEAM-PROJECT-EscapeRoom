@@ -119,7 +119,7 @@
 
             <div class="form-group pt-4 pb-4">
                 <label for="uNumber">사업자 등록 번호</label>
-                <input type="text" id="uNumber" class="form-control" name="pnumber" pattern="[0-9]+" placeholder="사업자 등록번호 입력" required>
+                <input type="text" id="uNumber" class="form-control" name="pnumber" placeholder="사업자등록번호 10자리 입력" maxlength="12" required numberOnly>
             </div>
             <button type="submit" class="btn btn-success">회원가입</button>
             <a href="AdminLoginView" class="btn btn-danger">취소</a>
@@ -149,6 +149,8 @@
     			});
     		});
     	});
+    	// 숫자 및 하이픈만 입력가능
+    	$(document).on("keyup", "input[numberOnly]", function() {$(this).val( $(this).val().replace(/[^0-9-]/gi,"") );});
     </script>
 </body>
 </html>
