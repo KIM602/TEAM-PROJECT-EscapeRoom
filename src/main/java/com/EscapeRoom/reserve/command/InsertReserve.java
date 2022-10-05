@@ -13,13 +13,13 @@ public class InsertReserve implements ReserveCommand {
 	@Override
 	public void execute(HttpServletRequest request, Model model) {
 		
-		String rid = "";
+		String rid = ""; // 번호는 시퀀스에 의해 자동 부여 되므로 어떠한 값이라도 상관없음
 		String rPhone = request.getParameter("rPhone"); //
 		int rCount = Integer.parseInt(request.getParameter("rCount")); //
 		String rTerms = request.getParameter("rTerms");  //
 		String rDate = request.getParameter("rDate"); //
 		String rTime = request.getParameter("rTime"); //
-		int rCheck = 1;
+		int rCheck = 1; // 예약 유무를 나타냄 1은 예약됨을 의미
 		String tId = request.getParameter("tId"); //
 		String rName = request.getParameter("rName"); //
 		int rPrice = Integer.parseInt(request.getParameter("rPrice")); //
