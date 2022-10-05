@@ -157,7 +157,7 @@ $(function() {
 					type : "post",
 					data : {
 						pageNo : purl,
-						rDate : rdate,
+						rDate : rdate, // 선택 일자를 보내줌
 						${_csrf.parameterName}: "${_csrf.token}",
 						
 						},

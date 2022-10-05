@@ -4,32 +4,30 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.EscapeRoom.reserve.dao.ReserveDao">
+	
+		<!-- 예약등록 -->	
 		<insert id="insertReserve" parameterType="com.EscapeRoom.reserve.dto.ReserveDto">
 			insert into reserve(rid,rphone,rcount,rterms,rdate,rtime,rcheck,tid,rname,rprice,rthemename)
 			values(reserve_seq.nextval,#{rPhone},#{rCount},#{rTerms},#{rDate},#{rTime},#{rCheck},#{tId},#{rName},#{rPrice},#{rThemeName})
 		</insert>	
-		
+		<!-- 테마,날짜별 시간대 예약유무 파악 -->
 		<select id="themeReserveTimeCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			select * from reserve where rdate = #{rDate} and tid=#{tId} and rtime = #{rTime}
 		</select>
-		
+		<!-- 예약자가 2개 이상일시 예약자 찾기 -->
 		<select id="reserveFindCheck" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			select * from reserve where rname = #{rName} and rphone = #{rPhone}
 		</select>
-		
+		<!-- 예약자가 2개 미만일시 예약자 확인 -->
 		<select id="ReserveFindMoreThan2DetailPage" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			select * from reserve where rid = #{rId}
 		</select>
-		
-		
-		
-		
+		<!-- 예약자가 예약삭제 -->
 		<delete id="deleteReserve" parameterType="String">
 			delete from reserve where rid = #{rId}
 		</delete>
 		
-		
-		
+		<!-- 관리자모드에서 예약자 리스트 확인 -->
 		<select id="reserveList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
 			<![CDATA[
 			select * from (select A.*, ROWNUM as RNUM
@@ -37,7 +35,7 @@
 			where RNUM < 11
 			]]>
 		</select>
-		
+		<!-- 관리자모드에서 예약자 리스트 페이지네이션  -->
 		<select id="reservePageList" resultType="com.EscapeRoom.reserve.dto.ReserveDto">	 
 			<![CDATA[
 			select * from (select A.*, ROWNUM as RNUM
@@ -45,7 +43,7 @@
 			where RNUM >= #{startNo} and RNUM <= #{startNo} + 9
 			]]>
 		</select>
-		
+		<!-- 관리자모드에서 일자별 예약자 리스트 확인 -->
 		<select id="calendarChoiceReserverList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			<![CDATA[
 			select * from (select A.*, ROWNUM as RNUM
@@ -53,7 +51,7 @@
 			where  RNUM < 11 
 			]]>
 		</select>
-		
+		<!-- 관리자모드에서 일자별 예약자 리스트 페이지네이션 -->
 		<select id="calendarChoiceReserverPageList" parameterType="com.EscapeRoom.reserve.dto.ReserveDto" resultType="com.EscapeRoom.reserve.dto.ReserveDto">
 			<![CDATA[
 			select * from (select A.*, ROWNUM as RNUM
@@ -62,6 +60,8 @@
 			]]>
 		</select>
 		
+		
+		<!-- 특수기능 - 인기있는 테마 Top3 -->
 		<select id="Top3" resultType="com.EscapeRoom.reserve.dto.ReserveDto3">
 			<![CDATA[
 					SELECT * FROM (SELECT RTHEMENAME, TID, COUNT(*) AS cnt
@@ -70,10 +70,11 @@
 			]]>
 		</select>
 		
+		<!-- 관리자모드에서 예약자 총합 확인 -->
 		<select id="ReserveListTotal" resultType="int">
 			select count(*) from reserve
 		</select>
-		
+		<!-- 관리자모드에서 일자별 예약자 총합 확인-->
 		<select id="CalendarChoiceReserverListTotal" resultType="int" parameterType="String">
 			select count(*) as rCount from reserve where rdate = #{ymd}
 		</select>

@@ -14,7 +14,7 @@ public class ReserveListTotal implements ReserveCommand {
 	public void execute(HttpServletRequest request, Model model) {
 		ReserveDao rdao = Constant.rdao;
 		
-		int tn = rdao.ReserveListTotal();
+		int tn = rdao.reserveListTotal();
 		System.out.println("tn°ªÀº? " + tn);
 		model.addAttribute("ReserveListTotal",tn);
 		

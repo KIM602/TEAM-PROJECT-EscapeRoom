@@ -290,10 +290,10 @@ public class ReserveController {
 			
 			System.out.println("ymd값" + request.getParameter("ymd"));
 			
-			rcom = new CalendarChoiceReserverList();
+			rcom = new CalendarChoiceReserverList(); // 일자별 리스트 목록 출력
 			rcom.execute(request, model);
 			
-			rcom = new CalendarChoiceReserverListTotal();
+			rcom = new CalendarChoiceReserverListTotal(); // 일자별 예약자 누적수 출력
 			rcom.execute(request, model);
 	
 			return "admin/reserver/calendarChoiceReserveList";
