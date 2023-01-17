@@ -10,7 +10,7 @@
 ## Proejct
 * 프로젝트 개발 기간 : 2022.09.06  ~ 2022.09.28
 * 팀 구성 : <br/>
-김유경 노션 : (https://tremendous-straw-dd8.notion.site/PROJECT-2b8d1636868d429480ad8ab4090aee4b) <br/>
+김유경 노션 : (https://tremendous-straw-dd8.notion.site/EscapeRoom-PROJECT-e83be2608d064d4d80b30c79792701aa) <br/>
 김은정 노션 : (https://glimmer-address-a75.notion.site/Team-Project-39803d57f7894b39ace4f5543fbce055) <br/>
 오수민 노션 : (https://nutritious-pressure-8f4.notion.site/Spring-Project-cd6d0c728bfd47feb519f6065a09d40a) <br/>
 최선규 노션 : (https://www.notion.so/EscapeRoom-Spring-Project-1078375321ad4e3c9149edbfdd73730d) <br/>
